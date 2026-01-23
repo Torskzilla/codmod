@@ -897,3 +897,45 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Hiding Joker
+SMODS.Joker {
+    key = "hiding",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 7, y = 2 },
+    config = { extra = { d_size = 3, cards_to_flip = 0 } },
+    soul_pos = {
+        x = 6, y = 2
+    },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.d_size } }
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.d_size
+        ease_discard(card.ability.extra.d_size)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.d_size
+        ease_discard(-card.ability.extra.d_size)
+    end,
+    calculate = function(self, card, context)
+        if not context.blueprint then
+            if context.discard then
+                card.ability.extra.cards_to_flip = card.ability.extra.cards_to_flip + 1
+            end
+            if context.stay_flipped and context.to_area == G.hand and card.ability.extra.cards_to_flip > 0 then
+                card.ability.extra.cards_to_flip = card.ability.extra.cards_to_flip - 1
+                return {
+                    stay_flipped = true
+                }
+            end
+            if context.setting_blind or context.hand_drawn then
+                card.ability.extra.cards_to_flip = 0
+            end
+        end
+    end,
+}

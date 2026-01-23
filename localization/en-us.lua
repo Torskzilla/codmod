@@ -233,6 +233,14 @@ return {
                     "to create a copy of this one"
                 },
             },
+            j_cod_hiding = {
+                name = "Hidden Joker",
+                text = {
+                    "{C:red}+#1#{} discards each round,",
+                    "cards are drawn face",
+                    "down after discards",
+                },
+            },
         },
         Other={},
         Planet={},
