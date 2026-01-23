@@ -418,6 +418,7 @@ SMODS.Joker {
             }
         end
     end,
+    --initial random roll
     set_ability = function(self, card, initial, delay_sprites)
         card.ability.extra.sum = pseudorandom('cod_homework', card.ability.extra.min_sum, card.ability.extra.max_sum)
     end
@@ -835,6 +836,64 @@ SMODS.Joker {
 			return {
                 mult = card.ability.extra.mult
             }
+        end
+    end,
+}
+
+-- Tall Joker
+SMODS.Joker {
+    key = "tall",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 3, y = 2 },
+    config = { extra = { mult = 15, min_sum = 40 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.min_sum } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local rank_sum = 0
+            for i = 1,#context.full_hand do
+                rank_sum = rank_sum + context.full_hand[i].base.nominal
+            end
+
+            if rank_sum >= card.ability.extra.min_sum then
+                return {
+                    mult = card.ability.extra.mult,
+                }
+            end
+        end
+    end,
+}
+
+-- Short Joker
+SMODS.Joker {
+    key = "short",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 2 },
+    config = { extra = { chips = 100, max_sum = 25 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.max_sum } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local rank_sum = 0
+            for i = 1,#context.full_hand do
+                rank_sum = rank_sum + context.full_hand[i].base.nominal
+            end
+
+            if rank_sum <= card.ability.extra.max_sum then
+                return {
+                    chips = card.ability.extra.chips,
+                }
+            end
         end
     end,
 }

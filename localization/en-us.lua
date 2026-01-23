@@ -49,8 +49,24 @@ return {
                 name="Homework",
                 text={
                     "{X:mult,C:white} X#1# {} Mult if sum",
-                    "of played ranks is {C:attention}#2#{},",
+                    "of played ranks is {C:attention}#2#{}",
                     "{s:0.8}Sum changes every hand",
+                }
+            },
+            j_cod_tall={
+                name="Tall Joker",
+                text={
+                    "{C:mult}+#1#{} Mult if sum",
+                    "of played ranks",
+                    "is at least {C:attention}#2#{}",
+                }
+            },
+            j_cod_short={
+                name="Short Joker",
+                text={
+                    "{C:chips}+#1#{} Chips if sum",
+                    "of played ranks",
+                    "is at most {C:attention}#2#{}",
                 }
             },
             j_cod_overgrowth={
