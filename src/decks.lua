@@ -10,7 +10,7 @@ SMODS.Atlas {
 --     key = "debug",
 --     atlas = 'atlas_cod_decks',
 --     pos = {x = 0, y = 0},
---     config = {dollars = 1000, jokers = {"j_cod_hiding"}},
+--     config = {dollars = 1000, jokers = {"j_cod_elitism"}},
 -- }
 
 SMODS.Back{

@@ -939,3 +939,35 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Elitism
+SMODS.Joker {
+    key = "elitism",
+    unlocked = false,
+    blueprint_compat = false,
+    rarity = 3,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 8, y = 2 },
+    config = { extra = { previous_weight = nil } },
+    add_to_deck = function(self, card, from_debuff)
+        card.ability.extra.previous_weight = G.GAME.common_mod
+        G.GAME.common_mod = 0
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if card.ability.extra.previous_weight then
+            G.GAME.common_mod = card.ability.extra.previous_weight
+            card.ability.extra.previous_weight = nil
+        end
+    end,
+    -- unlock: never have common jokers
+    -- check_for_unlock = function(self, args)
+    --     if args.type == 'modify_jokers' and G.jokers then
+    --         for _, joker in ipairs(G.jokers.cards) do
+    --             if joker.ability.set == 'Joker' and (joker.config.center.rarity == 1 or joker.config.center.rarity == "Common") then
+
+    --             end
+    --         end
+    --     end
+    -- end
+}

@@ -241,6 +241,13 @@ return {
                     "down after discards",
                 },
             },
+            j_cod_elitism = {
+                name = "Elitist Joker",
+                text = {
+                    "{C:blue}Common{C:attention} Jokers{} can't",
+                    "naturally appear",
+                },
+            },
         },
         Other={},
         Planet={},
