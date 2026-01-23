@@ -1,0 +1,13 @@
+{
+  "id": "CodMod",
+  "name": "Cod's Mod",
+  "display_name": "Cod's Mod",
+  "author": ["Codzilla"],
+  "description": "Adds stuff",
+  "prefix": "cod",
+  "main_file": "codmod.lua",
+  "priority": 0,
+  "badge_colour": "0ef4d6",
+  "version": "0.0.0",
+  "dependencies": ["Steamodded (>=1.0.0~BETA-1224a)"]
+}
