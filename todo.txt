@@ -1,8 +1,0 @@
-Add:
-Blueprint paperclip interaction where blueprint can be duplicated?
-
-Unlock:
-
-Incompatibility:
-
-Vanilla Challenges & Jokers?
