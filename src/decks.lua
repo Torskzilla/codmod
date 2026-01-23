@@ -30,7 +30,7 @@ SMODS.Back{
 
                     for i=1,self.config.credit_cards do
                         local credit_card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_credit_card")
-                        --credit_card:set_edition({negative = true}, true, true)
+                        credit_card:set_edition(nil, true, true)
                         credit_card:add_to_deck()
                         credit_card:start_materialize()
                         G.jokers:emplace(credit_card)
