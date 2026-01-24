@@ -1081,8 +1081,48 @@ SMODS.Joker {
                 }))
             }
         end
-        if context.setting_blind then
+        if context.setting_blind and not context.blueprint_card then
             card.ability.extra.activated = false
+        end
+    end,
+}
+
+-- Password
+SMODS.Joker {
+    key = "password",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 3, y = 3 },
+    config = { extra = { xmult = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local number = false
+            local letter = false
+            for i = 1, #context.scoring_hand do
+                if not SMODS.has_no_rank(context.scoring_hand[i]) then
+                    if context.scoring_hand[i]:get_id() >= 11 then
+                        letter = true
+                    end
+                    if context.scoring_hand[i]:get_id() <= 10 then
+                        number = true
+                    end
+                end
+            end
+            if letter and number then
+                return {
+                    xmult = card.ability.extra.xmult,
+                }
+            else
+                return {
+                    message = localize("password_weak"),
+                    colour = G.C.RED
+                }
+            end
         end
     end,
 }

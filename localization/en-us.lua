@@ -36,7 +36,7 @@ return {
             j_cod_conspiracy={
                 name="The Conspiracy",
                 text={
-                    "{X:mult,C:white} X#1# {} Mult if played",
+                    "{X:mult,C:white}X#1#{} Mult if played",
                     "hand is {C:attention}Secret",
                 },
                 unlock = {
@@ -48,7 +48,7 @@ return {
             j_cod_homework={
                 name="Homework",
                 text={
-                    "{X:mult,C:white} X#1# {} Mult if sum",
+                    "{X:mult,C:white}X#1#{} Mult if sum",
                     "of played ranks is {C:attention}#2#{}",
                     "{s:0.8}Sum changes every hand",
                 }
@@ -112,9 +112,8 @@ return {
             j_cod_four_seasons={
                 name="Four Seasons",
                 text={
-                    "All played scoring",
-                    "cards become the",
-                    "next suit",
+                    "All played scoring cards",
+                    "become the next suit",
                     "{C:hearts,s:0.8}Hearts{s:0.8} > {C:spades,s:0.8}Spades{s:0.8} > {C:diamonds,s:0.8}Diamonds{s:0.8} > {C:clubs,s:0.8}Clubs",
                 },
                 unlock = {
@@ -124,10 +123,10 @@ return {
             j_cod_singularity={
                 name="Singularity",
                 text={
-                    "Gives {X:mult,C:white} X#1# {} Mult for each time",
+                    "Gives {X:mult,C:white}X#1#{} Mult for each time",
                     "you have played your least",
                     "played {C:attention}poker hand{} this run",
-                    "{C:inactive}(Currently {X:mult,C:white} X#2# {C:inactive} Mult)",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
                 unlock = {
                     "Play every visible {C:attention}poker hand{}",
@@ -137,13 +136,13 @@ return {
             j_cod_scam={
                 name="Scam",
                 text={
-                    "{X:mult,C:white} X#1# {} Mult"
+                    "{X:mult,C:white}X#1#{} Mult"
                 }
             },
             j_cod_bully={
                 name="Bully",
                 text={
-                    "{X:mult,C:white} X#1# {} Mult against {C:attention}Small Blinds{}"
+                    "{X:mult,C:white}X#1#{} Mult against {C:attention}Small Blinds{}"
                 }
             },
             j_cod_hungry={
@@ -272,6 +271,13 @@ return {
                     "{C:attention}High Card{} of the round",
                 },
             },
+            j_cod_password = {
+                name = "Password",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if poker hand",
+                    "contains a letter and a number",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -313,6 +319,7 @@ return {
             spam_3="Win Big!",
             spam_4="100000$!!",
             spam_5="Top Cards!",
+            password_weak="Weak",
         },
         high_scores={},
         labels={},
