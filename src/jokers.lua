@@ -960,7 +960,7 @@ SMODS.Joker {
             card.ability.extra.previous_weight = nil
         end
     end,
-    -- unlock: never have common jokers
+    -- unlock: win and never have common jokers
     -- check_for_unlock = function(self, args)
     --     if args.type == 'modify_jokers' and G.jokers then
     --         for _, joker in ipairs(G.jokers.cards) do
@@ -977,7 +977,6 @@ SMODS.Joker {
 SMODS.Joker {
     key = "black_market",
     blueprint_compat = true,
-    discovered = true,
     rarity = 3,
     cost = 9,
     atlas = 'atlas_cod_jokers',
@@ -1001,6 +1000,55 @@ SMODS.Joker {
         if context.joker_main then
             return {
                 mult = card.ability.extra.mult
+            }
+        end
+    end
+}
+
+-- Spam
+SMODS.Joker {
+    key = "spam",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 0, y = 3 },
+    soul_pos = { x = 1, y = 3 },
+    config = { extra = { spam_cards = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.spam_cards } }
+    end,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn then
+            for i=1,card.ability.extra.spam_cards do
+
+                local _card = SMODS.create_card { set = "Base", area = G.discard }
+                G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                _card.playing_card = G.playing_card
+                table.insert(G.playing_cards, _card)
+
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        G.hand:emplace(_card)
+                        _card:start_materialize()
+                        G.GAME.blind:debuff_card(_card)
+                        G.hand:sort()
+                        if context.blueprint_card then
+                            context.blueprint_card:juice_up()
+                        else
+                            card:juice_up()
+                        end
+                        SMODS.calculate_context({ playing_card_added = true, cards = { _card } })
+                        save_run()
+                        return true
+                    end
+                }))
+                            
+            end
+
+            return {
+                message = localize(pseudorandom_element({"spam_1", "spam_2", "spam_3", "spam_4", "spam_5"}, 'cod_spam_text')),
+                colour = G.C.GOLD,
             }
         end
     end

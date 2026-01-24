@@ -10,8 +10,20 @@ SMODS.Atlas {
 --     key = "debug",
 --     atlas = 'atlas_cod_decks',
 --     pos = {x = 0, y = 0},
---     config = {dollars = 1000, jokers = {"j_cod_black_market"}},
+--     config = {dollars = 1000, jokers = {"j_cod_spam"}},
 -- }
+
+SMODS.Back{
+    key = "average",
+    atlas = 'atlas_cod_decks',
+    pos = {x = 3, y = 0},
+    config = {},
+
+    apply = function(self)
+        G.GAME.common_mod = 0
+        G.GAME.rare_mod = 0
+    end,
+}
 
 SMODS.Back{
     key = "ponzi",
@@ -48,16 +60,4 @@ SMODS.Back{
     check_for_unlock = function(self, args)
         return args.type == 'money' and G.GAME.dollars <= -30
     end
-}
-
-SMODS.Back{
-    key = "average",
-    atlas = 'atlas_cod_decks',
-    pos = {x = 3, y = 0},
-    config = {},
-
-    apply = function(self)
-        G.GAME.common_mod = 0
-        G.GAME.rare_mod = 0
-    end,
 }
