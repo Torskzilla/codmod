@@ -6,12 +6,12 @@ SMODS.Atlas {
 	py = 95
 }
 
-SMODS.Back{
-    key = "debug",
-    atlas = 'atlas_cod_decks',
-    pos = {x = 0, y = 0},
-    config = {dollars = 1000, jokers = {"j_cod_black_market"}},
-}
+-- SMODS.Back{
+--     key = "debug",
+--     atlas = 'atlas_cod_decks',
+--     pos = {x = 0, y = 0},
+--     config = {dollars = 1000, jokers = {"j_cod_black_market"}},
+-- }
 
 SMODS.Back{
     key = "ponzi",
