@@ -636,7 +636,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = false,
     rarity = 2,
-    cost = 6,
+    cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 9, y = 1 },
     config = { extra = { suit = "Spades", color = G.C.SUITS.Spades } },
@@ -673,7 +673,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = false,
     rarity = 3,
-    cost = 8,
+    cost = 9,
     atlas = 'atlas_cod_jokers',
     pos = { x = 0, y = 2 },
     config = { extra = { anti_ante = 1, skips = 3, skip_counter = 0 } },
@@ -970,4 +970,38 @@ SMODS.Joker {
     --         end
     --     end
     -- end
+}
+
+
+-- Black Market
+SMODS.Joker {
+    key = "black_market",
+    blueprint_compat = true,
+    discovered = true,
+    rarity = 3,
+    cost = 9,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 9, y = 2 },
+    config = { extra = { mult_gain = 1, mult = 0 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult_gain, card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.selling_card and not context.blueprint then
+            local key_to_ban = context.card.config.center.key
+
+            G.GAME.banned_keys[key_to_ban] = true
+
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "mult",
+                scalar_value = "mult_gain",
+            })
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
 }
