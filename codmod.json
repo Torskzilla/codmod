@@ -8,6 +8,6 @@
   "main_file": "codmod.lua",
   "priority": 0,
   "badge_colour": "0ef4d6",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "dependencies": ["Steamodded (>=1.0.0~BETA-1224a)"]
 }
