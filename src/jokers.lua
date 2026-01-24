@@ -148,7 +148,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     rarity = 1,
-    cost = 4,
+    cost = 3,
     atlas = 'atlas_cod_jokers',
     pos = { x = 1, y = 1 },
     config = {},
@@ -1052,4 +1052,37 @@ SMODS.Joker {
             }
         end
     end
+}
+
+-- Cantrip
+SMODS.Joker {
+    key = "cantrip",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 2, y = 3 },
+    config = { extra = { hands = 1, poker_hand = "High Card", activated = false } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.hands } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and context.scoring_name == card.ability.extra.poker_hand and not card.ability.extra.activated then
+            card.ability.extra.activated = true
+            return {
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        ease_hands_played(card.ability.extra.hands)
+                        SMODS.calculate_effect(
+                            { message = localize { type = 'variable', key = 'a_hands', vars = { card.ability.extra.hands } }, colour = G.C.BLUE, },
+                            context.blueprint_card or card)
+                        return true
+                    end
+                }))
+            }
+        end
+        if context.setting_blind then
+            card.ability.extra.activated = false
+        end
+    end,
 }

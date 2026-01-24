@@ -264,6 +264,14 @@ return {
                     "{C:attention}cards{} to your hand",
                 },
             },
+            j_cod_cantrip = {
+                name = "Cantrip",
+                text = {
+                    "{C:blue}+#1#{} Hand if played",
+                    "hand is the first",
+                    "{C:attention}High Card{} of the round",
+                },
+            },
         },
         Other={},
         Planet={},
