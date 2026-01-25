@@ -1062,27 +1062,26 @@ SMODS.Joker {
     cost = 4,
     atlas = 'atlas_cod_jokers',
     pos = { x = 2, y = 3 },
-    config = { extra = { hands = 1, poker_hand = "High Card", activated = false } },
+    config = { extra = { hands = 1, poker_hand = "High Card"} },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.hands } }
     end,
     calculate = function(self, card, context)
-        if context.before and context.scoring_name == card.ability.extra.poker_hand and not card.ability.extra.activated then
-            card.ability.extra.activated = true
+        if context.before and context.scoring_name == card.ability.extra.poker_hand and G.GAME.hands[context.scoring_name].played_this_round == 1 then
+
+            local blueprint_card = context.blueprint_card
+
             return {
                 G.E_MANAGER:add_event(Event({
                     func = function()
                         ease_hands_played(card.ability.extra.hands)
                         SMODS.calculate_effect(
                             { message = localize { type = 'variable', key = 'a_hands', vars = { card.ability.extra.hands } }, colour = G.C.BLUE, },
-                            context.blueprint_card or card)
+                            blueprint_card or card)
                         return true
                     end
                 }))
             }
-        end
-        if context.setting_blind and not context.blueprint_card then
-            card.ability.extra.activated = false
         end
     end,
 }
