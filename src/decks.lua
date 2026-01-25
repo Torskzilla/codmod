@@ -8,6 +8,7 @@ SMODS.Atlas {
 
 SMODS.Back{
     key = "average",
+    unlocked = true,
     atlas = 'atlas_cod_decks',
     pos = {x = 3, y = 0},
     config = {},
@@ -20,6 +21,7 @@ SMODS.Back{
 
 SMODS.Back{
     key = "ponzi",
+    unlocked = false,
     atlas = 'atlas_cod_decks',
     pos = {x = 2, y = 0},
     config = {dollars = -24, credit_cards = 5},

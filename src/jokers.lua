@@ -795,7 +795,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
-        if context.setting_blind and not context.blind.boss and not card.ability.extra.just_transformed then
+        if context.setting_blind and not context.blind.boss and not card.ability.extra.just_transformed and not context.blueprint then
             local destructable_jokers = {}
             for i = 1, #G.jokers.cards do
                 if not (type(G.jokers.cards[i].ability.extra) == "table" and G.jokers.cards[i].ability.extra.cod_paperclip) and not SMODS.is_eternal(G.jokers.cards[i], card) and not G.jokers.cards[i].getting_sliced then
@@ -960,16 +960,17 @@ SMODS.Joker {
             card.ability.extra.previous_weight = nil
         end
     end,
-    -- unlock: win and never have common jokers
-    -- check_for_unlock = function(self, args)
-    --     if args.type == 'modify_jokers' and G.jokers then
-    --         for _, joker in ipairs(G.jokers.cards) do
-    --             if joker.ability.set == 'Joker' and (joker.config.center.rarity == 1 or joker.config.center.rarity == "Common") then
+    locked_loc_vars = function(self, info_queue, back)
+        local other_name = localize('k_unknown')
+        if G.P_CENTERS['b_cod_average'].unlocked then
+            other_name = localize { type = 'name_text', set = 'Back', key = 'b_cod_average' }
+        end
 
-    --             end
-    --         end
-    --     end
-    -- end
+        return { vars = { other_name } }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'win_deck' and get_deck_win_stake('b_cod_average') and true
+    end
 }
 
 

@@ -237,6 +237,11 @@ return {
                     "{C:blue}Common{C:attention} Jokers{} can't",
                     "naturally appear",
                 },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#{}",
+                    "on any difficulty",
+                }
             },
             j_cod_black_market = {
                 name = "Black Market",
