@@ -1,15 +1,6 @@
 return {
     descriptions = {
         Back={
-            b_cod_debug={
-                name="Debug Deck",
-                text={
-                    "For Debugging",
-                },
-                unlock = {
-                    "Impossible",
-                }
-            },
             b_cod_ponzi={
                 name="Ponzi Deck",
                 text={
