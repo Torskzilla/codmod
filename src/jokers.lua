@@ -473,6 +473,169 @@ SMODS.Joker {
     end
 }
 
+-- Common Clone
+SMODS.Joker {
+    key = "common_clone",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 3, y = 1 },
+    config = { extra = { chips = 35, cod_clone = true } },
+    in_pool = function(self, args)
+        return true, { allow_duplicates = true }
+    end,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_joker and type(context.other_joker.ability.extra) == "table" and context.other_joker.ability.extra.cod_clone then
+            return {
+                chips = card.ability.extra.chips
+            }
+        end
+    end,
+}
+
+-- Uncommon Clone
+SMODS.Joker {
+    key = "uncommon_clone",
+    unlocked = false,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 1 },
+    config = { extra = { mult = 25, cod_clone = true } },
+    in_pool = function(self, args)
+        return true, { allow_duplicates = true }
+    end,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_joker and type(context.other_joker.ability.extra) == "table" and context.other_joker.ability.extra.cod_clone then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end,
+
+    check_for_unlock = function(self, args)
+        if args.type == 'modify_jokers' and G.jokers then
+            local count = 0
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.ability.set == 'Joker' and type(joker.ability.extra) == "table" and joker.ability.extra.cod_clone then
+                    count = count + 1
+                end
+                if count >= 2 then
+                    return true
+                end
+            end
+        end
+        return false
+    end
+}
+
+-- Rare Clone
+SMODS.Joker {
+    key = "rare_clone",
+    unlocked = false,
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 5, y = 1 },
+    config = { extra = { xmult = 1.5, cod_clone = true } },
+    in_pool = function(self, args)
+        return true, { allow_duplicates = true }
+    end,
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.other_joker and type(context.other_joker.ability.extra) == "table" and context.other_joker.ability.extra.cod_clone then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+
+    check_for_unlock = function(self, args)
+        if args.type == 'modify_jokers' and G.jokers then
+            local count = 0
+            for _, joker in ipairs(G.jokers.cards) do
+                if joker.ability.set == 'Joker' and type(joker.ability.extra) == "table" and joker.ability.extra.cod_clone then
+                    count = count + 1
+                end
+                if count >= 3 then
+                    return true
+                end
+            end
+        end
+        return false
+    end
+}
+
+-- Short Joker
+SMODS.Joker {
+    key = "short",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 2 },
+    config = { extra = { chips = 100, max_sum = 25 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.max_sum } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local rank_sum = 0
+            for i = 1,#context.full_hand do
+                rank_sum = rank_sum + context.full_hand[i].base.nominal
+            end
+
+            if rank_sum <= card.ability.extra.max_sum then
+                return {
+                    chips = card.ability.extra.chips,
+                }
+            end
+        end
+    end,
+}
+
+-- Tall Joker
+SMODS.Joker {
+    key = "tall",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 3, y = 2 },
+    config = { extra = { mult = 15, min_sum = 40 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult, card.ability.extra.min_sum } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local rank_sum = 0
+            for i = 1,#context.full_hand do
+                rank_sum = rank_sum + context.full_hand[i].base.nominal
+            end
+
+            if rank_sum >= card.ability.extra.min_sum then
+                return {
+                    mult = card.ability.extra.mult,
+                }
+            end
+        end
+    end,
+}
+
 -- Hungry Joker
 SMODS.Joker {
     key = "hungry",
@@ -842,111 +1005,6 @@ SMODS.Joker {
     end
 }
 
--- Common Clone
-SMODS.Joker {
-    key = "common_clone",
-    unlocked = true,
-    blueprint_compat = true,
-    rarity = 1,
-    cost = 4,
-    atlas = 'atlas_cod_jokers',
-    pos = { x = 3, y = 1 },
-    config = { extra = { chips = 35, cod_clone = true } },
-    in_pool = function(self, args)
-        return true, { allow_duplicates = true }
-    end,
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips } }
-    end,
-    calculate = function(self, card, context)
-        if context.other_joker and type(context.other_joker.ability.extra) == "table" and context.other_joker.ability.extra.cod_clone then
-            return {
-                chips = card.ability.extra.chips
-            }
-        end
-    end,
-}
-
--- Uncommon Clone
-SMODS.Joker {
-    key = "uncommon_clone",
-    unlocked = false,
-    blueprint_compat = true,
-    rarity = 2,
-    cost = 6,
-    atlas = 'atlas_cod_jokers',
-    pos = { x = 4, y = 1 },
-    config = { extra = { mult = 25, cod_clone = true } },
-    in_pool = function(self, args)
-        return true, { allow_duplicates = true }
-    end,
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult } }
-    end,
-    calculate = function(self, card, context)
-        if context.other_joker and type(context.other_joker.ability.extra) == "table" and context.other_joker.ability.extra.cod_clone then
-            return {
-                mult = card.ability.extra.mult
-            }
-        end
-    end,
-
-    check_for_unlock = function(self, args)
-        if args.type == 'modify_jokers' and G.jokers then
-            local count = 0
-            for _, joker in ipairs(G.jokers.cards) do
-                if joker.ability.set == 'Joker' and type(joker.ability.extra) == "table" and joker.ability.extra.cod_clone then
-                    count = count + 1
-                end
-                if count >= 2 then
-                    return true
-                end
-            end
-        end
-        return false
-    end
-}
-
--- Rare Clone
-SMODS.Joker {
-    key = "rare_clone",
-    unlocked = false,
-    blueprint_compat = true,
-    rarity = 3,
-    cost = 8,
-    atlas = 'atlas_cod_jokers',
-    pos = { x = 5, y = 1 },
-    config = { extra = { xmult = 1.5, cod_clone = true } },
-    in_pool = function(self, args)
-        return true, { allow_duplicates = true }
-    end,
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult } }
-    end,
-    calculate = function(self, card, context)
-        if context.other_joker and type(context.other_joker.ability.extra) == "table" and context.other_joker.ability.extra.cod_clone then
-            return {
-                xmult = card.ability.extra.xmult
-            }
-        end
-    end,
-
-    check_for_unlock = function(self, args)
-        if args.type == 'modify_jokers' and G.jokers then
-            local count = 0
-            for _, joker in ipairs(G.jokers.cards) do
-                if joker.ability.set == 'Joker' and type(joker.ability.extra) == "table" and joker.ability.extra.cod_clone then
-                    count = count + 1
-                end
-                if count >= 3 then
-                    return true
-                end
-            end
-        end
-        return false
-    end
-}
-
 -- Anchor
 SMODS.Joker {
     key = "anchor",
@@ -1153,64 +1211,6 @@ SMODS.Joker {
 			return {
                 mult = card.ability.extra.mult
             }
-        end
-    end,
-}
-
--- Tall Joker
-SMODS.Joker {
-    key = "tall",
-    unlocked = true,
-    blueprint_compat = true,
-    rarity = 1,
-    cost = 4,
-    atlas = 'atlas_cod_jokers',
-    pos = { x = 3, y = 2 },
-    config = { extra = { mult = 15, min_sum = 40 } },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult, card.ability.extra.min_sum } }
-    end,
-    calculate = function(self, card, context)
-        if context.joker_main then
-            local rank_sum = 0
-            for i = 1,#context.full_hand do
-                rank_sum = rank_sum + context.full_hand[i].base.nominal
-            end
-
-            if rank_sum >= card.ability.extra.min_sum then
-                return {
-                    mult = card.ability.extra.mult,
-                }
-            end
-        end
-    end,
-}
-
--- Short Joker
-SMODS.Joker {
-    key = "short",
-    unlocked = true,
-    blueprint_compat = true,
-    rarity = 1,
-    cost = 4,
-    atlas = 'atlas_cod_jokers',
-    pos = { x = 4, y = 2 },
-    config = { extra = { chips = 100, max_sum = 25 } },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.chips, card.ability.extra.max_sum } }
-    end,
-    calculate = function(self, card, context)
-        if context.joker_main then
-            local rank_sum = 0
-            for i = 1,#context.full_hand do
-                rank_sum = rank_sum + context.full_hand[i].base.nominal
-            end
-
-            if rank_sum <= card.ability.extra.max_sum then
-                return {
-                    chips = card.ability.extra.chips,
-                }
-            end
         end
     end,
 }
