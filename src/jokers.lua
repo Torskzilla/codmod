@@ -6,7 +6,7 @@ SMODS.Atlas {
 	py = 95
 }
 
--- Seasons
+-- Season cycle
 local season_loc_vars = function(self, info_queue, card)
     return { vars = { localize(card.ability.extra.from_suit, 'suits_singular'), localize(card.ability.extra.to_suit, 'suits_plural'), colours = { card.ability.extra.from_color, card.ability.extra.to_color } } }
 end
@@ -142,6 +142,106 @@ SMODS.Joker {
     end
 }
 
+-- Suit imbalance cycle
+
+-- Mitosis
+SMODS.Joker {
+    key = "mitosis",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 3 },
+    -- amount is unused
+    config = { extra = { amount = 1, suit = "Hearts", color = G.C.SUITS.Hearts} },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.amount, localize(card.ability.extra.suit, 'suits_singular'), colours = { card.ability.extra.color } } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            local valid_mitosis_cards = {}
+            for _, playing_card in ipairs(G.playing_cards) do
+                if playing_card:is_suit(card.ability.extra.suit) then
+                    valid_mitosis_cards[#valid_mitosis_cards + 1] = playing_card
+                end
+            end
+            local mitosis_card = pseudorandom_element(valid_mitosis_cards, 'cod_mitosis')
+            if mitosis_card then
+                local card_copied = copy_card(mitosis_card, nil, nil, G.playing_card)
+                card_copied.states.visible = nil
+                G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                card_copied.playing_card = G.playing_card
+                table.insert(G.playing_cards, card_copied)
+
+                G.E_MANAGER:add_event(Event({
+                    func = function()
+                        card_copied:start_materialize()
+                        G.play:emplace(card_copied)
+                        return true
+                    end
+                }))
+                return {
+                    message = localize('mitosis_split'),
+                    colour = card.ability.extra.color,
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.deck.config.card_limit = G.deck.config.card_limit + 1
+                                return true
+                            end
+                        }))
+                        draw_card(G.play, G.deck, 90, 'up')
+                        SMODS.calculate_context({ playing_card_added = true, cards = { card_copied } })
+                    end
+                }
+            end
+        end
+    end
+}
+
+-- Invasion
+
+-- Purification
+
+-- Overgrowth
+SMODS.Joker {
+    key = "overgrowth",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 2, y = 0 },
+    -- amount is unused
+    config = { extra = { amount = 1, suit = "Clubs", color = G.C.SUITS.Clubs} },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.amount, localize(card.ability.extra.suit, 'suits_plural'), colours = { card.ability.extra.color } } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            local valid_overgrowth_cards = {}
+            for _, playing_card in ipairs(G.playing_cards) do
+                if playing_card.base.suit ~= card.ability.extra.suit and not SMODS.has_no_suit(playing_card) then
+                    valid_overgrowth_cards[#valid_overgrowth_cards + 1] = playing_card
+                end
+            end
+            local overgrowth_card = pseudorandom_element(valid_overgrowth_cards, 'cod_overgrowth')
+            if overgrowth_card then
+                assert(SMODS.change_base(overgrowth_card, card.ability.extra.suit))
+
+                return {
+                    message = localize('overgrowth_grow'),
+                    colour = card.ability.extra.color,
+                }
+            end
+
+        end
+    end
+}
+
+-- Harmony
+
 -- Hungry Joker
 SMODS.Joker {
     key = "hungry",
@@ -158,7 +258,7 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.setting_blind then
             local cards_eaten = 0
-            for i=1,2 do
+            for i=1,card.ability.extra.eat_size do
                 local valid_hungry_cards = {}
                 for _, playing_card in ipairs(G.playing_cards) do
                     valid_hungry_cards[#valid_hungry_cards + 1] = playing_card
@@ -314,41 +414,6 @@ SMODS.Joker {
             end
         end
     end,
-}
-
--- Overgrowth
-SMODS.Joker {
-    key = "overgrowth",
-    unlocked = true,
-    blueprint_compat = true,
-    rarity = 1,
-    cost = 4,
-    atlas = 'atlas_cod_jokers',
-    pos = { x = 2, y = 0 },
-    config = { extra = { suit = "Clubs", color = G.C.SUITS.Clubs} },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { localize(card.ability.extra.suit, 'suits_plural'), colours = { card.ability.extra.color } } }
-    end,
-    calculate = function(self, card, context)
-        if context.setting_blind then
-            local valid_overgrowth_cards = {}
-            for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card.base.suit ~= card.ability.extra.suit and not SMODS.has_no_suit(playing_card) then
-                    valid_overgrowth_cards[#valid_overgrowth_cards + 1] = playing_card
-                end
-            end
-            local overgrowth_card = pseudorandom_element(valid_overgrowth_cards, 'cod_overgrowth')
-            if overgrowth_card then
-                assert(SMODS.change_base(overgrowth_card, card.ability.extra.suit))
-
-                return {
-                    message = localize('overgrowth_grow'),
-                    colour = card.ability.extra.color
-                }
-            end
-
-        end
-    end
 }
 
 -- Scam

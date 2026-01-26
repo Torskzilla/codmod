@@ -60,12 +60,20 @@ return {
                     "is at most {C:attention}#2#{}",
                 }
             },
+            j_cod_mitosis={
+                name="Mitosis",
+                text={
+                    "When {C:attention}Blind{} is selected,",
+                    "duplicates {C:attention}#1#{} {V:1}#2#{}",
+                    "card in deck",
+                }
+            },
             j_cod_overgrowth={
                 name="Overgrowth",
                 text={
                     "When {C:attention}Blind{} is selected,",
-                    "converts {C:attention}1{} card",
-                    "in deck to {V:1}#1#{}",
+                    "converts {C:attention}#1#{} card",
+                    "in deck to {V:1}#2#{}",
                 }
             },
             j_cod_summer={
@@ -293,6 +301,7 @@ return {
         collabs={},
         dictionary={
             overgrowth_grow="Grow",
+            mitosis_split="Split",
             season_convert="Transform",
             homework_a="A",
             homework_c="C",
