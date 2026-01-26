@@ -76,6 +76,14 @@ return {
                     "cards to deck",
                 }
             },
+            j_cod_purification={
+                name="Purification",
+                text={
+                    "When {C:attention}Blind{} is selected,",
+                    "destroy {C:attention}#1#{} non-{V:1}#2#{}",
+                    "card in deck",
+                }
+            },
             j_cod_overgrowth={
                 name="Overgrowth",
                 text={
@@ -311,6 +319,7 @@ return {
             overgrowth_grow="Grow",
             mitosis_split="Split",
             invasion_attack="Attack",
+            purification_remove="Enrich",
             season_convert="Transform",
             homework_a="A",
             homework_c="C",

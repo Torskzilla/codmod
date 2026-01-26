@@ -261,6 +261,44 @@ SMODS.Joker {
 }
 
 -- Purification
+SMODS.Joker {
+    key = "purification",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 5, y = 3 },
+    config = { extra = { amount = 1, suit = "Diamonds", color = G.C.SUITS.Diamonds} },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.amount, localize(card.ability.extra.suit, 'suits_singular'), colours = { card.ability.extra.color } } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            local cards_removed = 0
+            for i=1,card.ability.extra.amount do
+                local valid_remove_cards = {}
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if not playing_card:is_suit(card.ability.extra.suit) then
+                        valid_remove_cards[#valid_remove_cards + 1] = playing_card
+                    end
+                end
+                local remove_card = pseudorandom_element(valid_remove_cards, 'cod_purification')
+                if remove_card then
+                    SMODS.destroy_cards(remove_card)
+                    cards_removed = cards_removed + 1
+                end
+            end
+            
+            if cards_removed > 0 then
+                return {
+                    message = localize('purification_remove'),
+                    colour = card.ability.extra.color,
+                }
+            end
+        end
+    end
+}
 
 -- Overgrowth
 SMODS.Joker {
