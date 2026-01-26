@@ -140,8 +140,8 @@ return {
                 name="Hungry Joker",
                 text={
                     "When {C:attention}Blind{} is selected,",
-                    "destroys {C:attention}1{} random",
-                    "card in deck",
+                    "destroys {C:attention}#1#{} random",
+                    "cards in deck",
                 }
             },
             j_cod_all_seeing = {

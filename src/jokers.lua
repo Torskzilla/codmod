@@ -148,20 +148,29 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     rarity = 1,
-    cost = 3,
+    cost = 4,
     atlas = 'atlas_cod_jokers',
     pos = { x = 1, y = 1 },
-    config = {},
+    config = {  extra = { eat_size = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.eat_size } }
+    end,
     calculate = function(self, card, context)
         if context.setting_blind then
-            local valid_hungry_cards = {}
-            for _, playing_card in ipairs(G.playing_cards) do
-                valid_hungry_cards[#valid_hungry_cards + 1] = playing_card
+            local cards_eaten = 0
+            for i=1,2 do
+                local valid_hungry_cards = {}
+                for _, playing_card in ipairs(G.playing_cards) do
+                    valid_hungry_cards[#valid_hungry_cards + 1] = playing_card
+                end
+                local hungry_card = pseudorandom_element(valid_hungry_cards, 'cod_hungry')
+                if hungry_card then
+                    SMODS.destroy_cards(hungry_card)
+                    cards_eaten = cards_eaten + 1
+                end
             end
-            local hungry_card = pseudorandom_element(valid_hungry_cards, 'cod_hungry')
-            if hungry_card then
-                SMODS.destroy_cards(hungry_card)
-
+            
+            if cards_eaten > 0 then
                 return {
                     message = localize(pseudorandom_element({"hungry_1", "hungry_2", "hungry_3", "hungry_4", "hungry_5"}, 'cod_hungry_text')),
                     colour = G.C.RED,
