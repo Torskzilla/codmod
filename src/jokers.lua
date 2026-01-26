@@ -389,7 +389,19 @@ SMODS.Joker {
                 end
                 local hungry_card = pseudorandom_element(valid_hungry_cards, 'cod_hungry')
                 if hungry_card then
-                    SMODS.destroy_cards(hungry_card)
+                    draw_card(G.deck, G.play, 90, 'up', nil, hungry_card)
+                    local eat_delay = 0
+                    if i == card.ability.extra.eat_size then
+                        eat_delay = 0.5
+                    end
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = eat_delay,
+                        func = function()
+                            SMODS.destroy_cards(hungry_card)
+                            return true
+                        end
+                    }))
                     cards_eaten = cards_eaten + 1
                 end
             end
