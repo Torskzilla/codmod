@@ -64,15 +64,23 @@ return {
                 name="Mitosis",
                 text={
                     "When {C:attention}Blind{} is selected,",
-                    "duplicates {C:attention}#1#{} {V:1}#2#{}",
+                    "duplicate {C:attention}#1#{} {V:1}#2#{}",
                     "card in deck",
+                }
+            },
+            j_cod_invasion={
+                name="Invasion",
+                text={
+                    "When {C:attention}Blind{} is selected,",
+                    "add {C:attention}#1#{} {V:1}#2#{}",
+                    "cards to deck",
                 }
             },
             j_cod_overgrowth={
                 name="Overgrowth",
                 text={
                     "When {C:attention}Blind{} is selected,",
-                    "converts {C:attention}#1#{} card",
+                    "convert {C:attention}#1#{} card",
                     "in deck to {V:1}#2#{}",
                 }
             },
@@ -148,7 +156,7 @@ return {
                 name="Hungry Joker",
                 text={
                     "When {C:attention}Blind{} is selected,",
-                    "destroys {C:attention}#1#{} random",
+                    "destroy {C:attention}#1#{} random",
                     "cards in deck",
                 }
             },
@@ -302,6 +310,7 @@ return {
         dictionary={
             overgrowth_grow="Grow",
             mitosis_split="Split",
+            invasion_attack="Attack",
             season_convert="Transform",
             homework_a="A",
             homework_c="C",

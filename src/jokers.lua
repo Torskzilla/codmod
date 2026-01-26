@@ -201,6 +201,64 @@ SMODS.Joker {
 }
 
 -- Invasion
+SMODS.Joker {
+    key = "invasion",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 6, y = 3 },
+    config = { extra = { amount = 2, suit = "Spades", color = G.C.SUITS.Spades} },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.amount, localize(card.ability.extra.suit, 'suits_singular'), colours = { card.ability.extra.color } } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            
+            local spade_card1 = SMODS.create_card { set = "Base", suit = card.ability.extra.suit, area = G.discard }
+            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+            spade_card1.playing_card = G.playing_card
+            table.insert(G.playing_cards, spade_card1)
+
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    spade_card1:start_materialize()
+                    G.play:emplace(spade_card1)
+                    return true
+                end
+            }))
+
+            local spade_card2 = SMODS.create_card { set = "Base", suit = card.ability.extra.suit, area = G.discard }
+            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+            spade_card2.playing_card = G.playing_card
+            table.insert(G.playing_cards, spade_card2)
+
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    spade_card2:start_materialize()
+                    G.play:emplace(spade_card2)
+                    return true
+                end
+            }))
+            return {
+                message = localize('invasion_attack'),
+                colour = card.ability.extra.color,
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            G.deck.config.card_limit = G.deck.config.card_limit + 2
+                            return true
+                        end
+                    }))
+                    draw_card(G.play, G.deck, 90, 'up')
+                    draw_card(G.play, G.deck, 90, 'up')
+                    SMODS.calculate_context({ playing_card_added = true, cards = { spade_card1, spade_card2 } })
+                end
+            }
+        end
+    end
+}
 
 -- Purification
 
