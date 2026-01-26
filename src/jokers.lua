@@ -1453,7 +1453,7 @@ SMODS.Joker {
     cost = 4,
     atlas = 'atlas_cod_jokers',
     pos = { x = 8, y = 3 },
-    config = { extra = { current = {}, possibilities = { xmult = 1.5, mult = 10, chips = 40, h_size = 1, discards = 1, hands = 1, sell_value = 7, probability = 1 } } },
+    config = { extra = { current = {}, possibilities = { xmult = 1.5, mult = 10, chips = 50, h_size = 1, discards = 1, hands = 1, sell_value = 7, probability = 1 } } },
     loc_vars = function(self, info_queue, card)
         if card.ability.extra.current.xmult then return { key = "j_cod_random_xmult", vars = { card.ability.extra.current.xmult, localize("cod_random_joker_change") } } end
         if card.ability.extra.current.mult then return { key = "j_cod_random_mult", vars = { card.ability.extra.current.mult, localize("cod_random_joker_change") } } end
