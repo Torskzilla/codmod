@@ -378,6 +378,7 @@ return {
         blind_states={},
         challenge_names={
             c_cod_universal_paperclips = "Universal Paperclips",
+            c_cod_chaos_chaos = "Chaos Chaos",
         },
         collabs={},
         dictionary={
