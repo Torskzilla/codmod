@@ -168,6 +168,9 @@ SMODS.Joker {
             end
             local mitosis_card = pseudorandom_element(valid_mitosis_cards, 'cod_mitosis')
             if mitosis_card then
+
+                draw_card(G.deck, G.play, 90, 'up', nil, mitosis_card)
+
                 local card_copied = copy_card(mitosis_card, nil, nil, G.playing_card)
                 card_copied.states.visible = nil
                 G.playing_card = (G.playing_card and G.playing_card + 1) or 1
@@ -175,6 +178,8 @@ SMODS.Joker {
                 table.insert(G.playing_cards, card_copied)
 
                 G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.5,
                     func = function()
                         card_copied:start_materialize()
                         G.play:emplace(card_copied)
@@ -186,12 +191,15 @@ SMODS.Joker {
                     colour = card.ability.extra.color,
                     func = function()
                         G.E_MANAGER:add_event(Event({
+                            trigger = 'after',
+                            delay = 0.4,
                             func = function()
                                 G.deck.config.card_limit = G.deck.config.card_limit + 1
+                                draw_card(G.play, G.deck, 90, 'up')
+                                draw_card(G.play, G.deck, 90, 'up')
                                 return true
                             end
                         }))
-                        draw_card(G.play, G.deck, 90, 'up')
                         SMODS.calculate_context({ playing_card_added = true, cards = { card_copied } })
                     end
                 }
@@ -285,7 +293,15 @@ SMODS.Joker {
                 end
                 local remove_card = pseudorandom_element(valid_remove_cards, 'cod_purification')
                 if remove_card then
-                    SMODS.destroy_cards(remove_card)
+                    draw_card(G.deck, G.play, 90, 'up', nil, remove_card)
+                    G.E_MANAGER:add_event(Event({
+                        trigger = 'after',
+                        delay = 0.5,
+                        func = function()
+                            SMODS.destroy_cards(remove_card)
+                            return true
+                        end
+                    }))
                     cards_removed = cards_removed + 1
                 end
             end
@@ -324,11 +340,23 @@ SMODS.Joker {
             end
             local overgrowth_card = pseudorandom_element(valid_overgrowth_cards, 'cod_overgrowth')
             if overgrowth_card then
-                assert(SMODS.change_base(overgrowth_card, card.ability.extra.suit))
+                draw_card(G.deck, G.play, 90, 'up', nil, overgrowth_card)
 
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.5,
+                    func = function()
+                        assert(SMODS.change_base(overgrowth_card, card.ability.extra.suit))
+                        return true
+                    end
+                }))
+                
                 return {
                     message = localize('overgrowth_grow'),
                     colour = card.ability.extra.color,
+                    func = function()
+                        draw_card(G.play, G.deck, 90, 'up')
+                    end
                 }
             end
 
