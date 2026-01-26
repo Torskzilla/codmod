@@ -307,6 +307,62 @@ return {
                     "contains a letter and a number",
                 },
             },
+            j_cod_random_xmult = {
+                name = "Unpredictable Joker",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "{s:0.8}#2#",
+                },
+            },
+            j_cod_random_mult = {
+                name = "Unpredictable Joker",
+                text = {
+                    "{C:mult}+#1#{} Mult",
+                    "{s:0.8}#2#",
+                },
+            },
+            j_cod_random_chips = {
+                name = "Unpredictable Joker",
+                text = {
+                    "{C:chips}+#1#{} Chips",
+                    "{s:0.8}#2#",
+                },
+            },
+            j_cod_random_h_size = {
+                name = "Unpredictable Joker",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                    "{s:0.8}#2#",
+                },
+            },
+            j_cod_random_discards = {
+                name = "Unpredictable Joker",
+                text = {
+                    "{C:red}+#1#{} discard",
+                    "{s:0.8}#2#",
+                },
+            },
+            j_cod_random_hands = {
+                name = "Unpredictable Joker",
+                text = {
+                    "{C:blue}+#1#{} Hand",
+                    "{s:0.8}#2#",
+                },
+            },
+            j_cod_random_sell_value = {
+                name = "Unpredictable Joker",
+                text = {
+                    "{C:money}+$#1#{} sell value",
+                    "{s:0.8}#2#",
+                },
+            },
+            j_cod_random_probability = {
+                name = "Unpredictable Joker",
+                text = {
+                    "{C:green}+#1#{} probability",
+                    "{s:0.8}#2#",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -353,6 +409,7 @@ return {
             spam_4="100000$!!",
             spam_5="Top Cards!",
             password_weak="Weak",
+            cod_random_joker_change="ability changes at end of round",
         },
         high_scores={},
         labels={},
