@@ -365,6 +365,113 @@ SMODS.Joker {
 }
 
 -- Harmony
+SMODS.Joker {
+    key = "harmony",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 7, y = 3 },
+    -- amount is unused
+    config = { extra = { amount = 1, mult_gain = 3, mult = 0 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult_gain, card.ability.extra.amount, card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+        if context.setting_blind then
+
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+
+            local spades = {}
+            local hearts = {}
+            local diamonds = {}
+            local clubs = {}
+
+            for _, playing_card in ipairs(G.playing_cards) do
+                if not SMODS.has_no_suit(playing_card) and not SMODS.has_any_suit(playing_card) then
+                    if playing_card:is_suit("Hearts") then hearts[#hearts + 1] = playing_card end
+                    if playing_card:is_suit("Clubs") then clubs[#clubs + 1] = playing_card end
+                    if playing_card:is_suit("Spades") then spades[#spades + 1] = playing_card end
+                    if playing_card:is_suit("Diamonds") then diamonds[#diamonds + 1] = playing_card end
+                end
+            end
+
+            if #spades == #hearts and #hearts == #diamonds and #diamonds == #clubs then
+                return {
+                    message = localize('harmony_balance'),
+                    colour = G.C.GOLD,
+                }
+            end
+
+            local majority = {}
+
+            if #spades >= #hearts and #spades >= #diamonds and #spades >= #clubs then
+                for _, v in ipairs(spades) do majority[#majority+1] = v end
+            end
+            if #hearts >= #spades and #hearts >= #diamonds and #hearts >= #clubs then
+                for _, v in ipairs(hearts) do majority[#majority+1] = v end
+            end
+            if #clubs >= #hearts and #clubs >= #diamonds and #clubs >= #spades then
+                for _, v in ipairs(clubs) do majority[#majority+1] = v end
+            end
+            if #diamonds >= #hearts and #diamonds >= #spades and #diamonds >= #clubs then
+                for _, v in ipairs(diamonds) do majority[#majority+1] = v end
+            end
+
+            local minority = {}
+
+            if #spades <= #hearts and #spades <= #diamonds and #spades <= #clubs then
+                minority[#minority+1] = "Spades"
+            end
+            if #hearts <= #spades and #hearts <= #diamonds and #hearts <= #clubs then
+                minority[#minority+1] = "Hearts"
+            end
+            if #clubs <= #hearts and #clubs <= #diamonds and #clubs <= #spades then
+                minority[#minority+1] = "Clubs"
+            end
+            if #diamonds <= #hearts and #diamonds <= #spades and #diamonds <= #clubs then
+                minority[#minority+1] = "Diamonds"
+            end
+
+            local majority_card = pseudorandom_element(majority, 'cod_harmony')
+            local minority_suit = pseudorandom_element(minority, 'cod_harmony')
+
+            if majority_card and minority_suit then
+                draw_card(G.deck, G.play, 90, 'up', nil, majority_card)
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 1,
+                    func = function()
+                        assert(SMODS.change_base(majority_card, minority_suit))
+                        return true
+                    end
+                }))
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.5,
+                    func = function()
+                        draw_card(G.play, G.deck, 90, 'up')
+                        return true
+                    end
+                }))
+                
+                return {
+                    message = localize('season_convert'),
+                    colour = G.C.GOLD,
+                }
+            end
+
+        end
+    end
+}
 
 -- Hungry Joker
 SMODS.Joker {
@@ -487,7 +594,7 @@ SMODS.Joker {
         if context.open_booster and not context.blueprint then
             return {
                 message = localize('resourceful_pack'),
-                colour = G.C.Gold,
+                colour = G.C.GOLD,
             }
         end
     end
@@ -522,7 +629,7 @@ SMODS.Joker {
         if context.open_booster and not context.blueprint then
             return {
                 message = localize('resourceful_pack'),
-                colour = G.C.Gold,
+                colour = G.C.GOLD,
             }
         end
     end
@@ -960,12 +1067,12 @@ SMODS.Joker {
 
                 return {
                     message = localize("faster_than_light_jump"),
-                    colour = G.C.Gold,
+                    colour = G.C.GOLD,
                 }
             else
                 return {
                     message = localize("faster_than_light_charge"),
-                    colour = G.C.Gold,
+                    colour = G.C.GOLD,
                 }
             end
         end

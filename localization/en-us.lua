@@ -92,6 +92,15 @@ return {
                     "in deck to {V:1}#2#{}",
                 }
             },
+            j_cod_harmony={
+                name="Harmony",
+                text={
+                    "When {C:attention}Blind{} is selected, gain",
+                    "{C:mult}+#1#{} Mult and convert {C:attention}#2#{} card from",
+                    "your most common suit to your least",
+                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
+                }
+            },
             j_cod_summer={
                 name="Summer",
                 text={
@@ -320,6 +329,7 @@ return {
             mitosis_split="Split",
             invasion_attack="Attack",
             purification_remove="Enrich",
+            harmony_balance="Balance",
             season_convert="Transform",
             homework_a="A",
             homework_c="C",
