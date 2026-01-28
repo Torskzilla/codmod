@@ -1264,7 +1264,7 @@ SMODS.Joker {
     unlocked = false,
     blueprint_compat = false,
     rarity = 3,
-    cost = 8,
+    cost = 9,
     atlas = 'atlas_cod_jokers',
     pos = { x = 8, y = 2 },
     config = { extra = { previous_weight = nil } },
@@ -1455,14 +1455,14 @@ SMODS.Joker {
     pos = { x = 8, y = 3 },
     config = { extra = { current = {}, possibilities = { xmult = 1.5, mult = 10, chips = 50, h_size = 1, discards = 1, hands = 1, sell_value = 7, probability = 1 } } },
     loc_vars = function(self, info_queue, card)
-        if card.ability.extra.current.xmult then return { key = "j_cod_random_xmult", vars = { card.ability.extra.current.xmult, localize("cod_random_joker_change") } } end
-        if card.ability.extra.current.mult then return { key = "j_cod_random_mult", vars = { card.ability.extra.current.mult, localize("cod_random_joker_change") } } end
-        if card.ability.extra.current.chips then return { key = "j_cod_random_chips", vars = { card.ability.extra.current.chips, localize("cod_random_joker_change") } } end
-        if card.ability.extra.current.h_size then return { key = "j_cod_random_h_size", vars = { card.ability.extra.current.h_size, localize("cod_random_joker_change") } } end
-        if card.ability.extra.current.discards then return { key = "j_cod_random_discards", vars = { card.ability.extra.current.discards, localize("cod_random_joker_change") } } end
-        if card.ability.extra.current.hands then return { key = "j_cod_random_hands", vars = { card.ability.extra.current.hands, localize("cod_random_joker_change") } } end
-        if card.ability.extra.current.sell_value then return { key = "j_cod_random_sell_value", vars = { card.ability.extra.current.sell_value, localize("cod_random_joker_change") } } end
-        if card.ability.extra.current.probability then return { key = "j_cod_random_probability", vars = { card.ability.extra.current.probability, localize("cod_random_joker_change") } } end
+        if card.ability.extra.current.xmult then return { key = "j_cod_random_xmult", vars = { card.ability.extra.current.xmult, localize("cod_random_joker_change"), localize("cod_random_joker_name") } } end
+        if card.ability.extra.current.mult then return { key = "j_cod_random_mult", vars = { card.ability.extra.current.mult, localize("cod_random_joker_change"), localize("cod_random_joker_name") } } end
+        if card.ability.extra.current.chips then return { key = "j_cod_random_chips", vars = { card.ability.extra.current.chips, localize("cod_random_joker_change"), localize("cod_random_joker_name") } } end
+        if card.ability.extra.current.h_size then return { key = "j_cod_random_h_size", vars = { card.ability.extra.current.h_size, localize("cod_random_joker_change"), localize("cod_random_joker_name") } } end
+        if card.ability.extra.current.discards then return { key = "j_cod_random_discards", vars = { card.ability.extra.current.discards, localize("cod_random_joker_change"), localize("cod_random_joker_name") } } end
+        if card.ability.extra.current.hands then return { key = "j_cod_random_hands", vars = { card.ability.extra.current.hands, localize("cod_random_joker_change"), localize("cod_random_joker_name") } } end
+        if card.ability.extra.current.sell_value then return { key = "j_cod_random_sell_value", vars = { card.ability.extra.current.sell_value, localize("cod_random_joker_change"), localize("cod_random_joker_name") } } end
+        if card.ability.extra.current.probability then return { key = "j_cod_random_probability", vars = { card.ability.extra.current.probability, localize("cod_random_joker_change"), localize("cod_random_joker_name") } } end
     end,
     add_to_deck = function(self, card, from_debuff)
         if card.ability.extra.current.h_size then
@@ -1554,6 +1554,131 @@ SMODS.Joker {
     --initial random roll
     set_ability = function(self, card, initial, delay_sprites)
         local c_val, c_key = pseudorandom_element(card.ability.extra.possibilities, 'cod_random_joker')
+        card.ability.extra.current = {}
+        card.ability.extra.current[c_key] = c_val
+
+        if card.ability.extra.current.sell_value then
+            card.ability.extra_value = card.ability.extra_value + card.ability.extra.current.sell_value
+        end
+    end
+}
+
+-- random big
+SMODS.Joker {
+    key = "random_big",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 9, y = 3 },
+    config = { extra = { current = {}, possibilities = { xmult = 3, mult = 50, chips = 250, h_size = 2, discards = 3, hands = 2, sell_value = 20, probability = 2, retrigger = true } } },
+    loc_vars = function(self, info_queue, card)
+        if card.ability.extra.current.xmult then return { key = "j_cod_random_xmult", vars = { card.ability.extra.current.xmult, localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+        if card.ability.extra.current.mult then return { key = "j_cod_random_mult", vars = { card.ability.extra.current.mult, localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+        if card.ability.extra.current.chips then return { key = "j_cod_random_chips", vars = { card.ability.extra.current.chips, localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+        if card.ability.extra.current.h_size then return { key = "j_cod_random_h_size", vars = { card.ability.extra.current.h_size, localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+        if card.ability.extra.current.discards then return { key = "j_cod_random_discards", vars = { card.ability.extra.current.discards, localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+        if card.ability.extra.current.hands then return { key = "j_cod_random_hands", vars = { card.ability.extra.current.hands, localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+        if card.ability.extra.current.sell_value then return { key = "j_cod_random_sell_value", vars = { card.ability.extra.current.sell_value, localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+        if card.ability.extra.current.probability then return { key = "j_cod_random_probability", vars = { card.ability.extra.current.probability, localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+        if card.ability.extra.current.retrigger then return { key = "j_cod_random_retrigger", vars = { localize("cod_random_joker_change"), localize("cod_random_big_joker_name") } } end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        if card.ability.extra.current.h_size then
+            G.hand:change_size(card.ability.extra.current.h_size)
+        end
+        if card.ability.extra.current.hands then
+            G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.current.hands
+            ease_hands_played(card.ability.extra.current.hands)
+        end
+        if card.ability.extra.current.discards then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.current.discards
+            ease_discard(card.ability.extra.current.discards)
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if card.ability.extra.current.h_size then
+            G.hand:change_size(-card.ability.extra.current.h_size)
+        end
+        if card.ability.extra.current.hands then
+            G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.current.hands
+            ease_hands_played(-card.ability.extra.current.hands)
+        end
+        if card.ability.extra.current.discards then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.current.discards
+            ease_discard(-card.ability.extra.current.discards)
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if card.ability.extra.current.xmult or card.ability.extra.current.mult or card.ability.extra.current.chips then
+                return card.ability.extra.current
+            end
+        end
+
+        if context.repetition and context.cardarea == G.play and card.ability.extra.current.retrigger then
+            return {
+                repetitions = 1
+            }
+        end
+
+        if context.mod_probability and card.ability.extra.current.probability then
+            return {
+                numerator = context.numerator + card.ability.extra.current.probability
+            }
+        end
+
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+
+            if card.ability.extra.current.discards then
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.current.discards
+                ease_discard(-card.ability.extra.current.discards)
+            end
+
+            if card.ability.extra.current.hands then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.current.hands
+                ease_hands_played(-card.ability.extra.current.hands)
+            end
+
+            if card.ability.extra.current.h_size then
+                G.hand:change_size(-card.ability.extra.current.h_size)
+            end
+
+            if card.ability.extra.current.sell_value then
+                card.ability.extra_value = card.ability.extra_value - card.ability.extra.current.sell_value
+            end
+
+            local c_val, c_key = pseudorandom_element(card.ability.extra.possibilities, 'cod_random_big_joker')
+            card.ability.extra.current = {}
+            card.ability.extra.current[c_key] = c_val
+
+            if card.ability.extra.current.discards then
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.current.discards
+                ease_discard(card.ability.extra.current.discards)
+            end
+
+            if card.ability.extra.current.hands then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.current.hands
+                ease_hands_played(card.ability.extra.current.hands)
+            end
+
+            if card.ability.extra.current.h_size then
+                G.hand:change_size(card.ability.extra.current.h_size)
+            end
+
+            if card.ability.extra.current.sell_value then
+                card.ability.extra_value = card.ability.extra_value + card.ability.extra.current.sell_value
+            end
+            card:set_cost()
+
+            return {
+                message = localize('k_reset')
+            }
+        end
+    end,
+    --initial random roll
+    set_ability = function(self, card, initial, delay_sprites)
+        local c_val, c_key = pseudorandom_element(card.ability.extra.possibilities, 'cod_random_big_joker')
         card.ability.extra.current = {}
         card.ability.extra.current[c_key] = c_val
 
