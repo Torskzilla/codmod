@@ -1687,3 +1687,39 @@ SMODS.Joker {
         end
     end
 }
+
+SMODS.Joker {
+    key = "ricochet",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 0, y = 4 },
+    config = { extra = { odds = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator1 = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_ricochet')
+        local denominator2 = denominator1 * 2
+        local denominator3 = denominator2 * 2
+        return { vars = {numerator, denominator1, denominator2, denominator3} }
+    end,
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and context.other_card:is_suit("Diamonds") then
+            local bounces = 0
+            local odds = card.ability.extra.odds
+            for i=1,100 do
+                if SMODS.pseudorandom_probability(card, 'cod_ricochet', 1, odds) then
+                    bounces = bounces + 1
+                    odds = odds * 2
+                else
+                    break
+                end
+            end
+            
+            if bounces>0 then
+                return {
+                    repetitions = bounces
+                }
+            end
+        end
+    end
+}

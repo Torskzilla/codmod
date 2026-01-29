@@ -370,6 +370,14 @@ return {
                     "{s:0.8}#1#",
                 },
             },
+            j_cod_ricochet = {
+                name = "Ricochet",
+                text = {
+                    "{C:green}#1# in #2#{} chance to retrigger played {C:diamonds}Diamonds{},",
+                    "{C:green}#1# in #3#{} chance to retrigger again,",
+                    "{C:green}#1# in #4#{} chance to retrigger again, etc",
+                },
+            },
         },
         Other={},
         Planet={},
