@@ -1258,7 +1258,7 @@ SMODS.Joker {
     end,
 }
 
--- Elitism
+-- Elitist Joker
 SMODS.Joker {
     key = "elitism",
     unlocked = false,
@@ -1445,7 +1445,7 @@ SMODS.Joker {
     end,
 }
 
--- random
+-- Unpredictable
 SMODS.Joker {
     key = "random",
     blueprint_compat = true,
@@ -1563,7 +1563,7 @@ SMODS.Joker {
     end
 }
 
--- random big
+-- Possibility space
 SMODS.Joker {
     key = "random_big",
     blueprint_compat = true,
@@ -1688,6 +1688,7 @@ SMODS.Joker {
     end
 }
 
+-- Ricochet
 SMODS.Joker {
     key = "ricochet",
     blueprint_compat = true,
@@ -1720,6 +1721,37 @@ SMODS.Joker {
                     repetitions = bounces
                 }
             end
+        end
+    end
+}
+
+-- Unlucky joker
+SMODS.Joker {
+    key = "unlucky",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 1, y = 4 },
+    config = { extra = { odds = 3, chips = 0, chips_mod = 4 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_unlucky')
+        return { vars = { numerator, denominator, card.ability.extra.chips, card.ability.extra.chips_mod, } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if SMODS.pseudorandom_probability(card, 'cod_unlucky', 1, card.ability.extra.odds) then
+                return {
+                    chips = card.ability.extra.chips
+                }
+            end
+        end
+        if context.pseudorandom_result and not context.blueprint and not context.result then
+            SMODS.scale_card(card, {
+                ref_table = card.ability.extra,
+                ref_value = "chips",
+                scalar_value = "chips_mod",
+            })
         end
     end
 }

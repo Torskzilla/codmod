@@ -378,6 +378,13 @@ return {
                     "{C:green}#1# in #4#{} chance to retrigger again, etc",
                 },
             },
+            j_cod_unlucky = {
+                name = "Unlucky Joker",
+                text = {
+                    "{C:green}#1# in #2#{} chance to give {C:chips}+#3#{} Chips,",
+                    "gains {C:chips}+#4#{} Chips when a chance fails",
+                },
+            },
         },
         Other={},
         Planet={},
