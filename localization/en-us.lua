@@ -385,6 +385,40 @@ return {
                     "gains {C:chips}+#4#{} Chips when a chance fails",
                 },
             },
+            j_cod_tapas_1 = {
+                name = "Tapas",
+                text = {
+                    "{V:1,B:2}#1#{} #2#",
+                    "lose {C:red}1{} effect each round",
+                },
+            },
+            j_cod_tapas_2 = {
+                name = "Tapas",
+                text = {
+                    "{V:1,B:2}#1#{} #2#",
+                    "{V:3,B:4}#3#{} #4#",
+                    "lose {C:red}1{} effect each round",
+                },
+            },
+            j_cod_tapas_3 = {
+                name = "Tapas",
+                text = {
+                    "{V:1,B:2}#1#{} #2#",
+                    "{V:3,B:4}#3#{} #4#",
+                    "{V:5,B:6}#5#{} #6#",
+                    "lose {C:red}1{} effect each round",
+                },
+            },
+            j_cod_tapas_4 = {
+                name = "Tapas",
+                text = {
+                    "{V:1,B:2}#1#{} #2#",
+                    "{V:3,B:4}#3#{} #4#",
+                    "{V:5,B:6}#5#{} #6#",
+                    "{V:7,B:8}#7#{} #8#",
+                    "lose {C:red}1{} effect each round",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -435,6 +469,7 @@ return {
             cod_random_joker_change="ability changes at end of round",
             cod_random_joker_name="Unpredictable Joker",
             cod_random_big_joker_name="Possibility Space",
+            tapas_bite="Munch",
         },
         high_scores={},
         labels={},

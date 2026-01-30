@@ -1755,3 +1755,171 @@ SMODS.Joker {
         end
     end
 }
+
+-- Tapas
+SMODS.Joker {
+    key = "tapas",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 0, y = 0 },
+    config = { extra = { dishes = 3, current = {}, possibilities = { xmult = 1.5, mult = 10, chips = 50, h_size = 1, discards = 1, hands = 1, sell_value = 7, probability = 1 } } },
+    loc_vars = function(self, info_queue, card)
+        local effects = {}
+        local colors = {}
+        local index = 1
+        for k, v in pairs(card.ability.extra.current) do
+            if k == "xmult" then
+                effects[index] = "X"..tostring(v)
+                effects[index+1] = "Mult"
+                colors[index] = G.C.WHITE
+                colors[index+1] = G.C.RED
+            end
+            if k == "mult" then
+                effects[index] = "+"..tostring(v)
+                effects[index+1] = "Mult"
+                colors[index] = G.C.RED
+                colors[index+1] = G.C.WHITE
+            end
+            if k == "chips" then
+                effects[index] = "+"..tostring(v)
+                effects[index+1] = "Chips"
+                colors[index] = G.C.BLUE
+                colors[index+1] = G.C.WHITE
+            end
+            if k == "h_size" then
+                effects[index] = "+"..tostring(v)
+                effects[index+1] = "hand size"
+                colors[index] = G.C.ORANGE
+                colors[index+1] = G.C.WHITE
+            end
+            if k == "discards" then
+                effects[index] = "+"..tostring(v)
+                effects[index+1] = "discards"
+                colors[index] = G.C.RED
+                colors[index+1] = G.C.WHITE
+            end
+            if k == "hands" then 
+                effects[index] = "+"..tostring(v)
+                effects[index+1] = "Hands"
+                colors[index] = G.C.BLUE
+                colors[index+1] = G.C.WHITE
+            end
+            if k == "sell_value" then
+                effects[index] = "+$"..tostring(v)
+                effects[index+1] = "sell value"
+                colors[index] = G.C.GOLD
+                colors[index+1] = G.C.WHITE
+            end
+            if k == "probability" then
+                effects[index] = "+"..tostring(v)
+                effects[index+1] = "probability"
+                colors[index] = G.C.GREEN
+                colors[index+1] = G.C.WHITE
+            end
+            index = index + 2
+        end
+
+        effects["colours"] = colors;
+
+        return {
+            vars = effects,
+            key = "j_cod_tapas_"..tostring(card.ability.extra.dishes),
+        }
+
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        if card.ability.extra.current.h_size then
+            G.hand:change_size(card.ability.extra.current.h_size)
+        end
+        if card.ability.extra.current.hands then
+            G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.current.hands
+            ease_hands_played(card.ability.extra.current.hands)
+        end
+        if card.ability.extra.current.discards then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards + card.ability.extra.current.discards
+            ease_discard(card.ability.extra.current.discards)
+        end
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        if card.ability.extra.current.h_size then
+            G.hand:change_size(-card.ability.extra.current.h_size)
+        end
+        if card.ability.extra.current.hands then
+            G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.current.hands
+            ease_hands_played(-card.ability.extra.current.hands)
+        end
+        if card.ability.extra.current.discards then
+            G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.current.discards
+            ease_discard(-card.ability.extra.current.discards)
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if card.ability.extra.current.xmult or card.ability.extra.current.mult or card.ability.extra.current.chips then
+                return card.ability.extra.current
+            end
+        end
+
+        if context.mod_probability and card.ability.extra.current.probability then
+            return {
+                numerator = context.numerator + card.ability.extra.current.probability
+            }
+        end
+
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+
+            card.ability.extra.dishes = card.ability.extra.dishes - 1
+
+            local _, c_key = pseudorandom_element(card.ability.extra.current, 'cod_random_joker')
+
+            if c_key == "discards" then
+                G.GAME.round_resets.discards = G.GAME.round_resets.discards - card.ability.extra.current.discards
+                ease_discard(-card.ability.extra.current.discards)
+            end
+
+            if c_key == "hands" then
+                G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.current.hands
+                ease_hands_played(-card.ability.extra.current.hands)
+            end
+
+            if c_key == "h_size" then
+                G.hand:change_size(-card.ability.extra.current.h_size)
+            end
+
+            if c_key == "sell_value" then
+                card.ability.extra_value = card.ability.extra_value - card.ability.extra.current.sell_value
+            end
+
+            card.ability.extra.current[c_key] = nil
+
+            card:set_cost()
+
+            if card.ability.extra.dishes == 0 then
+                SMODS.destroy_cards(card, nil, nil, true)
+                return {
+                    message = localize('k_eaten_ex')
+                }
+            else
+                return {
+                    message = localize('tapas_bite')
+                }
+            end
+        end
+    end,
+    --initial random roll
+    set_ability = function(self, card, initial, delay_sprites)
+        card.ability.extra.current = {}
+        
+        for i=1,card.ability.extra.dishes do
+            local c_val, c_key = pseudorandom_element(card.ability.extra.possibilities, 'cod_random_joker')
+            card.ability.extra.current[c_key] = c_val
+            card.ability.extra.possibilities[c_key] = nil
+        end
+
+        if card.ability.extra.current.sell_value then
+            card.ability.extra_value = card.ability.extra_value + card.ability.extra.current.sell_value
+        end
+    end
+}
