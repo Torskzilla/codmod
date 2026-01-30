@@ -1699,8 +1699,8 @@ SMODS.Joker {
     config = { extra = { odds = 2 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator1 = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_ricochet')
-        local denominator2 = denominator1 * 2
-        local denominator3 = denominator2 * 2
+        local denominator2 = denominator1 + 1
+        local denominator3 = denominator2 + 1
         return { vars = {numerator, denominator1, denominator2, denominator3} }
     end,
     calculate = function(self, card, context)
@@ -1710,7 +1710,7 @@ SMODS.Joker {
             for i=1,100 do
                 if SMODS.pseudorandom_probability(card, 'cod_ricochet', 1, odds) then
                     bounces = bounces + 1
-                    odds = odds * 2
+                    odds = odds + 1
                 else
                     break
                 end
