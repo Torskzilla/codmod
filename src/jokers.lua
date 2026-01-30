@@ -1763,8 +1763,8 @@ SMODS.Joker {
     rarity = 1,
     cost = 4,
     atlas = 'atlas_cod_jokers',
-    pos = { x = 0, y = 0 },
-    config = { extra = { dishes = 3, current = {}, possibilities = { xmult = 1.5, mult = 10, chips = 50, h_size = 1, discards = 1, hands = 1, sell_value = 7, probability = 1 } } },
+    pos = { x = 2, y = 4 },
+    config = { extra = { dishes = 3, current = {}, possibilities = { xmult = 1.5, mult = 10, chips = 50, h_size = 1, discards = 1, hands = 1, probability = 1 } } },
     loc_vars = function(self, info_queue, card)
         local effects = {}
         local colors = {}
