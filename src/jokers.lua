@@ -162,7 +162,7 @@ SMODS.Joker {
         if context.setting_blind then
             local valid_mitosis_cards = {}
             for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card:is_suit(card.ability.extra.suit) then
+                if playing_card:is_suit(card.ability.extra.suit) and not playing_card.getting_sliced then
                     valid_mitosis_cards[#valid_mitosis_cards + 1] = playing_card
                 end
             end
@@ -186,22 +186,21 @@ SMODS.Joker {
                         return true
                     end
                 }))
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 1,
+                    func = function()
+                        return true
+                    end
+                }))
+
+                draw_card(G.play, G.deck, 90, 'up', nil, mitosis_card)
+                draw_card(G.play, G.deck, 90, 'up', nil, card_copied)
+                SMODS.calculate_context({ playing_card_added = true, cards = { card_copied } })
                 return {
                     message = localize('mitosis_split'),
                     colour = card.ability.extra.color,
-                    func = function()
-                        G.E_MANAGER:add_event(Event({
-                            trigger = 'after',
-                            delay = 0.4,
-                            func = function()
-                                G.deck.config.card_limit = G.deck.config.card_limit + 1
-                                draw_card(G.play, G.deck, 90, 'up')
-                                draw_card(G.play, G.deck, 90, 'up')
-                                return true
-                            end
-                        }))
-                        SMODS.calculate_context({ playing_card_added = true, cards = { card_copied } })
-                    end
                 }
             end
         end
@@ -249,20 +248,23 @@ SMODS.Joker {
                     return true
                 end
             }))
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 1,
+                func = function()
+                    G.deck.config.card_limit = G.deck.config.card_limit + 2
+                    return true
+                end
+            }))
+
+            draw_card(G.play, G.deck, 90, 'up', nil, spade_card1)
+            draw_card(G.play, G.deck, 90, 'up', nil, spade_card2)
+
+            SMODS.calculate_context({ playing_card_added = true, cards = { spade_card1, spade_card2 } })
             return {
                 message = localize('invasion_attack'),
                 colour = card.ability.extra.color,
-                func = function()
-                    G.E_MANAGER:add_event(Event({
-                        func = function()
-                            G.deck.config.card_limit = G.deck.config.card_limit + 2
-                            return true
-                        end
-                    }))
-                    draw_card(G.play, G.deck, 90, 'up')
-                    draw_card(G.play, G.deck, 90, 'up')
-                    SMODS.calculate_context({ playing_card_added = true, cards = { spade_card1, spade_card2 } })
-                end
             }
         end
     end
@@ -287,21 +289,22 @@ SMODS.Joker {
             for i=1,card.ability.extra.amount do
                 local valid_remove_cards = {}
                 for _, playing_card in ipairs(G.playing_cards) do
-                    if not playing_card:is_suit(card.ability.extra.suit) then
+                    if not playing_card:is_suit(card.ability.extra.suit) and not playing_card.getting_sliced then
                         valid_remove_cards[#valid_remove_cards + 1] = playing_card
                     end
                 end
                 local remove_card = pseudorandom_element(valid_remove_cards, 'cod_purification')
                 if remove_card then
+                    remove_card.getting_sliced = true
                     draw_card(G.deck, G.play, 90, 'up', nil, remove_card)
                     G.E_MANAGER:add_event(Event({
                         trigger = 'after',
-                        delay = 0.5,
+                        delay = 1,
                         func = function()
-                            SMODS.destroy_cards(remove_card)
                             return true
                         end
                     }))
+                    SMODS.destroy_cards(remove_card)
                     cards_removed = cards_removed + 1
                 end
             end
@@ -334,7 +337,7 @@ SMODS.Joker {
         if context.setting_blind then
             local valid_overgrowth_cards = {}
             for _, playing_card in ipairs(G.playing_cards) do
-                if playing_card.base.suit ~= card.ability.extra.suit and not SMODS.has_no_suit(playing_card) then
+                if playing_card.base.suit ~= card.ability.extra.suit and not SMODS.has_no_suit(playing_card) and not playing_card.getting_sliced then
                     valid_overgrowth_cards[#valid_overgrowth_cards + 1] = playing_card
                 end
             end
@@ -342,21 +345,21 @@ SMODS.Joker {
             if overgrowth_card then
                 draw_card(G.deck, G.play, 90, 'up', nil, overgrowth_card)
 
+                assert(SMODS.change_base(overgrowth_card, card.ability.extra.suit, nil, nil))
+
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
-                    delay = 0.5,
+                    delay = 1,
                     func = function()
-                        assert(SMODS.change_base(overgrowth_card, card.ability.extra.suit))
                         return true
                     end
                 }))
+
+                draw_card(G.play, G.deck, 90, 'up', nil, overgrowth_card)
                 
                 return {
                     message = localize('overgrowth_grow'),
                     colour = card.ability.extra.color,
-                    func = function()
-                        draw_card(G.play, G.deck, 90, 'up')
-                    end
                 }
             end
 
@@ -445,23 +448,17 @@ SMODS.Joker {
             if majority_card and minority_suit then
                 draw_card(G.deck, G.play, 90, 'up', nil, majority_card)
 
+                assert(SMODS.change_base(majority_card, minority_suit))
+
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
                     delay = 1,
                     func = function()
-                        assert(SMODS.change_base(majority_card, minority_suit))
                         return true
                     end
                 }))
 
-                G.E_MANAGER:add_event(Event({
-                    trigger = 'after',
-                    delay = 0.5,
-                    func = function()
-                        draw_card(G.play, G.deck, 90, 'up')
-                        return true
-                    end
-                }))
+                draw_card(G.play, G.deck, 90, 'up', nil, majority_card)
                 
                 return {
                     message = localize('season_convert'),
@@ -673,12 +670,12 @@ SMODS.Joker {
             if cards_eaten > 0 then
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
-                    delay = 0.5,
+                    delay = 1,
                     func = function()
-                        SMODS.destroy_cards(eaten_cards)
                         return true
                     end
                 }))
+                SMODS.destroy_cards(eaten_cards)
 
                 return {
                     message = localize(pseudorandom_element({"hungry_1", "hungry_2", "hungry_3", "hungry_4", "hungry_5"}, 'cod_hungry_text')),
