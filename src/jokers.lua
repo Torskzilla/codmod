@@ -345,7 +345,16 @@ SMODS.Joker {
             if overgrowth_card then
                 draw_card(G.deck, G.play, 90, 'up', nil, overgrowth_card)
 
-                assert(SMODS.change_base(overgrowth_card, card.ability.extra.suit, nil, nil))
+                assert(SMODS.change_base(overgrowth_card, card.ability.extra.suit, nil, true))
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 1,
+                    func = function()
+                        overgrowth_card:set_sprites(nil, overgrowth_card.config.card)
+                        return true
+                    end
+                }))
 
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
@@ -448,7 +457,16 @@ SMODS.Joker {
             if majority_card and minority_suit then
                 draw_card(G.deck, G.play, 90, 'up', nil, majority_card)
 
-                assert(SMODS.change_base(majority_card, minority_suit))
+                assert(SMODS.change_base(majority_card, minority_suit, nil, true))
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 1,
+                    func = function()
+                        majority_card:set_sprites(nil, majority_card.config.card)
+                        return true
+                    end
+                }))
 
                 G.E_MANAGER:add_event(Event({
                     trigger = 'after',
