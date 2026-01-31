@@ -56,3 +56,31 @@ SMODS.Back{
         return args.type == 'money' and G.GAME.dollars <= -30
     end
 }
+
+SMODS.Back{
+    key = "vip",
+    unlocked = true,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 3, y = 0},
+    config = {},
+
+    apply = function(self)
+         G.E_MANAGER:add_event(Event({
+            func = function()
+                local vip_card = pseudorandom_element(G.playing_cards, 'cod_vip')
+                if vip_card then
+            
+                    local edition = SMODS.poll_edition { key = "cod_vip", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
+                    vip_card:set_edition(edition, true)
+
+                    local seal = SMODS.poll_seal({ guaranteed = true, key = 'cod_vip' })
+                    vip_card:set_seal(seal, true)
+
+                    local enhancement = SMODS.poll_enhancement({ guaranteed = true, type_key = 'cod_vip' })
+                    vip_card:set_ability(enhancement, true)
+                end
+                return true
+            end
+        }))
+    end,
+}

@@ -19,6 +19,13 @@ return {
                     "{C:attention}Jokers{} naturally appear"
                 },
             },
+            b_cod_vip={
+                name="VIP Deck",
+                text={
+                    "{C:attention}1{} card starts with a {C:attention}Seal{}",
+                    "{C:enhanced}Enhancement{} and {C:dark_edition}Edition{}"
+                },
+            },
         },
         Blind={},
         Edition={},
