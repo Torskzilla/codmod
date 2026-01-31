@@ -426,6 +426,14 @@ return {
                     "lose {C:red}1{} effect each round",
                 },
             },
+            j_cod_stargazer = {
+                name = "Stargazer",
+                text = {
+                    "Create a {C:planet}Planet{} card",
+                    "when {C:attention}Blind{} is selected",
+                    "{C:inactive}(Must have room)",
+                },
+            },
         },
         Other={},
         Planet={},
