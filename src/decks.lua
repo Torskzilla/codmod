@@ -61,7 +61,7 @@ SMODS.Back{
     key = "vip",
     unlocked = true,
     atlas = 'atlas_cod_decks',
-    pos = {x = 3, y = 0},
+    pos = {x = 4, y = 0},
     config = {},
 
     apply = function(self)
