@@ -653,31 +653,33 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.setting_blind then
             local cards_eaten = 0
+            local eaten_cards = {}
             for i=1,card.ability.extra.eat_size do
                 local valid_hungry_cards = {}
                 for _, playing_card in ipairs(G.playing_cards) do
-                    valid_hungry_cards[#valid_hungry_cards + 1] = playing_card
+                    if not playing_card.getting_sliced then
+                        valid_hungry_cards[#valid_hungry_cards + 1] = playing_card
+                    end
                 end
                 local hungry_card = pseudorandom_element(valid_hungry_cards, 'cod_hungry')
                 if hungry_card then
                     draw_card(G.deck, G.play, 90, 'up', nil, hungry_card)
-                    local eat_delay = 0
-                    if i == card.ability.extra.eat_size then
-                        eat_delay = 0.5
-                    end
-                    G.E_MANAGER:add_event(Event({
-                        trigger = 'after',
-                        delay = eat_delay,
-                        func = function()
-                            SMODS.destroy_cards(hungry_card)
-                            return true
-                        end
-                    }))
+                    hungry_card.getting_sliced = true
+                    eaten_cards[#eaten_cards+1] = hungry_card
                     cards_eaten = cards_eaten + 1
                 end
             end
             
             if cards_eaten > 0 then
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.5,
+                    func = function()
+                        SMODS.destroy_cards(eaten_cards)
+                        return true
+                    end
+                }))
+
                 return {
                     message = localize(pseudorandom_element({"hungry_1", "hungry_2", "hungry_3", "hungry_4", "hungry_5"}, 'cod_hungry_text')),
                     colour = G.C.RED,
