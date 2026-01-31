@@ -235,7 +235,7 @@ return {
             j_cod_anchor = {
                 name = "Anchor",
                 text = {
-                    "{V:1}#1#{} cards are ",
+                    "{V:1}#1#{} cards are",
                     "drawn last",
                 },
             },
