@@ -434,6 +434,14 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
+            j_cod_gearbox = {
+                name = "Gearbox",
+                text = {
+                    "{X:mult,C:white}+X#1#{} Mult for each joker to the right",
+                    "{X:mult,C:white}-X#1#{} Mult for each joker to the left",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                },
+            },
         },
         Other={},
         Planet={},

@@ -1973,3 +1973,56 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Gearbox
+SMODS.Joker {
+    key = "gearbox",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 4 },
+    config = { extra = { xmult = 0.2 } },
+    loc_vars = function(self, info_queue, card)
+        local gear = 1
+        local passed_self = false
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].ability.set == 'Joker' then
+                    if G.jokers.cards[i] == card then
+                        passed_self = true
+                    else
+                        if passed_self then
+                            gear = gear + card.ability.extra.xmult
+                        else
+                            gear = gear - card.ability.extra.xmult
+                        end
+                    end
+                end
+            end
+        end
+        return { vars = { card.ability.extra.xmult, gear, } }
+    end,
+    calculate = function(self, card, context)
+        local gear = 1
+        local passed_self = false
+        if context.joker_main then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].ability.set == 'Joker' then
+                    if G.jokers.cards[i] == card then
+                        passed_self = true
+                    else
+                        if passed_self then
+                            gear = gear + card.ability.extra.xmult
+                        else
+                            gear = gear - card.ability.extra.xmult
+                        end
+                    end
+                end
+            end
+            return {
+                xmult = gear
+            }
+        end
+    end,
+}

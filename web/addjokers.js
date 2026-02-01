@@ -377,7 +377,15 @@ let jokers = [
     image_url: "img/j/stargazer.png",
     rarity: "Common"
   },
-
+  {
+    name: "Gearbox",
+    text: [
+      "{X:mult,C:white}+X0.2{} Mult for each joker to the right",
+      "{X:mult,C:white}-X0.2{} Mult for each joker to the left",
+    ],
+    image_url: "img/j/gearbox.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",
