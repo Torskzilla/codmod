@@ -1327,11 +1327,12 @@ SMODS.Joker {
 
             G.GAME.banned_keys[key_to_ban] = true
 
-            SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = "mult",
-                scalar_value = "mult_gain",
-            })
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+
+            return {
+                message = localize("black_market_ban"),
+                colour = G.C.MULT,
+            }
         end
         if context.joker_main then
             return {
@@ -1764,11 +1765,11 @@ SMODS.Joker {
             end
         end
         if context.pseudorandom_result and not context.blueprint and not context.result then
-            SMODS.scale_card(card, {
-                ref_table = card.ability.extra,
-                ref_value = "chips",
-                scalar_value = "chips_mod",
-            })
+            card.ability.extra.chips = card.ability.extra.chips + card.ability.extra.chips_mod
+            return {
+                message = localize("k_upgrade_ex"),
+                colour = G.C.CHIPS,
+            }
         end
     end
 }
@@ -2120,6 +2121,28 @@ SMODS.Joker {
                     xmult = card.ability.extra.xmult
                 }
             end
+        end
+    end,
+}
+
+-- Astral Transit
+SMODS.Joker {
+    key = "astral_transit",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 8, y = 4 },
+    calculate = function(self, card, context)
+         if context.using_consumeable and context.consumeable.ability.set == 'Planet' then
+            local _poker_hands = {}
+            for handname, _ in pairs(G.GAME.hands) do
+                if SMODS.is_poker_hand_visible(handname) and handname ~= context.consumeable.ability.hand_type then
+                    _poker_hands[#_poker_hands + 1] = handname
+                end
+            end
+            local transit_planet = pseudorandom_element(_poker_hands, 'cod_astral_transit')
+            SMODS.upgrade_poker_hands({hands = transit_planet, level_up = 1, from = card})
         end
     end,
 }

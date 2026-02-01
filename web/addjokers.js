@@ -407,6 +407,14 @@ let jokers = [
     image_url: "img/j/rule_of_three.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Astral Transit",
+    text: [
+      "When a {C:planet}Planet{} card is used, also level up a random other {C:attention}poker hand{}",
+    ],
+    image_url: "img/j/astral_transit.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

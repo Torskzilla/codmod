@@ -466,6 +466,13 @@ return {
                     "{C:inactive}(#4# scored)",
                 },
             },
+            j_cod_astral_transit = {
+                name = "Astral Transit",
+                text = {
+                    "When a {C:planet}Planet{} card is used, also",
+                    "level up a random other {C:attention}poker hand{}",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -517,6 +524,7 @@ return {
             cod_random_joker_name="Unpredictable Joker",
             cod_random_big_joker_name="Possibility Space",
             tapas_bite="Munch",
+            black_market_ban="Banned!",
         },
         high_scores={},
         labels={},
