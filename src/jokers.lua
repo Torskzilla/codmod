@@ -2098,3 +2098,28 @@ SMODS.Joker {
         return false
     end,
 }
+
+-- Rule of Three
+SMODS.Joker {
+    key = "rule_of_three",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 7,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 7, y = 4 },
+    config = { extra = { xmult = 3, required = 3, rank = 3, count = 0 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult,card.ability.extra.required, card.ability.extra.rank, card.ability.extra.count } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == 3 then
+            card.ability.extra.count = card.ability.extra.count + 1
+            if (card.ability.extra.count >= card.ability.extra.required) then
+                card.ability.extra.count = 0
+                return {
+                    xmult = card.ability.extra.xmult
+                }
+            end
+        end
+    end,
+}

@@ -459,6 +459,13 @@ return {
                     "{C:attention}poker hand{} for the first time",
                 },
             },
+            j_cod_rule_of_three = {
+                name = "Rule of Three",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult every {C:attention}#2#rd{} scored {C:attention}#3#{}",
+                    "{C:inactive}(#4# scored)",
+                },
+            },
         },
         Other={},
         Planet={},

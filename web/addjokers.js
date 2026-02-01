@@ -399,6 +399,14 @@ let jokers = [
     image_url: "img/j/patent.png",
     rarity: "Common"
   },
+  {
+    name: "Rule of Three",
+    text: [
+      "{X:mult,C:white}X3{} Mult every {C:attention}3rd{} scored {C:attention}3{}",
+    ],
+    image_url: "img/j/rule_of_three.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",
