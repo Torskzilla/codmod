@@ -1979,7 +1979,7 @@ SMODS.Joker {
     key = "gearbox",
     blueprint_compat = true,
     rarity = 2,
-    cost = 6,
+    cost = 7,
     atlas = 'atlas_cod_jokers',
     pos = { x = 4, y = 4 },
     config = { extra = { xmult = 0.2 } },
@@ -2025,4 +2025,38 @@ SMODS.Joker {
             }
         end
     end,
+}
+
+-- Limbo
+SMODS.Joker {
+    key = "limbo",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 5, y = 4 },
+    config = { extra = { mult_gain = 1, mult = 0 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult_gain, card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            if context.scoring_name == "High Card" then
+                local last_mult = card.ability.extra.mult
+                card.ability.extra.mult = 0
+                if last_mult > 0 then
+                    return {
+                        message = localize('k_reset')
+                    }
+                end
+            else
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+            end
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
 }

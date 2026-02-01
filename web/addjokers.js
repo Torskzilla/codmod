@@ -386,6 +386,14 @@ let jokers = [
     image_url: "img/j/gearbox.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Limbo",
+    text: [
+      "This Joker gains {C:mult}+1{} Mult per {C:attention}consecutive{} hand played that is not a {C:attention}High Card{}",
+    ],
+    image_url: "img/j/limbo.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

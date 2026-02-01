@@ -442,6 +442,16 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
+            j_cod_limbo = {
+                name = "Limbo",
+                text = {
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "per {C:attention}consecutive{} hand",
+                    "played that is not",
+                    "a {C:attention}High Card{}",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                },
+            },
         },
         Other={},
         Planet={},
