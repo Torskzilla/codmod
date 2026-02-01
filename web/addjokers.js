@@ -206,7 +206,7 @@ let jokers = [
     name: "Homework",
     text: [
       "{X:mult,C:white}X4{} Mult if sum",
-        "of played ranks is {C:attention}37{}, sum changes every hand",
+        "of played ranks is {C:attention}"+(2+Math.floor(Math.random() * 53))+"{}, sum changes every hand",
     ],
     image_url: "img/j/homework.png",
     rarity: "Uncommon"
@@ -326,7 +326,7 @@ let jokers = [
     text: [
       "{C:green}1 in 2{} chance to retrigger played {C:diamonds}Diamonds{},",
         "{C:green}1 in 3{} chance to retrigger again,",
-        "{C:green}2 in 4{} chance to retrigger again, etc",
+        "{C:green}1 in 4{} chance to retrigger again, etc",
     ],
     image_url: "img/j/ricochet.png",
     rarity: "Uncommon"
