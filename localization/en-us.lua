@@ -452,6 +452,13 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
+            j_cod_patent = {
+                name = "Patent",
+                text = {
+                    "Earn {C:money}$#1#{} when playing a",
+                    "{C:attention}poker hand{} for the first time",
+                },
+            },
         },
         Other={},
         Planet={},

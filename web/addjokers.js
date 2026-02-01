@@ -106,8 +106,7 @@ let jokers = [
   {
     name: "Imperfect Clone",
     text: [
-      "Clones each give {C:chips}+35{} Chips,",
-      "may appear multiple times",
+      "Clones each give {C:chips}+35{} Chips, may appear multiple times",
     ],
     image_url: "img/j/imperfect_clone.png",
     rarity: "Common"
@@ -115,8 +114,7 @@ let jokers = [
   {
     name: "Uncanny Clone",
     text: [
-      "Clones each give {C:mult}+25{} Mult,",
-      "may appear multiple times",
+      "Clones each give {C:mult}+25{} Mult, may appear multiple times",
     ],
     image_url: "img/j/uncanny_clone.png",
     rarity: "Uncommon"
@@ -124,8 +122,7 @@ let jokers = [
   {
     name: "Perfect Clone",
     text: [
-      "Clones each give {X:mult,C:white}X1.5{} Mult,",
-        "may appear multiple times",
+      "Clones each give {X:mult,C:white}X1.5{} Mult, may appear multiple times",
     ],
     image_url: "img/j/perfect_clone.png",
     rarity: "Rare"
@@ -392,6 +389,14 @@ let jokers = [
       "This Joker gains {C:mult}+1{} Mult per {C:attention}consecutive{} hand played that is not a {C:attention}High Card{}",
     ],
     image_url: "img/j/limbo.png",
+    rarity: "Common"
+  },
+  {
+    name: "Patent",
+    text: [
+      "Earn {C:money}$5{} when playing a {C:attention}poker hand{} for the first time",
+    ],
+    image_url: "img/j/patent.png",
     rarity: "Common"
   },
 

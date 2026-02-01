@@ -2058,5 +2058,43 @@ SMODS.Joker {
                 mult = card.ability.extra.mult
             }
         end
-    end
+    end,
+}
+
+-- Patent
+SMODS.Joker {
+    key = "patent",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 6, y = 4 },
+    config = { extra = {  dollars = 5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.dollars } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and G.GAME.hands[context.scoring_name].played == 1 then
+            G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
+            return {
+                dollars = card.ability.extra.dollars,
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            G.GAME.dollar_buffer = 0
+                            return true
+                        end
+                    }))
+                end
+            }
+        end
+    end,
+    in_pool = function(self, args)
+        for handname, hand in pairs(G.GAME.hands) do
+            if G.GAME.hands[handname].played == 0 then
+                return true
+            end
+        end
+        return false
+    end,
 }
