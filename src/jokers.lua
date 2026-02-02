@@ -381,6 +381,7 @@ SMODS.Joker {
     key = "harmony",
     unlocked = true,
     blueprint_compat = true,
+    perishable_compat = false,
     rarity = 1,
     cost = 4,
     atlas = 'atlas_cod_jokers',
@@ -1747,6 +1748,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "unlucky",
     blueprint_compat = true,
+    perishable_compat = false,
     rarity = 2,
     cost = 6,
     atlas = 'atlas_cod_jokers',
@@ -1778,6 +1780,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "tapas",
     blueprint_compat = true,
+    eternal_compat = false,
     rarity = 1,
     cost = 4,
     atlas = 'atlas_cod_jokers',
@@ -2032,6 +2035,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "limbo",
     blueprint_compat = true,
+    perishable_compat = false,
     rarity = 1,
     cost = 6,
     atlas = 'atlas_cod_jokers',
