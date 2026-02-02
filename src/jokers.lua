@@ -2247,3 +2247,56 @@ SMODS.Joker {
         end
     end
 }
+
+-- Printer
+SMODS.Joker {
+    key = "printer",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 1, y = 5 },
+    config = { extra = { rank = "Ace", suit = "Hearts" } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.rank, card.ability.extra.suit, colours = { G.C.SUITS[card.ability.extra.suit] } } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            
+            local printer_card = SMODS.create_card { set = "Base", suit = card.ability.extra.suit, rank = card.ability.extra.rank, area = G.discard }
+            G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+            printer_card.playing_card = G.playing_card
+            table.insert(G.playing_cards, printer_card)
+
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    printer_card:start_materialize()
+                    G.play:emplace(printer_card)
+                    return true
+                end
+            }))
+
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 1,
+                func = function()
+                    G.deck.config.card_limit = G.deck.config.card_limit + 1
+                    return true
+                end
+            }))
+
+            draw_card(G.play, G.deck, 90, 'up', nil, printer_card)
+
+            SMODS.calculate_context({ playing_card_added = true, cards = { printer_card } })
+            return {
+                message = localize('printer_print'),
+                colour = G.C.GOLD,
+            }
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        card.ability.extra.suit = pseudorandom_element(SMODS.Suits, 'cod_printer_suit').key
+        card.ability.extra.rank = pseudorandom_element(SMODS.Ranks, 'cod_printer_rank').key
+    end
+}

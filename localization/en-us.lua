@@ -491,6 +491,14 @@ return {
                     "card in deck",
                 },
             },
+            j_cod_printer = {
+                name = "Printer",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "add a {C:attention}#1#{} of {V:1}#2#{}",
+                    "to deck",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -545,6 +553,7 @@ return {
             black_market_ban="Banned!",
             death_star_destroy="Obliterate!",
             infrastructure_build="Improve",
+            printer_print="Print",
         },
         high_scores={},
         labels={},

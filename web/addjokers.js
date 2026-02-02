@@ -431,6 +431,14 @@ let jokers = [
     image_url: "img/j/infrastructure.png",
     rarity: "Common"
   },
+  {
+    name: "Printer",
+    text: [
+      "When {C:attention}Blind{} is selected, add a {C:attention}7{} of {C:Hearts}Hearts{} to deck",
+    ],
+    image_url: "img/j/printer.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",
