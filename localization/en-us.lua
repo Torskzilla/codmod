@@ -434,8 +434,8 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-            j_cod_gearbox = {
-                name = "Gearbox",
+            j_cod_gear_stick = {
+                name = "Gear Stick",
                 text = {
                     "{X:mult,C:white}+X#1#{} Mult for each joker to the right",
                     "{X:mult,C:white}-X#1#{} Mult for each joker to the left",

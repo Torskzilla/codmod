@@ -375,12 +375,12 @@ let jokers = [
     rarity: "Common"
   },
   {
-    name: "Gearbox",
+    name: "Gear Stick",
     text: [
       "{X:mult,C:white}+X0.2{} Mult for each joker to the right",
       "{X:mult,C:white}-X0.2{} Mult for each joker to the left",
     ],
-    image_url: "img/j/gearbox.png",
+    image_url: "img/j/gear_stick.png",
     rarity: "Uncommon"
   },
   {

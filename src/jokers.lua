@@ -1978,9 +1978,9 @@ SMODS.Joker {
     end,
 }
 
--- Gearbox
+-- Gear Stick
 SMODS.Joker {
-    key = "gearbox",
+    key = "gear_stick",
     blueprint_compat = true,
     rarity = 2,
     cost = 7,
