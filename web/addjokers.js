@@ -418,7 +418,7 @@ let jokers = [
   {
     name: "Death Star",
     text: [
-      "{C:red}Removes{} all levels from played {C:attention}poker hand{} and gains the removed {C:blue}Chips{} and {C:mult}Mult{}",
+      "{C:red}Removes{} all level ups from played {C:attention}poker hand{} and gains the removed {C:blue}Chips{} and {C:mult}Mult{}",
     ],
     image_url: "img/j/death_star.png",
     rarity: "Rare"
@@ -438,6 +438,14 @@ let jokers = [
     ],
     image_url: "img/j/printer.png",
     rarity: "Common"
+  },
+  {
+    name: "The Sun",
+    text: [
+      "When {C:attention}Boss Blind{} is defeated, upgrade level of every {C:attention}poker hand",
+    ],
+    image_url: "img/j/sun_explode.png",
+    rarity: "Uncommon"
   },
 
   // {

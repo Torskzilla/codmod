@@ -477,7 +477,7 @@ return {
             j_cod_death_star = {
                 name = "Death Star",
                 text = {
-                    "{C:red}Removes{} all levels from",
+                    "{C:red}Removes{} all level ups from",
                     "played {C:attention}poker hand{} and gains",
                     "the removed {C:blue}Chips{} and {C:mult}Mult{}",
                     "{C:inactive}({C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult)",
@@ -497,6 +497,13 @@ return {
                     "When {C:attention}Blind{} is selected,",
                     "add a {C:attention}#1#{} of {V:1}#2#{}",
                     "to deck",
+                },
+            },
+            j_cod_the_sun = {
+                name = "The Sun",
+                text = {
+                    "When {C:attention}Boss Blind{} is defeated,",
+                    "upgrade level of every {C:attention}poker hand",
                 },
             },
         },
@@ -554,6 +561,7 @@ return {
             death_star_destroy="Obliterate!",
             infrastructure_build="Improve",
             printer_print="Print",
+            sun_upgrade="Sizzle",
         },
         high_scores={},
         labels={},
