@@ -483,6 +483,14 @@ return {
                     "{C:inactive}({C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
+            j_cod_infrastructure = {
+                name = "Infrastructure",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "randomly {C:enhanced}Enhance{} {C:attention}#1#{}",
+                    "card in deck",
+                },
+            },
         },
         Other={},
         Planet={},
@@ -536,6 +544,7 @@ return {
             tapas_bite="Munch",
             black_market_ban="Banned!",
             death_star_destroy="Obliterate!",
+            infrastructure_build="Improve",
         },
         high_scores={},
         labels={},

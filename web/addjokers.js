@@ -423,6 +423,14 @@ let jokers = [
     image_url: "img/j/death_star.png",
     rarity: "Rare"
   },
+  {
+    name: "Infrastructure",
+    text: [
+      "When {C:attention}Blind{} is selected, randomly {C:enhanced}Enhance{} {C:attention}1{} card in deck",
+    ],
+    image_url: "img/j/infrastructure.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

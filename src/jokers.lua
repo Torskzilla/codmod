@@ -2189,3 +2189,61 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Infrastructure
+SMODS.Joker {
+    key = "infrastructure",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 0, y = 5 },
+    -- amount is unused
+    config = { extra = { amount = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.amount } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            local valid_enhance_cards = {}
+            for _, playing_card in ipairs(G.playing_cards) do
+                if not next(SMODS.get_enhancements(playing_card)) and not playing_card.getting_sliced then
+                    valid_enhance_cards[#valid_enhance_cards + 1] = playing_card
+                end
+            end
+            local enhance_card = pseudorandom_element(valid_enhance_cards, 'cod_infrastructure')
+            if enhance_card then
+                draw_card(G.deck, G.play, 90, 'up', nil, enhance_card)
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 1,
+                    func = function()
+                        return true
+                    end
+                }))
+
+                -- bug: to stone animation instantly removes rank and suit
+                local random_enhancement = SMODS.poll_enhancement {key = "cod_infrastructure", guaranteed = true}
+                enhance_card:set_ability(random_enhancement, nil, true)
+
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 1,
+                    func = function()
+                        return true
+                    end
+                }))
+
+                draw_card(G.play, G.deck, 90, 'up', nil, enhance_card)
+                
+                return {
+                    message = localize('infrastructure_build'),
+                    colour = G.C.GOLD,
+                }
+            end
+
+        end
+    end
+}
