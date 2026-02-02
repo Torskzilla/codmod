@@ -469,8 +469,18 @@ return {
             j_cod_astral_transit = {
                 name = "Astral Transit",
                 text = {
-                    "When a {C:planet}Planet{} card is used, also",
-                    "level up a random other {C:attention}poker hand{}",
+                    "When a {C:planet}Planet{} card is",
+                    "used, also level up a",
+                    "random other {C:attention}poker hand{}",
+                },
+            },
+            j_cod_death_star = {
+                name = "Death Star",
+                text = {
+                    "{C:red}Removes{} all levels from",
+                    "played {C:attention}poker hand{} and gains",
+                    "the removed {C:blue}Chips{} and {C:mult}Mult{}",
+                    "{C:inactive}({C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
         },
@@ -525,6 +535,7 @@ return {
             cod_random_big_joker_name="Possibility Space",
             tapas_bite="Munch",
             black_market_ban="Banned!",
+            death_star_destroy="Obliterate!",
         },
         high_scores={},
         labels={},

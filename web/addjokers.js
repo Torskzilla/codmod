@@ -415,6 +415,14 @@ let jokers = [
     image_url: "img/j/astral_transit.png",
     rarity: "Common"
   },
+  {
+    name: "Death Star",
+    text: [
+      "{C:red}Removes{} all levels from played {C:attention}poker hand{} and gains the removed {C:blue}Chips{} and {C:mult}Mult{}",
+    ],
+    image_url: "img/j/death_star.png",
+    rarity: "Rare"
+  },
 
   // {
   //   name: "",

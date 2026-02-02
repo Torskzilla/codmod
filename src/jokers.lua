@@ -1988,7 +1988,7 @@ SMODS.Joker {
     pos = { x = 4, y = 4 },
     config = { extra = { xmult = 0.2 } },
     loc_vars = function(self, info_queue, card)
-        local gear = 1
+        local gear = 0
         local passed_self = false
         if G.jokers then
             for i = 1, #G.jokers.cards do
@@ -1997,18 +1997,18 @@ SMODS.Joker {
                         passed_self = true
                     else
                         if passed_self then
-                            gear = gear + card.ability.extra.xmult
+                            gear = gear + 1
                         else
-                            gear = gear - card.ability.extra.xmult
+                            gear = gear - 1
                         end
                     end
                 end
             end
         end
-        return { vars = { card.ability.extra.xmult, gear, } }
+        return { vars = { card.ability.extra.xmult, 1 + (gear*card.ability.extra.xmult) } }
     end,
     calculate = function(self, card, context)
-        local gear = 1
+        local gear = 0
         local passed_self = false
         if context.joker_main then
             for i = 1, #G.jokers.cards do
@@ -2017,15 +2017,15 @@ SMODS.Joker {
                         passed_self = true
                     else
                         if passed_self then
-                            gear = gear + card.ability.extra.xmult
+                            gear = gear + 1
                         else
-                            gear = gear - card.ability.extra.xmult
+                            gear = gear - 1
                         end
                     end
                 end
             end
             return {
-                xmult = gear
+                xmult = 1 + (gear*card.ability.extra.xmult)
             }
         end
     end,
@@ -2147,6 +2147,45 @@ SMODS.Joker {
             end
             local transit_planet = pseudorandom_element(_poker_hands, 'cod_astral_transit')
             SMODS.upgrade_poker_hands({hands = transit_planet, level_up = 1, from = card})
+        end
+    end,
+}
+
+-- Death Star
+SMODS.Joker {
+    key = "death_star",
+    blueprint_compat = true,
+    perishable_compat = false,
+    rarity = 3,
+    cost = 9,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 9, y = 4 },
+    config = { extra = {  chips = 0, mult = 0 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            local level_ups = G.GAME.hands[context.scoring_name].level - 1
+            if level_ups > 0 then
+
+                -- update to work better with custom scaled hands? just check chips before vs chips after?
+                card.ability.extra.chips = card.ability.extra.chips + (G.GAME.hands[context.scoring_name].l_chips*level_ups)
+                card.ability.extra.mult = card.ability.extra.mult + (G.GAME.hands[context.scoring_name].l_mult*level_ups)
+
+                SMODS.upgrade_poker_hands({hands = context.scoring_name, level_up = -level_ups, from = card})
+
+                return {
+                    message = localize("death_star_destroy"),
+                    colour = G.C.RED,
+                }
+            end
+        end
+        if context.joker_main then
+            return {
+                chips = card.ability.extra.chips,
+                mult = card.ability.extra.mult,
+            }
         end
     end,
 }
