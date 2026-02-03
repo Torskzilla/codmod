@@ -2357,3 +2357,39 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Dyson Sphere
+-- SMODS.Joker {
+--     key = "dyson_sphere",
+--     unlocked = true,
+--     blueprint_compat = true,
+--     rarity = 2,
+--     cost = 6,
+--     atlas = 'atlas_cod_jokers',
+--     pos = { x = 4, y = 5 },
+--     calculate = function(self, card, context)
+        
+--     end,
+-- }
+
+-- Shackles
+SMODS.Joker {
+    key = "shackles",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 1,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 5, y = 5 },
+    config = { card_limit = 1, extra = { xmult = 0.5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.card_limit, card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult,
+            }
+        end
+    end,
+}

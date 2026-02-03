@@ -506,6 +506,13 @@ return {
                     "upgrade level of every {C:attention}poker hand",
                 },
             },
+            j_cod_shackles = {
+                name = "Shackles",
+                text = {
+                    "{C:dark_edition}+#1#{} Joker Slot,",
+                    "{X:mult,C:white}#2#X{} Mult",
+                },
+            },
         },
         Other={},
         Planet={},

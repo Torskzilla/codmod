@@ -447,6 +447,15 @@ let jokers = [
     image_url: "img/j/sun_explode.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Shackles",
+    text: [
+      "{C:dark_edition}+1{} Joker Slot,",
+      "{X:mult,C:white}0.5X{} Mult",
+    ],
+    image_url: "img/j/shackles.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",
