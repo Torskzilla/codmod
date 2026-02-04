@@ -3,6 +3,11 @@
 let unpredictable = ["{X:mult,C:white}X1.5{} Mult", "{C:chips}+50{} Chips", "{C:mult}+10{} Mult", "{C:attention}+1{} hand size", "{C:red}+1{} discards", "{C:blue}+1{} Hands", "{C:money}+$7{} sell value", "{C:green}+1{} probability"]
 let possibilities = ["{X:mult,C:white}X3{} Mult", "{C:chips}+250{} Chips", "{C:mult}+50{} Mult", "{C:attention}+2{} hand size", "{C:red}+3{} discards", "{C:blue}+2{} Hands", "{C:money}+$20{} sell value", "{C:green}+2{} probability", "Retrigger played cards"]
 
+let suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
+let ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
+
+let printer_suit = suits[Math.floor(Math.random() * suits.length)]
+
 let jokers = [
   {
     name: "Summer",
@@ -346,6 +351,7 @@ let jokers = [
     image_url: "img/j/possibility_space.png",
     rarity: "Uncommon"
   },
+  // todo: randomize abilities on reload
   {
     name: "Tapas",
     text: [
@@ -434,7 +440,7 @@ let jokers = [
   {
     name: "Printer",
     text: [
-      "When {C:attention}Blind{} is selected, add a {C:attention}7{} of {C:Hearts}Hearts{} to deck",
+      "When {C:attention}Blind{} is selected, add a {C:attention}"+ranks[Math.floor(Math.random() * ranks.length)]+"{} of {C:"+printer_suit+"}"+printer_suit+"{} to deck",
     ],
     image_url: "img/j/printer.png",
     rarity: "Common"
