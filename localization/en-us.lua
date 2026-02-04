@@ -27,7 +27,15 @@ return {
                 },
             },
         },
-        Blind={},
+        Blind={
+            bl_cod_innocent = {
+                name = "The Innocent",
+                text = {
+                    "Excess score is added to the",
+                    "requirement of future blinds"
+                },
+            },
+        },
         Edition={},
         Enhanced={},
         Joker={

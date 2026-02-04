@@ -570,16 +570,14 @@ let stickers = [
 ]
 
 let blinds = [
-  // {
-  //   name: "The Wall",
-  //   text: [
-  //     "Extra large blind",
-  //     "{C:inactive}({C:red}4x{C:inactive} Base for {C:attention}$$$$${C:inactive})",
-  //     "{C:inactive}(Appears from Ante 2)"
-  //   ],
-  //   image_url: "img/the_wall.png",
-  //   rarity: "Boss Blind"
-  // },
+  {
+    name: "The Innocent",
+    text: [
+      "Excess score is added to the requirement of future blinds",
+    ],
+    image_url: "img/bl/innocent.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [

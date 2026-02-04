@@ -1,4 +1,5 @@
 assert(SMODS.load_file("src/misc.lua"))()
 assert(SMODS.load_file("src/jokers.lua"))()
 assert(SMODS.load_file("src/decks.lua"))()
+assert(SMODS.load_file("src/blinds.lua"))()
 assert(SMODS.load_file("src/challenges.lua"))()
