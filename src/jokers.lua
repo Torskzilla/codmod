@@ -604,7 +604,7 @@ SMODS.Joker {
     atlas = 'atlas_cod_jokers',
     pos = { x = 4, y = 2 },
     pixel_size = { h = 56 },
-    config = { extra = { chips = 100, max_sum = 25 } },
+    config = { extra = { chips = 75, max_sum = 25 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips, card.ability.extra.max_sum } }
     end,
@@ -932,7 +932,7 @@ SMODS.Joker {
     cost = 8,
     atlas = 'atlas_cod_jokers',
     pos = { x = 8, y = 0 },
-    config = { extra = { xmult = 3} },
+    config = { extra = { xmult = 4} },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult } }
     end,
