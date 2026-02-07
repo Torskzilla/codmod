@@ -559,14 +559,22 @@ let decks = [
 ]
 
 let stickers = [
-  // {
-  //   name: "Joker",
-  //   text: [
-  //     "{C:mult}+4{} Mult"
-  //   ],
-  //   image_url: "img/sticker_example.png",
-  //   rarity: "Sticker"
-  // },
+  {
+    name: "Dormant",
+    text: [
+      "Debuffed until {C:attention}3{} rounds pass",
+    ],
+    image_url: "img/sticker/dormant.png",
+    rarity: "Sticker"
+  },
+  {
+    name: "Envious",
+    text: [
+      "Debuffed if you have another {C:green}Envious{} Joker"
+    ],
+    image_url: "img/sticker/envy.png",
+    rarity: "Sticker"
+  },
 ]
 
 let blinds = [

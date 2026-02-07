@@ -6,6 +6,7 @@ SMODS.Atlas {
 	py = 95
 }
 
+-- Average
 SMODS.Back{
     key = "average",
     unlocked = true,
@@ -19,6 +20,7 @@ SMODS.Back{
     end,
 }
 
+-- Ponzi
 SMODS.Back{
     key = "ponzi",
     unlocked = false,
@@ -57,6 +59,7 @@ SMODS.Back{
     end
 }
 
+-- VIP
 SMODS.Back{
     key = "vip",
     unlocked = true,

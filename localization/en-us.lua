@@ -522,7 +522,24 @@ return {
                 },
             },
         },
-        Other={},
+        Other={
+            cod_dormant = {
+                name = "Dormant",
+                text = {
+                    "Debuffed until",
+                    "{C:attention}#1#{} rounds pass",
+                    "{C:inactive}({C:attention}#2#{C:inactive} remaining)",
+                },
+            },
+            cod_envy = {
+                name = "Envious",
+                text = {
+                    "Debuffed if",
+                    "you have another",
+                    "{C:green}Envious{} Joker"
+                },
+            },
+        },
         Planet={},
         Spectral={},
         Stake={},
@@ -577,9 +594,13 @@ return {
             infrastructure_build="Improve",
             printer_print="Print",
             sun_upgrade="Sizzle",
+            dormant_awaken="Wake"
         },
         high_scores={},
-        labels={},
+        labels={
+            cod_envy="Envious",
+            cod_dormant="Dormant",
+        },
         poker_hand_descriptions={},
         poker_hands={},
         quips={},
