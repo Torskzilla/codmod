@@ -567,7 +567,15 @@ return {
         },
         Planet={},
         Spectral={},
-        Stake={},
+        Stake={
+            stake_cod_platinum = {
+                name = "Platinum Stake",
+                text = {
+                    "Adds several new {C:attention}Stickers{}",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+            },
+        },
         Tag={},
         Tarot={},
         Voucher={},
