@@ -1193,6 +1193,7 @@ SMODS.Joker {
     key = "paperclip",
     unlocked = true,
     blueprint_compat = true,
+    cod_confidential_compat = false,
     rarity = 1,
     cost = 4,
     atlas = 'atlas_cod_jokers',

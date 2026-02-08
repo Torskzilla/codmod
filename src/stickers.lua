@@ -41,7 +41,7 @@ SMODS.Sticker {
             card.ability.dormant_tally = dormant_rounds
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    if not (card.area.config.collection) then
+                    if (card.area.config.jokers) then
                         SMODS.debuff_card(card, true, "cod_dormant")
                     end
                     return true
@@ -55,6 +55,11 @@ SMODS.Sticker {
         return { vars = { dormant_rounds, card.ability.dormant_tally or dormant_rounds } }
     end,
     calculate = function(self, card, context)
+        if context.buying_self or context.card_added then
+            if context.card.ability.cod_dormant and context.card.ability.dormant_tally > 0 then
+                SMODS.debuff_card(context.card, true, "cod_dormant")
+            end
+        end
         if context.end_of_round and not context.repetition and not context.individual then
             if card.ability.dormant_tally > 0 then
                 if card.ability.dormant_tally == 1 then
@@ -104,7 +109,7 @@ SMODS.Sticker {
         end
         if context.buying_self or context.card_added then
             local envy_count = 0
-            if context.card.ability.cod_envy then
+            if context.card_added and context.card.ability.cod_envy then
                 envy_count = envy_count + 1
             end
             for i = 1, #G.jokers.cards do
@@ -174,12 +179,14 @@ function Card:load(cardTable, other_card)
 end
 
 -- Confidential
+-- fix: does not affect the soul layer
 SMODS.Sticker {
     key = "confidential",
     badge_colour = HEX '939ecc',
     atlas = 'atlas_cod_stickers',
     pos = { x = 3, y = 0 },
     default_compat = true,
+    compat_exceptions = {"j_madness"},
     rate = 0.25,
     needs_enable_flag = true,
     should_apply = function(self, card, center, area, bypass_roll)
