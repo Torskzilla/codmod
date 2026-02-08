@@ -521,6 +521,12 @@ return {
                     "{X:mult,C:white}#2#X{} Mult",
                 },
             },
+            j_cod_redacted = {
+                name = "Redacted",
+                text = {
+                    "Unknown effect"
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -546,6 +552,18 @@ return {
                     "Slots are full",
                 },
             },
+            cod_confidential = {
+                name = "Confidential",
+                text = {
+                    "Hides card"
+                },
+            },
+            confidential_default = {
+                name = "Redacted",
+                text = {
+                    "Unknown effect"
+                },
+            }
         },
         Planet={},
         Spectral={},
@@ -608,6 +626,7 @@ return {
             cod_envy="Envious",
             cod_dormant="Dormant",
             cod_claustrophobic="Claustrophobic",
+            cod_confidential="Confidential",
         },
         poker_hand_descriptions={},
         poker_hands={},

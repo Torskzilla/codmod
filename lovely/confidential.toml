@@ -1,0 +1,80 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''
+elseif self.debuff then
+'''
+position = "before"
+payload = '''
+elseif self.ability.cod_confidential then
+    loc_vars = { confidential = true, playing_card = not not self.base.colour, value = self.base.value, suit = self.base.suit, colour = self.base.colour }
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+elseif specific_vars and specific_vars.debuffed then
+'''
+position = "before"
+payload = '''
+elseif specific_vars and specific_vars.confidential and not card.area.config.collection then
+    localize{type = 'other', key = 'confidential_default', nodes = desc_nodes}
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+elseif specific_vars and (card_type == 'Default' or card_type == 'Enhanced') then
+'''
+position = "before"
+payload = '''
+elseif specific_vars and specific_vars.confidential and not card.area.config.collection then 
+    full_UI_table.name = localize{type = 'name', set = 'Other', key = 'confidential_default', name_nodes = {}}
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+if AUT.card_type ~= 'Locked' and AUT.card_type ~= 'Undiscovered' then
+'''
+position = "at"
+payload = '''
+if AUT.card_type ~= 'Locked' and AUT.card_type ~= 'Undiscovered' and not card.ability.cod_confidential then
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/UI_definitions.lua'
+pattern = '''
+badges[#badges + 1] = create_badge(((card.ability.name == 'Pluto' or card.ability.name == 'Ceres' or card.ability.name == 'Eris') and localize('k_dwarf_planet')) or (card.ability.name == 'Planet X' and localize('k_planet_q') or card_type), card_type_colour, card_type_text_colour, 1.2)
+'''
+position = "at"
+payload = '''
+if not card.ability.cod_confidential then badges[#badges + 1] = create_badge(((card.ability.name == 'Pluto' or card.ability.name == 'Ceres' or card.ability.name == 'Eris') and localize('k_dwarf_planet')) or (card.ability.name == 'Planet X' and localize('k_planet_q') or card_type), card_type_colour, card_type_text_colour, 1.2) end
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = '=[SMODS _ "src/game_object.lua"]'
+pattern = '''
+if specific_vars and specific_vars.debuffed and not res.replace_debuff then
+'''
+position = "at"
+payload = '''
+if specific_vars and specific_vars.confidential and not res.replace_confidential then
+    target = { type = 'other', key = 'confidential_default', nodes = desc_nodes, AUT = full_UI_table, }
+elseif specific_vars and specific_vars.debuffed and not res.replace_debuff then
+'''
+match_indent = true

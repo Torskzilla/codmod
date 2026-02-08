@@ -37,9 +37,19 @@ SMODS.Sticker {
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
-        card.ability.dormant_tally = dormant_rounds
-        SMODS.debuff_card(card, true, "cod_dormant")
-        
+        if card.ability[self.key] then
+            card.ability.dormant_tally = dormant_rounds
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    if not (card.area.config.collection) then
+                        SMODS.debuff_card(card, true, "cod_dormant")
+                    end
+                    return true
+                end
+            }))
+        else
+            SMODS.debuff_card(card, false, "cod_dormant")
+        end
     end,
     loc_vars = function(self, info_queue, card)
         return { vars = { dormant_rounds, card.ability.dormant_tally or dormant_rounds } }
@@ -71,6 +81,9 @@ SMODS.Sticker {
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
+        if not card.ability[self.key] then
+            SMODS.debuff_card(card, false, "cod_envy")
+        end
     end,
     calculate = function(self, card, context)
         if (context.joker_type_destroyed or context.selling_card) and context.card ~= card then
@@ -124,6 +137,9 @@ SMODS.Sticker {
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
+        if not card.ability[self.key] then
+            SMODS.debuff_card(card, false, "cod_claustrophobic")
+        end
     end,
     calculate = function(self, card, context)
         if context.buying_self or context.card_added or ((context.joker_type_destroyed or context.selling_card) and context.card ~= card) then
@@ -141,6 +157,46 @@ SMODS.Sticker {
                 SMODS.debuff_card(card, false, "cod_claustrophobic")
             else
                 SMODS.debuff_card(card, true, "cod_claustrophobic")
+            end
+        end
+    end
+}
+
+-- hook to set sprite on card load
+local card_load_ref = Card.load
+function Card:load(cardTable, other_card)
+
+    local ret = card_load_ref(self, cardTable, other_card)
+    if self.ability["cod_confidential"] then
+        self:set_sprites(G.P_CENTERS["j_cod_redacted"])
+    end
+    return ret
+end
+
+-- Confidential
+SMODS.Sticker {
+    key = "confidential",
+    badge_colour = HEX '939ecc',
+    atlas = 'atlas_cod_stickers',
+    pos = { x = 3, y = 0 },
+    default_compat = true,
+    rate = 0.25,
+    needs_enable_flag = true,
+    should_apply = function(self, card, center, area, bypass_roll)
+        return G.P_CENTERS[card.config.center.key].discovered and SMODS.Sticker.should_apply(self, card, center, area, bypass_roll)
+    end,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+        if card.ability[self.key] then
+            card:set_sprites(G.P_CENTERS["j_cod_redacted"])
+        elseif not card.ability[self.key] then
+            card:set_sprites(nil)
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.buying_self or context.card_added then
+            if context.card.ability.cod_confidential then
+                context.card:set_sprites(G.P_CENTERS["j_cod_redacted"])
             end
         end
     end

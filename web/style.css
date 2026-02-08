@@ -68,6 +68,10 @@ img.hasback {
   background-image: url("img/sticker_bg.png");
   background-size: 142px 190px;
 }
+img.redacted {
+  background-image: url("img/redacted.png");
+  background-size: 142px 190px;
+}
 @keyframes blind-animate {
   from {object-position: 0px 0px}
   to {object-position: -2720px 0px}

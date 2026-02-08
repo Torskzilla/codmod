@@ -6,6 +6,19 @@ SMODS.Atlas {
 	py = 95
 }
 
+-- Redacted
+-- dummy joker for confidential sticker
+SMODS.Joker {
+	key = "redacted",
+    atlas = 'atlas_cod_jokers',
+    discovered = true,
+    pos = { x = 6, y = 5 },
+	no_collection = true,
+	in_pool = function(self, args)
+		return false
+	end,
+}
+
 -- Season cycle
 local season_loc_vars = function(self, info_queue, card)
     return { vars = { localize(card.ability.extra.from_suit, 'suits_singular'), localize(card.ability.extra.to_suit, 'suits_plural'), colours = { card.ability.extra.from_color, card.ability.extra.to_color } } }

@@ -583,6 +583,14 @@ let stickers = [
     image_url: "img/sticker/claustrophobic.png",
     rarity: "Sticker"
   },
+  {
+    name: "Confidential",
+    text: [
+      "Hides card",
+    ],
+    image_url: "img/sticker/confidential.png",
+    rarity: "Sticker"
+  },
 ]
 
 let blinds = [
@@ -718,9 +726,11 @@ let add_cards_to_div = (jokers, jokers_div) => {
     let joker_div = document.createElement("div");
     joker_div.classList.add("joker");
     if (joker.rarity === "Sticker" || joker.rarity == "Seal") {
+      background = "hasback"
+      if (joker.name == "Confidential") background = "redacted"
       joker_div.innerHTML = `
         <h3>${joker.name}</h3>
-        <img src="${joker.image_url}" alt="${joker.name}" class="hasback" />
+        <img src="${joker.image_url}" alt="${joker.name}" class="${background}" />
         <h4 class="rarity" style="background-color: ${rarities[joker.rarity]}">${joker.rarity}</h4>
         <div class="text">${joker.text}</div>
       `;
