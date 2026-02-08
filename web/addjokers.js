@@ -575,6 +575,14 @@ let stickers = [
     image_url: "img/sticker/envy.png",
     rarity: "Sticker"
   },
+  {
+    name: "Claustrophobic",
+    text: [
+      "Debuffed if Joker Slots are full",
+    ],
+    image_url: "img/sticker/claustrophobic.png",
+    rarity: "Sticker"
+  },
 ]
 
 let blinds = [

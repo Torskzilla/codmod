@@ -73,7 +73,7 @@ SMODS.Sticker {
         card.ability[self.key] = val
     end,
     calculate = function(self, card, context)
-        if context.joker_type_destroyed or context.selling_card then
+        if (context.joker_type_destroyed or context.selling_card) and context.card ~= card then
             local envy_count = 0
             for i = 1, #G.jokers.cards do
                 if G.jokers.cards[i].ability.cod_envy then
@@ -83,14 +83,13 @@ SMODS.Sticker {
             if context.card.ability.cod_envy then
                 envy_count = envy_count - 1
             end
-            for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i].ability.cod_envy and G.jokers.cards[i] ~= context.card then
-                    if (envy_count>1) then SMODS.debuff_card(G.jokers.cards[i], true, "cod_envy")
-                    else SMODS.debuff_card(G.jokers.cards[i], false, "cod_envy") end
-                end
+            if (envy_count>1) then
+                SMODS.debuff_card(card, true, "cod_envy")
+            else
+                SMODS.debuff_card(card, false, "cod_envy")
             end
         end
-        if context.card_added then
+        if context.buying_self or context.card_added then
             local envy_count = 0
             if context.card.ability.cod_envy then
                 envy_count = envy_count + 1
@@ -100,16 +99,48 @@ SMODS.Sticker {
                     envy_count = envy_count + 1
                 end
             end
-            for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i].ability.cod_envy then
-                    if (envy_count>1) then SMODS.debuff_card(G.jokers.cards[i], true, "cod_envy")
-                    else SMODS.debuff_card(G.jokers.cards[i], false, "cod_envy") end
-                end
+            if (envy_count>1) then
+                SMODS.debuff_card(card, true, "cod_envy")
+            else
+                SMODS.debuff_card(card, false, "cod_envy")
             end
             if context.card.ability.cod_envy then
                 if (envy_count>1) then
                     SMODS.debuff_card(context.card, true, "cod_envy")
                 end
+            end
+        end
+    end
+}
+
+-- Claustrophobic
+SMODS.Sticker {
+    key = "claustrophobic",
+    badge_colour = HEX 'aeaeae',
+    atlas = 'atlas_cod_stickers',
+    pos = { x = 2, y = 0 },
+    default_compat = true,
+    rate = 0.25,
+    needs_enable_flag = true,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+    end,
+    calculate = function(self, card, context)
+        if context.buying_self or context.card_added or ((context.joker_type_destroyed or context.selling_card) and context.card ~= card) then
+            local empty_count = G.jokers.config.card_limit - #G.jokers.cards
+            if (context.joker_type_destroyed or context.selling_card) then
+                empty_count = empty_count - context.card.ability.card_limit + 1
+            end
+            if context.card_added or context.buying_self then
+                empty_count = empty_count - 1 + context.card.ability.card_limit
+                if (context.card.ability.cod_claustrophobic and empty_count<=0) then
+                    SMODS.debuff_card(context.card, true, "cod_claustrophobic")
+                end
+            end
+            if (empty_count>0) then
+                SMODS.debuff_card(card, false, "cod_claustrophobic")
+            else
+                SMODS.debuff_card(card, true, "cod_claustrophobic")
             end
         end
     end

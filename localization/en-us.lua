@@ -539,6 +539,13 @@ return {
                     "{C:green}Envious{} Joker"
                 },
             },
+            cod_claustrophobic = {
+                name = "Claustrophobic",
+                text = {
+                    "Debuffed if Joker",
+                    "Slots are full",
+                },
+            },
         },
         Planet={},
         Spectral={},
@@ -600,6 +607,7 @@ return {
         labels={
             cod_envy="Envious",
             cod_dormant="Dormant",
+            cod_claustrophobic="Claustrophobic",
         },
         poker_hand_descriptions={},
         poker_hands={},

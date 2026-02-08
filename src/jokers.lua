@@ -2383,7 +2383,7 @@ SMODS.Joker {
     pos = { x = 5, y = 5 },
     config = { card_limit = 1, extra = { xmult = 0.5 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.card_limit, card.ability.extra.xmult } }
+        return { vars = { 1, card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
         if context.joker_main then
