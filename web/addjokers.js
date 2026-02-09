@@ -591,6 +591,14 @@ let stickers = [
     image_url: "img/sticker/confidential.png",
     rarity: "Sticker"
   },
+  {
+    name: "Expensive",
+    text: [
+      "Costs more",
+    ],
+    image_url: "img/sticker/expensive.png",
+    rarity: "Sticker"
+  },
 ]
 
 let blinds = [

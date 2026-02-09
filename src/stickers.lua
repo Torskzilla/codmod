@@ -10,7 +10,7 @@ SMODS.Atlas {
 -- hook to implement reasonable sticker incompat, stickers with the same sticker_slot are incompatible
 local should_apply_ref = SMODS.Sticker.should_apply
 function SMODS.Sticker:should_apply(card, center, area, bypass_roll)
-    if not (self.outside_shop or area == G.shop_jokers or area == G.pack_cards) then
+    if not (self.outside_shop or area == G.shop_jokers or (area == G.pack_cards and not self.not_in_boosters)) then
         return false
     end
     
@@ -233,7 +233,7 @@ SMODS.Sticker {
     pos = { x = 3, y = 0 },
     default_compat = true,
     compat_exceptions = {"j_madness"},
-    rate = 0.3,
+    rate = 0.2,
     needs_enable_flag = true,
     should_apply = function(self, card, center, area, bypass_roll)
         return G.P_CENTERS[card.config.center.key].discovered and SMODS.Sticker.should_apply(self, card, center, area, bypass_roll)
@@ -253,4 +253,24 @@ SMODS.Sticker {
             end
         end
     end
+}
+
+-- Expensive
+SMODS.Sticker {
+    key = "expensive",
+    sticker_slot = 2,
+    badge_colour = HEX 'e79368',
+    atlas = 'atlas_cod_stickers',
+    pos = { x = 0, y = 1 },
+    default_compat = true,
+    not_in_boosters = true,
+    rate = 0.15,
+    needs_enable_flag = true,
+    should_apply = function(self, card, center, area, bypass_roll)
+        return (G.GAME.round and G.GAME.round > 2) and SMODS.Sticker.should_apply(self, card, center, area, bypass_roll)
+    end,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+        card:set_cost()
+    end,
 }

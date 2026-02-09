@@ -25,6 +25,7 @@ SMODS.Stake {
         G.GAME.modifiers.enable_cod_dormant = true
         G.GAME.modifiers.enable_cod_claustrophobic = true
         G.GAME.modifiers.enable_cod_confidential = true
+        G.GAME.modifiers.enable_cod_expensive = true
     end,
     colour = G.C.WHITE,
     shiny = true,

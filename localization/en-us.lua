@@ -563,7 +563,13 @@ return {
                 text = {
                     "Unknown effect"
                 },
-            }
+            },
+            cod_expensive = {
+                name = "Expensive",
+                text = {
+                    "Costs more",
+                },
+            },
         },
         Planet={},
         Spectral={},
@@ -635,6 +641,7 @@ return {
             cod_dormant="Dormant",
             cod_claustrophobic="Claustrophobic",
             cod_confidential="Confidential",
+            cod_expensive="Expensive",
         },
         poker_hand_descriptions={},
         poker_hands={},
