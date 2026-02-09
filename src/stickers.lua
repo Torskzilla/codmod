@@ -10,6 +10,9 @@ SMODS.Atlas {
 -- hook to implement reasonable sticker incompat, stickers with the same sticker_slot are incompatible
 local should_apply_ref = SMODS.Sticker.should_apply
 function SMODS.Sticker:should_apply(card, center, area, bypass_roll)
+    if not (self.outside_shop or area == G.shop_jokers or area == G.pack_cards) then
+        return false
+    end
     
     for k, v in pairs(SMODS.Stickers) do
         if self.key ~= k and card.ability[k] and self.sticker_slot == v.sticker_slot then
