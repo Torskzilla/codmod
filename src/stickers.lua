@@ -73,7 +73,7 @@ SMODS.Sticker {
     atlas = 'atlas_cod_stickers',
     pos = { x = 0, y = 0 },
     default_compat = true,
-    rate = 0.25,
+    rate = 0.3,
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -123,7 +123,7 @@ SMODS.Sticker {
     atlas = 'atlas_cod_stickers',
     pos = { x = 1, y = 0 },
     default_compat = true,
-    rate = 0.25,
+    rate = 0.3,
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -180,7 +180,7 @@ SMODS.Sticker {
     atlas = 'atlas_cod_stickers',
     pos = { x = 2, y = 0 },
     default_compat = true,
-    rate = 0.25,
+    rate = 0.3,
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -230,7 +230,7 @@ SMODS.Sticker {
     pos = { x = 3, y = 0 },
     default_compat = true,
     compat_exceptions = {"j_madness"},
-    rate = 0.25,
+    rate = 0.3,
     needs_enable_flag = true,
     should_apply = function(self, card, center, area, bypass_roll)
         return G.P_CENTERS[card.config.center.key].discovered and SMODS.Sticker.should_apply(self, card, center, area, bypass_roll)
