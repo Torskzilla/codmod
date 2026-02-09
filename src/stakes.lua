@@ -7,10 +7,15 @@ SMODS.Atlas {
 }
 
 -- Platinum
+-- fix: does not apply previous stakes
 SMODS.Stake {
     name = "Platinum Stake",
     key = "platinum",
-    applied_stakes = { "gold" },
+    applied_stakes = { "stake_gold" },
+    prefix_config = {
+        applied_stakes = { mod = false },
+        above_stake = { mod = false }
+    },
     atlas = 'atlas_cod_stakes',
     pos = { x = 0, y = 0 },
     sticker_atlas = 'atlas_cod_stickers',
@@ -23,4 +28,5 @@ SMODS.Stake {
     end,
     colour = G.C.WHITE,
     shiny = true,
+    unlocked = false,
 }

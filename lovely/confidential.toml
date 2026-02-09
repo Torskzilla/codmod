@@ -49,7 +49,7 @@ if AUT.card_type ~= 'Locked' and AUT.card_type ~= 'Undiscovered' then
 '''
 position = "at"
 payload = '''
-if AUT.card_type ~= 'Locked' and AUT.card_type ~= 'Undiscovered' and not card.ability.cod_confidential then
+if AUT.card_type ~= 'Locked' and AUT.card_type ~= 'Undiscovered' and not (card.ability and card.ability.cod_confidential) then
 '''
 match_indent = true
 
@@ -61,7 +61,7 @@ badges[#badges + 1] = create_badge(((card.ability.name == 'Pluto' or card.abilit
 '''
 position = "at"
 payload = '''
-if not card.ability.cod_confidential then badges[#badges + 1] = create_badge(((card.ability.name == 'Pluto' or card.ability.name == 'Ceres' or card.ability.name == 'Eris') and localize('k_dwarf_planet')) or (card.ability.name == 'Planet X' and localize('k_planet_q') or card_type), card_type_colour, card_type_text_colour, 1.2) end
+if not (card.ability and card.ability.cod_confidential) then badges[#badges + 1] = create_badge(((card.ability.name == 'Pluto' or card.ability.name == 'Ceres' or card.ability.name == 'Eris') and localize('k_dwarf_planet')) or (card.ability.name == 'Planet X' and localize('k_planet_q') or card_type), card_type_colour, card_type_text_colour, 1.2) end
 '''
 match_indent = true
 

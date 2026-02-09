@@ -5,6 +5,45 @@ SMODS.Atlas {
 	py = 95
 }
 
+-- broke
+
+-- hook to implement reasonable sticker incompat, stickers with the same sticker_slot are incompatible
+local should_apply_ref = SMODS.Sticker.should_apply
+function SMODS.Sticker:should_apply(card, center, area, bypass_roll)
+    
+    for k, v in pairs(SMODS.Stickers) do
+        if self.key ~= k and card.ability[k] and self.sticker_slot == v.sticker_slot then
+            return false
+        end
+    end
+
+    return should_apply_ref(self, card, center, area, bypass_roll)
+end
+
+SMODS.Sticker:take_ownership('eternal',
+    {
+	sticker_slot = 1,
+    should_apply = SMODS.Sticker.should_apply,
+    },
+    true
+)
+
+SMODS.Sticker:take_ownership('perishable',
+    {
+	sticker_slot = 1,
+    should_apply = SMODS.Sticker.should_apply,
+    },
+    true
+)
+
+SMODS.Sticker:take_ownership('rental',
+    {
+	sticker_slot = 2,
+    should_apply = SMODS.Sticker.should_apply,
+    },
+    true
+)
+
 -- hook to let debuffed cards have sticker effects
 local eval_card_ref = eval_card
 function eval_card(card, context)
@@ -29,6 +68,7 @@ local dormant_rounds = 3
 
 SMODS.Sticker {
     key = "dormant",
+    sticker_slot = 1,
     badge_colour = HEX '3c11b2',
     atlas = 'atlas_cod_stickers',
     pos = { x = 0, y = 0 },
@@ -78,6 +118,7 @@ SMODS.Sticker {
 -- Envious
 SMODS.Sticker {
     key = "envy",
+    sticker_slot = 1,
     badge_colour = HEX '85e768',
     atlas = 'atlas_cod_stickers',
     pos = { x = 1, y = 0 },
@@ -134,6 +175,7 @@ SMODS.Sticker {
 -- Claustrophobic
 SMODS.Sticker {
     key = "claustrophobic",
+    sticker_slot = 1,
     badge_colour = HEX 'aeaeae',
     atlas = 'atlas_cod_stickers',
     pos = { x = 2, y = 0 },
@@ -182,6 +224,7 @@ end
 -- fix: does not affect the soul layer
 SMODS.Sticker {
     key = "confidential",
+    sticker_slot = 1,
     badge_colour = HEX '939ecc',
     atlas = 'atlas_cod_stickers',
     pos = { x = 3, y = 0 },
