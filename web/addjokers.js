@@ -478,6 +478,14 @@ let jokers = [
     image_url: "img/j/stellar_cluster.png",
     rarity: "Common"
   },
+  {
+    name: "Taxes",
+    text: [
+      "{C:mult}+1{} Mult for every {C:money}$1{} you are below {C:money}$25{}",
+    ],
+    image_url: "img/j/taxes.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

@@ -2478,3 +2478,34 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Taxes
+SMODS.Joker {
+    key = "taxes",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 9, y = 5 },
+    config = { extra = { mult = 1, cap = 25 } },
+    loc_vars = function(self, info_queue, card)
+        local played = 0
+        for _, hand in pairs(G.GAME.hands) do
+            if hand.played > 0 then
+                played = played + 1
+            end
+        end
+
+        return { vars = { card.ability.extra.mult, card.ability.extra.cap, math.max(0, card.ability.extra.cap - (G.GAME.dollars*card.ability.extra.mult)) } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            if context.joker_main then
+                return {
+                    mult = math.max(0, card.ability.extra.cap - (G.GAME.dollars*card.ability.extra.mult))
+                }
+            end
+        end
+    end,
+}

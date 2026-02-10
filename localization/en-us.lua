@@ -550,6 +550,14 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
+            j_cod_taxes = {
+                name = "Taxes",
+                text = {
+                    "{C:mult}+#1#{} Mult for every {C:money}$1{}",
+                    "you are below {C:money}$#2#{}",
+                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
+                },
+            },
         },
         Other={
             cod_dormant = {
