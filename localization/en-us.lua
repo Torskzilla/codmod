@@ -534,6 +534,22 @@ return {
                     "Unknown effect"
                 },
             },
+            j_cod_stellar_void = {
+                name = "Stellar Void",
+                text = {
+                    "{C:mult}+#1#{} Mult per {C:attention}poker hand{}",
+                    "you have never played",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                },
+            },
+            j_cod_stellar_cluster = {
+                name = "Stellar Cluster",
+                text = {
+                    "{C:mult}+#1#{} Mult per different",
+                    "{C:attention}poker hand{} you have played",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                },
+            },
         },
         Other={
             cod_dormant = {

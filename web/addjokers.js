@@ -462,6 +462,22 @@ let jokers = [
     image_url: "img/j/shackles.png",
     rarity: "Common"
   },
+  {
+    name: "Stellar Void",
+    text: [
+      "{C:mult}+2{} Mult per {C:attention}poker hand{} you have never played",
+    ],
+    image_url: "img/j/stellar_void.png",
+    rarity: "Common"
+  },
+  {
+    name: "Stellar Cluster",
+    text: [
+      "{C:mult}+3{} Mult per different {C:attention}poker hand{} you have played",
+    ],
+    image_url: "img/j/stellar_cluster.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

@@ -2408,3 +2408,73 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Stellar Void
+SMODS.Joker {
+    key = "stellar_void",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 8, y = 5 },
+    config = { extra = { mult = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local unplayed = 0
+        for _, hand in pairs(G.GAME.hands) do
+            if hand.played == 0 then
+                unplayed = unplayed + 1
+            end
+        end
+
+        return { vars = { card.ability.extra.mult, unplayed*card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local unplayed = 0
+            for _, hand in pairs(G.GAME.hands) do
+                if hand.played == 0 then
+                    unplayed = unplayed + 1
+                end
+            end
+            return {
+                mult = unplayed * card.ability.extra.mult,
+            }
+        end
+    end,
+}
+
+-- Stellar Cluster
+SMODS.Joker {
+    key = "stellar_cluster",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 7, y = 5 },
+    config = { extra = { mult = 3 } },
+    loc_vars = function(self, info_queue, card)
+        local played = 0
+        for _, hand in pairs(G.GAME.hands) do
+            if hand.played > 0 then
+                played = played + 1
+            end
+        end
+
+        return { vars = { card.ability.extra.mult, played*card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local played = 0
+            for _, hand in pairs(G.GAME.hands) do
+                if hand.played > 0 then
+                    played = played + 1
+                end
+            end
+            return {
+                mult = played * card.ability.extra.mult,
+            }
+        end
+    end,
+}
