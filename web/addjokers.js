@@ -486,6 +486,14 @@ let jokers = [
     image_url: "img/j/taxes.png",
     rarity: "Common"
   },
+  {
+    name: "Knockoff",
+    text: [
+      "Copies ability of the lowest sell value {C:attention}Joker{}",
+    ],
+    image_url: "img/j/knockoff.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

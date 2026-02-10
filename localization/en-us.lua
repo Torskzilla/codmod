@@ -558,6 +558,13 @@ return {
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
                 },
             },
+            j_cod_knockoff = {
+                name = "Knockoff",
+                text = {
+                    "Copies ability of the",
+                    "lowest sell value {C:attention}Joker{}",
+                },
+            },
         },
         Other={
             cod_dormant = {
