@@ -26,6 +26,13 @@ return {
                     "{C:enhanced}Enhancement{} and {C:dark_edition}Edition{}"
                 },
             },
+            b_cod_gravity={
+                name="Gravity Deck",
+                text={
+                    "Start run with a",
+                    "copy of {C:legendary,E:1,T:c_black_hole}Black Hole{}"
+                },
+            },
         },
         Blind={
             bl_cod_innocent = {

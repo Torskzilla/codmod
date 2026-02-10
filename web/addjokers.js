@@ -556,6 +556,14 @@ let decks = [
     image_url: "img/b/vip.png",
     rarity: "Deck"
   },
+  {
+    name: "Gravity Deck",
+    text: [
+      "Start run with a copy of {C:purple,E:1,T:c_black_hole}Black Hole{}"
+    ],
+    image_url: "img/b/gravity.png",
+    rarity: "Deck"
+  },
 ]
 
 let stickers = [
