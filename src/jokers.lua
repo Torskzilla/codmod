@@ -1085,19 +1085,20 @@ SMODS.Joker {
     pos = { x = 0, y = 2 },
     config = { extra = { anti_ante = 1, skips = 3, skip_counter = 0 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.anti_ante, card.ability.extra.skips, card.ability.extra.skip_counter } }
+        return { vars = { card.ability.extra.anti_ante, card.ability.extra.skips + (G.GAME.cod_faster_than_light_penalty or 0), card.ability.extra.skip_counter } }
     end,
     calculate = function(self, card, context)
         if context.skip_blind and not context.blueprint then
             card.ability.extra.skip_counter = card.ability.extra.skip_counter + 1
-            if card.ability.extra.skip_counter >= card.ability.extra.skips then
+            if card.ability.extra.skip_counter >= card.ability.extra.skips + (G.GAME.cod_faster_than_light_penalty or 0) then
 
                 ease_ante(-card.ability.extra.anti_ante)
                 G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante or G.GAME.round_resets.ante
                 G.GAME.round_resets.blind_ante = G.GAME.round_resets.blind_ante - card.ability.extra.anti_ante
                 
                 card.ability.extra.skip_counter = 0
-                card.ability.extra.skips = card.ability.extra.skips + 1
+                G.GAME.cod_faster_than_light_penalty = G.GAME.cod_faster_than_light_penalty or 0
+                G.GAME.cod_faster_than_light_penalty = G.GAME.cod_faster_than_light_penalty + 1
 
                 -- Refresh big blind and boss blind to show correct chips requirements
                 -- no idea what this code does, got it from reroll tag logic
