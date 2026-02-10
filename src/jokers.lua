@@ -400,7 +400,7 @@ SMODS.Joker {
     atlas = 'atlas_cod_jokers',
     pos = { x = 7, y = 3 },
     -- amount is unused
-    config = { extra = { amount = 1, mult_gain = 3, mult = 0 } },
+    config = { extra = { amount = 1, mult_gain = 2, mult = 0 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult_gain, card.ability.extra.amount, card.ability.extra.mult } }
     end,

@@ -102,7 +102,7 @@ let jokers = [
     name: "Harmony",
     text: [
       "When {C:attention}Blind{} is selected, gain",
-      "{C:mult}+3{} Mult and convert {C:attention}1{} card from",
+      "{C:mult}+2{} Mult and convert {C:attention}1{} card from",
       "your most common suit to your least",
     ],
     image_url: "img/j/harmony.png",
