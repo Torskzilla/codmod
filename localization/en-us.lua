@@ -640,6 +640,7 @@ return {
             c_cod_chaos_chaos = "Chaos Chaos",
             c_cod_sleepover = "Sleepover",
             c_cod_top_secret = "Top Secret",
+            c_cod_final_exam = "Final Exam",
         },
         collabs={},
         dictionary={

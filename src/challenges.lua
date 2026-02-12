@@ -50,3 +50,12 @@ SMODS.Challenge {
         },
     }
 }
+
+-- Final Exam
+SMODS.Challenge {
+    key = 'final_exam',
+    jokers = {
+        { id = 'j_cod_homework', eternal = true },
+        { id = 'j_cod_homework', eternal = true },
+    },
+}
