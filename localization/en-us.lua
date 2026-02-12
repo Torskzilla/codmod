@@ -638,6 +638,8 @@ return {
         challenge_names={
             c_cod_universal_paperclips = "Universal Paperclips",
             c_cod_chaos_chaos = "Chaos Chaos",
+            c_cod_sleepover = "Sleepover",
+            c_cod_top_secret = "Top Secret",
         },
         collabs={},
         dictionary={
@@ -696,6 +698,13 @@ return {
         suits_singular={},
         tutorial={},
         v_dictionary={},
-        v_text={},
+        v_text={
+            ch_c_all_confidential={
+                "All Jokers are {C:attention}Confidential{}",
+            },
+            ch_c_all_dormant={
+                "All Jokers are {C:attention}Dormant{}",
+            },
+        },
     },
 }

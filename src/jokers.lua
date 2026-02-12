@@ -536,7 +536,7 @@ SMODS.Joker {
     cost = 6,
     atlas = 'atlas_cod_jokers',
     pos = { x = 4, y = 1 },
-    config = { extra = { mult = 25, cod_clone = true } },
+    config = { extra = { mult = 20, cod_clone = true } },
     in_pool = function(self, args)
         return true, { allow_duplicates = true }
     end,

@@ -119,7 +119,7 @@ let jokers = [
   {
     name: "Uncanny Clone",
     text: [
-      "Clones each give {C:mult}+25{} Mult, may appear multiple times",
+      "Clones each give {C:mult}+20{} Mult, may appear multiple times",
     ],
     image_url: "img/j/uncanny_clone.png",
     rarity: "Uncommon"

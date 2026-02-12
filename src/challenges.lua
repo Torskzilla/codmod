@@ -24,3 +24,29 @@ SMODS.Challenge {
         { id = 'j_cod_random', edition = "negative" },
     }
 }
+
+-- Sleepover
+SMODS.Challenge {
+    key = 'sleepover',
+    rules = {
+        custom = {
+            { id = 'all_dormant' },
+        }
+    },
+}
+
+-- Top Secret
+SMODS.Challenge {
+    key = 'top_secret',
+    rules = {
+        custom = {
+            { id = 'all_confidential' },
+        }
+    },
+    restrictions = {
+        banned_cards = {
+            { id = 'j_madness' },
+            { id = 'j_cod_paperclip' },
+        },
+    }
+}
