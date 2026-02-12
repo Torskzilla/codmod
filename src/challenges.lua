@@ -59,3 +59,15 @@ SMODS.Challenge {
         { id = 'j_cod_homework', eternal = true },
     },
 }
+
+-- Unaccountably Peckish
+SMODS.Challenge {
+    key = 'unaccountably_peckish',
+    jokers = {
+        { id = 'j_cod_hungry', edition = "negative", eternal = true },
+        { id = 'j_cod_hungry', edition = "negative", eternal = true },
+    },
+    vouchers = {
+        { id = 'v_magic_trick' },
+    }
+}
