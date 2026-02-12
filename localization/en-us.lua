@@ -565,6 +565,13 @@ return {
                     "lowest sell value {C:attention}Joker{}",
                 },
             },
+            j_cod_delivery = {
+                name = "Delivery",
+                text = {
+                    "Earn {C:money}$#1#{} when",
+                    "{C:attention}Blind{} is skipped",
+                },
+            },
         },
         Other={
             cod_dormant = {

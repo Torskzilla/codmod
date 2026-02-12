@@ -494,6 +494,14 @@ let jokers = [
     image_url: "img/j/knockoff.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Delivery",
+    text: [
+      "Earn {C:money}$8{} when {C:attention}Blind{} is skipped",
+    ],
+    image_url: "img/j/delivery.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",
