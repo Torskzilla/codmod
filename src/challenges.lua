@@ -1,3 +1,24 @@
+-- Final Exam
+SMODS.Challenge {
+    key = 'final_exam',
+    jokers = {
+        { id = 'j_cod_homework', eternal = true },
+        { id = 'j_cod_homework', eternal = true },
+    },
+}
+
+-- Unaccountably Peckish
+SMODS.Challenge {
+    key = 'unaccountably_peckish',
+    jokers = {
+        { id = 'j_cod_hungry', edition = "negative", eternal = true },
+        { id = 'j_cod_hungry', edition = "negative", eternal = true },
+    },
+    vouchers = {
+        { id = 'v_magic_trick' },
+    }
+}
+
 -- Universal Paperclips
 SMODS.Challenge {
     key = 'universal_paperclips',
@@ -48,26 +69,5 @@ SMODS.Challenge {
             { id = 'j_madness' },
             { id = 'j_cod_paperclip' },
         },
-    }
-}
-
--- Final Exam
-SMODS.Challenge {
-    key = 'final_exam',
-    jokers = {
-        { id = 'j_cod_homework', eternal = true },
-        { id = 'j_cod_homework', eternal = true },
-    },
-}
-
--- Unaccountably Peckish
-SMODS.Challenge {
-    key = 'unaccountably_peckish',
-    jokers = {
-        { id = 'j_cod_hungry', edition = "negative", eternal = true },
-        { id = 'j_cod_hungry', edition = "negative", eternal = true },
-    },
-    vouchers = {
-        { id = 'v_magic_trick' },
     }
 }
