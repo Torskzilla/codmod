@@ -1338,7 +1338,7 @@ SMODS.Joker {
         return { vars = { card.ability.extra.mult_gain, card.ability.extra.mult } }
     end,
     calculate = function(self, card, context)
-        if context.selling_card and not context.blueprint then
+        if context.selling_card and not context.blueprint and card ~= context.card then
             local key_to_ban = context.card.config.center.key
 
             G.GAME.banned_keys[key_to_ban] = true
