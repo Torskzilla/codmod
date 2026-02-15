@@ -641,7 +641,8 @@ return {
             c_cod_sleepover = "Sleepover",
             c_cod_top_secret = "Top Secret",
             c_cod_final_exam = "Final Exam",
-            c_cod_unaccountably_peckish = "Unaccountably Peckish"
+            c_cod_unaccountably_peckish = "Unaccountably Peckish",
+            c_cod_fishbucket = "Fishbucket",
         },
         collabs={},
         dictionary={
@@ -706,6 +707,9 @@ return {
             },
             ch_c_all_dormant={
                 "All Jokers are {C:attention}Dormant{}",
+            },
+            ch_c_fishbucket={
+                "Only Jokers from Cod's Mod",
             },
         },
     },

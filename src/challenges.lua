@@ -69,5 +69,26 @@ SMODS.Challenge {
             { id = 'j_madness' },
             { id = 'j_cod_paperclip' },
         },
-    }
+    },
+}
+
+-- Fishbucket
+SMODS.Challenge {
+    key = 'fishbucket',
+    rules = {
+        custom = {
+            { id = 'fishbucket' },
+        }
+    },
+    restrictions = {
+        banned_cards = function()
+            local banned = {}
+            for k, v in pairs(G.P_CENTERS) do
+                if v.set == 'Joker' and not (v.original_mod and v.original_mod.id == "CodMod") then
+                    banned[#banned+1] = {id = v.key}
+                end
+            end
+            return banned
+        end
+    },
 }
