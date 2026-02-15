@@ -243,8 +243,7 @@ let jokers = [
     name: "Spam",
     text: [
       "When round begins,",
-        "add {C:attention}2{} random {C:attention}playing",
-        "{C:attention}cards{} to your hand",
+        "add {C:attention}2{} random {C:attention}playing cards{} to your hand",
     ],
     image_url: "img/j/spam_base.png",
     soul_url: "img/j/spam_soul.png",
@@ -254,9 +253,7 @@ let jokers = [
   {
     name: "Hidden Joker",
     text: [
-      "{C:red}+3{} discards each round,",
-        "cards are drawn face",
-        "down after discards",
+      "{C:red}+3{} discards each round, cards are drawn face down after discards",
     ],
     image_url: "img/j/hidden_base.png",
     soul_url: "img/j/hidden_soul.png",
@@ -266,9 +263,7 @@ let jokers = [
   {
     name: "Cantrip",
     text: [
-      "{C:blue}+1{} Hand if played",
-        "hand is the first",
-        "{C:attention}High Card{} of the round",
+      "{C:blue}+1{} Hand if played hand is the first {C:attention}High Card{} of the round",
     ],
     image_url: "img/j/cantrip.png",
     rarity: "Common"
@@ -318,7 +313,7 @@ let jokers = [
   {
     name: "Anchor",
     text: [
-      "{C:spades}Spade{} cards are drawn last",
+      "{C:spades}Spade{} cards start at the bottom of the deck",
     ],
     image_url: "img/j/anchor.png",
     rarity: "Uncommon"
@@ -656,6 +651,14 @@ let blinds = [
       "Excess score is added to the requirement of future blinds",
     ],
     image_url: "img/bl/innocent.png",
+    rarity: "Boss Blind"
+  },
+  {
+    name: "The Rot",
+    text: [
+      "First 5th of deck is debuffed",
+    ],
+    image_url: "img/bl/rot.png",
     rarity: "Boss Blind"
   },
   // {

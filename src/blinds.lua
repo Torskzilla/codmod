@@ -41,3 +41,26 @@ function get_blind_amount(ante)
 
     return chip_requirement
 end
+
+-- The Rot
+SMODS.Blind {
+    key = "rot",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 1 },
+    boss = { min = 1 },
+    boss_colour = HEX("72663f"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.round_shuffle then
+
+                local debuff_amount = math.ceil(#G.deck.cards / 5)
+
+                for i=0,(debuff_amount-1) do
+                    SMODS.debuff_card(G.deck.cards[#G.deck.cards-i], true, "cod_rot")
+                end
+            end
+        end
+    end
+}

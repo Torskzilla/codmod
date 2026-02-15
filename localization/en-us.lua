@@ -38,8 +38,16 @@ return {
             bl_cod_innocent = {
                 name = "The Innocent",
                 text = {
-                    "Excess score is added to the",
-                    "requirement of future blinds"
+                    "Excess score is added",
+                    "to the requirement",
+                    "of future blinds"
+                },
+            },
+            bl_cod_rot = {
+                name = "The Rot",
+                text = {
+                    "First 5th of deck",
+                    "is debuffed",
                 },
             },
         },
@@ -250,8 +258,8 @@ return {
             j_cod_anchor = {
                 name = "Anchor",
                 text = {
-                    "{V:1}#1#{} cards are",
-                    "drawn last",
+                    "{V:1}#1#{} cards start at",
+                    "the bottom of the deck",
                 },
             },
             j_cod_faster_than_light = {

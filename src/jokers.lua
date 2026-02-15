@@ -1051,12 +1051,7 @@ SMODS.Joker {
         return { vars = { localize(card.ability.extra.suit, 'suits_singular'), colours = { card.ability.extra.color } } }
     end,
     calculate = function(self, card, context)
-        if context.setting_blind and not context.blueprint then
-            return {
-                message = localize("anchor_sink"),
-                colour = card.ability.extra.color,
-            }
-        elseif context.drawing_cards and not context.blueprint then
+        if context.round_shuffle and not context.blueprint then
             local suit_cards = {}
             local non_suit_cards = {}
             for _, playing_card in ipairs(G.deck.cards) do
@@ -1070,6 +1065,11 @@ SMODS.Joker {
                 suit_cards[#suit_cards + 1] = non_suit_card
             end
             G.deck.cards = suit_cards
+
+            return {
+                message = localize("anchor_sink"),
+                colour = card.ability.extra.color,
+            }
         end
     end
 }
