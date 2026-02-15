@@ -27,7 +27,7 @@ local season_calculate = function(self, card, context)
     if context.before and not context.blueprint then
         local convert = false
         for _, scored_card in ipairs(context.scoring_hand) do
-            if scored_card:is_suit(card.ability.extra.from_suit) then
+            if scored_card:is_suit(card.ability.extra.from_suit) and not scored_card.debuff then
                 convert = true
                 assert(SMODS.change_base(scored_card, card.ability.extra.to_suit))
                 G.E_MANAGER:add_event(Event({
@@ -117,7 +117,7 @@ SMODS.Joker {
         if context.before then
             local convert = false
             for _, scored_card in ipairs(context.scoring_hand) do
-                if not SMODS.has_no_suit(scored_card) then
+                if not SMODS.has_no_suit(scored_card) and not scored_card.debuff then
                     convert = true
                     local suits = {"Hearts", "Spades", "Diamonds", "Clubs", "Hearts"}
                     for i=1,4 do
