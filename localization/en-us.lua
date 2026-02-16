@@ -57,6 +57,13 @@ return {
                     "deck are debuffed",
                 },
             },
+            bl_cod_snow = {
+                name = "The Snow",
+                text = {
+                    "Every 4th card",
+                    "is debuffed",
+                },
+            },
         },
         Edition={},
         Enhanced={},

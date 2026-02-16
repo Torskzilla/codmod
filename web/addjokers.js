@@ -669,6 +669,14 @@ let blinds = [
     image_url: "img/bl/spire.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Snow",
+    text: [
+      "Every 4th card is debuffed",
+    ],
+    image_url: "img/bl/snow.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [

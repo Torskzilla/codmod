@@ -106,3 +106,35 @@ SMODS.Blind {
         end
     end
 }
+
+-- The Snow
+SMODS.Blind {
+    key = "snow",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 5 },
+    boss = { min = 1 },
+    boss_colour = HEX("dfdfdf"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.round_shuffle then
+                for i=1,#G.deck.cards do
+                    if (i%4==1) then
+                        SMODS.debuff_card(G.deck.cards[#G.deck.cards-i], true, "cod_snow")
+                    end
+                end
+            end
+        end
+    end,
+    disable = function(self)
+        for _, playing_card in pairs(G.playing_cards) do
+            SMODS.debuff_card(playing_card, false, "cod_snow")
+        end
+    end,
+    defeat = function(self)
+        for _, playing_card in pairs(G.playing_cards) do
+            SMODS.debuff_card(playing_card, false, "cod_snow")
+        end
+    end
+}
