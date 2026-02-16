@@ -661,6 +661,14 @@ let blinds = [
     image_url: "img/bl/rot.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Spire",
+    text: [
+      "Last 25 cards of deck are debuffed",
+    ],
+    image_url: "img/bl/spire.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [

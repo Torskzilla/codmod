@@ -49,7 +49,7 @@ SMODS.Blind {
     mult = 2,
     atlas = 'atlas_cod_blinds',
     pos = { x = 0, y = 1 },
-    boss = { min = 1 },
+    boss = { min = 2 },
     boss_colour = HEX("72663f"),
     calculate = function(self, blind, context)
         if not blind.disabled then
@@ -71,6 +71,38 @@ SMODS.Blind {
     defeat = function(self)
         for _, playing_card in pairs(G.playing_cards) do
             SMODS.debuff_card(playing_card, false, "cod_rot")
+        end
+    end
+}
+
+-- The Spire
+SMODS.Blind {
+    key = "spire",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 2 },
+    boss = { min = 2 },
+    boss_colour = HEX("c88d11"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.round_shuffle then
+                for i=1,25 do
+                    if G.deck.cards[i] then
+                        SMODS.debuff_card(G.deck.cards[i], true, "cod_spire")
+                    end
+                end
+            end
+        end
+    end,
+    disable = function(self)
+        for _, playing_card in pairs(G.playing_cards) do
+            SMODS.debuff_card(playing_card, false, "cod_spire")
+        end
+    end,
+    defeat = function(self)
+        for _, playing_card in pairs(G.playing_cards) do
+            SMODS.debuff_card(playing_card, false, "cod_spire")
         end
     end
 }

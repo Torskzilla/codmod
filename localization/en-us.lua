@@ -50,6 +50,13 @@ return {
                     "is debuffed",
                 },
             },
+            bl_cod_spire = {
+                name = "The Spire",
+                text = {
+                    "Last 25 cards of",
+                    "deck are debuffed",
+                },
+            },
         },
         Edition={},
         Enhanced={},
