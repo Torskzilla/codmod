@@ -62,5 +62,15 @@ SMODS.Blind {
                 end
             end
         end
+    end,
+    disable = function(self)
+        for _, playing_card in pairs(G.playing_cards) do
+            SMODS.debuff_card(playing_card, false, "cod_rot")
+        end
+    end,
+    defeat = function(self)
+        for _, playing_card in pairs(G.playing_cards) do
+            SMODS.debuff_card(playing_card, false, "cod_rot")
+        end
     end
 }
