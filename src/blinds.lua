@@ -138,3 +138,31 @@ SMODS.Blind {
         end
     end
 }
+
+-- The Lost
+SMODS.Blind {
+    key = "lost",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 4 },
+    boss = { min = 5 },
+    boss_colour = HEX("ab85c8"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.end_of_round then
+                
+                local planet = nil
+                for _, v in pairs(G.P_CENTER_POOLS.Planet) do
+                    if v.config.hand_type == G.GAME.last_hand_played then
+                        planet = v.key
+                    end
+                end
+
+                if planet then
+                    G.GAME.banned_keys[planet] = true
+                end
+            end
+        end
+    end,
+}

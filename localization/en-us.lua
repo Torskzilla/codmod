@@ -64,6 +64,13 @@ return {
                     "is debuffed",
                 },
             },
+            bl_cod_lost = {
+                name = "The Lost",
+                text = {
+                    "Bans the winning",
+                    "hand's planet card",
+                },
+            },
         },
         Edition={},
         Enhanced={},

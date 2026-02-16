@@ -677,6 +677,14 @@ let blinds = [
     image_url: "img/bl/snow.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Lost",
+    text: [
+      "Bans the winning hand's planet card",
+    ],
+    image_url: "img/bl/lost.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [
