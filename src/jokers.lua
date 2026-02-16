@@ -1741,7 +1741,7 @@ SMODS.Joker {
         if context.repetition and context.cardarea == G.play and context.other_card:is_suit("Diamonds") then
             local bounces = 0
             local odds = card.ability.extra.odds
-            for i=1,100 do
+            for i=1,256 do
                 if SMODS.pseudorandom_probability(card, 'cod_ricochet', 1, odds) then
                     bounces = bounces + 1
                     odds = odds + 1
