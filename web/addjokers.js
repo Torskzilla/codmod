@@ -505,6 +505,14 @@ let jokers = [
     image_url: "img/j/gambler.png",
     rarity: "Common"
   },
+  {
+    name: "Coin Toss",
+    text: [
+      "When {C:attention}High Card{} is played, {C:attention}double{} sell value but {C:green}1 in 2{} chance to {C:red}self destruct{}",
+    ],
+    image_url: "img/j/coin_toss.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

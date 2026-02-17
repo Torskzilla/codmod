@@ -611,9 +611,17 @@ return {
                 name = "Gambler",
                 text = {
                     "When {C:attention}High Card{} is played,",
-                    "gain {C:mult}+#4#{} Mult but {C:green}#1# in #2#{} chance",
-                    "to {C:red}self destruct{}",
+                    "gain {C:mult}+#4#{} Mult but {C:green}#1# in #2#{}",
+                    "chance to {C:red}self destruct{}",
                     "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
+                },
+            },
+            j_cod_coin_toss = {
+                name = "Coin Toss",
+                text = {
+                    "When {C:attention}High Card{} is played,",
+                    "{C:attention}double{} sell value but {C:green}#1# in #2#{}",
+                    "chance to {C:red}self destruct{}",
                 },
             },
         },
@@ -730,6 +738,8 @@ return {
             dormant_awaken="Wake",
             gambler_ruined="Ruined!",
             gambler_win="Roll!",
+            coin_toss_heads="Heads!",
+            coin_toss_tails="Tails!",
         },
         high_scores={},
         labels={

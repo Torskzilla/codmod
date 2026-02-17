@@ -2639,3 +2639,39 @@ SMODS.Joker {
         end
     end
 }
+
+-- Coin Toss
+SMODS.Joker {
+    key = "coin_toss",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 2,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 3, y = 6 },
+    config = { extra = { odds = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_coin_toss')
+        return { vars = { numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            if context.scoring_name == "High Card" then
+                card.ability.extra_value = card.ability.extra_value + card.sell_cost
+                card:set_cost()
+                if SMODS.pseudorandom_probability(card, 'cod_coin_toss', 1, card.ability.extra.odds) then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return {
+                        colour = G.C.RED,
+                        message = localize('coin_toss_tails'),
+                    }
+                else
+                    return {
+                        colour = G.C.GOLD,
+                        message = localize('coin_toss_heads'),
+                    }
+                end
+            end
+        end
+    end
+}
