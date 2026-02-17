@@ -1328,31 +1328,20 @@ SMODS.Joker {
 -- Black Market
 SMODS.Joker {
     key = "black_market",
-    blueprint_compat = true,
+    blueprint_compat = false,
     rarity = 3,
-    cost = 9,
+    cost = 10,
     atlas = 'atlas_cod_jokers',
     pos = { x = 9, y = 2 },
-    config = { extra = { mult_gain = 1, mult = 0 } },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.mult_gain, card.ability.extra.mult } }
-    end,
     calculate = function(self, card, context)
         if context.selling_card and not context.blueprint and card ~= context.card then
             local key_to_ban = context.card.config.center.key
 
             G.GAME.banned_keys[key_to_ban] = true
 
-            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
-
             return {
                 message = localize("black_market_ban"),
-                colour = G.C.MULT,
-            }
-        end
-        if context.joker_main then
-            return {
-                mult = card.ability.extra.mult
+                colour = G.C.RED,
             }
         end
     end

@@ -336,9 +336,8 @@ return {
             j_cod_black_market = {
                 name = "Black Market",
                 text = {
-                    "Each card {C:attention}sold{} is banned",
-                    "and this gains {C:mult}+#1#{} Mult",
-                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                    "{C:red}Bans{} sold cards",
+                    "{C:inactive}(Banned cards can't appear)",
                 },
             },
             j_cod_spam = {
