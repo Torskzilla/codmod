@@ -166,3 +166,17 @@ SMODS.Blind {
         end
     end,
 }
+
+-- The Ascetuc
+SMODS.Blind {
+    key = "ascetic",
+    dollars = 0,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 6 },
+    boss = { max = 1 },
+    boss_colour = HEX("dfc87e"),
+    disable = function(self)
+
+    end,
+}

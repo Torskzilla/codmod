@@ -685,6 +685,14 @@ let blinds = [
     image_url: "img/bl/lost.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Ascetic",
+    text: [
+      "No reward money",
+    ],
+    image_url: "img/bl/ascetic.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [

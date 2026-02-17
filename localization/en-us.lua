@@ -71,6 +71,12 @@ return {
                     "hand's planet card",
                 },
             },
+            bl_cod_ascetic = {
+                name = "The Ascetic",
+                text = {
+                    "No reward money"
+                },
+            },
         },
         Edition={},
         Enhanced={},
