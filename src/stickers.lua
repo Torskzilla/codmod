@@ -66,6 +66,18 @@ function eval_card(card, context)
     return eval_card_ref(card, context)
 end
 
+-- hook to run stickers on cards added to deck
+local add_to_deck_ref = Card.add_to_deck
+function Card:add_to_deck(from_debuff)
+    for _,k in ipairs(SMODS.Sticker.obj_buffer) do
+        if self.ability[k] then
+            self:calculate_sticker({sticker_add_self = true}, k)
+        end
+    end
+
+    return add_to_deck_ref(self, from_debuff)
+end
+
 -- Dormant
 local dormant_rounds = 3
 
@@ -98,10 +110,8 @@ SMODS.Sticker {
         return { vars = { dormant_rounds, card.ability.dormant_tally or dormant_rounds } }
     end,
     calculate = function(self, card, context)
-        if context.buying_self or context.card_added then
-            if context.card.ability.cod_dormant and context.card.ability.dormant_tally > 0 then
-                SMODS.debuff_card(context.card, true, "cod_dormant")
-            end
+        if context.sticker_add_self and card.ability.dormant_tally > 0 then
+            SMODS.debuff_card(card, true, "cod_dormant")
         end
         if context.end_of_round and not context.repetition and not context.individual then
             if card.ability.dormant_tally > 0 then
@@ -135,6 +145,22 @@ SMODS.Sticker {
         end
     end,
     calculate = function(self, card, context)
+        if context.sticker_add_self then
+            local envy_count = 0
+            if card.ability.cod_envy then
+                envy_count = envy_count + 1
+            end
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].ability.cod_envy then
+                    envy_count = envy_count + 1
+                end
+            end
+            if (envy_count>1) then
+                SMODS.debuff_card(card, true, "cod_envy")
+            else
+                SMODS.debuff_card(card, false, "cod_envy")
+            end
+        end
         if (context.joker_type_destroyed or context.selling_card) and context.card ~= card then
             local envy_count = 0
             for i = 1, #G.jokers.cards do
@@ -151,9 +177,9 @@ SMODS.Sticker {
                 SMODS.debuff_card(card, false, "cod_envy")
             end
         end
-        if context.buying_self or context.card_added then
+        if context.card_added then
             local envy_count = 0
-            if context.card_added and context.card.ability.cod_envy then
+            if context.card.ability.cod_envy then
                 envy_count = envy_count + 1
             end
             for i = 1, #G.jokers.cards do
@@ -165,11 +191,6 @@ SMODS.Sticker {
                 SMODS.debuff_card(card, true, "cod_envy")
             else
                 SMODS.debuff_card(card, false, "cod_envy")
-            end
-            if context.card.ability.cod_envy then
-                if (envy_count>1) then
-                    SMODS.debuff_card(context.card, true, "cod_envy")
-                end
             end
         end
     end
@@ -192,7 +213,16 @@ SMODS.Sticker {
         end
     end,
     calculate = function(self, card, context)
-        if context.buying_self or context.card_added or ((context.joker_type_destroyed or context.selling_card) and context.card ~= card) then
+        if context.sticker_add_self then
+            local empty_count = G.jokers.config.card_limit - #G.jokers.cards
+            empty_count = empty_count - 1 + card.ability.card_limit
+            if (empty_count>0) then
+                SMODS.debuff_card(card, false, "cod_claustrophobic")
+            else
+                SMODS.debuff_card(card, true, "cod_claustrophobic")
+            end
+        end
+        if context.card_added or ((context.joker_type_destroyed or context.selling_card) and context.card ~= card) then
             local empty_count = G.jokers.config.card_limit - #G.jokers.cards
             if (context.joker_type_destroyed or context.selling_card) then
                 empty_count = empty_count - context.card.ability.card_limit + 1
@@ -246,13 +276,6 @@ SMODS.Sticker {
             card:set_sprites(nil)
         end
     end,
-    calculate = function(self, card, context)
-        if context.buying_self or context.card_added then
-            if context.card.ability.cod_confidential then
-                context.card:set_sprites(G.P_CENTERS["j_cod_redacted"])
-            end
-        end
-    end
 }
 
 -- Expensive
