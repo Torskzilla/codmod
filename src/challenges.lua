@@ -16,7 +16,12 @@ SMODS.Challenge {
     },
     vouchers = {
         { id = 'v_magic_trick' },
-    }
+    },
+    restrictions = {
+        banned_other = {
+            { id = 'bl_cod_rot', type = 'blind' },
+        }
+    },
 }
 
 -- Universal Paperclips
