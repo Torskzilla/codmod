@@ -624,6 +624,14 @@ return {
                     "chance to {C:red}self destruct{}",
                 },
             },
+            j_cod_oops_all_1s = {
+                name = "Oops! All 1s",
+                text = {
+                    "Halves {C:green,E:1,S:1.1}probabilities{} but gains",
+                    "{C:mult}+#1#{} Mult when they succeed",
+                    "{C:inactive}(Currently {C:mult}+1{C:inactive} Mult)",
+                },
+            },
         },
         Other={
             cod_dormant = {

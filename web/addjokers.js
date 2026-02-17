@@ -513,6 +513,14 @@ let jokers = [
     image_url: "img/j/coin_toss.png",
     rarity: "Common"
   },
+  {
+    name: "Oops! All 1s",
+    text: [
+      "Halves {C:green,E:1,S:1.1}probabilities{} but gains {C:mult}+#1#{} Mult when they succeed",
+    ],
+    image_url: "img/j/oops_all_1s.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

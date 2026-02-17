@@ -2644,7 +2644,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "coin_toss",
     unlocked = true,
-    blueprint_compat = true,
+    blueprint_compat = false,
     rarity = 1,
     cost = 2,
     atlas = 'atlas_cod_jokers',
@@ -2674,4 +2674,38 @@ SMODS.Joker {
             end
         end
     end
+}
+
+-- Oops! All 1s
+SMODS.Joker {
+    key = "oops_all_1s",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 6 },
+    config = { extra = { mult = 0, mult_gain = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult_gain, card.ability.extra.mult} }
+    end,
+    calculate = function(self, card, context)
+        if context.mod_probability and not context.blueprint then
+            return {
+                denominator = context.denominator * 2
+            }
+        end
+        if context.pseudorandom_result and not context.blueprint and context.result then
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+            return {
+                message = localize("k_upgrade_ex"),
+                colour = G.C.MULT,
+            }
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end,
 }
