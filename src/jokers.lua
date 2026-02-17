@@ -2594,6 +2594,7 @@ SMODS.Joker {
     key = "gambler",
     unlocked = true,
     blueprint_compat = true,
+    perishable_compat = false,
     rarity = 1,
     cost = 5,
     atlas = 'atlas_cod_jokers',
