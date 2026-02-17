@@ -18,5 +18,8 @@ end
 if G.GAME.modifiers.all_dormant then
     card:add_sticker("cod_dormant", true)
 end
+if G.GAME.modifiers.all_imprisoned then
+    card:add_sticker("cod_imprisoned", true)
+end
 '''
 match_indent = true

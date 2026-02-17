@@ -674,6 +674,13 @@ return {
                     "Costs more",
                 },
             },
+            cod_imprisoned = {
+                name = "Imprisoned",
+                text = {
+                    "Debuffed until a",
+                    "{C:attention}Blind{} is skipped"
+                },
+            },
         },
         Planet={},
         Spectral={},
@@ -698,6 +705,7 @@ return {
             c_cod_universal_paperclips = "Universal Paperclips",
             c_cod_chaos_chaos = "Chaos Chaos",
             c_cod_sleepover = "Sleepover",
+            c_cod_jailbreak = "Jailbreak",
             c_cod_top_secret = "Top Secret",
             c_cod_final_exam = "Final Exam",
             c_cod_unaccountably_peckish = "Unaccountably Peckish",
@@ -747,6 +755,7 @@ return {
             gambler_win="Roll!",
             coin_toss_heads="Heads!",
             coin_toss_tails="Tails!",
+            imprisoned_freed="Freed"
         },
         high_scores={},
         labels={
@@ -755,6 +764,7 @@ return {
             cod_claustrophobic="Claustrophobic",
             cod_confidential="Confidential",
             cod_expensive="Expensive",
+            cod_imprisoned="Imprisoned",
         },
         poker_hand_descriptions={},
         poker_hands={},
@@ -770,6 +780,9 @@ return {
             },
             ch_c_all_dormant={
                 "All Jokers are {C:attention}Dormant{}",
+            },
+            ch_c_all_imprisoned={
+                "All Jokers are {C:attention}Imprisoned{}",
             },
             ch_c_fishbucket={
                 "Only Jokers from Cod's Mod",

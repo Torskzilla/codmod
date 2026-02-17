@@ -666,6 +666,14 @@ let stickers = [
     image_url: "img/sticker/expensive.png",
     rarity: "Sticker"
   },
+  {
+    name: "Imprisoned",
+    text: [
+      "Debuffed until a {C:attention}Blind{} is skipped"
+    ],
+    image_url: "img/sticker/imprisoned.png",
+    rarity: "Sticker"
+  },
 ]
 
 let blinds = [

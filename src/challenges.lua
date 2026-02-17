@@ -61,6 +61,16 @@ SMODS.Challenge {
     },
 }
 
+-- Jailbreak
+SMODS.Challenge {
+    key = 'jailbreak',
+    rules = {
+        custom = {
+            { id = 'all_imprisoned' },
+        }
+    },
+}
+
 -- Top Secret
 SMODS.Challenge {
     key = 'top_secret',

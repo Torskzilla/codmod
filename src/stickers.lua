@@ -297,3 +297,41 @@ SMODS.Sticker {
         card:set_cost()
     end,
 }
+
+-- Imprisoned
+SMODS.Sticker {
+    key = "imprisoned",
+    sticker_slot = 1,
+    badge_colour = HEX '5d5577',
+    atlas = 'atlas_cod_stickers',
+    pos = { x = 1, y = 1 },
+    default_compat = true,
+    rate = 0.3,
+    needs_enable_flag = true,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+        if card.ability[self.key] then
+            card.ability.imprisoned_freed = false
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    if (card.area.config.jokers) then
+                        SMODS.debuff_card(card, true, "cod_imprisoned")
+                    end
+                    return true
+                end
+            }))
+        else
+            SMODS.debuff_card(card, false, "cod_imprisoned")
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.sticker_add_self and not card.ability.imprisoned_freed then
+            SMODS.debuff_card(card, true, "cod_imprisoned")
+        end
+        if context.skip_blind then
+            card.ability.imprisoned_freed = true
+            SMODS.debuff_card(card, false, "cod_imprisoned")
+            card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('imprisoned_freed'),colour = G.C.FILTER, delay = 0.45})
+        end
+    end
+}
