@@ -150,7 +150,7 @@ SMODS.Blind {
     boss_colour = HEX("ab85c8"),
     calculate = function(self, blind, context)
         if not blind.disabled then
-            if context.end_of_round then
+            if context.end_of_round and context.main_eval then
                 
                 local planet = nil
                 for _, v in pairs(G.P_CENTER_POOLS.Planet) do
@@ -176,7 +176,24 @@ SMODS.Blind {
     pos = { x = 0, y = 6 },
     boss = { max = 1 },
     boss_colour = HEX("dfc87e"),
-    disable = function(self)
-
+    calculate = function(self, blind, context)
+        if blind.disabled then
+            if context.end_of_round and context.main_eval then
+                local boss_reward = 5
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + boss_reward
+                return {
+                    remove_default_message = true,
+                    dollars = boss_reward,
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.GAME.dollar_buffer = 0
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+        end
     end,
 }
