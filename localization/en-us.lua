@@ -607,6 +607,15 @@ return {
                     "{C:attention}Blind{} is skipped",
                 },
             },
+            j_cod_gambler = {
+                name = "Gambler",
+                text = {
+                    "When {C:attention}High Card{} is played,",
+                    "gain {C:mult}+#4#{} Mult but {C:green}#1# in #2#{} chance",
+                    "to {C:red}self destruct{}",
+                    "{C:inactive}(Currently {C:mult}+#3#{C:inactive} Mult)",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -718,7 +727,9 @@ return {
             infrastructure_build="Improve",
             printer_print="Print",
             sun_upgrade="Sizzle",
-            dormant_awaken="Wake"
+            dormant_awaken="Wake",
+            gambler_ruined="Ruined!",
+            gambler_win="Roll!",
         },
         high_scores={},
         labels={

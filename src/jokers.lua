@@ -2599,3 +2599,43 @@ SMODS.Joker {
         end
     end
 }
+
+-- Gambler
+SMODS.Joker {
+    key = "gambler",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 5,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 2, y = 6 },
+    config = { extra = { mult = 0, mult_gain = 3, odds = 8 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_gambler')
+        return { vars = { numerator, denominator, card.ability.extra.mult, card.ability.extra.mult_gain, } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            if context.scoring_name == "High Card" then
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                if SMODS.pseudorandom_probability(card, 'cod_gambler', 1, card.ability.extra.odds) then
+                    SMODS.destroy_cards(card, nil, nil, true)
+                    return {
+                        colour = G.C.RED,
+                        message = localize('gambler_ruined'),
+                    }
+                else
+                    return {
+                        colour = G.C.RED,
+                        message = localize('gambler_win'),
+                    }
+                end
+            end
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}
