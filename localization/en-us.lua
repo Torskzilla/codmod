@@ -646,7 +646,7 @@ return {
                 text = {
                     "Debuffed if",
                     "you have another",
-                    "{C:green}Envious{} Joker"
+                    "{C:green}Envious{} card"
                 },
             },
             cod_claustrophobic = {

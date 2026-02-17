@@ -69,9 +69,11 @@ end
 -- hook to run stickers on cards added to deck
 local add_to_deck_ref = Card.add_to_deck
 function Card:add_to_deck(from_debuff)
-    for _,k in ipairs(SMODS.Sticker.obj_buffer) do
-        if self.ability[k] then
-            self:calculate_sticker({sticker_add_self = true}, k)
+    if not from_debuff then
+        for _,k in ipairs(SMODS.Sticker.obj_buffer) do
+            if self.ability[k] then
+                self:calculate_sticker({sticker_add_self = true}, k)
+            end
         end
     end
 
@@ -222,7 +224,7 @@ SMODS.Sticker {
                 SMODS.debuff_card(card, true, "cod_claustrophobic")
             end
         end
-        if context.card_added or ((context.joker_type_destroyed or context.selling_card) and context.card ~= card) then
+        if (context.card_added or ((context.joker_type_destroyed or context.selling_card) and context.card ~= card)) and context.card.ability.set == "Joker" then
             local empty_count = G.jokers.config.card_limit - #G.jokers.cards
             if (context.joker_type_destroyed or context.selling_card) then
                 empty_count = empty_count - context.card.ability.card_limit + 1

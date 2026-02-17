@@ -637,7 +637,7 @@ let stickers = [
   {
     name: "Envious",
     text: [
-      "Debuffed if you have another {C:green}Envious{} Joker"
+      "Debuffed if you have another {C:green}Envious{} card"
     ],
     image_url: "img/sticker/envy.png",
     rarity: "Sticker"
