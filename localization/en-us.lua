@@ -628,7 +628,7 @@ return {
                 text = {
                     "Halves {C:green,E:1,S:1.1}probabilities{} but gains",
                     "{C:mult}+#1#{} Mult when they succeed",
-                    "{C:inactive}(Currently {C:mult}+1{C:inactive} Mult)",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
         },
@@ -679,6 +679,14 @@ return {
                 text = {
                     "Debuffed until a",
                     "{C:attention}Blind{} is skipped"
+                },
+            },
+            cod_platinum_sticker = {
+                name = "Platinum Sticker",
+                text = {
+                    "Used this Joker",
+                    "to win on {C:attention}Platinum",
+                    "{C:attention}Stake{} difficulty",
                 },
             },
         },
