@@ -746,7 +746,7 @@ return {
             spam_1="Mail!",
             spam_2="Click Now!",
             spam_3="Win Big!",
-            spam_4="100000$!!",
+            spam_4="$100000!!",
             spam_5="Top Cards!",
             password_weak="Weak",
             cod_random_joker_change="ability changes at end of round",

@@ -7,7 +7,6 @@ SMODS.Atlas {
 }
 
 -- Platinum
--- fix: does not apply previous stakes
 SMODS.Stake {
     name = "Platinum Stake",
     key = "platinum",
