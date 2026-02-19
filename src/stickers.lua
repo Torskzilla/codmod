@@ -251,7 +251,9 @@ function Card:load(cardTable, other_card)
     local ret = card_load_ref(self, cardTable, other_card)
     if self.ability["cod_confidential"] then
         self:set_sprites(G.P_CENTERS["j_cod_redacted"])
-        self.children.floating_sprite = nil
+        if self.children then
+            self.children.floating_sprite = nil
+        end
     end
     return ret
 end
@@ -274,7 +276,9 @@ SMODS.Sticker {
         card.ability[self.key] = val
         if card.ability[self.key] then
             card:set_sprites(G.P_CENTERS["j_cod_redacted"])
-            self.children.floating_sprite = nil
+            if self.children then
+                self.children.floating_sprite = nil
+            end
         elseif not card.ability[self.key] then
             card:set_sprites(nil)
         end
