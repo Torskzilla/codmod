@@ -2700,3 +2700,42 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Call of the Void
+SMODS.Joker {
+    key = "call_of_the_void",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 5, y = 6 },
+    calculate = function(self, card, context)
+        if context.setting_blind and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+            G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                func = (function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            SMODS.add_card {
+                                set = 'Spectral',
+                                key_append = 'cod_call_of_the_void'
+                            }
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end
+                    }))
+                    SMODS.calculate_effect({ message = localize('k_plus_spectral'), colour = G.C.SECONDARY_SET.Spectral },
+                        context.blueprint_card or card)
+                    return true
+                end)
+            }))
+            return nil, true
+        end
+        if context.check_eternal and context.trigger.from_sell and context.other_card.area == G.consumeables then
+            return {
+                no_destroy = { override_compat = true }
+            }
+        end
+    end,
+}

@@ -631,6 +631,15 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
+            j_cod_call_of_the_void = {
+                name = "Call of the Void",
+                text = {
+                    "Create a {C:spectral}Spectral{} card",
+                    "when {C:attention}Blind{} is selected,",
+                    "consumables can't be sold",
+                    "{C:inactive}(Must have room)",
+                },
+            },
         },
         Other={
             cod_dormant = {

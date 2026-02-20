@@ -521,6 +521,15 @@ let jokers = [
     image_url: "img/j/oops_all_1s.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Call of the Void",
+    text: [
+      "Create a {C:spectral}Spectral{} card when {C:attention}Blind{} is selected, consumables can't be sold",
+      "{C:inactive}(Must have room)",
+    ],
+    image_url: "img/j/call_of_the_void.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",
