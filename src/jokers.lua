@@ -2706,7 +2706,7 @@ SMODS.Joker {
     key = "call_of_the_void",
     unlocked = true,
     blueprint_compat = true,
-    rarity = 2,
+    rarity = 3,
     cost = 8,
     atlas = 'atlas_cod_jokers',
     pos = { x = 5, y = 6 },

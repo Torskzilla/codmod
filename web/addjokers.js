@@ -528,7 +528,7 @@ let jokers = [
       "{C:inactive}(Must have room)",
     ],
     image_url: "img/j/call_of_the_void.png",
-    rarity: "Uncommon"
+    rarity: "Rare"
   },
 
   // {
