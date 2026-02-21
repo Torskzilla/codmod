@@ -2769,3 +2769,23 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Globe
+SMODS.Joker {
+    key = "globe",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 2,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 7, y = 6 },
+}
+
+-- hook for straight wrapping
+local wrap_around_straight_ref = SMODS.wrap_around_straight
+function SMODS:wrap_around_straight()
+    if next(SMODS.find_card('j_cod_globe')) then
+        return true
+    end
+    return wrap_around_straight_ref()
+end

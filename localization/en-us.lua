@@ -647,6 +647,14 @@ return {
                     "{C:attention}Seal{} to scored {C:attention}Stone Cards{}",
                 },
             },
+            j_cod_globe = {
+                name = "Globe",
+                text = {
+                    "Allows {C:attention}Straights{} to",
+                    "wrap around",
+                    "{C:inactive}(ex: {C:attention}Q K A 2 3{C:inactive})",
+                },
+            },
         },
         Other={
             cod_dormant = {

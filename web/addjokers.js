@@ -533,10 +533,19 @@ let jokers = [
   {
     name: "Stone Tablet",
     text: [
-      "{C:green}#1# in #2#{} chance to apply a {C:attention}Seal{} to scored {C:attention}Stone Cards{}",
+      "{C:green}1 in 2{} chance to apply a {C:attention}Seal{} to scored {C:attention}Stone Cards{}",
     ],
     image_url: "img/j/stone_tablet.png",
     rarity: "Uncommon"
+  },
+  {
+    name: "Globe",
+    text: [
+      "Allows {C:attention}Straights{} to wrap around",
+      "{C:inactive}(ex: {C:attention}Q K A 2 3{C:inactive})",
+    ],
+    image_url: "img/j/globe.png",
+    rarity: "Common"
   },
 
   // {
