@@ -547,6 +547,15 @@ let jokers = [
     image_url: "img/j/globe.png",
     rarity: "Common"
   },
+  {
+    name: "Sector Map",
+    text: [
+      "When playing {C:attention}5{}-card {C:attention}poker hands{}, create the {C:planet}Planet{} for a {C:attention}5{}-card {C:attention}poker hand{}",
+      "{C:inactive}(Must have room)",
+    ],
+    image_url: "img/j/sector_map.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

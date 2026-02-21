@@ -655,6 +655,15 @@ return {
                     "{C:inactive}(ex: {C:attention}Q K A 2 3{C:inactive})",
                 },
             },
+            j_cod_sector_map = {
+                name = "Sector Map",
+                text = {
+                    "When playing {C:attention}5{}-card",
+                    "{C:attention}poker hands{}, create the {C:planet}Planet{}",
+                    "for a {C:attention}5{}-card {C:attention}poker hand{}",
+                    "{C:inactive}(Must have room)",
+                },
+            },
         },
         Other={
             cod_dormant = {

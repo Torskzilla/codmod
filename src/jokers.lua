@@ -951,7 +951,7 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.joker_main then
-            if next(context.poker_hands["Flush House"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Five of a Kind"]) then          
+            if next(context.poker_hands["Flush House"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Five of a Kind"]) then
                 return {
                     xmult = card.ability.extra.xmult
                 }
@@ -2789,3 +2789,53 @@ function SMODS:wrap_around_straight()
     end
     return wrap_around_straight_ref()
 end
+
+-- Sector Map
+SMODS.Joker {
+    key = "sector_map",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 8, y = 6 },
+        calculate = function(self, card, context)
+        if context.joker_main and #G.consumeables.cards + G.GAME.consumeable_buffer < G.consumeables.config.card_limit then
+            if next(context.poker_hands["Straight Flush"]) or next(context.poker_hands["Full House"]) or next(context.poker_hands["Flush"]) or next(context.poker_hands["Straight"]) or next(context.poker_hands["Flush House"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Five of a Kind"]) then
+                local five_hands = {"Straight Flush", "Full House", "Flush", "Straight"}
+                local hidden_hands = {"Flush House", "Flush Five", "Five of a Kind"}
+                for _, v in ipairs(hidden_hands) do
+                    if SMODS.is_poker_hand_visible(v) then
+                        five_hands[#five_hands+1] = v
+                    end
+                end
+                local chosen_hand = pseudorandom_element(five_hands, 'cod_sector_map')
+                local planet = nil
+                for _, v in pairs(G.P_CENTER_POOLS.Planet) do
+                    if v.config.hand_type == chosen_hand then
+                        planet = v.key
+                    end
+                end
+
+                if planet then
+                    G.GAME.consumeable_buffer = G.GAME.consumeable_buffer + 1
+                    G.E_MANAGER:add_event(Event({
+                        func = (function()
+                            SMODS.add_card {
+                                set = 'Planet',
+                                key = planet,
+                                key_append = 'cod_sector_map'
+                            }
+                            G.GAME.consumeable_buffer = 0
+                            return true
+                        end)
+                    }))
+                    return {
+                        message = localize('k_plus_planet'),
+                        colour = G.C.SECONDARY_SET.Planet
+                    }
+                end
+            end
+        end
+    end,
+}
