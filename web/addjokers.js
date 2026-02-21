@@ -530,6 +530,14 @@ let jokers = [
     image_url: "img/j/call_of_the_void.png",
     rarity: "Rare"
   },
+  {
+    name: "Stone Tablet",
+    text: [
+      "{C:green}#1# in #2#{} chance to apply a {C:attention}Seal{} to scored {C:attention}Stone Cards{}",
+    ],
+    image_url: "img/j/stone_tablet.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

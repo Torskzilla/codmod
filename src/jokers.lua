@@ -2739,3 +2739,33 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Stone Tablet
+SMODS.Joker {
+    key = "stone_tablet",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 6, y = 6 },
+    config = { extra = { odds = 2 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_stone_tablet')
+        return { vars = { numerator, denominator } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if SMODS.has_enhancement(context.other_card, 'm_stone') and not context.other_card.seal then
+                if SMODS.pseudorandom_probability(card, 'cod_stone_tablet', 1, card.ability.extra.odds) then
+                    local random_seal = SMODS.poll_seal {key = "cod_stone_tablet", guaranteed = true}
+                    context.other_card:set_seal(random_seal)
+                    return {
+                        message = localize("stone_tablet_upgrade"),
+                        colour = G.C.RED,
+                    }
+                end
+            end
+        end
+    end,
+}

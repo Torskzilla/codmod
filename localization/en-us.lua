@@ -640,6 +640,13 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
+            j_cod_stone_tablet = {
+                name = "Stone Tablet",
+                text = {
+                    "{C:green}#1# in #2#{} chance to apply a",
+                    "{C:attention}Seal{} to scored {C:attention}Stone Cards{}",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -772,7 +779,8 @@ return {
             gambler_win="Roll!",
             coin_toss_heads="Heads!",
             coin_toss_tails="Tails!",
-            imprisoned_freed="Freed"
+            imprisoned_freed="Freed",
+            stone_tablet_upgrade="Upgrade",
         },
         high_scores={},
         labels={
