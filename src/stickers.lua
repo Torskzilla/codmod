@@ -335,7 +335,7 @@ SMODS.Sticker {
         if context.sticker_add_self and not card.ability.imprisoned_freed then
             SMODS.debuff_card(card, true, "cod_imprisoned")
         end
-        if context.skip_blind then
+        if context.skip_blind and not card.ability.imprisoned_freed then
             card.ability.imprisoned_freed = true
             SMODS.debuff_card(card, false, "cod_imprisoned")
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('imprisoned_freed'),colour = G.C.FILTER, delay = 0.45})
