@@ -2839,3 +2839,37 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Whistleblower
+SMODS.Joker {
+    key = "whistleblower",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 9, y = 6 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = "cod_confidential", set = 'Other' }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind and #G.jokers.cards + G.GAME.joker_buffer < G.jokers.config.card_limit then
+            G.GAME.joker_buffer = G.GAME.joker_buffer + 1
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    SMODS.add_card {
+                        set = 'Joker',
+                        stickers = {"cod_confidential"},
+                        key_append = 'cod_whistleblower'
+                    }
+                    G.GAME.joker_buffer = 0
+                    return true
+                end
+            }))
+            return {
+                message = localize('whistleblower_leak'),
+                colour = G.C.BLUE,
+            }
+        end
+    end,
+}

@@ -664,6 +664,14 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
+            j_cod_whistleblower = {
+                name = "Whistleblower",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "create a Confidential {C:attention}Joker",
+                    "{C:inactive}(Must have room)",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -798,6 +806,7 @@ return {
             coin_toss_tails="Tails!",
             imprisoned_freed="Freed",
             stone_tablet_upgrade="Upgrade",
+            whistleblower_leak="Leak!",
         },
         high_scores={},
         labels={

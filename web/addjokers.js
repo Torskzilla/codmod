@@ -556,6 +556,15 @@ let jokers = [
     image_url: "img/j/sector_map.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Whistleblower",
+    text: [
+      "When {C:attention}Blind{} is selected, create a Confidential {C:attention}Joker",
+      "{C:inactive}(Must have room)",
+    ],
+    image_url: "img/j/whistleblower.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",
