@@ -672,6 +672,15 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
+            j_cod_mult_joker = {
+                name = "Mult Joker",
+                text = {
+                    "Gives {C:mult}+#1#{} Mult for",
+                    "each {C:attention}Mult Card",
+                    "in your {C:attention}full deck",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                },
+            },
         },
         Other={
             cod_dormant = {

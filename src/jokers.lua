@@ -2794,7 +2794,7 @@ end
 SMODS.Joker {
     key = "sector_map",
     unlocked = true,
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 2,
     cost = 6,
     atlas = 'atlas_cod_jokers',
@@ -2844,7 +2844,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "whistleblower",
     unlocked = true,
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 1,
     cost = 6,
     atlas = 'atlas_cod_jokers',
@@ -2872,4 +2872,46 @@ SMODS.Joker {
             }
         end
     end,
+}
+
+-- Mult Joker
+SMODS.Joker {
+    key = "mult_joker",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 7 },
+    config = { extra = { mult = 2 } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_mult
+
+        local mult_tally = 0
+        if G.playing_cards then
+            for _, playing_card in ipairs(G.playing_cards) do
+                if SMODS.has_enhancement(playing_card, 'm_mult') then mult_tally = mult_tally + 1 end
+            end
+        end
+        return { vars = { card.ability.extra.mult, card.ability.extra.mult * mult_tally } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local mult_tally = 0
+            for _, playing_card in ipairs(G.playing_cards) do
+                if SMODS.has_enhancement(playing_card, 'm_mult') then mult_tally = mult_tally + 1 end
+            end
+            return {
+                mult = card.ability.extra.mult * mult_tally
+            }
+        end
+    end,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_mult') then
+                return true
+            end
+        end
+        return false
+    end
 }

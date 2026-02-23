@@ -565,6 +565,14 @@ let jokers = [
     image_url: "img/j/whistleblower.png",
     rarity: "Common"
   },
+  {
+    name: "Mult Joker",
+    text: [
+      "Gives {C:mult}+2{} Mult for each {C:attention}Mult Card{} in your {C:attention}full deck{}",
+    ],
+    image_url: "img/j/mult.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

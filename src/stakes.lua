@@ -27,7 +27,7 @@ SMODS.Stake {
         G.GAME.modifiers.enable_cod_expensive = true
         G.GAME.modifiers.enable_cod_imprisoned = true
     end,
-    colour = G.C.WHITE,
+    colour = HEX("d4fbf3"),
     shiny = true,
     unlocked = false,
 }
