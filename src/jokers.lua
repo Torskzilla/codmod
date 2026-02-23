@@ -2946,6 +2946,50 @@ SMODS.Joker {
     end,
 }
 
+-- Connect the Dots
+SMODS.Joker {
+    key = "connect_the_dots",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 7, y = 7 },
+    config = { extra = { rank = 2, dollars = 1 } },
+    loc_vars = function(self, info_queue, card)
+        local rank
+        for k, v in pairs(SMODS.Ranks) do
+            if v.id == card.ability.extra.rank then
+                rank = v
+            end
+        end
+        return { vars = { card.ability.extra.dollars, localize(rank.key, 'ranks') } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:get_id() == card.ability.extra.rank then
+            card.ability.extra.rank = card.ability.extra.rank - 1
+            if card.ability.extra.rank < 2 then
+                card.ability.extra.rank = 14
+            end
+            G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
+            return {
+                dollars = card.ability.extra.dollars,
+                func = function()
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            G.GAME.dollar_buffer = 0
+                            return true
+                        end
+                    }))
+                end
+            }
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        card.ability.extra.rank = pseudorandom('cod_connect_the_dots', 2, 14)
+    end
+}
+
 -- Mult Joker
 SMODS.Joker {
     key = "mult_joker",

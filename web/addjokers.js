@@ -589,6 +589,15 @@ let jokers = [
     image_url: "img/j/rorschach_test.png",
     rarity: "Common"
   },
+  {
+    name: "Connect the Dots",
+    text: [
+        "Each played {C:attention}"+ranks[Math.floor(Math.random() * ranks.length)]+"{} earns {C:money}$1{} when scored",
+        "{s:0.8}Rank decreases when scored"
+    ],
+    image_url: "img/j/connect_the_dots.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

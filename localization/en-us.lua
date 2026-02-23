@@ -697,6 +697,14 @@ return {
                     "{C:attention}random{} ranks",
                 },
             },
+            j_cod_connect_the_dots = {
+                name = "Connect the Dots",
+                text = {
+                    "Each played {C:attention}#2#{} earns",
+                    "{C:money}$#1#{} when scored",
+                    "{s:0.8}Rank decreases when scored"
+                },
+            },
         },
         Other={
             cod_dormant = {
