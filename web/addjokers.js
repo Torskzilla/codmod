@@ -573,6 +573,14 @@ let jokers = [
     image_url: "img/j/mult.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Coloring Joker",
+    text: [
+       "All played scoring cards become {C:attention}random{} suits",
+    ],
+    image_url: "img/j/coloring.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

@@ -681,6 +681,14 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
             },
+            j_cod_coloring = {
+                name = "Coloring Joker",
+                text = {
+                    "All played scoring",
+                    "cards become",
+                    "{C:attention}random{} suits",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -816,6 +824,7 @@ return {
             imprisoned_freed="Freed",
             stone_tablet_upgrade="Upgrade",
             whistleblower_leak="Leak!",
+            coloring_color_in="Splash!",
         },
         high_scores={},
         labels={

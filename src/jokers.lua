@@ -2874,6 +2874,41 @@ SMODS.Joker {
     end,
 }
 
+-- Coloring Joker
+SMODS.Joker {
+    key = "coloring",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 5, y = 7 },
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            local convert = false
+            for _, scored_card in ipairs(context.scoring_hand) do
+                if not scored_card.debuff then
+                    convert = true
+                    local suit = pseudorandom_element({"Hearts", "Diamonds", "Clubs", "Spades"}, 'coloring_suit')
+                    assert(SMODS.change_base(scored_card, suit))
+                    G.E_MANAGER:add_event(Event({
+                        func = function()
+                            scored_card:juice_up()
+                            return true
+                        end
+                    }))
+                end
+            end
+            if convert then
+                return {
+                    message = localize('coloring_color_in'),
+                    colour = pseudorandom_element({G.C.RED, G.C.BLUE, G.C.GREEN, G.C.GOLD, G.C.PURPLE, G.C.SUITS.Spades, G.C.EDITION}, 'coloring_text_color')
+                }
+            end
+        end
+    end,
+}
+
 -- Mult Joker
 SMODS.Joker {
     key = "mult_joker",
