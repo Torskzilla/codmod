@@ -581,6 +581,14 @@ let jokers = [
     image_url: "img/j/coloring.png",
     rarity: "Common"
   },
+  {
+    name: "Rorschach Test",
+    text: [
+       "All played scoring cards become {C:attention}random{} ranks",
+    ],
+    image_url: "img/j/rorschach_test.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

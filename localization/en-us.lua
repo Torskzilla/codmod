@@ -689,6 +689,14 @@ return {
                     "{C:attention}random{} suits",
                 },
             },
+            j_cod_rorschach_test = {
+                name = "Rorschach Test",
+                text = {
+                    "All played scoring",
+                    "cards become",
+                    "{C:attention}random{} ranks",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -825,6 +833,7 @@ return {
             stone_tablet_upgrade="Upgrade",
             whistleblower_leak="Leak!",
             coloring_color_in="Splash!",
+            rorschach_test_modify="See?",
         },
         high_scores={},
         labels={

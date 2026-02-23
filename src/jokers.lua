@@ -2909,6 +2909,43 @@ SMODS.Joker {
     end,
 }
 
+-- Rorschach Test
+SMODS.Joker {
+    key = "rorschach_test",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 5,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 1, y = 8 },
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            local convert = false
+            for _, scored_card in ipairs(context.scoring_hand) do
+                if not scored_card.debuff then
+                    local rank_mod = pseudorandom('cod_rorschach_test', 0, 12)
+                    if rank_mod > 0 then
+                        convert = true
+                        assert(SMODS.modify_rank(scored_card, rank_modm))
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                scored_card:juice_up()
+                                return true
+                            end
+                        }))
+                    end
+                end
+            end
+            if convert then
+                return {
+                    message = localize('rorschach_test_modify'),
+                    colour = G.C.UI.TEXT_DARK
+                }
+            end
+        end
+    end,
+}
+
 -- Mult Joker
 SMODS.Joker {
     key = "mult_joker",
