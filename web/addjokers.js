@@ -566,6 +566,14 @@ let jokers = [
     rarity: "Common"
   },
   {
+    name: "Bonus Joker",
+    text: [
+      "Retrigger all played {C:attention}Bonus{} cards"
+    ],
+    image_url: "img/j/bonus.png",
+    rarity: "Uncommon"
+  },
+  {
     name: "Mult Joker",
     text: [
       "Gives {C:mult}+2{} Mult for each {C:attention}Mult Card{} in your {C:attention}full deck{}",
@@ -582,20 +590,20 @@ let jokers = [
     rarity: "Common"
   },
   {
-    name: "Rorschach Test",
-    text: [
-       "All played scoring cards become {C:attention}random{} ranks",
-    ],
-    image_url: "img/j/rorschach_test.png",
-    rarity: "Common"
-  },
-  {
     name: "Connect the Dots",
     text: [
         "Each played {C:attention}"+ranks[Math.floor(Math.random() * ranks.length)]+"{} earns {C:money}$1{} when scored",
         "{s:0.8}Rank decreases when scored"
     ],
     image_url: "img/j/connect_the_dots.png",
+    rarity: "Common"
+  },
+  {
+    name: "Rorschach Test",
+    text: [
+       "All played scoring cards become {C:attention}random{} ranks",
+    ],
+    image_url: "img/j/rorschach_test.png",
     rarity: "Common"
   },
   {

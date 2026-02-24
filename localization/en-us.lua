@@ -672,11 +672,18 @@ return {
                     "{C:inactive}(Must have room)",
                 },
             },
-            j_cod_mult_joker = {
+            j_cod_bonus = {
+                name = "Bonus Joker",
+                text = {
+                    "Retrigger all played",
+                    "{C:attention}Bonus{} cards"
+                },
+            },
+            j_cod_mult = {
                 name = "Mult Joker",
                 text = {
                     "Gives {C:mult}+#1#{} Mult for",
-                    "each {C:attention}Mult Card",
+                    "each {C:attention}Mult{} card",
                     "in your {C:attention}full deck",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
