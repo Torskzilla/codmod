@@ -705,6 +705,14 @@ return {
                     "{s:0.8}Rank decreases when scored"
                 },
             },
+            j_cod_tornado = {
+                name = "Tornado",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                    "Discards held cards when",
+                    "hand is played",
+                },
+            },
         },
         Other={
             cod_dormant = {

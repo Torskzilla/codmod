@@ -598,6 +598,15 @@ let jokers = [
     image_url: "img/j/connect_the_dots.png",
     rarity: "Common"
   },
+  {
+    name: "Tornado",
+    text: [
+        "{C:attention}+2{} hand size",
+        "Discards held cards when hand is played",
+    ],
+    image_url: "img/j/tornado.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",
