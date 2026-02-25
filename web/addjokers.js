@@ -5,8 +5,10 @@ let possibilities = ["{X:mult,C:white}X3{} Mult", "{C:chips}+250{} Chips", "{C:m
 
 let suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
 let ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
+let faces = ["Jack", "Queen", "King"]
 
 let printer_suit = suits[Math.floor(Math.random() * suits.length)]
+let moai_suit = suits[Math.floor(Math.random() * suits.length)]
 
 let jokers = [
   {
@@ -613,6 +615,14 @@ let jokers = [
         "Discards held cards when hand is played",
     ],
     image_url: "img/j/tornado.png",
+    rarity: "Uncommon"
+  },
+  {
+    name: "Moai",
+    text: [
+        "{C:attention}Stone{} cards count as {C:attention}"+faces[Math.floor(Math.random() * faces.length)]+"{} of {C:"+moai_suit+"}"+moai_suit,
+    ],
+    image_url: "img/j/moai.png",
     rarity: "Uncommon"
   },
 

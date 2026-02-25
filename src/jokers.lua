@@ -2264,7 +2264,7 @@ SMODS.Joker {
     pos = { x = 1, y = 5 },
     config = { extra = { rank = "Ace", suit = "Hearts" } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.rank, card.ability.extra.suit, colours = { G.C.SUITS[card.ability.extra.suit] } } }
+        return { vars = { localize(card.ability.extra.rank, 'ranks'), localize(card.ability.extra.suit, 'suits_plural'), colours = { G.C.SUITS[card.ability.extra.suit] } } }
     end,
     calculate = function(self, card, context)
         if context.setting_blind then
@@ -3097,3 +3097,94 @@ SMODS.Joker {
         end
     end
 }
+
+-- Moai
+SMODS.Joker {
+    key = "moai",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 5,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 0, y = 7 },
+    config = { extra = { rank = "King", suit = "Hearts" } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_stone
+        return { vars = { localize(card.ability.extra.rank, 'ranks'), localize(card.ability.extra.suit, 'suits_plural'), colours = { G.C.SUITS[card.ability.extra.suit] } } }
+    end,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_stone') then
+                return true
+            end
+        end
+        return false
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        card.ability.extra.suit = pseudorandom_element(SMODS.Suits, 'cod_moai_suit').key
+        card.ability.extra.rank = pseudorandom_element({"King", "Queen", "Jack"}, 'cod_moai_face')
+    end,
+}
+
+-- moai hooks
+local no_suit_ref = SMODS.has_no_suit
+function SMODS.has_no_suit(card)
+    if SMODS.has_enhancement(card, 'm_stone') and next(SMODS.find_card('j_cod_moai')) then
+        return false
+    end
+    return no_suit_ref(card)
+end
+
+local no_rank_ref = SMODS.has_no_rank
+function SMODS.has_no_rank(card)
+    if SMODS.has_enhancement(card, 'm_stone') and next(SMODS.find_card('j_cod_moai')) then
+        return false
+    end
+    return no_rank_ref(card)
+end
+
+local is_suit_ref = Card.is_suit
+function Card:is_suit(suit, bypass_debuff, flush_calc)
+    if SMODS.has_enhancement(self, 'm_stone') then
+        local _, moai = next(SMODS.find_card('j_cod_moai'))
+        if moai then
+            if moai_smeared_check(moai, suit) then
+                return true
+            end
+            return moai.ability.extra.suit == suit
+        end
+    end
+    return is_suit_ref(self, suit, bypass_debuff, flush_calc)
+end
+
+local get_id_ref = Card.get_id
+function Card:get_id()
+    if SMODS.has_enhancement(self, 'm_stone') then
+        local _, moai = next(SMODS.find_card('j_cod_moai'))
+        if moai then
+            return SMODS.Ranks[moai.ability.extra.rank].id
+        end
+    end
+    return get_id_ref(self)
+end
+
+function moai_smeared_check(moai, suit)
+    if not next(find_joker('Smeared Joker')) then
+        return false
+    end
+
+    if ((moai.ability.extra.suit == 'Hearts' or moai.ability.extra.suit == 'Diamonds') and (suit == 'Hearts' or suit == 'Diamonds')) then
+        return true
+    elseif (moai.ability.extra.suit == 'Spades' or moai.ability.extra.suit == 'Clubs') and (suit == 'Spades' or suit == 'Clubs') then
+        return true
+    end
+    return false
+end
+
+local is_face_ref = Card.is_face
+function Card:is_face(from_boss)
+    if not self.debuff and SMODS.has_enhancement(self, 'm_stone') and next(SMODS.find_card('j_cod_moai')) then
+        return true
+    end
+    return is_face_ref(self, from_boss)
+end

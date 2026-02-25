@@ -720,6 +720,13 @@ return {
                     "hand is played",
                 },
             },
+            j_cod_moai = {
+                name = "Moai",
+                text = {
+                    "{C:attention}Stone{} cards count as",
+                    "{C:attention}#1#{} of {V:1}#2#{}",
+                },
+            },
         },
         Other={
             cod_dormant = {
