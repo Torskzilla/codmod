@@ -2432,6 +2432,14 @@ SMODS.Joker {
             }
         end
     end,
+    in_pool = function(self, args)
+        for handname, hand in pairs(G.GAME.hands) do
+            if G.GAME.hands[handname].played == 0 then
+                return true
+            end
+        end
+        return false
+    end,
 }
 
 -- Stellar Cluster
