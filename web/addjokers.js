@@ -625,6 +625,15 @@ let jokers = [
     image_url: "img/j/moai.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Cryptogram",
+    text: [
+        "{C:attention}+2{} hand size",
+        "First hand is drawn face down",
+    ],
+    image_url: "img/j/cryptogram.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

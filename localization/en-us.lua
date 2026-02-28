@@ -727,6 +727,14 @@ return {
                     "{C:attention}#1#{} of {V:1}#2#{}",
                 },
             },
+            j_cod_cryptogram = {
+                name = "Cryptogram",
+                text = {
+                    "{C:attention}+#1#{} hand size",
+                    "First hand is",
+                    "drawn face down",
+                },
+            },
         },
         Other={
             cod_dormant = {

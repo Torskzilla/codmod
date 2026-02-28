@@ -3196,3 +3196,32 @@ function Card:is_face(from_boss)
     end
     return is_face_ref(self, from_boss)
 end
+
+-- Cryptogram
+SMODS.Joker {
+    key = "cryptogram",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 6, y = 8 },
+    config = { extra = { h_size = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.h_size } }
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.hand:change_size(card.ability.extra.h_size)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.hand:change_size(-card.ability.extra.h_size)
+    end,
+    calculate = function(self, card, context)
+        if context.stay_flipped and context.to_area == G.hand and
+            G.GAME.current_round.hands_played == 0 and G.GAME.current_round.discards_used == 0 then
+            return {
+                stay_flipped = true
+            }
+        end
+    end
+}
