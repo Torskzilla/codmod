@@ -121,7 +121,7 @@ let jokers = [
   {
     name: "Uncanny Clone",
     text: [
-      "Clones each give {C:mult}+20{} Mult, may appear multiple times",
+      "Clones each give {C:mult}+16{} Mult, may appear multiple times",
     ],
     image_url: "img/j/uncanny_clone.png",
     rarity: "Uncommon"
@@ -137,7 +137,7 @@ let jokers = [
   {
     name: "Tall Joker",
     text: [
-      "{C:mult}+15{} Mult if sum",
+      "{C:mult}+12{} Mult if sum",
         "of played ranks",
         "is at least {C:attention}40{}",
     ],
@@ -361,8 +361,8 @@ let jokers = [
   {
     name: "Unlucky Joker",
     text: [
-      "{C:green}1 in 3{} chance to give {C:chips}+0{} Chips,",
-        "gains {C:chips}+4{} Chips when a chance fails",
+      "{C:green}1 in 2{} chance to give {C:chips}+0{} Chips,",
+        "gains {C:chips}+3{} Chips when a chance fails",
     ],
     image_url: "img/j/unlucky.png",
     rarity: "Uncommon"
@@ -470,7 +470,7 @@ let jokers = [
   {
     name: "Stellar Cluster",
     text: [
-      "{C:mult}+3{} Mult per different {C:attention}poker hand{} you have played",
+      "{C:mult}+2{} Mult per different {C:attention}poker hand{} you have played",
     ],
     image_url: "img/j/stellar_cluster.png",
     rarity: "Common"
