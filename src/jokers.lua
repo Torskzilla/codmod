@@ -396,7 +396,7 @@ SMODS.Joker {
     blueprint_compat = true,
     perishable_compat = false,
     rarity = 1,
-    cost = 4,
+    cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 7, y = 3 },
     -- amount is unused
@@ -536,7 +536,7 @@ SMODS.Joker {
     cost = 6,
     atlas = 'atlas_cod_jokers',
     pos = { x = 4, y = 1 },
-    config = { extra = { mult = 20, cod_clone = true } },
+    config = { extra = { mult = 16, cod_clone = true } },
     in_pool = function(self, args)
         return true, { allow_duplicates = true }
     end,
@@ -646,7 +646,7 @@ SMODS.Joker {
     cost = 4,
     atlas = 'atlas_cod_jokers',
     pos = { x = 3, y = 2 },
-    config = { extra = { mult = 15, min_sum = 40 } },
+    config = { extra = { mult = 12, min_sum = 40 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.mult, card.ability.extra.min_sum } }
     end,
@@ -672,7 +672,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     rarity = 1,
-    cost = 4,
+    cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 1, y = 1 },
     config = {  extra = { eat_size = 2 } },
@@ -730,7 +730,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = false,
     rarity = 1,
-    cost = 4,
+    cost = 3,
     atlas = 'atlas_cod_jokers',
     pos = { x = 2, y = 1 },
     config = { extra = { pack_h_size = 3, active = false } },
@@ -836,7 +836,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     rarity = 1,
-    cost = 4,
+    cost = 3,
     atlas = 'atlas_cod_jokers',
     pos = { x = 6, y = 1 },
     config = { extra = { xmult = 2 } },
@@ -937,42 +937,42 @@ SMODS.Joker {
 }
 
 -- The Conspiracy
-SMODS.Joker {
-    key = "conspiracy",
-    unlocked = false,
-    blueprint_compat = true,
-    rarity = 3,
-    cost = 8,
-    atlas = 'atlas_cod_jokers',
-    pos = { x = 8, y = 0 },
-    config = { extra = { xmult = 4} },
-    loc_vars = function(self, info_queue, card)
-        return { vars = { card.ability.extra.xmult } }
-    end,
-    calculate = function(self, card, context)
-        if context.joker_main then
-            if next(context.poker_hands["Flush House"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Five of a Kind"]) then
-                return {
-                    xmult = card.ability.extra.xmult
-                }
-            end
-            -- more general solution that doesnt work
-            -- for i = 1, #G.hands do
-            --     if G.hands[i].visible and next(context.poker_hands[G.hands[i]]) then          
-            --         return {
-            --             xmult = card.ability.extra.Xmult
-            --         }
-            --     end
-            -- end
-        end
-    end,
-    locked_loc_vars = function(self, info_queue, card)
-        return { vars = { localize('High Card', 'poker_hands') } }
-    end,
-    check_for_unlock = function(self, args)
-        return args.type == 'win_no_hand' and G.GAME.hands['High Card'].played == 0
-    end
-}
+-- SMODS.Joker {
+--     key = "conspiracy",
+--     unlocked = false,
+--     blueprint_compat = true,
+--     rarity = 3,
+--     cost = 8,
+--     atlas = 'atlas_cod_jokers',
+--     pos = { x = 8, y = 0 },
+--     config = { extra = { xmult = 4} },
+--     loc_vars = function(self, info_queue, card)
+--         return { vars = { card.ability.extra.xmult } }
+--     end,
+--     calculate = function(self, card, context)
+--         if context.joker_main then
+--             if next(context.poker_hands["Flush House"]) or next(context.poker_hands["Flush Five"]) or next(context.poker_hands["Five of a Kind"]) then
+--                 return {
+--                     xmult = card.ability.extra.xmult
+--                 }
+--             end
+--             -- more general solution that doesnt work
+--             -- for i = 1, #G.hands do
+--             --     if G.hands[i].visible and next(context.poker_hands[G.hands[i]]) then          
+--             --         return {
+--             --             xmult = card.ability.extra.Xmult
+--             --         }
+--             --     end
+--             -- end
+--         end
+--     end,
+--     locked_loc_vars = function(self, info_queue, card)
+--         return { vars = { localize('High Card', 'poker_hands') } }
+--     end,
+--     check_for_unlock = function(self, args)
+--         return args.type == 'win_no_hand' and G.GAME.hands['High Card'].played == 0
+--     end
+-- }
 
 -- Singularity
 SMODS.Joker {
@@ -1353,7 +1353,7 @@ SMODS.Joker {
     key = "spam",
     blueprint_compat = true,
     rarity = 1,
-    cost = 4,
+    cost = 3,
     atlas = 'atlas_cod_jokers',
     pos = { x = 0, y = 3 },
     soul_pos = { x = 1, y = 3 },
@@ -1758,7 +1758,7 @@ SMODS.Joker {
     cost = 6,
     atlas = 'atlas_cod_jokers',
     pos = { x = 1, y = 4 },
-    config = { extra = { odds = 3, chips = 0, chips_mod = 4 } },
+    config = { extra = { odds = 2, chips = 0, chips_mod = 3 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_unlucky')
         return { vars = { numerator, denominator, card.ability.extra.chips, card.ability.extra.chips_mod, } }
@@ -1787,7 +1787,7 @@ SMODS.Joker {
     blueprint_compat = true,
     eternal_compat = false,
     rarity = 1,
-    cost = 4,
+    cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 2, y = 4 },
     config = { extra = { dishes = 3, current = {}, possibilities = { xmult = 1.5, mult = 10, chips = 50, h_size = 1, discards = 1, hands = 1, probability = 1 } } },
@@ -2373,7 +2373,6 @@ SMODS.Joker {
 --     atlas = 'atlas_cod_jokers',
 --     pos = { x = 4, y = 5 },
 --     calculate = function(self, card, context)
-        
 --     end,
 -- }
 
@@ -2405,7 +2404,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     rarity = 1,
-    cost = 4,
+    cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 8, y = 5 },
     config = { extra = { mult = 2 } },
@@ -2448,10 +2447,10 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     rarity = 1,
-    cost = 4,
+    cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 7, y = 5 },
-    config = { extra = { mult = 3 } },
+    config = { extra = { mult = 2 } },
     loc_vars = function(self, info_queue, card)
         local played = 0
         for _, hand in pairs(G.GAME.hands) do
@@ -2483,7 +2482,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     rarity = 1,
-    cost = 4,
+    cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 9, y = 5 },
     config = { extra = { mult = 1, cap = 25 } },
@@ -2645,7 +2644,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = false,
     rarity = 1,
-    cost = 2,
+    cost = 1,
     atlas = 'atlas_cod_jokers',
     pos = { x = 3, y = 6 },
     config = { extra = { odds = 2 } },
@@ -2715,7 +2714,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     rarity = 3,
-    cost = 8,
+    cost = 9,
     atlas = 'atlas_cod_jokers',
     pos = { x = 5, y = 6 },
     calculate = function(self, card, context)
@@ -2888,7 +2887,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = false,
     rarity = 1,
-    cost = 4,
+    cost = 3,
     atlas = 'atlas_cod_jokers',
     pos = { x = 5, y = 7 },
     calculate = function(self, card, context)
@@ -2923,7 +2922,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = false,
     rarity = 1,
-    cost = 5,
+    cost = 4,
     atlas = 'atlas_cod_jokers',
     pos = { x = 1, y = 8 },
     calculate = function(self, card, context)

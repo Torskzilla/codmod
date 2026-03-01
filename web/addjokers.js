@@ -197,15 +197,15 @@ let jokers = [
     image_url: "img/j/bully.png",
     rarity: "Common"
   },
-  {
-    name: "The Conspiracy",
-    text: [
-      "{X:mult,C:white}X4{} Mult if played",
-        "hand is {C:attention}Secret",
-    ],
-    image_url: "img/j/the_conspiracy.png",
-    rarity: "Rare"
-  },
+  // {
+  //   name: "The Conspiracy",
+  //   text: [
+  //     "{X:mult,C:white}X4{} Mult if played",
+  //       "hand is {C:attention}Secret",
+  //   ],
+  //   image_url: "img/j/the_conspiracy.png",
+  //   rarity: "Rare"
+  // },
   {
     name: "Homework",
     text: [
