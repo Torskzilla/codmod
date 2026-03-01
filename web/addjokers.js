@@ -634,6 +634,15 @@ let jokers = [
     image_url: "img/j/cryptogram.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Cipher Wheel",
+    text: [
+        "{C:blue}+3{} Hands",
+        "Cards drawn face down after each hand played",
+    ],
+    image_url: "img/j/cipher_wheel.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

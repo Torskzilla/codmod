@@ -2756,6 +2756,7 @@ SMODS.Joker {
     cost = 6,
     atlas = 'atlas_cod_jokers',
     pos = { x = 6, y = 6 },
+    pixel_size = { h = 82 },
     config = { extra = { odds = 2 } },
     loc_vars = function(self, info_queue, card)
         local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_stone_tablet')
@@ -3221,6 +3222,43 @@ SMODS.Joker {
             return {
                 stay_flipped = true
             }
+        end
+    end
+}
+
+-- Cipher Wheel
+SMODS.Joker {
+    key = "cipher_wheel",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 7,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 8, y = 8 },
+    pixel_size = { h = 71 },
+    config = { extra = { hands = 3, active = false } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.hands } }
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
+        ease_hands_played(card.ability.extra.hands)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+        ease_hands_played(-card.ability.extra.hands)
+    end,
+    calculate = function(self, card, context)
+        if context.press_play then
+            card.ability.extra.active = true
+        end
+        if context.stay_flipped and context.to_area == G.hand and card.ability.extra.active then
+            return {
+                stay_flipped = true
+            }
+        end
+        if context.setting_blind or context.hand_drawn then
+            card.ability.extra.active = false
         end
     end
 }

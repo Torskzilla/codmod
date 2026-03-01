@@ -735,6 +735,14 @@ return {
                     "drawn face down",
                 },
             },
+            j_cod_cipher_wheel = {
+                name = "Cipher Wheel",
+                text = {
+                    "{C:blue}+#1#{} Hands",
+                    "Cards drawn face down",
+                    "after each hand played",
+                },
+            },
         },
         Other={
             cod_dormant = {
