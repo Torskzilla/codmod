@@ -758,6 +758,14 @@ return {
                     "and held {C:attention}Gold{} cards"
                 },
             },
+            j_cod_dyson_sphere = {
+                name = "Dyson Sphere",
+                text = {
+                    "When a {C:attention}poker hand{} levels up,",
+                    "{C:green}#1# in #2#{} chance to instead level",
+                    "up your most played {C:attention}poker hand{}"
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -896,6 +904,7 @@ return {
             coloring_color_in="Splash!",
             rorschach_test_modify="See?",
             penrose_steps_step="Step",
+            dyson_sphere_redirect="Siphon",
         },
         high_scores={},
         labels={

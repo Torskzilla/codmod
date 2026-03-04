@@ -659,6 +659,14 @@ let jokers = [
     image_url: "img/j/gold_bar.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Dyson Sphere",
+    text: [
+        "When a {C:attention}poker hand{} levels up, {C:green}1 in 3{} chance to instead level up your most played {C:attention}poker hand{}"
+    ],
+    image_url: "img/j/dyson_sphere.png",
+    rarity: "Rare"
+  },
 
   // {
   //   name: "",

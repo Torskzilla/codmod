@@ -2364,17 +2364,40 @@ SMODS.Joker {
 }
 
 -- Dyson Sphere
--- SMODS.Joker {
---     key = "dyson_sphere",
---     unlocked = true,
---     blueprint_compat = true,
---     rarity = 2,
---     cost = 6,
---     atlas = 'atlas_cod_jokers',
---     pos = { x = 4, y = 5 },
---     calculate = function(self, card, context)
---     end,
--- }
+SMODS.Joker {
+    key = "dyson_sphere",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 9,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 5 },
+    config = { extra = { odds = 3 } },
+    loc_vars = function(self, info_queue, card)
+        local numerator, denominator = SMODS.get_probability_vars(card, 1, card.ability.extra.odds, 'cod_dyson_sphere')
+        return { vars = { numerator, denominator} }
+    end,
+}
+
+local level_up_hand_ref = level_up_hand
+function level_up_hand(card, hand, instant, amount)
+    local _, dyson = next(SMODS.find_card('j_cod_dyson_sphere'))
+    if dyson and (not amount or amount > 0) then
+        local most_played_hand = nil
+        local times_played = -1
+        for _, handname in ipairs(G.handlist) do
+            if SMODS.is_poker_hand_visible(handname) and G.GAME.hands[handname].played > times_played then
+                most_played_hand = handname
+                times_played = G.GAME.hands[handname].played
+            end
+        end
+        if hand ~= most_played_hand and SMODS.pseudorandom_probability(dyson, 'cod_dyson_sphere', 1, dyson.ability.extra.odds) then
+            SMODS.calculate_effect({message = localize("dyson_sphere_redirect")}, dyson)
+            hand = most_played_hand
+        end
+    end
+    level_up_hand_ref(card, hand, instant, amount)
+end
 
 -- Shackles
 SMODS.Joker {
