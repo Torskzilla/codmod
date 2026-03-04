@@ -743,6 +743,14 @@ return {
                     "after each hand played",
                 },
             },
+            j_cod_penrose_steps = {
+                name = "Penrose Steps",
+                text = {
+                    "When {C:attention}Blind{} is selected,",
+                    "increase the rank of {C:attention}all{}",
+                    "cards in deck by {C:attention}#1#{}",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -880,6 +888,7 @@ return {
             whistleblower_leak="Leak!",
             coloring_color_in="Splash!",
             rorschach_test_modify="See?",
+            penrose_steps_step="Step",
         },
         high_scores={},
         labels={

@@ -3262,3 +3262,38 @@ SMODS.Joker {
         end
     end
 }
+
+-- Penrose Steps
+SMODS.Joker {
+    key = "penrose_steps",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 9, y = 8 },
+    config = { extra = { steps = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.steps } }
+    end,
+    calculate = function(self, card, context)
+        if context.setting_blind then
+            local stepped = false
+            for _, playing_card in ipairs(G.playing_cards) do
+                if not SMODS.has_no_rank(playing_card) and not playing_card.getting_sliced then
+                    assert(SMODS.modify_rank(playing_card, card.ability.extra.steps))
+                    stepped = true
+                end
+            end
+
+            if stepped then
+
+                return {
+                    message = localize('penrose_steps_step'),
+                    colour = G.C.BLACK;
+                }
+            end
+
+        end
+    end
+}

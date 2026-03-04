@@ -643,6 +643,14 @@ let jokers = [
     image_url: "img/j/cipher_wheel.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Penrose Steps",
+    text: [
+        "When {C:attention}Blind{} is selected, increase the rank of {C:attention}all{} cards in deck by {C:attention}1{}",
+    ],
+    image_url: "img/j/penrose_steps.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",
