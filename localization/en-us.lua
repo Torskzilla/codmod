@@ -751,6 +751,13 @@ return {
                     "cards in deck by {C:attention}#1#{}",
                 },
             },
+            j_cod_gold_bar = {
+                name = "Gold Bar",
+                text = {
+                    "Retrigger all played",
+                    "and held {C:attention}Gold{} cards"
+                },
+            },
         },
         Other={
             cod_dormant = {

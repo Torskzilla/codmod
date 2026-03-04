@@ -651,6 +651,14 @@ let jokers = [
     image_url: "img/j/penrose_steps.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Gold Bar",
+    text: [
+        "Retrigger all played and held {C:attention}Gold{} cards"
+    ],
+    image_url: "img/j/gold_bar.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

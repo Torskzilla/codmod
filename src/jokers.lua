@@ -3217,7 +3217,7 @@ SMODS.Joker {
         G.hand:change_size(-card.ability.extra.h_size)
     end,
     calculate = function(self, card, context)
-        if context.stay_flipped and context.to_area == G.hand and
+        if context.stay_flipped and context.to_area == G.hand and not context.blueprint and
             G.GAME.current_round.hands_played == 0 and G.GAME.current_round.discards_used == 0 then
             return {
                 stay_flipped = true
@@ -3252,7 +3252,7 @@ SMODS.Joker {
         if context.press_play then
             card.ability.extra.active = true
         end
-        if context.stay_flipped and context.to_area == G.hand and card.ability.extra.active then
+        if context.stay_flipped and context.to_area == G.hand and card.ability.extra.active and not context.blueprint then
             return {
                 stay_flipped = true
             }
@@ -3295,5 +3295,40 @@ SMODS.Joker {
             end
 
         end
+    end
+}
+
+-- Gold Bar
+SMODS.Joker {
+    key = "gold_bar",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 1, y = 7 },
+    config = { extra = { repetitions = 1 } },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.m_gold
+    end,
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and SMODS.has_enhancement(context.other_card, 'm_gold') then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
+        if context.repetition and context.cardarea == G.hand and (next(context.card_effects[1]) or #context.card_effects > 1) and SMODS.has_enhancement(context.other_card, 'm_gold') then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
+    end,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_gold') then
+                return true
+            end
+        end
+        return false
     end
 }
