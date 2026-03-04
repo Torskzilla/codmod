@@ -533,10 +533,10 @@ SMODS.Joker {
     unlocked = false,
     blueprint_compat = true,
     rarity = 2,
-    cost = 6,
+    cost = 7,
     atlas = 'atlas_cod_jokers',
     pos = { x = 4, y = 1 },
-    config = { extra = { mult = 16, cod_clone = true } },
+    config = { extra = { mult = 15, cod_clone = true } },
     in_pool = function(self, args)
         return true, { allow_duplicates = true }
     end,
@@ -573,7 +573,7 @@ SMODS.Joker {
     unlocked = false,
     blueprint_compat = true,
     rarity = 3,
-    cost = 8,
+    cost = 9,
     atlas = 'atlas_cod_jokers',
     pos = { x = 5, y = 1 },
     config = { extra = { xmult = 1.5, cod_clone = true } },
