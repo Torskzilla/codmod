@@ -667,6 +667,14 @@ let jokers = [
     image_url: "img/j/dyson_sphere.png",
     rarity: "Rare"
   },
+  {
+    name: "Eldritch Joker",
+    text: [
+        "For every {C:attention}2{} levels in played {C:attention}poker hand{}, retrigger a random played card"
+    ],
+    image_url: "img/j/eldritch.png",
+    rarity: "Rare"
+  },
 
   // {
   //   name: "",

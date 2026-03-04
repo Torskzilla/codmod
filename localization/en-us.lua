@@ -766,6 +766,14 @@ return {
                     "up your most played {C:attention}poker hand{}"
                 },
             },
+            j_cod_eldritch = {
+                name = "Eldritch Joker",
+                text = {
+                    "For every {C:attention}2{} levels in played",
+                    "{C:attention}poker hand{}, retrigger",
+                    "a random played card"
+                },
+            },
         },
         Other={
             cod_dormant = {
