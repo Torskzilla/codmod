@@ -154,7 +154,7 @@ SMODS.Blind {
                 
                 local planet = nil
                 for _, v in pairs(G.P_CENTER_POOLS.Planet) do
-                    if v.config.hand_type == G.GAME.last_hand_played then
+                    if v.config.hand_type == context.scoring_name then
                         planet = v.key
                     end
                 end
