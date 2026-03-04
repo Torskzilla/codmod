@@ -3,11 +3,11 @@
   "name": "Cod's Mod",
   "display_name": "Cod's Mod",
   "author": ["Codzilla"],
-  "description": "Adds stuff",
+  "description": "A vanilla-like content mod that mostly adds Jokers but also some other stuff.",
   "prefix": "cod",
   "main_file": "codmod.lua",
   "priority": 0,
-  "badge_colour": "0ef4d6",
+  "badge_colour": "3bd9c4",
   "version": "1.5.0",
   "dependencies": ["Steamodded (>=1.0.0~BETA-1503a)"]
 }
