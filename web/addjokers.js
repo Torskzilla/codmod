@@ -675,6 +675,14 @@ let jokers = [
     image_url: "img/j/eldritch.png",
     rarity: "Rare"
   },
+  {
+    name: "Jimboel",
+    text: [
+        "{X:mult,C:white}X0.3{} Mult per {C:spectral}Spectral{} card used this run",
+    ],
+    image_url: "img/j/jimboel.png",
+    rarity: "Rare"
+  },
 
   // {
   //   name: "",

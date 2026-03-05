@@ -774,6 +774,14 @@ return {
                     "a random played card"
                 },
             },
+            j_cod_jimboel = {
+                name = "Jimboel",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult per {C:spectral}Spectral{}",
+                    "card used this run",
+                    "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
+                },
+            },
         },
         Other={
             cod_dormant = {

@@ -3393,3 +3393,30 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Jimboel
+SMODS.Joker {
+    key = "jimboel",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 0, y = 9 },
+    config = { extra = { xmult_mod = 0.3, base_xmult = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult_mod, card.ability.extra.base_xmult + card.ability.extra.xmult_mod * (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.spectral or 0) } }
+    end,
+    calculate = function(self, card, context)
+        if context.using_consumeable and not context.blueprint and context.consumeable.ability.set == "Spectral" then
+            return {
+                message = localize { type = 'variable', key = 'a_xmult', vars = { card.ability.extra.base_xmult + card.ability.extra.xmult_mod * (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.spectral or 0) } },
+            }
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.base_xmult + card.ability.extra.xmult_mod * (G.GAME.consumeable_usage_total and G.GAME.consumeable_usage_total.spectral or 0)
+            }
+        end
+    end
+}
