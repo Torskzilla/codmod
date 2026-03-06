@@ -790,6 +790,15 @@ return {
                     "{C:inactive}({C:chips}+#3#{C:inactive} Chips, {C:mult}+#4#{C:inactive} Mult)",
                 },
             },
+            j_cod_book_of_the_dead = {
+                name = "Book of the Dead",
+                text = {
+                    "If {C:attention}first hand{} of round is",
+                    "a {C:attention}#1#{}, destroy it,",
+                    "poker hand changes",
+                    "at end of round",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -930,6 +939,7 @@ return {
             penrose_steps_step="Step",
             dyson_sphere_redirect="Siphon",
             tornado_swish="Swish!",
+            book_of_the_dead_judge="Judged!",
         },
         high_scores={},
         labels={

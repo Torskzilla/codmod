@@ -3483,3 +3483,57 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Book of the Dead
+SMODS.Joker {
+    key = "book_of_the_dead",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 5,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 5, y = 9 },
+    config = { extra = { poker_hand = 'High Card' } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { localize(card.ability.extra.poker_hand, 'poker_hands') } }
+    end,
+    calculate = function(self, card, context)
+        if context.first_hand_drawn and not context.blueprint then
+            local eval = function() return G.GAME.current_round.hands_played == 0 and not G.RESET_JIGGLES end
+            juice_card_until(card, eval, true)
+        end
+        if context.destroy_card and context.cardarea == G.play and context.scoring_name == card.ability.extra.poker_hand and not context.blueprint and context.destroying_card and G.GAME.current_round.hands_played == 0 then
+            if context.destroying_card == context.scoring_hand[1] then
+                return {
+                    remove = true,
+                    message = localize('book_of_the_dead_judge'),
+                    colour = G.C.RED,
+                }
+            else
+                return {
+                    remove = true,
+                }
+            end
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            local _poker_hands = {}
+            for handname, _ in pairs(G.GAME.hands) do
+                if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.poker_hand then
+                    _poker_hands[#_poker_hands + 1] = handname
+                end
+            end
+            card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, 'cod_book_of_the_dead')
+            return {
+                message = localize('k_reset')
+            }
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        local _poker_hands = {}
+        for handname, _ in pairs(G.GAME.hands) do
+            if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.poker_hand then
+                _poker_hands[#_poker_hands + 1] = handname
+            end
+        end
+        card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, 'cod_book_of_the_dead')
+    end
+}

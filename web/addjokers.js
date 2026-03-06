@@ -7,6 +7,8 @@ let suits = ["Hearts", "Diamonds", "Clubs", "Spades"]
 let ranks = ["2", "3", "4", "5", "6", "7", "8", "9", "10", "Jack", "Queen", "King", "Ace"]
 let faces = ["Jack", "Queen", "King"]
 
+let poker_hands = ["High Card", "Pair", "Two Pair", "Three of a Kind", "Straight", "Flush", "Full House", "Four of a Kind", "Straigh Flush", "Five of a Kind", "Flush House", "Flush Five"]
+
 let printer_suit = suits[Math.floor(Math.random() * suits.length)]
 let moai_suit = suits[Math.floor(Math.random() * suits.length)]
 
@@ -691,6 +693,14 @@ let jokers = [
     ],
     image_url: "img/j/versatile.png",
     rarity: "Common"
+  },
+  {
+    name: "Book of the Dead",
+    text: [
+        "If {C:attention}first hand{} of round is a {C:attention}"+poker_hands[Math.floor(Math.random() * poker_hands.length)]+"{}, destroy it, poker hand changes at end of round",
+    ],
+    image_url: "img/j/book_of_the_dead.png",
+    rarity: "Uncommon"
   },
 
   // {
