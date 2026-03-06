@@ -921,6 +921,7 @@ return {
             rorschach_test_modify="See?",
             penrose_steps_step="Step",
             dyson_sphere_redirect="Siphon",
+            tornado_swish="Swish!",
         },
         high_scores={},
         labels={

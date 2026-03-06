@@ -3113,18 +3113,25 @@ SMODS.Joker {
         G.hand:change_size(-card.ability.extra.h_size)
     end,
     calculate = function(self, card, context)
-        if context.press_play and not context.blueprint then
+        if context.press_play and not context.blueprint and #G.hand.cards > 0 then
             G.E_MANAGER:add_event(Event({
                 func = function()
+                    local prev_limit = G.hand.config.highlighted_limit
+                    G.hand.config.highlighted_limit = #G.hand.cards
                     local any_selected = nil
                     for _, playing_card in ipairs(G.hand.cards) do
                         G.hand:add_to_highlighted(playing_card, true)
                         any_selected = true
                     end
                     if any_selected then G.FUNCS.discard_cards_from_highlighted(nil, true) end
+                    G.hand.config.highlighted_limit = prev_limit
                     return true
                 end
             }))
+            return {
+                message = localize("tornado_swish"),
+                colour = G.C.GREY,
+            }
         end
     end
 }
