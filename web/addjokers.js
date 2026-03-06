@@ -710,6 +710,15 @@ let jokers = [
     image_url: "img/j/ringworld.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Conveyor Belt",
+    text: [
+        "{C:blue}+4{} Hands",
+        "Forces next {C:attention}5{} cards to be selected",
+    ],
+    image_url: "img/j/conveyor_belt.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

@@ -3585,3 +3585,44 @@ SMODS.Joker {
         card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, 'cod_ringworld')
     end
 }
+
+-- Conveyor Belt
+SMODS.Joker {
+    key = "conveyor_belt",
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 9 },
+    config = { extra = { hands = 4, force_selects = 5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.hands, card.ability.extra.force_selects } }
+    end,
+    calculate = function(self, card, context)
+        if context.hand_drawn and not context.blueprint then
+
+            G.hand:unhighlight_all()
+            for _, playing_card in ipairs(G.hand.cards) do
+                playing_card.ability.forced_selection = true
+                G.hand:add_to_highlighted(playing_card)
+            end
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            for _, playing_card in ipairs(G.playing_cards) do
+                playing_card.ability.forced_selection = nil
+            end
+        end
+    end,
+    add_to_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands + card.ability.extra.hands
+        ease_hands_played(card.ability.extra.hands)
+    end,
+    remove_from_deck = function(self, card, from_debuff)
+        G.GAME.round_resets.hands = G.GAME.round_resets.hands - card.ability.extra.hands
+        ease_hands_played(-card.ability.extra.hands)
+
+        for _, playing_card in ipairs(G.playing_cards) do
+            playing_card.ability.forced_selection = nil
+        end
+    end,
+}

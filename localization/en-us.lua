@@ -808,6 +808,14 @@ return {
                     "to the next hand"
                 },
             },
+            j_cod_conveyor_belt = {
+                name = "Conveyor Belt",
+                text = {
+                    "{C:blue}+#1#{} Hands",
+                    "Forces next {C:attention}#2#{}",
+                    "cards to be selected",
+                },
+            },
         },
         Other={
             cod_dormant = {
