@@ -3537,3 +3537,51 @@ SMODS.Joker {
         card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, 'cod_book_of_the_dead')
     end
 }
+
+local poker_hands_ordered = {"High Card", "Pair", "Two Pair", "Three of a Kind", "Straight", "Flush", "Full House", "Four of a Kind", "Straight Flush", "Five of a Kind", "Flush House", "Flush Five"}
+
+-- Ringworld
+SMODS.Joker {
+    key = "ringworld",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 6, y = 9 },
+    config = { extra = { poker_hand = 'High Card' } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { localize(card.ability.extra.poker_hand, 'poker_hands') } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and context.scoring_name == card.ability.extra.poker_hand then
+            local hand_changed = false
+            local passed = false
+            for i=1,#poker_hands_ordered do
+                local handname = poker_hands_ordered[i]
+                if handname == card.ability.extra.poker_hand then
+                    passed = true
+                elseif passed and SMODS.is_poker_hand_visible(handname) then
+                    card.ability.extra.poker_hand = handname
+                    hand_changed = true
+                    break
+                end
+            end
+            if not hand_changed then
+                card.ability.extra.poker_hand = "High Card"
+            end
+            return {
+                level_up = true,
+                message = localize('k_level_up_ex')
+            }
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        local _poker_hands = {}
+        for handname, _ in pairs(G.GAME.hands) do
+            if SMODS.is_poker_hand_visible(handname) and handname ~= card.ability.extra.poker_hand then
+                _poker_hands[#_poker_hands + 1] = handname
+            end
+        end
+        card.ability.extra.poker_hand = pseudorandom_element(_poker_hands, 'cod_ringworld')
+    end
+}

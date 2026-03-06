@@ -799,6 +799,15 @@ return {
                     "at end of round",
                 },
             },
+            j_cod_ringworld = {
+                name = "Ringworld",
+                text = {
+                    "If {C:attention}poker hand{} is a",
+                    "{C:attention}#1#{}, level it up",
+                    "and poker hand changes",
+                    "to the next hand"
+                },
+            },
         },
         Other={
             cod_dormant = {
