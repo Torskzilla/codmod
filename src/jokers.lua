@@ -3427,3 +3427,59 @@ SMODS.Joker {
         end
     end
 }
+
+-- Versatile
+SMODS.Joker {
+    key = "versatile",
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 3, y = 9 },
+    config = { extra = { chips = 15, mult = 3 } },
+    loc_vars = function(self, info_queue, card)
+        local left = 0
+        local right = 0
+        local passed_self = false
+        if G.jokers then
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].ability.set == 'Joker' then
+                    if G.jokers.cards[i] == card then
+                        passed_self = true
+                    else
+                        if passed_self then
+                            right = right + 1
+                        else
+                            left = left + 1
+                        end
+                    end
+                end
+            end
+        end
+        return { vars = { card.ability.extra.chips, card.ability.extra.mult, right*card.ability.extra.chips, left*card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local left = 0
+            local right = 0
+            local passed_self = false
+            for i = 1, #G.jokers.cards do
+                if G.jokers.cards[i].ability.set == 'Joker' then
+                    if G.jokers.cards[i] == card then
+                        passed_self = true
+                    else
+                        if passed_self then
+                            right = right + 1
+                        else
+                            left = left + 1
+                        end
+                    end
+                end
+            end
+            return {
+                chips = right*card.ability.extra.chips,
+                mult = left*card.ability.extra.mult,
+            }
+        end
+    end,
+}

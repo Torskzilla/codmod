@@ -683,6 +683,15 @@ let jokers = [
     image_url: "img/j/jimboel.png",
     rarity: "Rare"
   },
+  {
+    name: "Versatile Joker",
+    text: [
+        "{C:chips}+15{} Chips for each joker to the right",
+        "{C:mult}+3{} Mult for each joker to the left",
+    ],
+    image_url: "img/j/versatile.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

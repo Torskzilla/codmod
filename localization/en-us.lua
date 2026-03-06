@@ -782,6 +782,14 @@ return {
                     "{C:inactive}(Currently {X:mult,C:white}X#2#{C:inactive} Mult)",
                 },
             },
+            j_cod_versatile = {
+                name = "Versatile Joker",
+                text = {
+                    "{C:chips}+#1#{} Chips for each joker to the right",
+                    "{C:mult}+#2#{} Mult for each joker to the left",
+                    "{C:inactive}({C:chips}+#3#{C:inactive} Chips, {C:mult}+#4#{C:inactive} Mult)",
+                },
+            },
         },
         Other={
             cod_dormant = {
