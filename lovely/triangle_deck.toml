@@ -1,0 +1,27 @@
+[manifest]
+version = "1.0.0"
+priority = 0
+
+[[patches]]
+[patches.pattern]
+target = 'functions/misc_functions.lua'
+pattern = '''
+no_faces = false,
+'''
+position = "before"
+payload = '''
+removed_suit = nil,
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+if self.GAME.starting_params.no_faces and SMODS.Ranks[v.value].face then keep = false end
+'''
+position = "before"
+payload = '''
+if self.GAME.starting_params.removed_suit and self.GAME.starting_params.removed_suit == _s then keep = false end
+'''
+match_indent = true

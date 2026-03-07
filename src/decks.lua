@@ -6,6 +6,20 @@ SMODS.Atlas {
 	py = 95
 }
 
+-- Triangle
+SMODS.Back{
+    key = "triangle",
+    unlocked = true,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 4, y = 0},
+    config = {},
+
+    apply = function(self)
+        G.GAME.starting_params.removed_suit = pseudorandom_element({"H", "D", "C", "S"}, 'cod_triangle')
+    end,
+}
+
+
 -- VIP
 SMODS.Back{
     key = "vip",
@@ -47,6 +61,29 @@ SMODS.Back{
         G.E_MANAGER:add_event(Event({
             func = function()
                 SMODS.add_card{ set = "Spectral", key = "c_black_hole", no_edition = true }
+                return true
+            end,
+        }))
+    end,
+}
+
+-- Rainbow
+SMODS.Back{
+    key = "rainbow",
+    unlocked = true,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 6, y = 0},
+    config = {},
+
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                local ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace"}
+                for i=1,#ranks do
+                    -- SMODS.add_card { set = "Base", rank = ranks[i], enhancement = "m_wild", area = G.deck } - can be simplified to this when smods bug is fixed
+                    local c = SMODS.add_card({set = 'Base', rank = ranks[i], area = G.deck})
+                    c:set_ability('m_wild')
+                end
                 return true
             end,
         }))

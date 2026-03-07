@@ -33,6 +33,19 @@ return {
                     "copy of {C:legendary,E:1,T:c_black_hole}Black Hole{}"
                 },
             },
+            b_cod_triangle={
+                name="Triangle Deck",
+                text={
+                    "Missing a {C:attention}Suit{}"
+                },
+            },
+            b_cod_rainbow={
+                name="Rainbow Deck",
+                text={
+                    "Also has a {C:attention,T:e_wild}Wild{}",
+                    "card of each rank"
+                },
+            },
         },
         Blind={
             bl_cod_innocent = {

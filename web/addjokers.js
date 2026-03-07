@@ -787,16 +787,6 @@ let card_modifications = [
 
 let decks = [
   {
-    name: "Ponzi Deck",
-    text: [
-      "Start with {C:attention}5{} copies",
-      "of {C:joker,T:j_credit_card}Credit Card",
-      "and {C:red}-$20",
-    ],
-    image_url: "img/b/ponzi.png",
-    rarity: "Deck"
-  },
-  {
     name: "Average Deck",
     text: [
       "No {C:blue}Common{} or {C:red}Rare",
@@ -819,6 +809,32 @@ let decks = [
       "Start run with a copy of {C:purple,E:1,T:c_black_hole}Black Hole{}"
     ],
     image_url: "img/b/gravity.png",
+    rarity: "Deck"
+  },
+  {
+    name: "Triangle Deck",
+    text: [
+      "Missing a {C:attention}Suit{}"
+    ],
+    image_url: "img/b/triangle.png",
+    rarity: "Deck"
+  },
+  {
+    name: "Rainbow Deck",
+    text: [
+      "Also has a {C:attention,T:e_wild}Wild{} card of each rank"
+    ],
+    image_url: "img/b/rainbow.png",
+    rarity: "Deck"
+  },
+  {
+    name: "Ponzi Deck",
+    text: [
+      "Start with {C:attention}5{} copies",
+      "of {C:joker,T:j_credit_card}Credit Card",
+      "and {C:red}-$20",
+    ],
+    image_url: "img/b/ponzi.png",
     rarity: "Deck"
   },
 ]
