@@ -899,7 +899,15 @@ return {
                 },
             },
         },
-        Tag={},
+        Tag={
+            tag_cod_clone = {
+                name = "Clone Tag",
+                text = {
+                    "Shop has a",
+                    "{C:attention}Joker{} you own",
+                },
+            },
+        },
         Tarot={},
         Voucher={},
     },
