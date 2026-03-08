@@ -963,6 +963,14 @@ let blinds = [
     image_url: "img/bl/elite.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Collective",
+    text: [
+      "All enhanced cards are debuffed",
+    ],
+    image_url: "img/bl/collective.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [

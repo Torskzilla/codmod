@@ -273,6 +273,7 @@ SMODS.Blind {
 local stop_drag_ref = Card.stop_drag
 function Card:stop_drag()
     SMODS.calculate_context({ move_card = true })
+    stop_drag_ref(self)
 end
 
 -- The Elite
@@ -287,6 +288,26 @@ SMODS.Blind {
     calculate = function(self, blind, context)
         if not blind.disabled then
             if context.debuff_card and context.debuff_card.area ~= G.jokers and not next(SMODS.get_enhancements(context.debuff_card)) then
+                return {
+                    debuff = true
+                }
+            end
+        end
+    end,
+}
+
+-- The Collective
+SMODS.Blind {
+    key = "collective",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 10 },
+    boss = { min = 4 },
+    boss_colour = HEX("698079"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.debuff_card and context.debuff_card.area ~= G.jokers and next(SMODS.get_enhancements(context.debuff_card)) then
                 return {
                     debuff = true
                 }

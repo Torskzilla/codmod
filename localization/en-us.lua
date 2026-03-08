@@ -111,6 +111,13 @@ return {
                     "cards are debuffed",
                 },
             },
+            bl_cod_collective = {
+                name = "The Collective",
+                text = {
+                    "All enhanced",
+                    "cards are debuffed",
+                },
+            },
         },
         Edition={},
         Enhanced={},
