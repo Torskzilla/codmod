@@ -160,6 +160,7 @@ SMODS.Blind {
                 end
 
                 if planet then
+                    blind.triggered = true
                     G.GAME.banned_keys[planet] = true
                 end
             end
@@ -167,7 +168,7 @@ SMODS.Blind {
     end,
 }
 
--- The Ascetuc
+-- The Ascetic
 SMODS.Blind {
     key = "ascetic",
     dollars = 0,
@@ -193,6 +194,10 @@ SMODS.Blind {
                         }))
                     end
                 }
+            end
+        else
+            if context.end_of_round and context.main_eval then
+                blind.triggered = true
             end
         end
     end,
