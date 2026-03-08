@@ -15,7 +15,7 @@ SMODS.Back{
     config = {},
 
     apply = function(self)
-        G.GAME.starting_params.removed_suit = pseudorandom_element({"H", "D", "C", "S"}, 'cod_triangle')
+        G.GAME.starting_params.remove_random_suit = true
     end,
 }
 

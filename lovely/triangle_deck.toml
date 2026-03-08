@@ -10,7 +10,20 @@ no_faces = false,
 '''
 position = "before"
 payload = '''
-removed_suit = nil,
+remove_random_suit = false,
+'''
+match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'game.lua'
+pattern = '''
+card_protos = {}
+'''
+position = "before"
+payload = '''
+local remove_suit = nil
+if self.GAME.starting_params.remove_random_suit then remove_suit = pseudorandom_element({"H", "D", "C", "S"}, 'cod_triangle') end
 '''
 match_indent = true
 
@@ -22,6 +35,6 @@ if self.GAME.starting_params.no_faces and SMODS.Ranks[v.value].face then keep = 
 '''
 position = "before"
 payload = '''
-if self.GAME.starting_params.removed_suit and self.GAME.starting_params.removed_suit == _s then keep = false end
+if self.GAME.starting_params.remove_random_suit and remove_suit == _s then keep = false end
 '''
 match_indent = true
