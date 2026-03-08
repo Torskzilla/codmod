@@ -36,3 +36,33 @@ SMODS.Tag {
         end
     end
 }
+
+-- Dark Tag
+SMODS.Tag {
+    key = "dark",
+    min_ante = 2,
+    atlas = 'atlas_cod_tags',
+    pos = { x = 1, y = 0 },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+    end,
+    apply = function(self, tag, context)
+        if context.type == 'store_joker_create' then
+            local card = SMODS.create_card {
+                set = "Playing Card",
+                edition = "e_negative",
+                area = context.area,
+                key_append = "cod_dark_tag"
+            }
+            
+            create_shop_card_ui(card, 'Playing Card', context.area)
+            card.states.visible = false
+            tag:yep('+', G.C.DARK_EDITION, function()
+                card:start_materialize()
+                return true
+            end)
+            tag.triggered = true
+            return card
+        end
+    end
+}

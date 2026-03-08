@@ -907,6 +907,13 @@ return {
                     "{C:attention}Joker{} you own",
                 },
             },
+            tag_cod_dark = {
+                name = "Dark Tag",
+                text = {
+                    "Shop has a",
+                    "{C:dark_edition}Negative{} {C:attention}Playing{} card",
+                },
+            },
         },
         Tarot={},
         Voucher={},
