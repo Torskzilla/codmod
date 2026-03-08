@@ -1,26 +1,30 @@
+-- Fishbucket
+SMODS.Challenge {
+    key = 'fishbucket',
+    rules = {
+        custom = {
+            { id = 'fishbucket' },
+        }
+    },
+    restrictions = {
+        banned_cards = function()
+            local banned = {}
+            for k, v in pairs(G.P_CENTERS) do
+                if v.set == 'Joker' and not (v.original_mod and v.original_mod.id == "CodMod") then
+                    banned[#banned+1] = {id = v.key}
+                end
+            end
+            return banned
+        end
+    },
+}
+
 -- Final Exam
 SMODS.Challenge {
     key = 'final_exam',
     jokers = {
         { id = 'j_cod_homework', eternal = true },
         { id = 'j_cod_homework', eternal = true },
-    },
-}
-
--- Unaccountably Peckish
-SMODS.Challenge {
-    key = 'unaccountably_peckish',
-    jokers = {
-        { id = 'j_cod_hungry', edition = "negative", eternal = true },
-        { id = 'j_cod_hungry', edition = "negative", eternal = true },
-    },
-    vouchers = {
-        { id = 'v_magic_trick' },
-    },
-    restrictions = {
-        banned_other = {
-            { id = 'bl_cod_rot', type = 'blind' },
-        }
     },
 }
 
@@ -51,22 +55,39 @@ SMODS.Challenge {
     }
 }
 
--- Sleepover
-SMODS.Challenge {
-    key = 'sleepover',
-    rules = {
-        custom = {
-            { id = 'all_dormant' },
-        }
-    },
-}
-
 -- Jailbreak
 SMODS.Challenge {
     key = 'jailbreak',
     rules = {
         custom = {
             { id = 'all_imprisoned' },
+        }
+    },
+}
+
+-- Unaccountably Peckish
+SMODS.Challenge {
+    key = 'unaccountably_peckish',
+    jokers = {
+        { id = 'j_cod_hungry', edition = "negative", eternal = true },
+        { id = 'j_cod_hungry', edition = "negative", eternal = true },
+    },
+    vouchers = {
+        { id = 'v_magic_trick' },
+    },
+    restrictions = {
+        banned_other = {
+            { id = 'bl_cod_rot', type = 'blind' },
+        }
+    },
+}
+
+-- Sleepover
+SMODS.Challenge {
+    key = 'sleepover',
+    rules = {
+        custom = {
+            { id = 'all_dormant' },
         }
     },
 }
@@ -84,26 +105,5 @@ SMODS.Challenge {
             { id = 'j_madness' },
             { id = 'j_cod_paperclip' },
         },
-    },
-}
-
--- Fishbucket
-SMODS.Challenge {
-    key = 'fishbucket',
-    rules = {
-        custom = {
-            { id = 'fishbucket' },
-        }
-    },
-    restrictions = {
-        banned_cards = function()
-            local banned = {}
-            for k, v in pairs(G.P_CENTERS) do
-                if v.set == 'Joker' and not (v.original_mod and v.original_mod.id == "CodMod") then
-                    banned[#banned+1] = {id = v.key}
-                end
-            end
-            return banned
-        end
     },
 }
