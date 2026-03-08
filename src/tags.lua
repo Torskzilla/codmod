@@ -48,8 +48,17 @@ SMODS.Tag {
     end,
     apply = function(self, tag, context)
         if context.type == 'store_joker_create' then
+
+            local set = "Base"
+            local seal = nil
+            if G.GAME.used_vouchers.v_illusion then
+                if pseudorandom(pseudoseed('illusion')) > 0.6 then set = "Enhanced" end
+                if pseudorandom(pseudoseed('illusion')) > 0.7 then seal = SMODS.poll_seal {key = "cod_dark_illusion", guaranteed = true} end
+            end
+
             local card = SMODS.create_card {
-                set = "Playing Card",
+                set = set,
+                seal = seal,
                 edition = "e_negative",
                 area = context.area,
                 key_append = "cod_dark_tag"
