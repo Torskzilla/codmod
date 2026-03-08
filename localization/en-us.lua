@@ -100,7 +100,15 @@ return {
             bl_cod_vein = {
                 name = "The Vein",
                 text = {
-                    "Debuffs the leftmost Joker",
+                    "Debuffs the",
+                    "leftmost Joker",
+                },
+            },
+            bl_cod_elite = {
+                name = "The Elite",
+                text = {
+                    "All un-enhanced",
+                    "cards are debuffed",
                 },
             },
         },

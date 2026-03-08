@@ -3,7 +3,9 @@ SMODS.Atlas {
 	key = "atlas_cod_blinds",
 	path = "blinds.png",
 	px = 34,
-	py = 34
+	py = 34,
+    frames = 21,
+    atlas_table = 'ANIMATION_ATLAS'
 }
 
 -- The Innocent
@@ -272,3 +274,23 @@ local stop_drag_ref = Card.stop_drag
 function Card:stop_drag()
     SMODS.calculate_context({ move_card = true })
 end
+
+-- The Elite
+SMODS.Blind {
+    key = "elite",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 9 },
+    boss = { min = 6 },
+    boss_colour = HEX("ee4ba8"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.debuff_card and context.debuff_card.area ~= G.jokers and not next(SMODS.get_enhancements(context.debuff_card)) then
+                return {
+                    debuff = true
+                }
+            end
+        end
+    end,
+}

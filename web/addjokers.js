@@ -955,6 +955,14 @@ let blinds = [
     image_url: "img/bl/vein.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Elite",
+    text: [
+      "All un-enhanced cards are debuffed",
+    ],
+    image_url: "img/bl/elite.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [
