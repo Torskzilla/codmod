@@ -97,6 +97,12 @@ return {
                     "this Ante are drawn face down",
                 },
             },
+            bl_cod_vein = {
+                name = "The Vein",
+                text = {
+                    "Debuffs the leftmost Joker",
+                },
+            },
         },
         Edition={},
         Enhanced={},

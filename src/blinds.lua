@@ -228,3 +228,42 @@ SMODS.Blind {
         end
     end,
 }
+
+-- The Vein
+SMODS.Blind {
+    key = "vein",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 8 },
+    boss = { min = 2 },
+    boss_colour = HEX("883030"),
+    calculate = function(self, blind, context)
+        if not blind.disabled then
+            if context.hand_drawn or context.move_card then
+                if G.jokers.cards[1] then
+                    SMODS.debuff_card(G.jokers.cards[1], true, "cod_vein")
+                end
+                for i=2,#G.jokers.cards do
+                    SMODS.debuff_card(G.jokers.cards[i], false, "cod_vein")
+                end
+            end
+        end
+    end,
+    disable = function(self)
+        for _, joker in ipairs(G.jokers.cards) do
+            SMODS.debuff_card(joker, false, "cod_vein")
+        end
+    end,
+    defeat = function(self)
+        for _, joker in ipairs(G.jokers.cards) do
+            SMODS.debuff_card(joker, false, "cod_vein")
+        end
+    end
+}
+
+-- hook to run context on moved cards
+local stop_drag_ref = Card.stop_drag
+function Card:stop_drag()
+    SMODS.calculate_context({ move_card = true })
+end

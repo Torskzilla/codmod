@@ -947,6 +947,14 @@ let blinds = [
     image_url: "img/bl/elk.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Vein",
+    text: [
+      "Debuffs the leftmost Joker",
+    ],
+    image_url: "img/bl/vein.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [
