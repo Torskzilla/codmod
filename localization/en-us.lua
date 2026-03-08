@@ -708,10 +708,8 @@ return {
             j_cod_mult = {
                 name = "Mult Joker",
                 text = {
-                    "Gives {C:mult}+#1#{} Mult for",
-                    "each {C:attention}Mult{} card",
-                    "in your {C:attention}full deck",
-                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                    "Retrigger all played",
+                    "{C:attention}Mult{} cards"
                 },
             },
             j_cod_coloring = {

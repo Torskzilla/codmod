@@ -580,7 +580,7 @@ let jokers = [
   {
     name: "Mult Joker",
     text: [
-      "Gives {C:mult}+2{} Mult for each {C:attention}Mult Card{} in your {C:attention}full deck{}",
+      "Retrigger all played {C:attention}Mult{} cards"
     ],
     image_url: "img/j/mult.png",
     rarity: "Uncommon"
