@@ -939,6 +939,14 @@ let blinds = [
     image_url: "img/bl/ascetic.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Elk",
+    text: [
+      "Cards played previously this Ante are drawn face down",
+    ],
+    image_url: "img/bl/elk.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [

@@ -90,6 +90,13 @@ return {
                     "No reward money"
                 },
             },
+            bl_cod_elk = {
+                name = "The Elk",
+                text = {
+                    "Cards played previously",
+                    "this Ante are drawn face down",
+                },
+            },
         },
         Edition={},
         Enhanced={},
