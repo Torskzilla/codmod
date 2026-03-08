@@ -44,7 +44,7 @@ SMODS.Tag {
     atlas = 'atlas_cod_tags',
     pos = { x = 1, y = 0 },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue + 1] = G.P_CENTERS.e_negative
+        info_queue[#info_queue + 1] = { key = 'e_negative_playing_card', set = 'Edition', config = { extra = 1 } }
     end,
     apply = function(self, tag, context)
         if context.type == 'store_joker_create' then
