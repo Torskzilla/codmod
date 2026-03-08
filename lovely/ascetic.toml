@@ -2,6 +2,7 @@
 version = "1.0.0"
 priority = 0
 
+# Do now show reward in blind select screen
 [[patches]]
 [patches.pattern]
 target = 'functions/UI_definitions.lua'
@@ -16,6 +17,7 @@ end
 '''
 match_indent = true
 
+# Show "No reward" inside blind
 [[patches]]
 [patches.pattern]
 target = 'functions/button_callbacks.lua'

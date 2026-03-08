@@ -2,6 +2,7 @@
 version = "1.0.0"
 priority = 0
 
+# Expensive sticker cost increase
 [[patches]]
 [patches.pattern]
 target = 'card.lua'

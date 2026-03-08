@@ -2,6 +2,7 @@
 version = "1.0.0"
 priority = 0
 
+# Combine perishable and eternal allowed check with modded stickers
 [[patches]]
 [patches.pattern]
 target = '=[SMODS _ "src/game_object.lua"]'
@@ -14,6 +15,7 @@ payload = '''
 '''
 match_indent = true
 
+# Apply stickers in random order so later stickers don't appear less than they should
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'

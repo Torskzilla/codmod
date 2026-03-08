@@ -2,6 +2,7 @@
 version = "1.0.0"
 priority = 0
 
+# Add context after deck shuffles at start of round
 [[patches]]
 [patches.pattern]
 target = 'functions/state_events.lua'

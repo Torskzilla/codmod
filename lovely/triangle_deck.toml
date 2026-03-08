@@ -2,6 +2,7 @@
 version = "1.0.0"
 priority = 0
 
+# Add game param to remove a random suit from deck
 [[patches]]
 [patches.pattern]
 target = 'functions/misc_functions.lua'

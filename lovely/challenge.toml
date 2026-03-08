@@ -2,6 +2,7 @@
 version = "1.0.0"
 priority = 0
 
+# All sticker challenges for new stickers
 [[patches]]
 [patches.pattern]
 target = 'functions/common_events.lua'

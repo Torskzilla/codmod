@@ -2,6 +2,7 @@
 version = "1.0.0"
 priority = 0
 
+# Illusion can give seals and negative playing cards
 [[patches]]
 [patches.pattern]
 target = 'functions/UI_definitions.lua'

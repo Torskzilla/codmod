@@ -2,6 +2,7 @@
 version = "1.0.0"
 priority = 0
 
+# Prevent card from being discarded twice
 [[patches]]
 [patches.pattern]
 target = 'functions/state_events.lua'
@@ -14,6 +15,7 @@ payload = '''
 '''
 match_indent = true
 
+# Unhighlight discarded cards
 [[patches]]
 [patches.pattern]
 target = 'functions/state_events.lua'
