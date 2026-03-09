@@ -122,7 +122,7 @@ SMODS.Blind {
         if not blind.disabled then
             if context.round_shuffle then
                 for i=1,#G.deck.cards do
-                    if (i%4==1) then
+                    if (i%3==1) then
                         SMODS.debuff_card(G.deck.cards[#G.deck.cards-i], true, "cod_snow")
                     end
                 end

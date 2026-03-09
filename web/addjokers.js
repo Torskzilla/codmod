@@ -918,7 +918,7 @@ let blinds = [
   {
     name: "The Snow",
     text: [
-      "Every 4th card is debuffed",
+      "Every 3rd card is debuffed",
     ],
     image_url: "img/bl/snow.png",
     rarity: "Boss Blind"

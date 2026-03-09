@@ -73,7 +73,7 @@ return {
             bl_cod_snow = {
                 name = "The Snow",
                 text = {
-                    "Every 4th card",
+                    "Every 3rd card",
                     "is debuffed",
                 },
             },
