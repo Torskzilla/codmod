@@ -2310,13 +2310,13 @@ SMODS.Joker {
 SMODS.Joker {
     key = "the_sun",
     unlocked = true,
-    blueprint_compat = true,
+    blueprint_compat = false,
     rarity = 2,
     cost = 6,
     atlas = 'atlas_cod_jokers',
     pos = { x = 3, y = 5 },
     calculate = function(self, card, context)
-        if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
+        if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss and not context.blueprint then
             update_hand_text({ sound = 'button', volume = 0.7, pitch = 0.8, delay = 0.3 },
                 { handname = localize('k_all_hands'), chips = '...', mult = '...', level = '' })
             G.E_MANAGER:add_event(Event({
@@ -2545,8 +2545,8 @@ SMODS.Joker {
             local lowest_cost = nil
             local other_joker = nil
             for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i] ~= card and (not lowest_cost or (lowest_cost and card.sell_cost<lowest_cost)) then
-                    lowest_cost = card.sell_cost
+                if G.jokers.cards[i] ~= card and (not lowest_cost or (lowest_cost and G.jokers.cards[i].sell_cost<lowest_cost)) then
+                    lowest_cost = G.jokers.cards[i].sell_cost
                     other_joker = G.jokers.cards[i]
                 end
             end
@@ -2573,8 +2573,8 @@ SMODS.Joker {
         local lowest_cost = nil
         local other_joker = nil
         for i = 1, #G.jokers.cards do
-            if G.jokers.cards[i] ~= card and (not lowest_cost or (lowest_cost and card.sell_cost<lowest_cost)) then
-                lowest_cost = card.sell_cost
+            if G.jokers.cards[i] ~= card and (not lowest_cost or (lowest_cost and G.jokers.cards[i].sell_cost<lowest_cost)) then
+                lowest_cost = G.jokers.cards[i].sell_cost
                 other_joker = G.jokers.cards[i]
             end
         end
