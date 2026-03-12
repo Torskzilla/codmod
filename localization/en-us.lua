@@ -855,6 +855,13 @@ return {
                     "cards to be selected",
                 },
             },
+            j_cod_marshmallow = {
+                name = "Marshmallow",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult",
+                    "destroyed by {C:attention}Fire{}",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -1019,6 +1026,7 @@ return {
             tornado_swish="Swish!",
             book_of_the_dead_judge="Judged!",
             bone_tag_saved="Saved by Bone Tag",
+            marshmallow_burnt="Burnt!",
         },
         high_scores={},
         labels={

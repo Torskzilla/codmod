@@ -3615,3 +3615,30 @@ SMODS.Joker {
         end
     end,
 }
+
+-- Marshmallow
+SMODS.Joker {
+    key = "marshmallow",
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 7, y = 9 },
+    config = { extra = { xmult = 3 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint and SMODS.last_hand_oneshot then
+            SMODS.destroy_cards(card, nil, nil, true)
+            return {
+                message = localize('marshmallow_burnt')
+            }
+        end
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult
+            }
+        end
+    end,
+}

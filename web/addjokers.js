@@ -722,6 +722,15 @@ let jokers = [
     rarity: "Legendary",
     soul: true
   },
+  {
+    name: "Marshmallow",
+    text: [
+        "{X:mult,C:white}X3{} Mult",
+        "destroyed by {C:attention}Fire{}",
+    ],
+    image_url: "img/j/marshmallow.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",
