@@ -940,6 +940,13 @@ return {
                     "{C:dark_edition}Negative{} {C:attention}Playing{} card",
                 },
             },
+            tag_cod_bone = {
+                name = "Bone Tag",
+                text = {
+                    "Skip death if score",
+                    "is at least {C:attention}50%",
+                },
+            },
         },
         Tarot={},
         Voucher={},
@@ -1011,6 +1018,7 @@ return {
             dyson_sphere_redirect="Siphon",
             tornado_swish="Swish!",
             book_of_the_dead_judge="Judged!",
+            bone_tag_saved="Saved by Bone Tag",
         },
         high_scores={},
         labels={

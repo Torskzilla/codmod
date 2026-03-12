@@ -75,3 +75,31 @@ SMODS.Tag {
         end
     end
 }
+
+-- Bone Tag
+SMODS.Tag {
+    key = "bone",
+    min_ante = 1,
+    atlas = 'atlas_cod_tags',
+    pos = { x = 2, y = 0 },
+    apply = function(self, tag, context)
+        if context.type == 'game_over' and G.GAME.chips / G.GAME.blind.chips >= 0.5 then
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    G.hand_text_area.blind_chips:juice_up()
+                    G.hand_text_area.game_chips:juice_up()
+                    play_sound('tarot1')
+                    return true
+                end
+            }))
+
+            SMODS.saved = true
+            G.GAME.saved_text = localize('bone_tag_saved')
+
+            tag:yep(localize('k_saved_ex'), G.C.RED, function()
+                return true
+            end)
+            tag.triggered = true
+        end
+    end
+}
