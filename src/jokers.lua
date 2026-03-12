@@ -1326,14 +1326,15 @@ SMODS.Joker {
 }
 
 
--- Black Market
+-- Orson
 SMODS.Joker {
-    key = "black_market",
+    key = "orson",
     blueprint_compat = false,
-    rarity = 3,
-    cost = 10,
+    rarity = 4,
+    cost = 20,
     atlas = 'atlas_cod_jokers',
-    pos = { x = 9, y = 2 },
+    pos = { x = 8, y = 9 },
+    soul_pos = { x = 9, y = 9 },
     calculate = function(self, card, context)
         if context.selling_card and not context.blueprint and card ~= context.card then
             local key_to_ban = context.card.config.center.key
@@ -1341,7 +1342,7 @@ SMODS.Joker {
             G.GAME.banned_keys[key_to_ban] = true
 
             return {
-                message = localize("black_market_ban"),
+                message = localize("orson_ban"),
                 colour = G.C.RED,
             }
         end

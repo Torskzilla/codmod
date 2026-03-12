@@ -374,8 +374,8 @@ return {
                     "on any difficulty",
                 }
             },
-            j_cod_black_market = {
-                name = "Black Market",
+            j_cod_orson = {
+                name = "Orson",
                 text = {
                     "{C:red}Bans{} sold cards",
                     "{C:inactive}(Banned cards can't appear)",
@@ -992,7 +992,7 @@ return {
             cod_random_joker_name="Unpredictable Joker",
             cod_random_big_joker_name="Possibility Space",
             tapas_bite="Munch",
-            black_market_ban="Banned!",
+            orson_ban="Yoink!",
             death_star_destroy="Obliterate!",
             infrastructure_build="Improve",
             printer_print="Print",

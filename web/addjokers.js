@@ -307,14 +307,6 @@ let jokers = [
     rarity: "Uncommon"
   },
   {
-    name: "Black Market",
-    text: [
-      "Each card {C:attention}sold{} is banned and this gains {C:mult}+1{} Mult"
-    ],
-    image_url: "img/j/black_market.png",
-    rarity: "Rare"
-  },
-  {
     name: "Anchor",
     text: [
       "{C:spades}Spade{} cards start at the bottom of the deck",
@@ -718,6 +710,17 @@ let jokers = [
     ],
     image_url: "img/j/conveyor_belt.png",
     rarity: "Uncommon"
+  },
+  {
+    name: "Orson",
+    text: [
+        "{C:red}Bans{} sold cards",
+        "{C:inactive}(Banned cards can't appear)",
+    ],
+    image_url: "img/j/orson_bg.png",
+    soul_url: "img/j/orson_soul.png",
+    rarity: "Legendary",
+    soul: true
   },
 
   // {
