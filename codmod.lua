@@ -7,6 +7,7 @@ SMODS.Atlas {
 
 local config = SMODS.current_mod.config
 
+assert(SMODS.load_file("src/tarots.lua"))()
 assert(SMODS.load_file("src/decks.lua"))()
 assert(SMODS.load_file("src/stickers.lua"))()
 assert(SMODS.load_file("src/stakes.lua"))()
