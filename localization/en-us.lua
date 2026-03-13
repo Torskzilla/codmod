@@ -374,11 +374,18 @@ return {
                     "on any difficulty",
                 }
             },
-            j_cod_orson = {
-                name = "Orson",
+            j_cod_clemens = {
+                name = "Clemens",
                 text = {
                     "{C:red}Bans{} sold cards",
                     "{C:inactive}(Banned cards can't appear)",
+                },
+            },
+            j_cod_orson = {
+                name = "Orson",
+                text = {
+                    "{C:legendary}Legendary{C:attention} Jokers{} can",
+                    "naturally appear"
                 },
             },
             j_cod_spam = {
@@ -1006,7 +1013,7 @@ return {
             cod_random_joker_name="Unpredictable Joker",
             cod_random_big_joker_name="Possibility Space",
             tapas_bite="Munch",
-            orson_ban="Yoink!",
+            clemens_ban="Banned!",
             death_star_destroy="Obliterate!",
             infrastructure_build="Improve",
             printer_print="Print",

@@ -712,10 +712,20 @@ let jokers = [
     rarity: "Uncommon"
   },
   {
-    name: "Orson",
+    name: "Clemens",
     text: [
         "{C:red}Bans{} sold cards",
         "{C:inactive}(Banned cards can't appear)",
+    ],
+    image_url: "img/j/clemens_bg.png",
+    soul_url: "img/j/clemens_soul.png",
+    rarity: "Legendary",
+    soul: true
+  },
+  {
+    name: "Orson",
+    text: [
+        "{C:purple}Legendary{C:attention} Jokers{} can naturally appear"
     ],
     image_url: "img/j/orson_bg.png",
     soul_url: "img/j/orson_soul.png",

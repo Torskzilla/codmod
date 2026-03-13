@@ -1315,15 +1315,16 @@ SMODS.Joker {
 }
 
 
--- Orson
+-- Clemens
 SMODS.Joker {
-    key = "orson",
+    key = "clemens",
+    unlocked = false,
     blueprint_compat = false,
     rarity = 4,
     cost = 20,
     atlas = 'atlas_cod_jokers',
-    pos = { x = 8, y = 9 },
-    soul_pos = { x = 9, y = 9 },
+    pos = { x = 8, y = 10 },
+    soul_pos = { x = 9, y = 10 },
     calculate = function(self, card, context)
         if context.selling_card and not context.blueprint and card ~= context.card then
             local key_to_ban = context.card.config.center.key
@@ -1331,7 +1332,7 @@ SMODS.Joker {
             G.GAME.banned_keys[key_to_ban] = true
 
             return {
-                message = localize("orson_ban"),
+                message = localize("clemens_ban"),
                 colour = G.C.RED,
             }
         end
@@ -2616,6 +2617,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = true,
     perishable_compat = false,
+    eternal_compat = false,
     rarity = 1,
     cost = 5,
     atlas = 'atlas_cod_jokers',
@@ -2656,6 +2658,7 @@ SMODS.Joker {
     key = "coin_toss",
     unlocked = true,
     blueprint_compat = false,
+    eternal_compat = false,
     rarity = 1,
     cost = 1,
     atlas = 'atlas_cod_jokers',
@@ -2692,6 +2695,7 @@ SMODS.Joker {
     key = "oops_all_1s",
     unlocked = true,
     blueprint_compat = true,
+    perishable_compat = false,
     rarity = 2,
     cost = 6,
     atlas = 'atlas_cod_jokers',
@@ -3609,6 +3613,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "marshmallow",
     blueprint_compat = true,
+    eternal_compat = false,
     rarity = 2,
     cost = 6,
     atlas = 'atlas_cod_jokers',
@@ -3630,4 +3635,16 @@ SMODS.Joker {
             }
         end
     end,
+}
+
+-- Orson
+SMODS.Joker {
+    key = "orson",
+    unlocked = false,
+    blueprint_compat = false,
+    rarity = 4,
+    cost = 20,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 8, y = 9 },
+    soul_pos = { x = 9, y = 9 },
 }
