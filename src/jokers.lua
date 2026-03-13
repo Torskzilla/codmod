@@ -1301,17 +1301,6 @@ SMODS.Joker {
     cost = 9,
     atlas = 'atlas_cod_jokers',
     pos = { x = 8, y = 2 },
-    config = { extra = { previous_weight = nil } },
-    add_to_deck = function(self, card, from_debuff)
-        card.ability.extra.previous_weight = G.GAME.common_mod
-        G.GAME.common_mod = 0
-    end,
-    remove_from_deck = function(self, card, from_debuff)
-        if card.ability.extra.previous_weight then
-            G.GAME.common_mod = card.ability.extra.previous_weight
-            card.ability.extra.previous_weight = nil
-        end
-    end,
     locked_loc_vars = function(self, info_queue, back)
         local other_name = localize('k_unknown')
         if G.P_CENTERS['b_cod_average'].unlocked then
