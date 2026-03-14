@@ -3654,6 +3654,7 @@ SMODS.Joker {
     key = "treasure_map",
     unlocked = true,
     blueprint_compat = false,
+    eternal_compat = false,
     rarity = 1,
     cost = 4,
     atlas = 'atlas_cod_jokers',
@@ -3702,5 +3703,31 @@ SMODS.Joker {
             cards[i].rank = pseudorandom_element(SMODS.Ranks, 'cod_treasure_map_rank').key
         end
         card.ability.extra.cards = cards
+    end
+}
+
+-- Audience
+SMODS.Joker {
+    key = "audience",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 1, y = 10 },
+    config = { extra = { mult = 1 }},
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult }}
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            local rank_tally = 0
+            for _, playing_card in ipairs(G.deck.cards) do
+                if context.other_card:get_id() == playing_card:get_id() then rank_tally = rank_tally + card.ability.extra.mult end
+            end
+            return {
+                mult = rank_tally
+            }
+        end
     end
 }

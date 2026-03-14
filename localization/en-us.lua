@@ -878,6 +878,14 @@ return {
                     "earn {C:money}$#11#{} and destroy this card",
                 },
             },
+            j_cod_audience = {
+                name = "Audience",
+                text = {
+                    "When scored, played cards give",
+                    "{C:mult}+#1#{} Mult for each remaining",
+                    "card in {C:attention}deck{} with same {C:attention}rank{}",
+                },
+            },
         },
         Other={
             cod_dormant = {

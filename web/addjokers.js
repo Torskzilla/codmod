@@ -749,6 +749,14 @@ let jokers = [
     image_url: "img/j/treasure_map.png",
     rarity: "Common"
   },
+  {
+    name: "Audience",
+    text: [
+        "When scored, played cards give {C:mult}+1{} Mult for each remaining card in {C:attention}deck{} with same {C:attention}rank{}",
+    ],
+    image_url: "img/j/audience.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",
