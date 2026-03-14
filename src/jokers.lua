@@ -3648,3 +3648,59 @@ SMODS.Joker {
     pos = { x = 8, y = 9 },
     soul_pos = { x = 9, y = 9 },
 }
+
+-- Treasure Map
+SMODS.Joker {
+    key = "treasure_map",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 0, y = 10 },
+    config = { extra = { treasure = 30, cards = {{rank="Ace",suit="Spades"},{rank="King",suit="Spades"},{rank="Queen",suit="Spades"},{rank="Jack",suit="Spades"},{rank="10",suit="Spades"}} } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { localize(card.ability.extra.cards[1].rank, 'ranks'), localize(card.ability.extra.cards[1].suit, 'suits_plural'), localize(card.ability.extra.cards[2].rank, 'ranks'), localize(card.ability.extra.cards[2].suit, 'suits_plural'), localize(card.ability.extra.cards[3].rank, 'ranks'), localize(card.ability.extra.cards[3].suit, 'suits_plural'), localize(card.ability.extra.cards[4].rank, 'ranks'), localize(card.ability.extra.cards[4].suit, 'suits_plural'), localize(card.ability.extra.cards[5].rank, 'ranks'), localize(card.ability.extra.cards[5].suit, 'suits_plural'), card.ability.extra.treasure, colours = { G.C.SUITS[card.ability.extra.cards[1].suit], G.C.SUITS[card.ability.extra.cards[2].suit], G.C.SUITS[card.ability.extra.cards[3].suit], G.C.SUITS[card.ability.extra.cards[4].suit], G.C.SUITS[card.ability.extra.cards[5].suit] } } }
+    end,
+    calculate = function(self, card, context)
+        if context.before then
+
+            local has_cards = {false, false, false, false, false}
+            for i = 1,#context.full_hand do
+                for c = 1,5 do
+                    if context.full_hand[i]:is_suit(card.ability.extra.cards[c].suit) and context.full_hand[i]:get_id() == SMODS.Ranks[card.ability.extra.cards[c].rank].id then
+                        has_cards[c] = true
+                    end
+                end
+            end
+
+            if has_cards[1] and has_cards[2] and has_cards[3] and has_cards[4] and has_cards[5] then
+
+                SMODS.destroy_cards(card, nil, nil, true)
+
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.treasure
+                
+                return {
+                    dollars = card.ability.extra.treasure,
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.GAME.dollar_buffer = 0
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+        end
+    end,
+    set_ability = function(self, card, initial, delay_sprites)
+        local cards = {}
+        for i=1,5 do
+            cards[i] = {}
+            cards[i].suit = pseudorandom_element(SMODS.Suits, 'cod_treasure_map_suit').key
+            cards[i].rank = pseudorandom_element(SMODS.Ranks, 'cod_treasure_map_rank').key
+        end
+        card.ability.extra.cards = cards
+    end
+}

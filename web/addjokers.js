@@ -741,6 +741,14 @@ let jokers = [
     image_url: "img/j/marshmallow.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Treasure Map",
+    text: [
+        "If hand has a {C:attention}Queen{} of {C:spades}Spades{}, {C:attention}9{} of {C:spades}Spades{}, {C:attention}Ace{} of {C:hearts}Hearts{}, {C:attention}2{} of {C:spades}Spades{} & {C:attention}Jack{} of {C:diamonds}Diamonds{}, earn {C:money}$30{} and destroy this card",
+    ],
+    image_url: "img/j/treasure_map.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

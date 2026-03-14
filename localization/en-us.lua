@@ -869,6 +869,15 @@ return {
                     "destroyed by {C:attention}Fire{}",
                 },
             },
+            j_cod_treasure_map = {
+                name = "Treasure Map",
+                text = {
+                    "If hand has a {C:attention}#1#{} of {V:1}#2#{},",
+                    "{C:attention}#3#{} of {V:2}#4#{}, {C:attention}#5#{} of {V:3}#6#{},",
+                    "{C:attention}#7#{} of {V:4}#8#{} & {C:attention}#9#{} of {V:5}#10#{},",
+                    "earn {C:money}$#11#{} and destroy this card",
+                },
+            },
         },
         Other={
             cod_dormant = {
