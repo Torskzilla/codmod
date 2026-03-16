@@ -762,7 +762,15 @@ let jokers = [
     text: [
         "If exactly {C:attention}2{} cards are discared, convert a random one into the other"
     ],
-    image_url: "img/j/audience.png",
+    image_url: "img/j/mirror.png",
+    rarity: "Common"
+  },
+  {
+    name: "Piggy Bank",
+    text: [
+        "Earn {C:money}$6{} at end of round, destroyed if money is spent"
+    ],
+    image_url: "img/j/piggy_bank.png",
     rarity: "Common"
   },
 

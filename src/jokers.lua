@@ -3790,3 +3790,29 @@ SMODS.Joker {
         end
     end
 }
+
+-- Piggy Bank
+SMODS.Joker {
+    key = "piggy_bank",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 5,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 3, y = 10 },
+    config = { extra = { dollars = 6 }},
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.dollars }}
+    end,
+    calculate = function(self, card, context)
+        if context.money_altered and not context.blueprint and context.amount < 0 then
+            SMODS.destroy_cards(card, nil, nil, true)
+            return {
+                message = localize('piggy_bank_break')
+            }
+        end
+    end,
+    calc_dollar_bonus = function(self, card)
+        return card.ability.extra.dollars
+    end
+}

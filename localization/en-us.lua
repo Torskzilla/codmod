@@ -894,6 +894,14 @@ return {
                     "random one into the other"
                 },
             },
+            j_cod_piggy_bank = {
+                name = "Piggy Bank",
+                text = {
+                    "Earn {C:money}$#1#{} at end",
+                    "of round, destroyed",
+                    "if money is spent"
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -1059,6 +1067,7 @@ return {
             book_of_the_dead_judge="Judged!",
             bone_tag_saved="Saved by Bone Tag",
             marshmallow_burnt="Burnt!",
+            piggy_bank_break="Broken!"
         },
         high_scores={},
         labels={
