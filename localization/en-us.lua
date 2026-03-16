@@ -886,6 +886,14 @@ return {
                     "card in {C:attention}deck{} with same {C:attention}rank{}",
                 },
             },
+            j_cod_mirror = {
+                name = "Mirror",
+                text = {
+                    "If exactly {C:attention}2{} cards",
+                    "are discared, convert a",
+                    "random one into the other"
+                },
+            },
         },
         Other={
             cod_dormant = {

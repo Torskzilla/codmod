@@ -757,6 +757,14 @@ let jokers = [
     image_url: "img/j/audience.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Mirror",
+    text: [
+        "If exactly {C:attention}2{} cards are discared, convert a random one into the other"
+    ],
+    image_url: "img/j/audience.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

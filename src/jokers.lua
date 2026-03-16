@@ -3710,7 +3710,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "audience",
     unlocked = true,
-    blueprint_compat = false,
+    blueprint_compat = true,
     rarity = 2,
     cost = 8,
     atlas = 'atlas_cod_jokers',
@@ -3728,6 +3728,65 @@ SMODS.Joker {
             return {
                 mult = rank_tally
             }
+        end
+    end
+}
+
+-- Mirror
+SMODS.Joker {
+    key = "mirror",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 2, y = 10 },
+    calculate = function(self, card, context)
+        if context.discard and not context.blueprint and #context.full_hand == 2 and context.other_card == context.full_hand[1] then
+            local discard_hand = {}
+            discard_hand[1] = context.full_hand[1]
+            discard_hand[2] = context.full_hand[2]
+            for i = 1, #context.full_hand do
+                local percent = 1.15 - (i - 0.999) / (#context.full_hand - 0.998) * 0.3
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.15,
+                    func = function()
+                        discard_hand[i]:flip()
+                        play_sound('card1', percent)
+                        discard_hand[i]:juice_up(0.3, 0.3)
+                        return true
+                    end
+                }))
+            end
+            delay(0.2)
+            G.E_MANAGER:add_event(Event({
+                trigger = 'after',
+                delay = 0.1,
+                func = function()
+                    local rand = pseudorandom("cod_mirror")
+                    if rand > 0.5 then
+                        copy_card(discard_hand[1], discard_hand[2])
+                    else
+                        copy_card(discard_hand[2], discard_hand[1])
+                    end
+                    return true
+                end
+            }))
+            for i = 1, #context.full_hand do
+                local percent = 0.85 + (i - 0.999) / (#context.full_hand - 0.998) * 0.3
+                G.E_MANAGER:add_event(Event({
+                    trigger = 'after',
+                    delay = 0.15,
+                    func = function()
+                        discard_hand[i]:flip()
+                        play_sound('tarot2', percent, 0.6)
+                        discard_hand[i]:juice_up(0.3, 0.3)
+                        return true
+                    end
+                }))
+            end
+            delay(0.5)
         end
     end
 }
