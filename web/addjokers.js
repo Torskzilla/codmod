@@ -882,6 +882,14 @@ let decks = [
     rarity: "Deck"
   },
   {
+    name: "Horror Deck",
+    text: [
+      "Prevents first death"
+    ],
+    image_url: "img/b/horror.png",
+    rarity: "Deck"
+  },
+  {
     name: "Ponzi Deck",
     text: [
       "Start with {C:attention}5{} copies",

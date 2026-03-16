@@ -46,6 +46,13 @@ return {
                     "card of each rank"
                 },
             },
+            b_cod_horror={
+                name="Horror Deck",
+                text={
+                    "Prevents first death",
+                    "{C:red}#1#"
+                },
+            },
         },
         Blind={
             bl_cod_innocent = {
@@ -1066,6 +1073,8 @@ return {
             tornado_swish="Swish!",
             book_of_the_dead_judge="Judged!",
             bone_tag_saved="Saved by Bone Tag",
+            horror_deck_saved="Saved by Horror Deck",
+            horror_deck_used="Used",
             marshmallow_burnt="Burnt!",
             piggy_bank_break="Broken!"
         },

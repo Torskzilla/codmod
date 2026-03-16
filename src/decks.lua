@@ -15,6 +15,7 @@ SMODS.Back{
     config = {},
 
     apply = function(self)
+        -- there is now a built in way to do this in SMODS
         G.GAME.starting_params.remove_random_suit = true
     end,
 }
@@ -101,6 +102,38 @@ SMODS.Back{
     apply = function(self)
         G.GAME.common_mod = 0
         G.GAME.rare_mod = 0
+    end,
+}
+
+-- Horror
+SMODS.Back{
+    key = "horror",
+    unlocked = true,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 7, y = 0},
+    config = {},
+    apply = function(self)
+        G.GAME.cod_b_horror_life_used = false
+    end,
+    loc_vars = function(self, info_queue, back)
+        return { vars = { (G.GAME.cod_b_horror_life_used and localize("horror_deck_used") or "") } }
+    end,
+    calculate = function(self, back, context)
+        if context.end_of_round and context.game_over and context.main_eval then
+            if not G.GAME.cod_b_horror_life_used then
+                G.GAME.cod_b_horror_life_used = true
+
+                for _, playing_card in ipairs(G.playing_cards) do
+                    playing_card.children.back:set_sprite_pos({ x = 8, y = 0 })
+                    playing_card:juice_up(0.3, 0.3)
+                    playing_card.ability["cod_horror_bloody"] = true
+                end
+
+                return {
+                    saved = 'horror_deck_saved',
+                }
+            end
+        end
     end,
 }
 

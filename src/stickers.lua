@@ -255,6 +255,9 @@ function Card:load(cardTable, other_card)
             self.children.floating_sprite = nil
         end
     end
+    if self.ability["cod_horror_bloody"] then
+        self.children.back:set_sprite_pos({ x = 8, y = 0 })
+    end
     return ret
 end
 
