@@ -856,7 +856,7 @@ return {
                 name = "Ringworld",
                 text = {
                     "If {C:attention}poker hand{} is a",
-                    "{C:attention}#1#{}, level it up",
+                    "{C:attention}#1#{}, level it up twice",
                     "and poker hand changes",
                     "to the next hand"
                 },

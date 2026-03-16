@@ -3527,7 +3527,7 @@ SMODS.Joker {
     key = "ringworld",
     blueprint_compat = true,
     rarity = 2,
-    cost = 6,
+    cost = 7,
     atlas = 'atlas_cod_jokers',
     pos = { x = 6, y = 9 },
     config = { extra = { poker_hand = 'High Card' } },
@@ -3552,7 +3552,7 @@ SMODS.Joker {
                 card.ability.extra.poker_hand = "High Card"
             end
             return {
-                level_up = true,
+                level_up = 2,
                 message = localize('k_level_up_ex')
             }
         end

@@ -697,7 +697,7 @@ let jokers = [
   {
     name: "Ringworld",
     text: [
-        "If {C:attention}poker hand{} is a {C:attention}"+poker_hands[Math.floor(Math.random() * poker_hands.length)]+"{}, level it up and poker hand changes to the next hand"
+        "If {C:attention}poker hand{} is a {C:attention}"+poker_hands[Math.floor(Math.random() * poker_hands.length)]+"{}, level it up twice and poker hand changes to the next hand"
     ],
     image_url: "img/j/ringworld.png",
     rarity: "Uncommon"
