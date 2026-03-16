@@ -3349,38 +3349,11 @@ SMODS.Joker {
 SMODS.Joker {
     key = "eldritch",
     unlocked = true,
-    blueprint_compat = true,
-    rarity = 3,
-    cost = 9,
+    blueprint_compat = false,
+    rarity = 2,
+    cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 2, y = 9 },
-    config = { extra = { distribution = {0, 0, 0, 0, 0} } },
-    calculate = function(self, card, context)
-        if context.before then
-            local levels = G.GAME.hands[context.scoring_name].level
-            triggers = math.floor(levels/2)
-            card.ability.extra.distribution = {0, 0, 0, 0, 0}
-            local scoring_amount = 0
-            for _,_ in ipairs(context.scoring_hand) do
-                scoring_amount = scoring_amount + 1
-            end
-            for i=1,triggers do
-                local trigger_card = pseudorandom('cod_eldritch', 1, scoring_amount)
-                card.ability.extra.distribution[trigger_card] = card.ability.extra.distribution[trigger_card] + 1
-            end
-        end
-        if context.repetition and context.cardarea == G.play then
-
-            for i,v in ipairs(context.scoring_hand) do
-                if (context.other_card == v) and card.ability.extra.distribution[i] > 0 then
-                    return {
-                        repetitions = card.ability.extra.distribution[i]
-                    }
-                end
-            end
-
-        end
-    end,
 }
 
 -- Jimboel
@@ -3816,3 +3789,11 @@ SMODS.Joker {
         return card.ability.extra.dollars
     end
 }
+
+
+--  Unused art:
+-- Fortunate Joker
+-- Gold Ore
+-- Black Market
+-- Chromatic Aberration
+-- Noise

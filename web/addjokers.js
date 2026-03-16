@@ -664,10 +664,10 @@ let jokers = [
   {
     name: "Eldritch Joker",
     text: [
-        "For every {C:attention}2{} levels in played {C:attention}poker hand{}, retrigger a random played card"
+        "No {C:planet}Planet{} cards in shop",
     ],
     image_url: "img/j/eldritch.png",
-    rarity: "Rare"
+    rarity: "Uncommon"
   },
   {
     name: "Jimboel",

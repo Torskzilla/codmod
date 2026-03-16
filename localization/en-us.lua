@@ -822,9 +822,8 @@ return {
             j_cod_eldritch = {
                 name = "Eldritch Joker",
                 text = {
-                    "For every {C:attention}2{} levels in played",
-                    "{C:attention}poker hand{}, retrigger",
-                    "a random played card"
+                    "No {C:planet}Planet{} cards",
+                    "in shop",
                 },
             },
             j_cod_jimboel = {
