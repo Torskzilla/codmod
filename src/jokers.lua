@@ -2793,6 +2793,14 @@ SMODS.Joker {
             end
         end
     end,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_stone') then
+                return true
+            end
+        end
+        return false
+    end,
 }
 
 -- Globe
@@ -3789,6 +3797,53 @@ SMODS.Joker {
         return card.ability.extra.dollars
     end
 }
+
+-- Pillars
+SMODS.Joker {
+    key = "pillars",
+    unlocked = true,
+    blueprint_compat = true,
+    perishable_compat = false,
+    rarity = 1,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 10 },
+    config = { extra = { mult = 0, mult_gain = 2 }},
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult_gain, card.ability.extra.mult }}
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint then
+            
+            local lowest_plays = nil
+            for handname, hand in pairs(G.GAME.hands) do
+                if SMODS.is_poker_hand_visible(handname) then
+                    if not lowest_plays then
+                        lowest_plays = hand.played
+                    elseif lowest_plays > hand.played then
+                        lowest_plays = hand.played
+                    end
+                    
+                end
+            end
+
+            if (G.GAME.hands[context.scoring_name].played <= lowest_plays+1) then
+
+                card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+                return {
+                    message = localize('k_upgrade_ex'),
+                    colour = G.C.RED
+                }
+            end
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end,
+}
+
 
 
 --  Unused art:

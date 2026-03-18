@@ -773,6 +773,14 @@ let jokers = [
     image_url: "img/j/piggy_bank.png",
     rarity: "Common"
   },
+  {
+    name: "Pillars",
+    text: [
+        "This Joker gains {C:mult}+2{} Mult when playing your least played {C:attention}poker hand",
+    ],
+    image_url: "img/j/pillars.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

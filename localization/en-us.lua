@@ -908,6 +908,15 @@ return {
                     "if money is spent"
                 },
             },
+            j_cod_pillars = {
+                name = "Pillars",
+                text = {
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "when playing your",
+                    "least played {C:attention}poker hand",
+                    "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
+                },
+            },
         },
         Other={
             cod_dormant = {
