@@ -917,6 +917,13 @@ return {
                     "{C:inactive}(Currently {C:red}+#2#{C:inactive} Mult)",
                 },
             },
+            j_cod_sequel = {
+                name = "Sequel",
+                text = {
+                    "Retrigger all played",
+                    "cards except the {C:attention}first{}",
+                },
+            },
         },
         Other={
             cod_dormant = {

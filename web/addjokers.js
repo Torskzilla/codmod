@@ -781,6 +781,14 @@ let jokers = [
     image_url: "img/j/pillars.png",
     rarity: "Common"
   },
+  {
+    name: "Sequel",
+    text: [
+        "Retrigger all played cards except the {C:attention}first{}",
+    ],
+    image_url: "img/j/sequel.png",
+    rarity: "Rare"
+  },
 
   // {
   //   name: "",

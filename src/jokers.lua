@@ -3844,6 +3844,24 @@ SMODS.Joker {
     end,
 }
 
+-- Sequel
+SMODS.Joker {
+    key = "sequel",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 5, y = 10 },
+    config = { extra = { repetitions = 1 }},
+    calculate = function(self, card, context)
+        if context.repetition and context.cardarea == G.play and context.other_card ~= context.scoring_hand[1] then
+            return {
+                repetitions = card.ability.extra.repetitions
+            }
+        end
+    end,
+}
 
 
 --  Unused art:
