@@ -798,6 +798,14 @@ let jokers = [
     image_url: "img/j/preserved_insect.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Armory",
+    text: [
+        "{C:mult}+1{} Mult for each remaining {C:spades}Spade{} card in {C:attention}deck",
+    ],
+    image_url: "img/j/armory.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

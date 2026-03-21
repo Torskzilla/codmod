@@ -931,6 +931,14 @@ return {
                     "{X:mult,C:white}X#2#{} Mult against {C:attention}Boss Blinds{}"
                 }
             },
+            j_cod_armory={
+                name="Armory",
+                text={
+                    "{C:mult}+#1#{} Mult for each remaining",
+                    "{C:spades}Spade{} card in {C:attention}deck",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                }
+            },
         },
         Other={
             cod_dormant = {

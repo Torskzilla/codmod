@@ -3892,6 +3892,39 @@ SMODS.Joker {
     end,
 }
 
+-- Armory
+SMODS.Joker {
+    key = "armory",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 5,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 7, y = 10 },
+    config = { extra = { mult = 1 }},
+    loc_vars = function(self, info_queue, card)
+        local spade_tally = 0
+        if G.deck then
+            for _, playing_card in ipairs(G.deck.cards) do
+                if playing_card:is_suit("Spades") then spade_tally = spade_tally + card.ability.extra.mult end
+            end
+        end
+        return { vars = { card.ability.extra.mult, spade_tally }}
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            local spade_tally = 0
+            for _, playing_card in ipairs(G.deck.cards) do
+                if playing_card:is_suit("Spades") then spade_tally = spade_tally + card.ability.extra.mult end
+            end
+            return {
+                mult = spade_tally
+            }
+        end
+    end,
+}
+
+
 
 --  Unused art:
 -- Fortunate Joker
