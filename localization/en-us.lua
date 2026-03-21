@@ -924,6 +924,13 @@ return {
                     "cards except the {C:attention}first{}",
                 },
             },
+            j_cod_preserved_insect={
+                name="Preserved Insect",
+                text={
+                    "{X:mult,C:white}X#1#{} Mult against {C:attention}Big Blinds{}",
+                    "{X:mult,C:white}X#2#{} Mult against {C:attention}Boss Blinds{}"
+                }
+            },
         },
         Other={
             cod_dormant = {

@@ -3863,6 +3863,35 @@ SMODS.Joker {
     end,
 }
 
+-- Preserved Insect
+SMODS.Joker {
+    key = "preserved_insect",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 6, y = 10 },
+    config = { extra = { big_xmult = 1.5, boss_xmult = 2 }},
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.big_xmult, card.ability.extra.boss_xmult }}
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+			if G.GAME.blind.name == "Big Blind" then
+                return {
+                    xmult = card.ability.extra.big_xmult
+                }
+            end
+            if G.GAME.blind.name ~= "Small Blind" and G.GAME.blind.name ~= "Big Blind" then
+                return {
+                    xmult = card.ability.extra.boss_xmult
+                }
+            end
+        end
+    end,
+}
+
 
 --  Unused art:
 -- Fortunate Joker

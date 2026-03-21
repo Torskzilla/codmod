@@ -789,6 +789,15 @@ let jokers = [
     image_url: "img/j/sequel.png",
     rarity: "Rare"
   },
+  {
+    name: "Preserved Insect",
+    text: [
+        "{X:mult,C:white}X1.5{} Mult against {C:attention}Big Blinds{}",
+        "{X:mult,C:white}X2{} Mult against {C:attention}Boss Blinds{}"
+    ],
+    image_url: "img/j/preserved_insect.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",
