@@ -123,7 +123,7 @@ SMODS.Blind {
             if context.round_shuffle then
                 for i=1,#G.deck.cards do
                     if (i%3==1) then
-                        SMODS.debuff_card(G.deck.cards[#G.deck.cards-i], true, "cod_snow")
+                        SMODS.debuff_card(G.deck.cards[i], true, "cod_snow")
                     end
                 end
             end
@@ -268,13 +268,6 @@ SMODS.Blind {
         end
     end
 }
-
--- hook to run context on moved cards
-local stop_drag_ref = Card.stop_drag
-function Card:stop_drag()
-    SMODS.calculate_context({ move_card = true })
-    stop_drag_ref(self)
-end
 
 -- The Elite
 SMODS.Blind {

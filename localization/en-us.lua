@@ -1106,7 +1106,8 @@ return {
             horror_deck_saved="Saved by Horror Deck",
             horror_deck_used="Used",
             marshmallow_burnt="Burnt!",
-            piggy_bank_break="Broken!"
+            piggy_bank_break="Broken!",
+            cod_restart_required="Restart required",
         },
         high_scores={},
         labels={
