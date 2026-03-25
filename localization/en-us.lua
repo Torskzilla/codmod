@@ -939,6 +939,15 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 }
             },
+            j_cod_compost={
+                name="Compost",
+                text={
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "for every {C:clubs}Club{} card",
+                    "discarded this round",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                }
+            },
         },
         Other={
             cod_dormant = {

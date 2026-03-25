@@ -806,6 +806,14 @@ let jokers = [
     image_url: "img/j/armory.png",
     rarity: "Common"
   },
+  {
+    name: "Compost",
+    text: [
+        "This Joker gains {C:mult}+2{} Mult for every {C:clubs}Club{} card discarded this round",
+    ],
+    image_url: "img/j/compost.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",
