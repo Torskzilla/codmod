@@ -3949,3 +3949,4 @@ SMODS.Joker {
 -- Black Market
 -- Chromatic Aberration
 -- Noise
+-- Reverse card
