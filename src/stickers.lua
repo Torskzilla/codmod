@@ -280,11 +280,11 @@ SMODS.Sticker {
         card.ability[self.key] = val
         if card.ability[self.key] then
             card:set_sprites(G.P_CENTERS["j_cod_redacted"])
-            if self.children then
-                self.children.floating_sprite = nil
+            if card.children then
+                card.children.floating_sprite = nil
             end
         elseif not card.ability[self.key] then
-            card:set_sprites(nil)
+            card:set_sprites(G.P_CENTERS[card.config.center_key])
         end
     end,
 }
