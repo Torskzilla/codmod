@@ -85,6 +85,7 @@ SMODS.Back{
                     local c = SMODS.add_card({set = 'Base', rank = ranks[i], area = G.deck})
                     c:set_ability('m_wild')
                 end
+                G.GAME.starting_deck_size = #G.playing_cards
                 return true
             end,
         }))
