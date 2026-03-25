@@ -78,3 +78,41 @@ if specific_vars and specific_vars.confidential and not res.replace_confidential
 elseif specific_vars and specific_vars.debuffed and not res.replace_debuff then
 '''
 match_indent = true
+
+[[patches]]
+[patches.pattern]
+target = 'functions/common_events.lua'
+pattern = '''
+return new_card
+'''
+position = "before"
+payload = '''
+if new_card.ability.cod_confidential then
+    new_card:set_sprites(G.P_CENTERS["j_cod_redacted"])
+    if new_card.children then
+        new_card.children.floating_sprite = nil
+    end
+end
+'''
+match_indent = true
+
+# Reveal cards when sold / game is lost
+[[patches]]
+[patches.pattern]
+target = 'card.lua'
+pattern = '''
+G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.2,func = function()
+    play_sound('coin2')
+    self:juice_up(0.3, 0.4)
+    return true
+end}))
+delay(0.2)
+'''
+position = "after"
+payload = '''
+if self.ability.cod_confidential then
+    self:set_sprites(G.P_CENTERS[self.config.center_key])
+    delay(1)
+end
+'''
+match_indent = true
