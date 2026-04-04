@@ -1056,7 +1056,7 @@ SMODS.Joker {
 -- Faster than light
 SMODS.Joker {
     key = "faster_than_light",
-    unlocked = true,
+    unlocked = false,
     blueprint_compat = false,
     rarity = 3,
     cost = 9,
@@ -1146,6 +1146,15 @@ SMODS.Joker {
                 }
             end
         end
+    end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { 10, G.PROFILES[G.SETTINGS.profile].career_stats.c_blinds_skipped or 0 } }
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'career_stat' and args.statname == 'c_blinds_skipped' then
+            return G.PROFILES[G.SETTINGS.profile].career_stats[args.statname] >= 10
+        end
+        return false
     end
 }
 
@@ -1289,7 +1298,7 @@ SMODS.Joker {
         return { vars = { other_name } }
     end,
     check_for_unlock = function(self, args)
-        return args.type == 'win_deck' and get_deck_win_stake('b_cod_average') and true
+        return args.type == 'win_deck' and get_deck_win_stake('b_cod_average')>0 and true
     end
 }
 

@@ -344,6 +344,11 @@ return {
                     "for {C:attention}-#1#{} Ante",
                     "{C:inactive}#3# skipped",
                 },
+                unlock = {
+                    "Skip a total of",
+                    "{C:attention,E:1}#1#{} Blinds",
+                    "{C:inactive}(#2#)",
+                },
             },
             j_cod_chosen_one = {
                 name = "Chosen One",
