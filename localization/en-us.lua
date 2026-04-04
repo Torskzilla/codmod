@@ -586,6 +586,11 @@ return {
                     "a {C:attention}High Card{}",
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 },
+                unlock = {
+                    "Win a run",
+                    "without playing",
+                    "a {E:1,C:attention}#1#",
+                },
             },
             j_cod_patent = {
                 name = "Patent",

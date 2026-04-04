@@ -2011,6 +2011,7 @@ SMODS.Joker {
 -- Limbo
 SMODS.Joker {
     key = "limbo",
+    unlocked = false,
     blueprint_compat = true,
     perishable_compat = false,
     rarity = 1,
@@ -2041,6 +2042,12 @@ SMODS.Joker {
             }
         end
     end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { localize('High Card', 'poker_hands') } }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'win_no_hand' and G.GAME.hands['High Card'].played == 0
+    end
 }
 
 -- Patent
