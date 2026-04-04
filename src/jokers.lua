@@ -123,8 +123,8 @@ SMODS.Joker {
     end,
 
     check_for_unlock = function(self, args)
-        if args.type == 'hand_contents' then
-            
+        if args.type == 'discover_amount' then
+
             if G.P_CENTERS["j_cod_winter"].discovered and G.P_CENTERS["j_cod_spring"].discovered and G.P_CENTERS["j_cod_summer"].discovered and G.P_CENTERS["j_cod_fall"].discovered then
 
                 return true
@@ -3067,7 +3067,7 @@ SMODS.Joker {
 -- Tornado
 SMODS.Joker {
     key = "tornado",
-    unlocked = true,
+    unlocked = false,
     blueprint_compat = false,
     rarity = 2,
     cost = 6,
@@ -3104,6 +3104,15 @@ SMODS.Joker {
                 colour = G.C.GREY,
             }
         end
+    end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { 100, G.PROFILES[G.SETTINGS.profile].career_stats.c_cards_discarded or 0 } }
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'career_stat' and args.statname == 'c_cards_discarded' then
+            return G.PROFILES[G.SETTINGS.profile].career_stats[args.statname] >= 100
+        end
+        return false
     end
 }
 

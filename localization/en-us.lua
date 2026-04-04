@@ -783,6 +783,11 @@ return {
                     "Discards held cards when",
                     "hand is played",
                 },
+                unlock = {
+                    "Discard a total of",
+                    "{C:attention,E:1}#1#{} cards",
+                    "{C:inactive}(#2#)",
+                },
             },
             j_cod_moai = {
                 name = "Moai",
