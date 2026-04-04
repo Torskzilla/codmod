@@ -20,36 +20,6 @@ SMODS.Back{
     end,
 }
 
-
--- VIP
-SMODS.Back{
-    key = "vip",
-    unlocked = true,
-    atlas = 'atlas_cod_decks',
-    pos = {x = 0, y = 0},
-    config = {},
-
-    apply = function(self)
-         G.E_MANAGER:add_event(Event({
-            func = function()
-                local vip_card = pseudorandom_element(G.playing_cards, 'cod_vip')
-                if vip_card then
-            
-                    local edition = SMODS.poll_edition { key = "cod_vip", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
-                    vip_card:set_edition(edition, true)
-
-                    local seal = SMODS.poll_seal({ guaranteed = true, key = 'cod_vip' })
-                    vip_card:set_seal(seal, true)
-
-                    local enhancement = SMODS.poll_enhancement({ guaranteed = true, type_key = 'cod_vip' })
-                    vip_card:set_ability(enhancement, true)
-                end
-                return true
-            end
-        }))
-    end,
-}
-
 -- Gravity
 SMODS.Back{
     key = "gravity",
@@ -100,6 +70,42 @@ SMODS.Back{
     end,
     check_for_unlock = function(self, args)
         return args.type == 'win_deck' and get_deck_win_stake('b_cod_triangle')>0 and true
+    end
+}
+
+
+-- VIP
+SMODS.Back{
+    key = "vip",
+    unlocked = false,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 0, y = 0},
+    config = {},
+
+    apply = function(self)
+         G.E_MANAGER:add_event(Event({
+            func = function()
+                local vip_card = pseudorandom_element(G.playing_cards, 'cod_vip')
+                if vip_card then
+            
+                    local edition = SMODS.poll_edition { key = "cod_vip", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
+                    vip_card:set_edition(edition, true)
+
+                    local seal = SMODS.poll_seal({ guaranteed = true, key = 'cod_vip' })
+                    vip_card:set_seal(seal, true)
+
+                    local enhancement = SMODS.poll_enhancement({ guaranteed = true, type_key = 'cod_vip' })
+                    vip_card:set_ability(enhancement, true)
+                end
+                return true
+            end
+        }))
+    end,
+    locked_loc_vars = function(self, info_queue, back)
+        return { vars = { 150 } }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'discover_amount' and args.amount >= 150
     end
 }
 

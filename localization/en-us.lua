@@ -30,6 +30,11 @@ return {
                     "{C:attention}1{} card starts with a {C:attention}Seal{}",
                     "{C:enhanced}Enhancement{} and {C:dark_edition}Edition{}"
                 },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection",
+                }
             },
             b_cod_gravity={
                 name="Gravity Deck",
