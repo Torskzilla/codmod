@@ -814,6 +814,30 @@ let jokers = [
     image_url: "img/j/compost.png",
     rarity: "Common"
   },
+  {
+    name: "Red Joker",
+    text: [
+        "This Joker gains {C:mult}+3{} Mult on {C:attention}final hand{} of round",
+    ],
+    image_url: "img/j/red_joker.png",
+    rarity: "Common"
+  },
+  {
+    name: "The Rivals",
+    text: [
+        "{X:mult,C:white}X3{} Mult if played hand contains a {C:attention}Two Pair{}",
+    ],
+    image_url: "img/j/the_rivals.png",
+    rarity: "Rare"
+  },
+  {
+    name: "Reverse Card",
+    text: [
+        "Swap {C:chips}Chips{} and {C:mult}Mult{}"
+    ],
+    image_url: "img/j/reverse_card.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

@@ -1382,18 +1382,11 @@ SMODS.Joker {
     calculate = function(self, card, context)
         if context.before and context.scoring_name == card.ability.extra.poker_hand and G.GAME.hands[context.scoring_name].played_this_round == 1 then
 
-            local blueprint_card = context.blueprint_card
+            ease_hands_played(card.ability.extra.hands)
 
             return {
-                G.E_MANAGER:add_event(Event({
-                    func = function()
-                        ease_hands_played(card.ability.extra.hands)
-                        SMODS.calculate_effect(
-                            { message = localize { type = 'variable', key = 'a_hands', vars = { card.ability.extra.hands } }, colour = G.C.BLUE, },
-                            blueprint_card or card)
-                        return true
-                    end
-                }))
+                message = localize { type = 'variable', key = 'a_hands', vars = { card.ability.extra.hands } },
+                colour = G.C.BLUE,
             }
         end
     end,
@@ -3942,6 +3935,79 @@ SMODS.Joker {
     end,
 }
 
+-- Red Joker
+SMODS.Joker {
+    key = "red_joker",
+    unlocked = true,
+    blueprint_compat = true,
+    perishable_compat = false,
+    rarity = 1,
+    cost = 5,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 2, y = 11 },
+    config = { extra = { mult_gain = 3, mult = 0 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult_gain, card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.before and not context.blueprint and G.GAME.current_round.hands_left == 0 then
+            card.ability.extra.mult = card.ability.extra.mult + card.ability.extra.mult_gain
+        end
+        if context.joker_main then
+            return {
+                mult = card.ability.extra.mult
+            }
+        end
+    end
+}
+
+-- The Rivals
+SMODS.Joker {
+    key = "the_rivals",
+    unlocked = false,
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 1, y = 11 },
+    config = { extra = { Xmult = 3, type = 'Two Pair' } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.Xmult, localize(card.ability.extra.type, 'poker_hands') } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main and next(context.poker_hands[card.ability.extra.type]) then
+            return {
+                xmult = card.ability.extra.Xmult
+            }
+        end
+    end,
+    locked_loc_vars = function(self, info_queue, card)
+        return { vars = { localize('Two Pair', 'poker_hands') } }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'win_no_hand' and G.GAME.hands['Two Pair'].played == 0
+    end
+}
+
+-- Reverse card
+SMODS.Joker {
+    key = "reverse_card",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 2, y = 8 },
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                swap = true,
+                message = localize("cod_reverse_card_swap"),
+                colour = G.C.PURPLE,
+            }
+        end
+    end,
+}
 
 --  Unused art:
 -- Fortunate Joker
@@ -3949,4 +4015,4 @@ SMODS.Joker {
 -- Black Market
 -- Chromatic Aberration
 -- Noise
--- Reverse card
+-- Secret hand xmult

@@ -948,6 +948,33 @@ return {
                     "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
                 }
             },
+            j_cod_red_joker={
+                name="Red Joker",
+                text={
+                    "This Joker gains {C:mult}+#1#{} Mult",
+                    "on {C:attention}final hand{} of round",
+                    "{C:inactive}(Currently {C:mult}+#2#{C:inactive} Mult)",
+                }
+            },
+            j_cod_reverse_card={
+                name="Reverse Card",
+                text={
+                    "Swap {C:chips}Chips{} and {C:mult}Mult{}"
+                }
+            },
+            j_cod_the_rivals={
+                name="The Rivals",
+                text={
+                    "{X:mult,C:white}X#1#{} Mult if played",
+                    "hand contains",
+                    "a {C:attention}#2#",
+                },
+                unlock = {
+                    "Win a run",
+                    "without playing",
+                    "a {E:1,C:attention}#1#",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -1117,6 +1144,7 @@ return {
             marshmallow_burnt="Burnt!",
             piggy_bank_break="Broken!",
             cod_restart_required="Restart required",
+            cod_reverse_card_swap="Swap",
         },
         high_scores={},
         labels={
