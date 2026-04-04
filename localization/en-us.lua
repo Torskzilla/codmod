@@ -387,12 +387,18 @@ return {
                     "{C:red}Bans{} sold cards",
                     "{C:inactive}(Banned cards can't appear)",
                 },
+                unlock = {
+                    "{E:1,s:1.3}?????",
+                },
             },
             j_cod_orson = {
                 name = "Orson",
                 text = {
                     "{C:legendary}Legendary{C:attention} Jokers{} can",
                     "naturally appear"
+                },
+                unlock = {
+                    "{E:1,s:1.3}?????",
                 },
             },
             j_cod_spam = {
