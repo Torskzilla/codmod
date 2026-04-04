@@ -115,7 +115,7 @@ SMODS.Back{
 -- Horror
 SMODS.Back{
     key = "horror",
-    unlocked = true,
+    unlocked = false,
     atlas = 'atlas_cod_decks',
     pos = {x = 7, y = 0},
     config = {},
@@ -142,6 +142,17 @@ SMODS.Back{
             end
         end
     end,
+    locked_loc_vars = function(self, info_queue, back)
+        return {
+            vars = {
+                localize { type = 'name_text', set = 'Stake', key = 'stake_cod_platinum' },
+                colours = { G.C.EDITION }
+            }
+        }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'win_stake' and get_deck_win_stake() >= 9
+    end
 }
 
 -- Ponzi

@@ -57,6 +57,11 @@ return {
                     "Prevents first death",
                     "{C:red}#1#"
                 },
+                unlock = {
+                    "Win a run with any",
+                    "deck on at least",
+                    "{V:1}#1#{} difficulty",
+                }
             },
         },
         Blind={
