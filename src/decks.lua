@@ -95,7 +95,7 @@ SMODS.Back{
 -- Average
 SMODS.Back{
     key = "average",
-    unlocked = true,
+    unlocked = false,
     atlas = 'atlas_cod_decks',
     pos = {x = 3, y = 0},
     config = {},
@@ -104,6 +104,12 @@ SMODS.Back{
         G.GAME.common_mod = 0
         G.GAME.rare_mod = 0
     end,
+    locked_loc_vars = function(self, info_queue, back)
+        return { vars = { 200 } }
+    end,
+    check_for_unlock = function(self, args)
+        return args.type == 'discover_amount' and args.amount >= 200
+    end
 }
 
 -- Horror

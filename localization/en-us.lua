@@ -18,6 +18,11 @@ return {
                     "No {C:blue}Common{} or {C:red}Rare",
                     "{C:attention}Jokers{} naturally appear"
                 },
+                unlock = {
+                    "Discover at least",
+                    "{C:attention}#1#{} items from",
+                    "your collection",
+                }
             },
             b_cod_vip={
                 name="VIP Deck",
