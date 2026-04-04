@@ -2138,6 +2138,7 @@ SMODS.Joker {
 -- Death Star
 SMODS.Joker {
     key = "death_star",
+    unlocked = false,
     blueprint_compat = true,
     perishable_compat = false,
     rarity = 3,
@@ -2171,6 +2172,17 @@ SMODS.Joker {
                 mult = card.ability.extra.mult,
             }
         end
+    end,
+    check_for_unlock = function(self, args)
+        if args.type == 'win_custom' then
+            for handname, _ in pairs(G.GAME.hands) do
+                if G.GAME.hands[handname].level>1 then
+                    return false
+                end
+            end
+            return true
+        end
+        return false
     end,
 }
 

@@ -622,6 +622,11 @@ return {
                     "the removed {C:blue}Chips{} and {C:mult}Mult{}",
                     "{C:inactive}({C:chips}+#1#{C:inactive} Chips, {C:mult}+#2#{C:inactive} Mult)",
                 },
+                unlock = {
+                    "Win a run with",
+                    "all {C:attention}poker hands{}",
+                    "at level {C:attention}1{}",
+                }
             },
             j_cod_infrastructure = {
                 name = "Infrastructure",
