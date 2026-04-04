@@ -50,6 +50,11 @@ return {
                     "Also has a {C:attention,T:e_wild}Wild{}",
                     "card of each rank"
                 },
+                unlock = {
+                    "Win a run with",
+                    "{C:attention}#1#{}",
+                    "on any difficulty",
+                }
             },
             b_cod_horror={
                 name="Horror Deck",
