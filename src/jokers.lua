@@ -2893,7 +2893,8 @@ SMODS.Joker {
                     SMODS.add_card {
                         set = 'Joker',
                         stickers = {"cod_confidential"},
-                        key_append = 'cod_whistleblower'
+                        key_append = 'cod_whistleblower',
+                        force_stickers = true,
                     }
                     G.GAME.joker_buffer = 0
                     return true
