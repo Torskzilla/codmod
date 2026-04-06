@@ -98,7 +98,7 @@ SMODS.Sticker {
             card.ability.dormant_tally = dormant_rounds
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    if (card.area.config.jokers) then
+                    if (card.area and card.area.config.jokers) then
                         SMODS.debuff_card(card, true, "cod_dormant")
                     end
                     return true
@@ -325,7 +325,7 @@ SMODS.Sticker {
             card.ability.imprisoned_freed = false
             G.E_MANAGER:add_event(Event({
                 func = function()
-                    if (card.area.config.jokers) then
+                    if (card.area and card.area.config.jokers) then
                         SMODS.debuff_card(card, true, "cod_imprisoned")
                     end
                     return true
