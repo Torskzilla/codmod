@@ -838,6 +838,14 @@ let jokers = [
     image_url: "img/j/reverse_card.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Gold Ore",
+    text: [
+        "Played {C:attention}Stone{} and {C:attention}Gold{} cards give {C:chips}+25{} Chips and {C:gold}$2{} when scored"
+    ],
+    image_url: "img/j/gold_ore.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

@@ -1021,6 +1021,14 @@ return {
                     "a {E:1,C:attention}#1#",
                 },
             },
+            j_cod_gold_ore={
+                name="Gold Ore",
+                text={
+                    "Played {C:attention}Stone{} and {C:attention}Gold{}",
+                    "cards give {C:chips}+#1#{} Chips",
+                    "and {C:gold}$#2#{} when scored"
+                }
+            },
         },
         Other={
             cod_dormant = {

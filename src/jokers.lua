@@ -4056,9 +4056,50 @@ SMODS.Joker {
     end,
 }
 
+-- Gold Ore
+SMODS.Joker {
+    key = "gold_ore",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 8 },
+    config = { extra = { chips = 25, dollars = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips, card.ability.extra.dollars } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            if SMODS.has_enhancement(context.other_card, 'm_stone') or SMODS.has_enhancement(context.other_card, 'm_gold') then
+                G.GAME.dollar_buffer = (G.GAME.dollar_buffer or 0) + card.ability.extra.dollars
+                return {
+                    chips = card.ability.extra.chips,
+                    dollars = card.ability.extra.dollars,
+                    func = function()
+                        G.E_MANAGER:add_event(Event({
+                            func = function()
+                                G.GAME.dollar_buffer = 0
+                                return true
+                            end
+                        }))
+                    end
+                }
+            end
+        end
+    end,
+    in_pool = function(self, args)
+        for _, playing_card in ipairs(G.playing_cards or {}) do
+            if SMODS.has_enhancement(playing_card, 'm_stone') or SMODS.has_enhancement(playing_card, 'm_gold') then
+                return true
+            end
+        end
+        return false
+    end
+}
+
 --  Unused art:
 -- Fortunate Joker
--- Gold Ore
 -- Black Market
 -- Chromatic Aberration
 -- Noise
