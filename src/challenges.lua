@@ -19,6 +19,27 @@ SMODS.Challenge {
     },
 }
 
+-- Square Hands
+SMODS.Challenge {
+    key = 'square_hands',
+    jokers = {
+        { id = 'j_four_fingers', eternal = true },
+    },
+    rules = {
+        custom = {
+            { id = 'play_limit_4' },
+        }
+    },
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.hand.config.highlighted_limit = 4
+                return true
+            end
+        }))
+    end,
+}
+
 -- Final Exam
 SMODS.Challenge {
     key = 'final_exam',

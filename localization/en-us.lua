@@ -1128,6 +1128,7 @@ return {
             c_cod_jailbreak = "Jailbreak",
             c_cod_top_secret = "Top Secret",
             c_cod_final_exam = "Final Exam",
+            c_cod_square_hands = "Square Hands",
             c_cod_unaccountably_peckish = "Unaccountably Peckish",
             c_cod_fishbucket = "Fishbucket",
         },
@@ -1221,6 +1222,9 @@ return {
             },
             ch_c_fishbucket={
                 "Only Jokers from Cod's Mod",
+            },
+            ch_c_play_limit_4={
+                "Select at most {C:attention}4{} cards",
             },
         },
     },
