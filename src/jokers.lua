@@ -3791,12 +3791,21 @@ SMODS.Joker {
     cost = 5,
     atlas = 'atlas_cod_jokers',
     pos = { x = 3, y = 10 },
-    config = { extra = { dollars = 6 }},
+    config = { extra = { dollars = 6, immune = true }},
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.dollars }}
     end,
     calculate = function(self, card, context)
-        if context.money_altered and not context.blueprint and context.amount < 0 then
+        if context.buying_self then
+            card.ability.extra.immune = true
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    card.ability.extra.immune = false
+                    return true
+                end
+            }))
+        end
+        if context.money_altered and not context.blueprint and context.amount < 0 and not card.ability.extra.immune then
             SMODS.destroy_cards(card, nil, nil, true)
             return {
                 message = localize('piggy_bank_break')
