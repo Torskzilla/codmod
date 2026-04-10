@@ -664,7 +664,7 @@ let jokers = [
   {
     name: "Eldritch Joker",
     text: [
-        "No {C:planet}Planet{} cards in shop",
+        "No {C:planet}Planet{} or {C:tarot}Tarot{} cards in shop",
     ],
     image_url: "img/j/eldritch.png",
     rarity: "Uncommon"

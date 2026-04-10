@@ -868,8 +868,8 @@ return {
             j_cod_eldritch = {
                 name = "Eldritch Joker",
                 text = {
-                    "No {C:planet}Planet{} cards",
-                    "in shop",
+                    "No {C:planet}Planet{} or {C:tarot}Tarot{}",
+                    "cards in shop",
                 },
             },
             j_cod_jimboel = {

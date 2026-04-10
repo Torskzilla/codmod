@@ -15,6 +15,7 @@ position = "after"
 payload = '''
 if (next(SMODS.find_card('j_cod_eldritch'))) then
     total_rate = total_rate - G.GAME.planet_rate
+    total_rate = total_rate - G.GAME.tarot_rate
 end
 '''
 match_indent = true
@@ -29,6 +30,7 @@ pattern = '''
 position = "after"
 payload = '''
 if (next(SMODS.find_card('j_cod_eldritch'))) then
+    rates[2].val = 0
     rates[3].val = 0
 end
 '''
