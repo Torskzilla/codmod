@@ -4098,7 +4098,158 @@ SMODS.Joker {
     end
 }
 
+-- Placeholder 1
+-- earn 2 per remaining hand
+SMODS.Joker {
+    key = "placeholder_1",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 11 },
+    config = { extra = { dollars = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.dollars } }
+    end,
+    calc_dollar_bonus = function(self, card)
+        return G.GAME.current_round.hands_left * card.ability.extra.dollars
+    end
+}
+
+-- Placeholder 2
+-- when boss blind is defeated, create a negative tag
+SMODS.Joker {
+    key = "placeholder_2",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 3,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 11 },
+    config = { extra = {} },
+    calculate = function(self, card, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
+            G.E_MANAGER:add_event(Event({
+                func = (function()
+                    add_tag(Tag('tag_negative'))
+                    play_sound('generic1', 0.9 + math.random() * 0.1, 0.8)
+                    play_sound('holo1', 1.2 + math.random() * 0.1, 0.4)
+                    return true
+                end)
+            }))
+            return {
+                message = localize('PLACEHOLDER'),
+                colour = G.C.EDITION,
+            }
+        end
+    end,
+}
+
+-- Placeholder 3
+-- sell after 1 round to create random uncommon
+SMODS.Joker {
+    key = "placeholder_3",
+    unlocked = true,
+    blueprint_compat = false,
+    eternal_compat = false,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 11 },
+    config = { extra = { rounds = 0, total_rounds = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.total_rounds, card.ability.extra.rounds } }
+    end,
+    calculate = function(self, card, context)
+        if context.selling_self and (card.ability.extra.rounds >= card.ability.extra.total_rounds) and not context.blueprint then
+            if #G.jokers.cards <= G.jokers.config.card_limit then
+                SMODS.add_card({ set = 'Joker', rarity = 'Uncommon' })
+                return { message = localize('PLACEHOLDER') }
+            else
+                return { message = localize('k_no_room_ex') }
+            end
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            card.ability.extra.rounds = card.ability.extra.rounds + 1
+            if card.ability.extra.rounds == card.ability.extra.total_rounds then
+                local eval = function(card) return not card.REMOVED end
+                juice_card_until(card, eval, true)
+            end
+            return {
+                message = (card.ability.extra.rounds < card.ability.extra.total_rounds) and
+                    (card.ability.extra.rounds .. '/' .. card.ability.extra.total_rounds) or
+                    localize('k_active_ex'),
+                colour = G.C.FILTER
+            }
+        end
+    end,
+}
+
+-- Placeholder 4
+-- sell after 2 rounds to create random rare
+SMODS.Joker {
+    key = "placeholder_4",
+    unlocked = true,
+    blueprint_compat = false,
+    eternal_compat = false,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 4, y = 11 },
+    config = { extra = { rounds = 0, total_rounds = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.total_rounds, card.ability.extra.rounds } }
+    end,
+    calculate = function(self, card, context)
+        if context.selling_self and (card.ability.extra.rounds >= card.ability.extra.total_rounds) and not context.blueprint then
+            if #G.jokers.cards <= G.jokers.config.card_limit then
+                SMODS.add_card({ set = 'Joker', rarity = 'Rare' })
+                return { message = localize('PLACEHOLDER') }
+            else
+                return { message = localize('k_no_room_ex') }
+            end
+        end
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.blueprint then
+            card.ability.extra.rounds = card.ability.extra.rounds + 1
+            if card.ability.extra.rounds == card.ability.extra.total_rounds then
+                local eval = function(card) return not card.REMOVED end
+                juice_card_until(card, eval, true)
+            end
+            return {
+                message = (card.ability.extra.rounds < card.ability.extra.total_rounds) and
+                    (card.ability.extra.rounds .. '/' .. card.ability.extra.total_rounds) or
+                    localize('k_active_ex'),
+                colour = G.C.FILTER
+            }
+        end
+    end,
+}
+
+-- Huge Joker
+SMODS.Joker {
+    key = "huge_joker",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 1,
+    cost = 5,
+    pos = { x = 0, y = 0 },
+    display_size = { w = 71 * 1.4, h = 95 * 1.4 },
+    config = { card_limit = -1, extra = { xmult = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { 2, card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            return {
+                xmult = card.ability.extra.xmult,
+            }
+        end
+    end,
+}
+
 --  Unused art:
+-- 8-bit Joker
 -- Fortunate Joker
 -- Black Market
 -- Chromatic Aberration

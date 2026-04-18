@@ -448,7 +448,7 @@ let jokers = [
     name: "Shackles",
     text: [
       "{C:dark_edition}+1{} Joker Slot,",
-      "{X:mult,C:white}0.5X{} Mult",
+      "{X:mult,C:white}X0.5{} Mult",
     ],
     image_url: "img/j/shackles.png",
     rarity: "Common"
@@ -845,6 +845,15 @@ let jokers = [
     ],
     image_url: "img/j/gold_ore.png",
     rarity: "Uncommon"
+  },
+  {
+    name: "Huge Joker",
+    text: [
+        "Takes {C:attention}2{} Joker Slots,",
+        "{X:mult,C:white}X2{} Mult",
+    ],
+    image_url: "img/j/joker.png",
+    rarity: "Common"
   },
 
   // {

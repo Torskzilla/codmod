@@ -655,7 +655,7 @@ return {
                 name = "Shackles",
                 text = {
                     "{C:dark_edition}+#1#{} Joker Slot,",
-                    "{X:mult,C:white}#2#X{} Mult",
+                    "{X:mult,C:white}X#2#{} Mult",
                 },
             },
             j_cod_redacted = {
@@ -1028,6 +1028,13 @@ return {
                     "cards give {C:chips}+#1#{} Chips",
                     "and {C:gold}$#2#{} when scored"
                 }
+            },
+            j_cod_huge_joker = {
+                name = "Huge Joker",
+                text = {
+                    "Takes {C:attention}#1#{} Joker Slots,",
+                    "{X:mult,C:white}X#2#{} Mult",
+                },
             },
         },
         Other={
