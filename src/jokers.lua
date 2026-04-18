@@ -4104,7 +4104,7 @@ SMODS.Joker {
     unlocked = true,
     blueprint_compat = false,
     rarity = 1,
-    cost = 4,
+    cost = 6,
     atlas = 'atlas_cod_jokers',
     pos = { x = 7, y = 11 },
     config = { extra = { dollars = 2 } },
