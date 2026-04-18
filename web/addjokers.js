@@ -879,6 +879,14 @@ let jokers = [
     image_url: "img/j/hired_hand.png",
     rarity: "Common"
   },
+  {
+    name: "Artifact",
+    text: [
+        "Create a {C:attention}Negative Tag{} when {C:attention}Boss Blind{} is defeated",
+    ],
+    image_url: "img/j/artifact.png",
+    rarity: "Rare"
+  },
 
   // {
   //   name: "",

@@ -4116,17 +4116,20 @@ SMODS.Joker {
     end
 }
 
--- Placeholder 2
--- when boss blind is defeated, create a negative tag
+-- Artifact
 SMODS.Joker {
-    key = "placeholder_2",
+    key = "artifact",
     unlocked = true,
     blueprint_compat = false,
     rarity = 3,
     cost = 8,
     atlas = 'atlas_cod_jokers',
-    pos = { x = 4, y = 11 },
+    pos = { x = 8, y = 11 },
     config = { extra = {} },
+    loc_vars = function(self, info_queue, card)
+        info_queue[#info_queue + 1] = { key = 'tag_negative', set = 'Tag' }
+        return { vars = { localize { type = 'name_text', set = 'Tag', key = 'tag_negative' } } }
+    end,
     calculate = function(self, card, context)
         if context.end_of_round and context.game_over == false and context.main_eval and context.beat_boss then
             G.E_MANAGER:add_event(Event({
@@ -4138,8 +4141,8 @@ SMODS.Joker {
                 end)
             }))
             return {
-                message = localize('PLACEHOLDER'),
-                colour = G.C.EDITION,
+                message = localize('cod_artifact_activate'),
+                colour = G.C.RED,
             }
         end
     end,

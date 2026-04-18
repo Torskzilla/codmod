@@ -1061,6 +1061,13 @@ return {
                     "at end of the round",
                 },
             },
+            j_cod_artifact = {
+                name = "Artifact",
+                text = {
+                    "Create a {C:attention}#1#",
+                    "when {C:attention}Boss Blind{} is defeated",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -1233,6 +1240,7 @@ return {
             cod_restart_required="Restart required",
             cod_reverse_card_swap="Swap",
             cod_open_chest="Open",
+            cod_artifact_activate="Create",
         },
         high_scores={},
         labels={
