@@ -855,6 +855,22 @@ let jokers = [
     image_url: "img/j/joker.png",
     rarity: "Common"
   },
+  {
+    name: "Wooden Chest",
+    text: [
+        "After {C:attention}1{} round, sell this card to create an {C:green}Uncommon{} Joker",
+    ],
+    image_url: "img/j/wooden_chest.png",
+    rarity: "Common"
+  },
+  {
+    name: "Gilded Chest",
+    text: [
+        "After {C:attention}2{} rounds, sell this card to create a {C:red}Rare{} Joker",
+    ],
+    image_url: "img/j/gilded_chest.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

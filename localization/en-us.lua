@@ -1036,6 +1036,24 @@ return {
                     "{X:mult,C:white}X#2#{} Mult",
                 },
             },
+            j_cod_wooden_chest = {
+                name = "Wooden Chest",
+                text = {
+                    "After {C:attention}#1#{} round, sell",
+                    "this card to create",
+                    "an {C:uncommon}Uncommon{} Joker",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
+                },
+            },
+            j_cod_gilded_chest = {
+                name = "Gilded Chest",
+                text = {
+                    "After {C:attention}#1#{} rounds, sell",
+                    "this card to create",
+                    "a {C:rare}Rare{} Joker",
+                    "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
+                },
+            },
         },
         Other={
             cod_dormant = {
@@ -1207,6 +1225,7 @@ return {
             piggy_bank_break="Broken!",
             cod_restart_required="Restart required",
             cod_reverse_card_swap="Swap",
+            cod_open_chest="Open",
         },
         high_scores={},
         labels={

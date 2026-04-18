@@ -4146,17 +4146,16 @@ SMODS.Joker {
     end,
 }
 
--- Placeholder 3
--- sell after 1 round to create random uncommon
+-- Wooden Chest
 SMODS.Joker {
-    key = "placeholder_3",
+    key = "wooden_chest",
     unlocked = true,
     blueprint_compat = false,
     eternal_compat = false,
     rarity = 1,
     cost = 4,
     atlas = 'atlas_cod_jokers',
-    pos = { x = 4, y = 11 },
+    pos = { x = 5, y = 11 },
     config = { extra = { rounds = 0, total_rounds = 1 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.total_rounds, card.ability.extra.rounds } }
@@ -4165,7 +4164,7 @@ SMODS.Joker {
         if context.selling_self and (card.ability.extra.rounds >= card.ability.extra.total_rounds) and not context.blueprint then
             if #G.jokers.cards <= G.jokers.config.card_limit then
                 SMODS.add_card({ set = 'Joker', rarity = 'Uncommon' })
-                return { message = localize('PLACEHOLDER') }
+                return { message = localize('cod_open_chest') }
             else
                 return { message = localize('k_no_room_ex') }
             end
@@ -4186,17 +4185,16 @@ SMODS.Joker {
     end,
 }
 
--- Placeholder 4
--- sell after 2 rounds to create random rare
+-- Gilded Chest
 SMODS.Joker {
-    key = "placeholder_4",
+    key = "gilded_chest",
     unlocked = true,
     blueprint_compat = false,
     eternal_compat = false,
     rarity = 2,
     cost = 6,
     atlas = 'atlas_cod_jokers',
-    pos = { x = 4, y = 11 },
+    pos = { x = 6, y = 11 },
     config = { extra = { rounds = 0, total_rounds = 2 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.total_rounds, card.ability.extra.rounds } }
@@ -4205,7 +4203,7 @@ SMODS.Joker {
         if context.selling_self and (card.ability.extra.rounds >= card.ability.extra.total_rounds) and not context.blueprint then
             if #G.jokers.cards <= G.jokers.config.card_limit then
                 SMODS.add_card({ set = 'Joker', rarity = 'Rare' })
-                return { message = localize('PLACEHOLDER') }
+                return { message = localize('cod_open_chest') }
             else
                 return { message = localize('k_no_room_ex') }
             end
