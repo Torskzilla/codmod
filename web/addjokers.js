@@ -871,6 +871,14 @@ let jokers = [
     image_url: "img/j/gilded_chest.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Hired Hand",
+    text: [
+        "Earn {C:money}$2{} per remaining {C:blue}hand{} at end of the round",
+    ],
+    image_url: "img/j/hired_hand.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",

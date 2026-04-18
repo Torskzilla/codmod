@@ -1054,6 +1054,13 @@ return {
                     "{C:inactive}(Currently {C:attention}#2#{C:inactive}/#1#)",
                 },
             },
+            j_cod_hired_hand = {
+                name = "Hired Hand",
+                text = {
+                    "Earn {C:money}$#1#{} per remaining {C:blue}hand{}",
+                    "at end of the round",
+                },
+            },
         },
         Other={
             cod_dormant = {

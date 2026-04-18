@@ -4098,16 +4098,15 @@ SMODS.Joker {
     end
 }
 
--- Placeholder 1
--- earn 2 per remaining hand
+-- Hired Hand
 SMODS.Joker {
-    key = "placeholder_1",
+    key = "hired_hand",
     unlocked = true,
     blueprint_compat = false,
     rarity = 1,
     cost = 4,
     atlas = 'atlas_cod_jokers',
-    pos = { x = 4, y = 11 },
+    pos = { x = 7, y = 11 },
     config = { extra = { dollars = 2 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.dollars } }
