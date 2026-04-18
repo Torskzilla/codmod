@@ -4237,7 +4237,7 @@ SMODS.Joker {
     display_size = { w = 71 * 1.4, h = 95 * 1.4 },
     config = { card_limit = -1, extra = { xmult = 2 } },
     loc_vars = function(self, info_queue, card)
-        return { vars = { 2, card.ability.extra.xmult } }
+        return { vars = { 1, card.ability.extra.xmult } }
     end,
     calculate = function(self, card, context)
         if context.joker_main then

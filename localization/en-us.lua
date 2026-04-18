@@ -1032,7 +1032,7 @@ return {
             j_cod_huge_joker = {
                 name = "Huge Joker",
                 text = {
-                    "Takes {C:attention}#1#{} Joker Slots,",
+                    "{C:red}-#1#{} Joker Slots,",
                     "{X:mult,C:white}X#2#{} Mult",
                 },
             },

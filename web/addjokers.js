@@ -849,7 +849,7 @@ let jokers = [
   {
     name: "Huge Joker",
     text: [
-        "Takes {C:attention}2{} Joker Slots,",
+        "{C:red}-1{} Joker Slots,",
         "{X:mult,C:white}X2{} Mult",
     ],
     image_url: "img/j/joker.png",
