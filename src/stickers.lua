@@ -272,6 +272,9 @@ SMODS.Sticker {
     rate = 0.2,
     needs_enable_flag = true,
     should_apply = function(self, card, center, area, bypass_roll)
+        if (not card or not card.config or not card.config.center) then -- avoid crash from all in jest's sticker joker
+            return true
+        end
         return G.P_CENTERS[card.config.center.key].discovered and SMODS.Sticker.should_apply(self, card, center, area, bypass_roll)
     end,
     apply = function(self, card, val)
