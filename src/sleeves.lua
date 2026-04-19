@@ -26,6 +26,28 @@ CardSleeves.Sleeve {
 }
 
 -- Rainbow
+CardSleeves.Sleeve {
+    key = "rainbow",
+    unlocked = true,
+    atlas = "atlas_cod_sleeves",
+    pos = { x = 5, y = 0 },
+    config = {},
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                local ranks = {}
+                for _, playing_card in ipairs(G.playing_cards) do
+                    ranks[playing_card.base.value] = true
+                end
+                for rank,_ in pairs(ranks) do
+                    SMODS.add_card { set = "Base", rank = rank, enhancement = "m_wild", area = G.deck }
+                end
+                G.GAME.starting_deck_size = #G.playing_cards
+                return true
+            end,
+        }))
+    end,
+}
 
 -- VIP
 CardSleeves.Sleeve {

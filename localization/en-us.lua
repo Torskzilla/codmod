@@ -89,6 +89,13 @@ return {
                     "copy of {C:legendary,E:1,T:c_black_hole}Black Hole{}"
                 }
             },
+            sleeve_cod_rainbow = {
+                name = "Rainbow Sleeve",
+                text = {
+                    "Also has a {C:attention,T:e_wild}Wild{}",
+                    "card of each rank"
+                }
+            },
         },
         Blind={
             bl_cod_innocent = {

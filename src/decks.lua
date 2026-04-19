@@ -49,11 +49,12 @@ SMODS.Back{
     apply = function(self)
         G.E_MANAGER:add_event(Event({
             func = function()
-                local ranks = {'2', '3', '4', '5', '6', '7', '8', '9', '10', 'Jack', 'Queen', "King", "Ace"}
-                for i=1,#ranks do
-                    -- SMODS.add_card { set = "Base", rank = ranks[i], enhancement = "m_wild", area = G.deck } - can be simplified to this when smods bug is fixed
-                    local c = SMODS.add_card({set = 'Base', rank = ranks[i], area = G.deck})
-                    c:set_ability('m_wild')
+                local ranks = {}
+                for _, playing_card in ipairs(G.playing_cards) do
+                    ranks[playing_card.base.value] = true
+                end
+                for rank,_ in pairs(ranks) do
+                    SMODS.add_card { set = "Base", rank = rank, enhancement = "m_wild", area = G.deck }
                 end
                 G.GAME.starting_deck_size = #G.playing_cards
                 return true
