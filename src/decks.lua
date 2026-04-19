@@ -85,7 +85,13 @@ SMODS.Back{
     apply = function(self)
          G.E_MANAGER:add_event(Event({
             func = function()
-                local vip_card = pseudorandom_element(G.playing_cards, 'cod_vip')
+                local valid_enhance_cards = {}
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if not (next(SMODS.get_enhancements(playing_card)) and playing_card.seal and playing_card.edition) and not playing_card.getting_sliced then
+                        valid_enhance_cards[#valid_enhance_cards + 1] = playing_card
+                    end
+                end
+                local vip_card = pseudorandom_element(valid_enhance_cards, 'cod_vip')
                 if vip_card then
             
                     local edition = SMODS.poll_edition { key = "cod_vip", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }

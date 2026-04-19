@@ -74,6 +74,22 @@ return {
                 }
             },
         },
+        Sleeve={
+            sleeve_cod_vip = {
+                name = "VIP Sleeve",
+                text = {
+                    "{C:attention}1{} card starts with a {C:attention}Seal{}",
+                    "{C:enhanced}Enhancement{} and {C:dark_edition}Edition{}"
+                }
+            },
+            sleeve_cod_gravity = {
+                name = "Gravity Sleeve",
+                text = {
+                    "Start run with a",
+                    "copy of {C:legendary,E:1,T:c_black_hole}Black Hole{}"
+                }
+            },
+        },
         Blind={
             bl_cod_innocent = {
                 name = "The Innocent",

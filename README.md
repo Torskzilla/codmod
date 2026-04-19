@@ -6,6 +6,8 @@ View added content on the [Website](https://torskzilla.github.io/codmod/web/inde
 
 Download the latest version from [Releases](https://github.com/Torskzilla/codmod/releases)
 
+Compatile with the Card Sleeves mod.
+
 ## Installation
 
 - Follow the instructions for modding Balatro [here](https://github.com/Steamodded/smods/wiki)
