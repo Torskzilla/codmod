@@ -1019,7 +1019,7 @@ let stickers = [
   {
     name: "Dormant",
     text: [
-      "Debuffed until {C:attention}3{} rounds pass",
+      "Debuffed until {C:attention}2{} rounds pass",
     ],
     image_url: "img/sticker/dormant.png",
     rarity: "Sticker"
