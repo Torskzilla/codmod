@@ -86,5 +86,31 @@ CardSleeves.Sleeve {
 -- Average
 
 -- Horror
+CardSleeves.Sleeve {
+    key = "horror",
+    unlocked = true,
+    atlas = "atlas_cod_sleeves",
+    pos = { x = 6, y = 0 },
+    config = {},
+    apply = function(self)
+        G.GAME.cod_sleeve_horror_life_used = false
+    end,
+    loc_vars = function(self, info_queue, back)
+        return { vars = { (G.GAME.cod_sleeve_horror_life_used and localize("horror_deck_used") or "") } }
+    end,
+    calculate = function(self, back, context)
+        if context.end_of_round and context.game_over and context.main_eval then
+            if not G.GAME.cod_sleeve_horror_life_used then
+                G.GAME.cod_sleeve_horror_life_used = true
+
+                -- todo: replace sleeve sprite with bloody ver
+
+                return {
+                    saved = 'horror_sleeve_saved',
+                }
+            end
+        end
+    end,
+}
 
 -- Ponzi

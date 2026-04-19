@@ -64,7 +64,7 @@ return {
             b_cod_horror={
                 name="Horror Deck",
                 text={
-                    "Prevents first death",
+                    "Prevents one death",
                     "{C:red}#1#"
                 },
                 unlock = {
@@ -94,6 +94,13 @@ return {
                 text = {
                     "Also has a {C:attention,T:e_wild}Wild{}",
                     "card of each rank"
+                }
+            },
+            sleeve_cod_horror = {
+                name = "Horror Sleeve",
+                text = {
+                    "Prevents one death",
+                    "{C:red}#1#"
                 }
             },
         },
@@ -1257,6 +1264,7 @@ return {
             book_of_the_dead_judge="Judged!",
             bone_tag_saved="Saved by Bone Tag",
             horror_deck_saved="Saved by Horror Deck",
+            horror_sleeve_saved="Saved by Horror Sleeve",
             horror_deck_used="Used",
             marshmallow_burnt="Burnt!",
             piggy_bank_break="Broken!",

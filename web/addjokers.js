@@ -998,7 +998,7 @@ let decks = [
   {
     name: "Horror Deck",
     text: [
-      "Prevents first death"
+      "Prevents one death"
     ],
     image_url: "img/b/horror.png",
     rarity: "Deck"
