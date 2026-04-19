@@ -5,8 +5,6 @@ SMODS.Atlas {
 	py = 95
 }
 
--- broke
-
 -- hook to implement reasonable sticker incompat, stickers with the same sticker_slot are incompatible
 local should_apply_ref = SMODS.Sticker.should_apply
 function SMODS.Sticker:should_apply(card, center, area, bypass_roll)
@@ -81,7 +79,7 @@ function Card:add_to_deck(from_debuff)
 end
 
 -- Dormant
-local dormant_rounds = 3
+local dormant_rounds = 2
 
 SMODS.Sticker {
     key = "dormant",
