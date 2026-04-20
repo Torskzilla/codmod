@@ -116,6 +116,14 @@ return {
                     "{C:attention}Jokers{} naturally appear"
                 }
             },
+            sleeve_cod_ponzi = {
+                name = "Ponzi Sleeve",
+                text = {
+                    "Start with {C:attention}#1#{}",
+                    "copies of {C:joker,T:j_credit_card}#2#",
+                    "and {C:red}-$#3#",
+                }
+            },
         },
         Blind={
             bl_cod_innocent = {

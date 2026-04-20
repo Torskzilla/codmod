@@ -101,6 +101,7 @@ CardSleeves.Sleeve {
 }
 
 -- Average
+-- todo: add stack with self effect
 CardSleeves.Sleeve {
     key = "average",
     unlocked = true,
@@ -142,3 +143,31 @@ CardSleeves.Sleeve {
 }
 
 -- Ponzi
+-- todo: add better stack with self effect, credit cards become negative?
+CardSleeves.Sleeve {
+    key = "ponzi",
+    unlocked = true,
+    atlas = "atlas_cod_sleeves",
+    pos = { x = 1, y = 0 },
+    config = {dollars = -24, credit_cards = 5},
+
+    loc_vars = function(self, info_queue, back)
+        return { vars = { self.config.credit_cards, localize { type = 'name_text', key = "j_credit_card", set = 'Joker'}, -self.config.dollars-4 } }
+    end,
+
+    apply = function(self)
+        G.GAME.starting_params.dollars = (G.GAME.starting_params.dollars or 0) + self.config.dollars
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                if G.jokers then
+
+                    for i=1,self.config.credit_cards do
+                        SMODS.add_card{ set = "Joker", key = "j_credit_card", no_edition = true }
+                    end
+                    
+                    return true
+                end
+            end,
+        }))
+    end,
+}
