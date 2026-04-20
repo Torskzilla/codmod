@@ -109,6 +109,13 @@ return {
                     "Missing a {C:attention}Suit{}"
                 }
             },
+            sleeve_cod_average = {
+                name = "Average Sleeve",
+                text = {
+                    "No {C:blue}Common{} or {C:red}Rare",
+                    "{C:attention}Jokers{} naturally appear"
+                }
+            },
         },
         Blind={
             bl_cod_innocent = {

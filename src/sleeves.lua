@@ -101,6 +101,17 @@ CardSleeves.Sleeve {
 }
 
 -- Average
+CardSleeves.Sleeve {
+    key = "average",
+    unlocked = true,
+    atlas = "atlas_cod_sleeves",
+    pos = { x = 2, y = 0 },
+    config = {},
+    apply = function(self)
+        G.GAME.common_mod = 0
+        G.GAME.rare_mod = 0
+    end,
+}
 
 -- Horror
 CardSleeves.Sleeve {
