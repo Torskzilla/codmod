@@ -103,6 +103,12 @@ return {
                     "{C:red}#1#"
                 }
             },
+            sleeve_cod_triangle = {
+                name = "Triangle Sleeve",
+                text = {
+                    "Missing a {C:attention}Suit{}"
+                }
+            },
         },
         Blind={
             bl_cod_innocent = {

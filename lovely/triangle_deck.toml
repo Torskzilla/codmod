@@ -11,7 +11,7 @@ no_faces = false,
 '''
 position = "before"
 payload = '''
-remove_random_suit = false,
+remove_random_suit = 0,
 '''
 match_indent = true
 
@@ -23,8 +23,15 @@ card_protos = {}
 '''
 position = "before"
 payload = '''
-local remove_suit = nil
-if self.GAME.starting_params.remove_random_suit then remove_suit = pseudorandom_element({"H", "D", "C", "S"}, 'cod_triangle') end
+local remaining_suits = {"H", "D", "C", "S"}
+local removed_suits = {}
+for i=1,self.GAME.starting_params.remove_random_suit do
+    if #remaining_suits > 0 then
+        local remove_suit = pseudorandom('cod_triangle', 1, #remaining_suits)
+        removed_suits[remaining_suits[remove_suit]] = true
+        remaining_suits[remove_suit] = nil
+    end
+end
 '''
 match_indent = true
 
@@ -36,6 +43,6 @@ if self.GAME.starting_params.no_faces and SMODS.Ranks[v.value].face then keep = 
 '''
 position = "before"
 payload = '''
-if self.GAME.starting_params.remove_random_suit and remove_suit == _s then keep = false end
+if removed_suits[_s] then keep = false end
 '''
 match_indent = true

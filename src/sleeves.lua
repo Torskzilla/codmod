@@ -7,6 +7,17 @@ SMODS.Atlas {
 }
 
 -- Triangle
+CardSleeves.Sleeve {
+    key = "triangle",
+    unlocked = true,
+    atlas = "atlas_cod_sleeves",
+    pos = { x = 3, y = 0 },
+    config = {},
+    apply = function(self)
+        -- there is now a built in way to do this in SMODS
+        G.GAME.starting_params.remove_random_suit = (G.GAME.starting_params.remove_random_suit or 0) + 1
+    end,
+}
 
 -- Gravity
 CardSleeves.Sleeve {
@@ -35,12 +46,18 @@ CardSleeves.Sleeve {
     apply = function(self)
         G.E_MANAGER:add_event(Event({
             func = function()
-                local ranks = {}
-                for _, playing_card in ipairs(G.playing_cards) do
-                    ranks[playing_card.base.value] = true
-                end
-                for rank,_ in pairs(ranks) do
-                    SMODS.add_card { set = "Base", rank = rank, enhancement = "m_wild", area = G.deck }
+                if G.GAME.starting_params.erratic_suits_and_ranks then
+                    for _=1,13 do
+                        SMODS.add_card { set = "Base", enhancement = "m_wild", area = G.deck }
+                    end
+                else
+                    local ranks = {}
+                    for _, playing_card in ipairs(G.playing_cards) do
+                        ranks[playing_card.base.value] = true
+                    end
+                    for rank,_ in pairs(ranks) do
+                        SMODS.add_card { set = "Base", rank = rank, enhancement = "m_wild", area = G.deck }
+                    end
                 end
                 G.GAME.starting_deck_size = #G.playing_cards
                 return true

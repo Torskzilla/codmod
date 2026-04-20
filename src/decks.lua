@@ -16,7 +16,7 @@ SMODS.Back{
 
     apply = function(self)
         -- there is now a built in way to do this in SMODS
-        G.GAME.starting_params.remove_random_suit = true
+        G.GAME.starting_params.remove_random_suit = (G.GAME.starting_params.remove_random_suit or 0) + 1
     end,
 }
 
