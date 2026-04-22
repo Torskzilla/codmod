@@ -73,6 +73,13 @@ return {
                     "{V:1}#1#{} difficulty",
                 }
             },
+            b_cod_flow={
+                name="Flow Deck",
+                text={
+                    "{C:attention}1{} free {C:green}Reroll",
+                    "per shop",
+                },
+            },
         },
         Sleeve={
             sleeve_cod_vip = {
@@ -123,6 +130,13 @@ return {
                     "copies of {C:joker,T:j_credit_card}#2#",
                     "and {C:red}-$#3#",
                 }
+            },
+            sleeve_cod_flow={
+                name="Flow Sleeve",
+                text={
+                    "{C:attention}1{} free {C:green}Reroll",
+                    "per shop",
+                },
             },
         },
         Blind={

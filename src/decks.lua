@@ -20,6 +20,19 @@ SMODS.Back{
     end,
 }
 
+-- Flow
+SMODS.Back{
+    key = "flow",
+    unlocked = true,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 9, y = 0},
+    config = { rerolls = 1 },
+
+    apply = function(self)
+        SMODS.change_free_rerolls(self.config.rerolls)
+    end,
+}
+
 -- Gravity
 SMODS.Back{
     key = "gravity",

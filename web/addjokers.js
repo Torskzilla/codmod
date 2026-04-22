@@ -972,6 +972,14 @@ let decks = [
     rarity: "Deck"
   },
   {
+    name: "Flow Deck",
+    text: [
+      "{C:attention}1{} free {C:green}Reroll{} per shop",
+    ],
+    image_url: "img/b/flow.png",
+    rarity: "Deck"
+  },
+  {
     name: "Gravity Deck",
     text: [
       "Start run with a copy of {C:purple,E:1,T:c_black_hole}Black Hole{}"

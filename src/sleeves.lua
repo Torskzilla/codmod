@@ -19,6 +19,18 @@ CardSleeves.Sleeve {
     end,
 }
 
+-- Flow
+CardSleeves.Sleeve {
+    key = "flow",
+    unlocked = true,
+    atlas = "atlas_cod_sleeves",
+    pos = { x = 8, y = 0 },
+    config = { rerolls = 1 },
+    apply = function(self)
+        SMODS.change_free_rerolls(self.config.rerolls)
+    end,
+}
+
 -- Gravity
 CardSleeves.Sleeve {
     key = "gravity",
