@@ -3282,6 +3282,9 @@ SMODS.Joker {
         if context.press_play then
             card.ability.extra.active = true
         end
+        if context.end_of_round and context.game_over == false and context.main_eval then
+            card.ability.extra.active = false
+        end
         if context.stay_flipped and context.to_area == G.hand and card.ability.extra.active and not context.blueprint then
             return {
                 stay_flipped = true
