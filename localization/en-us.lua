@@ -1140,6 +1140,14 @@ return {
                     "{C:chips}+#1#{} Chips when scored",
                 },
             },
+            j_cod_enhanced_joker = {
+                name = "Enhanced Joker",
+                text = {
+                    "Played {C:attention}Enhanced{} cards",
+                    "give {C:mult}+#1#{} Mult",
+                    "when scored",
+                },
+            },
         },
         Other={
             cod_dormant = {

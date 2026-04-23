@@ -4258,7 +4258,7 @@ SMODS.Joker {
     atlas = 'atlas_cod_jokers',
     pos = { x = 3, y = 11 },
     pixel_size = { w = 24, h = 32 },
-    display_size = { w = 24 * 2, h = 32 * 2 },
+    display_size = { w = 24 * 3, h = 32 * 3 },
     config = { extra = { chips = 64 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.chips } }
@@ -4271,6 +4271,28 @@ SMODS.Joker {
                     chips = card.ability.extra.chips
                 }
             end
+        end
+    end
+}
+
+-- Enhanced Joker
+SMODS.Joker {
+    key = "enhanced_joker",
+    unlocked = true,
+    blueprint_compat = false,
+    rarity = 1,
+    cost = 4,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 9, y = 11 },
+    config = { extra = { mult = 5 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.mult } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and next(SMODS.get_enhancements(context.other_card)) then
+            return {
+                mult = card.ability.extra.mult
+            }
         end
     end
 }

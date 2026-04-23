@@ -895,6 +895,14 @@ let jokers = [
     image_url: "img/j/8_bit_joker.png",
     rarity: "Uncommon"
   },
+  {
+    name: "Enhanced Joker",
+    text: [
+        "Played {C:attention}Enhanced{} cards give {C:mult}+5{} Mult when scored",
+    ],
+    image_url: "img/j/enhanced_joker.png",
+    rarity: "Common"
+  },
 
   // {
   //   name: "",
