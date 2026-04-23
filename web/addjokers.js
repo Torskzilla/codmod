@@ -887,6 +887,14 @@ let jokers = [
     image_url: "img/j/artifact.png",
     rarity: "Rare"
   },
+  {
+    name: "8-bit Joker",
+    text: [
+        "Each played {C:attention}2{}, {C:attention}4{}, or {C:attention}8{} gives {C:chips}+64{} Chips when scored",
+    ],
+    image_url: "img/j/8_bit_joker.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

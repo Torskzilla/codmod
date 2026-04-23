@@ -1133,6 +1133,13 @@ return {
                     "when {C:attention}Boss Blind{} is defeated",
                 },
             },
+            j_cod_8_bit_joker = {
+                name = "8-bit Joker",
+                text = {
+                    "Each played {C:attention}2{}, {C:attention}4{}, or {C:attention}8{} gives",
+                    "{C:chips}+#1#{} Chips when scored",
+                },
+            },
         },
         Other={
             cod_dormant = {

@@ -4248,8 +4248,34 @@ SMODS.Joker {
     end,
 }
 
---  Unused art:
 -- 8-bit Joker
+SMODS.Joker {
+    key = "8_bit_joker",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 8,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 3, y = 11 },
+    pixel_size = { w = 24, h = 32 },
+    display_size = { w = 24 * 2, h = 32 * 2 },
+    config = { extra = { chips = 64 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.chips } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play then
+            local id = context.other_card:get_id()
+            if id == 2 or id == 4 or id == 8 then
+                return {
+                    chips = card.ability.extra.chips
+                }
+            end
+        end
+    end
+}
+
+--  Unused art:
 -- Fortunate Joker
 -- Black Market
 -- Chromatic Aberration
