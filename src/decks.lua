@@ -6,6 +6,25 @@ SMODS.Atlas {
 	py = 95
 }
 
+-- Purple
+SMODS.Back{
+    key = "purple",
+    unlocked = true,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 3, y = 1},
+    config = {},
+    apply = function(self)
+        G.GAME.modifiers.cod_purple = true
+        G.GAME.modifiers.money_per_discard = 1
+    end,
+    calculate = function(self, back, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.beat_boss then
+            G.GAME.round_bonus.discards = (G.GAME.round_bonus.discards or 0) + G.GAME.current_round.discards_left
+            G.GAME.round_bonus.next_hands = (G.GAME.round_bonus.next_hands or 0) + G.GAME.current_round.hands_left
+        end
+    end,
+}
+
 -- Triangle
 SMODS.Back{
     key = "triangle",
@@ -86,7 +105,6 @@ SMODS.Back{
         return args.type == 'win_deck' and get_deck_win_stake('b_cod_triangle')>0 and true
     end
 }
-
 
 -- VIP
 SMODS.Back{

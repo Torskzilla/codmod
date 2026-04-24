@@ -80,6 +80,15 @@ return {
                     "per shop",
                 },
             },
+            b_cod_purple={
+                name="Purple Deck",
+                text={
+                    "{C:blue}Hands{} and {C:red}Discards{} carry over",
+                    "when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",
+                    "Earn {C:money}$1{} per remaining {C:blue}Hand{} and",
+                    "{C:red}Discard{} when {C:attention}Boss Blind{} is defeated",
+                },
+            },
         },
         Sleeve={
             sleeve_cod_vip = {
@@ -136,6 +145,15 @@ return {
                 text={
                     "{C:attention}1{} free {C:green}Reroll",
                     "per shop",
+                },
+            },
+            sleeve_cod_purple={
+                name="Purple Sleeve",
+                text={
+                    "{C:blue}Hands{} and {C:red}Discards{} carry over",
+                    "when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",
+                    "Earn {C:money}$1{} per remaining {C:blue}Hand{} and",
+                    "{C:red}Discard{} when {C:attention}Boss Blind{} is defeated",
                 },
             },
         },
