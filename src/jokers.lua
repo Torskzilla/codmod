@@ -860,6 +860,7 @@ SMODS.Joker {
     key = "homework",
     unlocked = true,
     blueprint_compat = true,
+    cod_confidential_compat = false,
     rarity = 2,
     cost = 6,
     atlas = 'atlas_cod_jokers',
@@ -3464,6 +3465,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "book_of_the_dead",
     blueprint_compat = false,
+    cod_confidential_compat = false,
     rarity = 2,
     cost = 5,
     atlas = 'atlas_cod_jokers',

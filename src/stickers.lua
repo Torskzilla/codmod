@@ -268,7 +268,7 @@ SMODS.Sticker {
     atlas = 'atlas_cod_stickers',
     pos = { x = 3, y = 0 },
     default_compat = true,
-    compat_exceptions = {"j_madness"},
+    compat_exceptions = {"j_madness", "j_todo_list", "j_mail", "j_idol", "j_castle", "j_ancient"},
     rate = 0.2,
     needs_enable_flag = true,
     should_apply = function(self, card, center, area, bypass_roll)
