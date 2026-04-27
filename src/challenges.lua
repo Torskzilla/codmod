@@ -124,7 +124,14 @@ SMODS.Challenge {
     restrictions = {
         banned_cards = {
             { id = 'j_madness' },
+            { id = 'j_todo_list' },
+            { id = 'j_mail' },
+            { id = 'j_idol' },
+            { id = 'j_castle' },
+            { id = 'j_ancient' },
             { id = 'j_cod_paperclip' },
+            { id = 'j_cod_book_of_the_dead' },
+            { id = 'j_cod_homework' },
         },
     },
 }
