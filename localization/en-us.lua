@@ -1258,6 +1258,13 @@ return {
                     "is at least {C:attention}50%",
                 },
             },
+            tag_cod_clean = {
+                name = "Clean Tag",
+                text = {
+                    "No {C:attention}Stickers",
+                    "in next shop",
+                },
+            },
         },
         Tarot={},
         Voucher={},
@@ -1340,6 +1347,7 @@ return {
             cod_reverse_card_swap="Swap",
             cod_open_chest="Open",
             cod_artifact_activate="Create",
+            cod_clean_tag_done="Done",
         },
         high_scores={},
         labels={
