@@ -89,6 +89,14 @@ return {
                     "{C:red}Discard{} when {C:attention}Boss Blind{} is defeated",
                 },
             },
+            b_cod_inverted={
+                name="Inverted Deck",
+                text={
+                    "Start run with a",
+                    "{C:attention,T:tag_negative}Negative Tag{} and",
+                    "a {C:attention,T:tag_cod_clean}Clean Tag{}"
+                },
+            },
         },
         Sleeve={
             sleeve_cod_vip = {
@@ -154,6 +162,14 @@ return {
                     "when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",
                     "Earn {C:money}$1{} per remaining {C:blue}Hand{} and",
                     "{C:red}Discard{} when {C:attention}Boss Blind{} is defeated",
+                },
+            },
+            sleeve_cod_inverted={
+                name="Inverted Sleeve",
+                text={
+                    "Start run with a",
+                    "{C:attention,T:tag_negative}Negative Tag{} and",
+                    "a {C:attention,T:tag_cod_clean}Clean Tag{}"
                 },
             },
         },

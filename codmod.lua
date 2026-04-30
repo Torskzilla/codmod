@@ -9,6 +9,7 @@ local config = SMODS.current_mod.config
 
 assert(SMODS.load_file("src/core.lua"))()
 assert(SMODS.load_file("src/config_page.lua"))()
+assert(SMODS.load_file("src/draw.lua"))()
 assert(SMODS.load_file("src/tarots.lua"))()
 assert(SMODS.load_file("src/decks.lua"))()
 assert(SMODS.load_file("src/stickers.lua"))()

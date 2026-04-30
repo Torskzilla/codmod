@@ -1037,6 +1037,14 @@ let decks = [
     rarity: "Deck"
   },
   {
+    name: "Inverted Deck",
+    text: [
+      "Start run with a {C:attention}Negative Tag{} and a {C:attention}Clean Tag{}"
+    ],
+    image_url: "img/b/inverted.png",
+    rarity: "Deck"
+  },
+  {
     name: "Ponzi Deck",
     text: [
       "Start with {C:attention}5{} copies",

@@ -6,25 +6,6 @@ SMODS.Atlas {
 	py = 95
 }
 
--- Purple
-SMODS.Back{
-    key = "purple",
-    unlocked = true,
-    atlas = 'atlas_cod_decks',
-    pos = {x = 3, y = 1},
-    config = {},
-    apply = function(self)
-        G.GAME.modifiers.cod_purple = true
-        G.GAME.modifiers.money_per_discard = 1
-    end,
-    calculate = function(self, back, context)
-        if context.end_of_round and context.game_over == false and context.main_eval and not context.beat_boss then
-            G.GAME.round_bonus.discards = (G.GAME.round_bonus.discards or 0) + G.GAME.current_round.discards_left
-            G.GAME.round_bonus.next_hands = (G.GAME.round_bonus.next_hands or 0) + G.GAME.current_round.hands_left
-        end
-    end,
-}
-
 -- Triangle
 SMODS.Back{
     key = "triangle",
@@ -106,6 +87,27 @@ SMODS.Back{
     end
 }
 
+-- Inverted
+local config = SMODS.current_mod.config
+if config.cod_tags_enabled then
+    SMODS.Back{
+        key = "inverted",
+        unlocked = true,
+        atlas = 'atlas_cod_decks',
+        pos = {x = 4, y = 1},
+        config = { visual_negative = true },
+        apply = function(self)
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    add_tag({ key = 'tag_cod_clean' })
+                    add_tag({ key = 'tag_negative' })
+                    return true
+                end
+            }))
+        end,
+    }
+end
+
 -- VIP
 SMODS.Back{
     key = "vip",
@@ -145,6 +147,25 @@ SMODS.Back{
     check_for_unlock = function(self, args)
         return args.type == 'discover_amount' and args.amount >= 150
     end
+}
+
+-- Purple
+SMODS.Back{
+    key = "purple",
+    unlocked = true,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 3, y = 1},
+    config = {},
+    apply = function(self)
+        G.GAME.modifiers.cod_purple = true
+        G.GAME.modifiers.money_per_discard = 1
+    end,
+    calculate = function(self, back, context)
+        if context.end_of_round and context.game_over == false and context.main_eval and not context.beat_boss then
+            G.GAME.round_bonus.discards = (G.GAME.round_bonus.discards or 0) + G.GAME.current_round.discards_left
+            G.GAME.round_bonus.next_hands = (G.GAME.round_bonus.next_hands or 0) + G.GAME.current_round.hands_left
+        end
+    end,
 }
 
 -- Average
