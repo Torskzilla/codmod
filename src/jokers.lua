@@ -2961,7 +2961,7 @@ SMODS.Joker {
                     local rank_mod = pseudorandom('cod_rorschach_test', 0, 12)
                     if rank_mod > 0 then
                         convert = true
-                        assert(SMODS.modify_rank(scored_card, rank_modm))
+                        assert(SMODS.modify_rank(scored_card, rank_mod))
                         G.E_MANAGER:add_event(Event({
                             func = function()
                                 scored_card:juice_up()
