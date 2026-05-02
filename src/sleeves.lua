@@ -6,6 +6,36 @@ SMODS.Atlas {
 	py = 95,
 }
 
+-- Royal
+CardSleeves.Sleeve {
+    key = "royal",
+    unlocked = true,
+    atlas = "atlas_cod_sleeves",
+    pos = { x = 1, y = 1 },
+    config = {},
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                local cards = {}
+                for _, playing_card in ipairs(G.playing_cards) do
+                    if playing_card:is_face() then
+                        cards[#cards+1] = playing_card
+                    end
+                end
+                for _,playing_card in pairs(cards) do
+                    local card_copied = copy_card(playing_card, nil, nil, G.playing_card)
+                    G.playing_card = (G.playing_card and G.playing_card + 1) or 1
+                    card_copied.playing_card = G.playing_card
+                    table.insert(G.playing_cards, card_copied)
+                    G.deck:emplace(card_copied)
+                end
+                G.GAME.starting_deck_size = #G.playing_cards
+                return true
+            end,
+        }))
+    end,
+}
+
 -- Triangle
 CardSleeves.Sleeve {
     key = "triangle",

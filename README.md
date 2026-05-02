@@ -1,6 +1,6 @@
 # Cod's Mod
 
-A content mod for Balatro which mostly adds Jokers but also some other stuff.
+A content mod for Balatro which adds Jokers, Decks, Blinds and more.
 
 View added content on the [Website](https://torskzilla.github.io/codmod/web/index.html)
 

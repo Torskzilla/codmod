@@ -97,6 +97,14 @@ return {
                     "a {C:attention,T:tag_cod_clean}Clean Tag{}"
                 },
             },
+            b_cod_royal={
+                name="Royal Deck",
+                text={
+                    "Start run with",
+                    "{C:attention}2{} copies of",
+                    "each {C:attention}Face Card{}",
+                },
+            },
         },
         Sleeve={
             sleeve_cod_vip = {
@@ -170,6 +178,14 @@ return {
                     "Start run with a",
                     "{C:attention,T:tag_negative}Negative Tag{} and",
                     "a {C:attention,T:tag_cod_clean}Clean Tag{}"
+                },
+            },
+            sleeve_cod_royal={
+                name="Royal Sleeve",
+                text={
+                    "Start run with",
+                    "{C:attention}2{} copies of",
+                    "each {C:attention}Face Card{}",
                 },
             },
         },

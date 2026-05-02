@@ -971,15 +971,6 @@ let card_modifications = [
 
 let decks = [
   {
-    name: "Isometric Deck",
-    text: [
-      "{C:blue}Hands{} and {C:red}Discards{} carry over when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",
-      "Earn {C:money}$1{} per remaining {C:blue}Hand{} and {C:red}Discard{} when {C:attention}Boss Blind{} is defeated",
-    ],
-    image_url: "img/b/isometric.png",
-    rarity: "Deck"
-  },
-  {
     name: "Average Deck",
     text: [
       "No {C:blue}Common{} or {C:red}Rare",
@@ -1042,6 +1033,23 @@ let decks = [
       "Start run with a {C:attention}Negative Tag{} and a {C:attention}Clean Tag{}"
     ],
     image_url: "img/b/inverted.png",
+    rarity: "Deck"
+  },
+  {
+    name: "Royal Deck",
+    text: [
+      "Start run with {C:attention}2{} copies of each {C:attention}Face Card{}",
+    ],
+    image_url: "img/b/royal.png",
+    rarity: "Deck"
+  },
+  {
+    name: "Isometric Deck",
+    text: [
+      "{C:blue}Hands{} and {C:red}Discards{} carry over when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",
+      "Earn {C:money}$1{} per remaining {C:blue}Hand{} and {C:red}Discard{} when {C:attention}Boss Blind{} is defeated",
+    ],
+    image_url: "img/b/isometric.png",
     rarity: "Deck"
   },
   {
