@@ -133,16 +133,16 @@ CardSleeves.Sleeve {
     end,
 }
 
--- Purple
+-- Isometric
 -- todo: add different stack with self effect
 CardSleeves.Sleeve {
-    key = "purple",
+    key = "isometric",
     unlocked = true,
     atlas = "atlas_cod_sleeves",
     pos = { x = 9, y = 0 },
     config = {},
     apply = function(self)
-        G.GAME.modifiers.cod_purple = true
+        G.GAME.modifiers.cod_isometric = true
         G.GAME.modifiers.money_per_discard = 1
     end,
     calculate = function(self, back, context)

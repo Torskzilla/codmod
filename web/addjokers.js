@@ -971,12 +971,12 @@ let card_modifications = [
 
 let decks = [
   {
-    name: "Purple Deck",
+    name: "Isometric Deck",
     text: [
       "{C:blue}Hands{} and {C:red}Discards{} carry over when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",
       "Earn {C:money}$1{} per remaining {C:blue}Hand{} and {C:red}Discard{} when {C:attention}Boss Blind{} is defeated",
     ],
-    image_url: "img/b/purple.png",
+    image_url: "img/b/isometric.png",
     rarity: "Deck"
   },
   {

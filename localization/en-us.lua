@@ -80,8 +80,8 @@ return {
                     "per shop",
                 },
             },
-            b_cod_purple={
-                name="Purple Deck",
+            b_cod_isometric={
+                name="Isometric Deck",
                 text={
                     "{C:blue}Hands{} and {C:red}Discards{} carry over",
                     "when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",
@@ -155,8 +155,8 @@ return {
                     "per shop",
                 },
             },
-            sleeve_cod_purple={
-                name="Purple Sleeve",
+            sleeve_cod_isometric={
+                name="Isometric Sleeve",
                 text={
                     "{C:blue}Hands{} and {C:red}Discards{} carry over",
                     "when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",

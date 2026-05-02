@@ -12,6 +12,6 @@ no_faces = false,
 position = "before"
 payload = '''
 remove_random_suit = 0,
-cod_purple = false,
+cod_isometric = false,
 '''
 match_indent = true

@@ -2,7 +2,7 @@
 version = "1.0.0"
 priority = 0
 
-# No hand money from small & big blinds if purple deck
+# No hand money from small & big blinds if isometric deck
 [[patches]]
 [patches.pattern]
 target = 'functions/state_events.lua'
@@ -11,11 +11,11 @@ if G.GAME.current_round.hands_left > 0 and not G.GAME.modifiers.no_extra_hand_mo
 '''
 position = "at"
 payload = '''
-if G.GAME.current_round.hands_left > 0 and not G.GAME.modifiers.no_extra_hand_money and (not G.GAME.modifiers.cod_purple or G.GAME.blind.boss) then
+if G.GAME.current_round.hands_left > 0 and not G.GAME.modifiers.no_extra_hand_money and (not G.GAME.modifiers.cod_isometric or G.GAME.blind.boss) then
 '''
 match_indent = true
 
-# No discard money from small & big blinds if purple deck
+# No discard money from small & big blinds if isometric deck
 [[patches]]
 [patches.pattern]
 target = 'functions/state_events.lua'
@@ -24,6 +24,6 @@ if G.GAME.current_round.discards_left > 0 and G.GAME.modifiers.money_per_discard
 '''
 position = "at"
 payload = '''
-if G.GAME.current_round.discards_left > 0 and G.GAME.modifiers.money_per_discard and (not G.GAME.modifiers.cod_purple or G.GAME.blind.boss) then
+if G.GAME.current_round.discards_left > 0 and G.GAME.modifiers.money_per_discard and (not G.GAME.modifiers.cod_isometric or G.GAME.blind.boss) then
 '''
 match_indent = true
