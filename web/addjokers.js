@@ -903,6 +903,14 @@ let jokers = [
     image_url: "img/j/enhanced_joker.png",
     rarity: "Common"
   },
+  {
+    name: "Socialite",
+    text: [
+        "Every played {C:attention}Face Card{} permanently gains {C:white,X:mult}X0.1{} Mult when scored",
+    ],
+    image_url: "img/j/socialite.png",
+    rarity: "Rare"
+  },
 
   // {
   //   name: "",

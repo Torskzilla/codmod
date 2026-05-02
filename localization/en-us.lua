@@ -1198,6 +1198,14 @@ return {
                     "when scored",
                 },
             },
+            j_cod_socialite = {
+                name = "Socialite",
+                text = {
+                    "Every played {C:attention}Face Card{}",
+                    "permanently gains",
+                    "{C:white,X:mult}X#1#{} Mult when scored",
+                },
+            },
         },
         Other={
             cod_dormant = {

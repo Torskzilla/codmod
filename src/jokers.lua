@@ -4302,6 +4302,30 @@ SMODS.Joker {
     end
 }
 
+-- Socialite
+SMODS.Joker {
+    key = "socialite",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 3,
+    cost = 9,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 0, y = 12 },
+    config = { extra = { xmult = 0.1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.individual and context.cardarea == G.play and context.other_card:is_face() then
+            context.other_card.ability.perma_x_mult = (context.other_card.ability.perma_x_mult or 0) + card.ability.extra.xmult
+            return {
+                message = localize('k_upgrade_ex'),
+                colour = G.C.MULT
+            }
+        end
+    end
+}
+
 --  Unused art:
 -- Fortunate Joker
 -- Black Market
