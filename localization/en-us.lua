@@ -1323,6 +1323,7 @@ return {
             c_cod_square_hands = "Square Hands",
             c_cod_unaccountably_peckish = "Unaccountably Peckish",
             c_cod_fishbucket = "Fishbucket",
+            c_cod_stockpile = "Stockpile",
         },
         collabs={},
         dictionary={
@@ -1421,6 +1422,15 @@ return {
             },
             ch_c_play_limit_4={
                 "Select at most {C:attention}4{} cards",
+            },
+            ch_c_cod_stockpile_1={
+                "Start with 40 {C:blue}Hands{} and 40 {C:red}Discards{}",
+            },
+            ch_c_cod_stockpile_2={
+                "Remaining {C:blue}Hands{} and {C:red}Discards{} carry over",
+            },
+            ch_c_cod_no_hand_money={
+                "Extra {C:blue}Hands{} no longer earn money",
             },
         },
     },

@@ -113,6 +113,50 @@ SMODS.Challenge {
     },
 }
 
+-- Stockpile
+SMODS.Challenge {
+    key = 'stockpile',
+    rules = {
+        modifiers = {
+            { id = 'hands',       value = 0 },
+            { id = 'discards',    value = 0 },
+        },
+        custom = {
+            { id = 'cod_stockpile_1' },
+            { id = 'cod_stockpile_2' },
+            { id = 'cod_no_hand_money' },
+        }
+    },
+    restrictions = {
+        banned_cards = {
+            { id = 'j_delayed_grat' },
+            { id = 'j_cod_hired_hand' },
+        },
+        banned_other = {
+            { id = 'bl_water', type = 'blind' },
+            { id = 'bl_needle', type = 'blind' },
+        }
+    },
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.modifiers.no_extra_hand_money = true
+                G.GAME.current_round.hands_left = 40
+                G.GAME.current_round.discards_left = 40
+                G.GAME.round_bonus.next_hands = 40
+                G.GAME.round_bonus.discards = 40
+                return true
+            end
+        }))
+    end,
+    calculate = function(self, context)
+        if context.end_of_round and context.main_eval then
+            G.GAME.round_bonus.discards = (G.GAME.round_bonus.discards or 0) + G.GAME.current_round.discards_left
+            G.GAME.round_bonus.next_hands = (G.GAME.round_bonus.next_hands or 0) + G.GAME.current_round.hands_left
+        end
+    end,
+}
+
 -- Top Secret
 SMODS.Challenge {
     key = 'top_secret',
