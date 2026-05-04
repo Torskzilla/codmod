@@ -148,7 +148,7 @@ CardSleeves.Sleeve {
                 local vip_card = pseudorandom_element(valid_enhance_cards, 'cod_vip_sleeve')
                 if vip_card then
             
-                    local edition = SMODS.poll_edition { key = "cod_vip_sleeve", guaranteed = true, no_negative = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
+                    local edition = SMODS.poll_edition { key = "cod_vip_sleeve", guaranteed = true, options = { 'e_polychrome', 'e_holo', 'e_foil' } }
                     vip_card:set_edition(edition, true)
 
                     local seal = SMODS.poll_seal({ guaranteed = true, key = 'cod_vip_sleeve' })
