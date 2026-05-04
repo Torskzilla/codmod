@@ -1035,7 +1035,7 @@ SMODS.Joker {
             local suit_cards = {}
             local non_suit_cards = {}
             for _, playing_card in ipairs(G.deck.cards) do
-                if playing_card:is_suit(card.ability.extra.suit) then
+                if playing_card:is_suit(card.ability.extra.suit, true) then
                     suit_cards[#suit_cards + 1] = playing_card
                 else
                     non_suit_cards[#non_suit_cards + 1] = playing_card
