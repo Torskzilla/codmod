@@ -226,7 +226,6 @@ CardSleeves.Sleeve {
 }
 
 -- Ponzi
--- todo: add better stack with self effect, credit cards become negative?
 CardSleeves.Sleeve {
     key = "ponzi",
     unlocked = true,
@@ -235,7 +234,11 @@ CardSleeves.Sleeve {
     config = {dollars = -20, credit_cards = 5},
 
     loc_vars = function(self, info_queue, back)
-        return { vars = { self.config.credit_cards, localize { type = 'name_text', key = "j_credit_card", set = 'Joker'}, -self.config.dollars } }
+        if self.get_current_deck_key() == "b_cod_ponzi" then
+            return { key = self.key .. "_alt", vars = { localize { type = 'name_text', key = "j_credit_card", set = 'Joker'}, -self.config.dollars } }
+        else
+            return { vars = { self.config.credit_cards, localize { type = 'name_text', key = "j_credit_card", set = 'Joker'}, -self.config.dollars } }
+        end
     end,
 
     apply = function(self)
@@ -244,8 +247,10 @@ CardSleeves.Sleeve {
             func = function()
                 if G.jokers then
 
-                    for i=1,self.config.credit_cards do
-                        SMODS.add_card{ set = "Joker", key = "j_credit_card", no_edition = true }
+                    if self.get_current_deck_key() ~= "b_cod_ponzi" then
+                        for i=1,self.config.credit_cards do
+                            SMODS.add_card{ set = "Joker", key = "j_credit_card", no_edition = true }
+                        end
                     end
                     
                     return true

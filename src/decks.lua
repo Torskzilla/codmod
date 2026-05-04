@@ -285,7 +285,11 @@ SMODS.Back{
                 if G.jokers then
 
                     for i=1,self.config.credit_cards do
-                        SMODS.add_card{ set = "Joker", key = "j_credit_card", no_edition = true }
+                        if G.GAME.selected_sleeve == "sleeve_cod_ponzi" then
+                            SMODS.add_card{ set = "Joker", key = "j_credit_card", edition = "e_negative" }
+                        else
+                            SMODS.add_card{ set = "Joker", key = "j_credit_card", no_edition = true }
+                        end
                     end
                     
                     return true

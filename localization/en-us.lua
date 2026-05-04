@@ -156,6 +156,14 @@ return {
                     "and {C:red}-$#3#",
                 }
             },
+            sleeve_cod_ponzi_alt = {
+                name = "Ponzi Sleeve",
+                text = {
+                    "Start with {C:dark_edition,T:e_negative}Negative{}",
+                    "{C:joker,T:j_credit_card}#1#s{}",
+                    "and {C:red}-$#2#",
+                }
+            },
             sleeve_cod_flow={
                 name="Flow Sleeve",
                 text={
