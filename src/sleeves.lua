@@ -232,10 +232,10 @@ CardSleeves.Sleeve {
     unlocked = true,
     atlas = "atlas_cod_sleeves",
     pos = { x = 1, y = 0 },
-    config = {dollars = -24, credit_cards = 5},
+    config = {dollars = -20, credit_cards = 5},
 
     loc_vars = function(self, info_queue, back)
-        return { vars = { self.config.credit_cards, localize { type = 'name_text', key = "j_credit_card", set = 'Joker'}, -self.config.dollars-4 } }
+        return { vars = { self.config.credit_cards, localize { type = 'name_text', key = "j_credit_card", set = 'Joker'}, -self.config.dollars } }
     end,
 
     apply = function(self)
