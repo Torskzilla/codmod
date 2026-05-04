@@ -3106,8 +3106,21 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.press_play and not context.blueprint and #G.hand.cards > 0 then
+            -- track undiscarded cards, block other discard effects
+            local tornado_cards = {}
+            for _, playing_card in pairs(G.hand.cards) do
+                if not playing_card.ability.discarded then
+                    tornado_cards[#tornado_cards+1] = playing_card
+                    playing_card.ability.discarded = true
+                end
+            end
             G.E_MANAGER:add_event(Event({
                 func = function()
+                    -- unblock this discard
+                    for _, playing_card in pairs(tornado_cards) do
+                        playing_card.ability.discarded = false
+                    end
+                    G.hand:unhighlight_all()
                     local prev_limit = G.hand.config.highlighted_limit
                     G.hand.config.highlighted_limit = #G.hand.cards
                     local any_selected = nil
