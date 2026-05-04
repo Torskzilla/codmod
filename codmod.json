@@ -8,7 +8,7 @@
   "main_file": "codmod.lua",
   "priority": 0,
   "badge_colour": "3bd9c4",
-  "version": "3.3.0",
+  "version": "3.4.0",
   "dependencies": [
     "Steamodded (>=1.0.0~BETA-1606b)",
     "Lovely (>=0.9.0)"
