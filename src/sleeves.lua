@@ -173,7 +173,7 @@ CardSleeves.Sleeve {
     config = {},
     apply = function(self)
         G.GAME.modifiers.cod_isometric = true
-        G.GAME.modifiers.money_per_discard = 1
+        G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) + 1
     end,
     calculate = function(self, back, context)
         if context.end_of_round and context.main_eval and not context.beat_boss then
