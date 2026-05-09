@@ -243,8 +243,8 @@ return {
             bl_cod_elk = {
                 name = "The Elk",
                 text = {
-                    "Cards played previously",
-                    "this Ante are drawn face down",
+                    "Cards played previously this",
+                    "Ante are drawn face down",
                 },
             },
             bl_cod_vein = {
