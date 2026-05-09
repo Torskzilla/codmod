@@ -117,7 +117,12 @@ SMODS.Sticker {
     end,
     calculate = function(self, card, context)
         if context.sticker_add_self and card.ability.dormant_tally > 0 then
-            SMODS.debuff_card(card, true, "cod_dormant")
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    SMODS.debuff_card(card, true, "cod_dormant")
+                    return true
+                end
+            }))
         end
         if context.end_of_round and not context.repetition and not context.individual then
             if card.ability.dormant_tally > 0 then
@@ -152,20 +157,22 @@ SMODS.Sticker {
     end,
     calculate = function(self, card, context)
         if context.sticker_add_self then
-            local envy_count = 0
-            if card.ability.cod_envy then
-                envy_count = envy_count + 1
-            end
-            for i = 1, #G.jokers.cards do
-                if G.jokers.cards[i].ability.cod_envy then
-                    envy_count = envy_count + 1
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local envy_count = 0
+                    for i = 1, #G.jokers.cards do
+                        if G.jokers.cards[i].ability.cod_envy then
+                            envy_count = envy_count + 1
+                        end
+                    end
+                    if (envy_count>1) then
+                        SMODS.debuff_card(card, true, "cod_envy")
+                    else
+                        SMODS.debuff_card(card, false, "cod_envy")
+                    end
+                    return true
                 end
-            end
-            if (envy_count>1) then
-                SMODS.debuff_card(card, true, "cod_envy")
-            else
-                SMODS.debuff_card(card, false, "cod_envy")
-            end
+            }))
         end
         if (context.joker_type_destroyed or context.selling_card) and context.card ~= card then
             local envy_count = 0
@@ -220,13 +227,17 @@ SMODS.Sticker {
     end,
     calculate = function(self, card, context)
         if context.sticker_add_self then
-            local empty_count = G.jokers.config.card_limit - #G.jokers.cards
-            empty_count = empty_count - 1 + card.ability.card_limit
-            if (empty_count>0) then
-                SMODS.debuff_card(card, false, "cod_claustrophobic")
-            else
-                SMODS.debuff_card(card, true, "cod_claustrophobic")
-            end
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    local empty_count = G.jokers.config.card_limit - #G.jokers.cards
+                    if (empty_count>0) then
+                        SMODS.debuff_card(card, false, "cod_claustrophobic")
+                    else
+                        SMODS.debuff_card(card, true, "cod_claustrophobic")
+                    end
+                    return true
+                end
+            }))
         end
         if (context.card_added or ((context.joker_type_destroyed or context.selling_card) and context.card ~= card)) and context.card.ability.set == "Joker" then
             local empty_count = G.jokers.config.card_limit - #G.jokers.cards
@@ -344,7 +355,12 @@ SMODS.Sticker {
     end,
     calculate = function(self, card, context)
         if context.sticker_add_self and not card.ability.imprisoned_freed then
-            SMODS.debuff_card(card, true, "cod_imprisoned")
+            G.E_MANAGER:add_event(Event({
+                func = function()
+                    SMODS.debuff_card(card, true, "cod_imprisoned")
+                    return true
+                end
+            }))
         end
         if context.skip_blind and not card.ability.imprisoned_freed then
             card.ability.imprisoned_freed = true
