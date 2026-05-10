@@ -2,7 +2,7 @@
 SMODS.Tarot:take_ownership('c_fool',
     {
 	in_pool = function (self, args)
-        if (args.source == 'emp') then
+        if (args and args.source == 'emp') then
             return false
         end
         return true
@@ -14,7 +14,7 @@ SMODS.Tarot:take_ownership('c_fool',
 SMODS.Tarot:take_ownership('c_emperor',
     {
 	in_pool = function (self, args)
-        if (args.source == 'emp') then
+        if (args and args.source == 'emp') then
             return false
         end
         return true
