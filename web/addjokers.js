@@ -981,8 +981,7 @@ let decks = [
   {
     name: "Average Deck",
     text: [
-      "No {C:blue}Common{} or {C:red}Rare",
-      "{C:attention}Jokers{} naturally appear"
+      "{C:green}Uncommon{} {C:attention}Jokers{} appear {C:attention}4X{} more frequently"
     ],
     image_url: "img/b/average.png",
     rarity: "Deck"

@@ -184,16 +184,24 @@ CardSleeves.Sleeve {
 }
 
 -- Average
--- todo: add stack with self effect
 CardSleeves.Sleeve {
     key = "average",
     unlocked = true,
     atlas = "atlas_cod_sleeves",
     pos = { x = 2, y = 0 },
     config = {},
+    loc_vars = function(self, info_queue, back)
+        if self.get_current_deck_key() == "b_cod_average" then
+            return { key = self.key .. "_alt" }
+        end
+    end,
     apply = function(self)
-        G.GAME.common_mod = 0
-        G.GAME.rare_mod = 0
+        if self.get_current_deck_key() ~= "b_cod_average" then
+            G.GAME.uncommon_mod = 4
+        else
+            G.GAME.common_mod = 0
+            G.GAME.rare_mod = 0
+        end
     end,
 }
 

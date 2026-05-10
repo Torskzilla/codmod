@@ -15,8 +15,8 @@ return {
             b_cod_average={
                 name="Average Deck",
                 text={
-                    "No {C:blue}Common{} or {C:red}Rare",
-                    "{C:attention}Jokers{} naturally appear"
+                    "{C:green}Uncommon{} {C:attention}Jokers{} appear",
+                    "{C:attention}4X{} more frequently"
                 },
                 unlock = {
                     "Discover at least",
@@ -142,6 +142,13 @@ return {
                 }
             },
             sleeve_cod_average = {
+                name = "Average Sleeve",
+                text = {
+                    "{C:green}Uncommon{} {C:attention}Jokers{} appear",
+                    "{C:attention}4X{} more frequently"
+                }
+            },
+            sleeve_cod_average_alt = {
                 name = "Average Sleeve",
                 text = {
                     "No {C:blue}Common{} or {C:red}Rare",

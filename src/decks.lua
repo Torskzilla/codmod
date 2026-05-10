@@ -213,8 +213,7 @@ SMODS.Back{
     config = {},
 
     apply = function(self)
-        G.GAME.common_mod = 0
-        G.GAME.rare_mod = 0
+        G.GAME.uncommon_mod = 4
     end,
     locked_loc_vars = function(self, info_queue, back)
         return { vars = { 200 } }
