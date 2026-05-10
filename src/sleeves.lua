@@ -164,21 +164,43 @@ CardSleeves.Sleeve {
 }
 
 -- Isometric
--- todo: add different stack with self effect
 CardSleeves.Sleeve {
     key = "isometric",
     unlocked = true,
     atlas = "atlas_cod_sleeves",
     pos = { x = 9, y = 0 },
     config = {},
+    loc_vars = function(self, info_queue, back)
+        if self.get_current_deck_key() == "b_cod_isometric" then
+            return { key = self.key .. "_alt", vars = { (G.GAME.cod_sleeve_isometric_chip_excess or 0) } }
+        end
+    end,
     apply = function(self)
-        G.GAME.modifiers.cod_isometric = true
-        G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) + 1
+        if self.get_current_deck_key() ~= "b_cod_isometric" then
+            G.GAME.modifiers.cod_isometric = true
+            G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) + 1
+        else
+            G.GAME.cod_sleeve_isometric_chip_excess = 0
+        end
     end,
     calculate = function(self, back, context)
-        if context.end_of_round and context.main_eval and not context.beat_boss then
-            G.GAME.round_bonus.discards = (G.GAME.round_bonus.discards or 0) + G.GAME.current_round.discards_left
-            G.GAME.round_bonus.next_hands = (G.GAME.round_bonus.next_hands or 0) + G.GAME.current_round.hands_left
+        if self.get_current_deck_key() ~= "b_cod_isometric" then
+            if context.end_of_round and context.main_eval and not context.beat_boss then
+                G.GAME.round_bonus.discards = (G.GAME.round_bonus.discards or 0) + G.GAME.current_round.discards_left
+                G.GAME.round_bonus.next_hands = (G.GAME.round_bonus.next_hands or 0) + G.GAME.current_round.hands_left
+            end
+        else
+            if context.end_of_round and context.main_eval then
+                local current_score = G.GAME.chips
+                local current_requirements = G.GAME.blind.chips
+                if (current_score>current_requirements) then
+                    G.GAME.cod_sleeve_isometric_chip_excess = (current_score - current_requirements)/2
+                end
+            end
+            if context.setting_blind then
+                G.GAME.chips = (G.GAME.chips or 0) + (G.GAME.cod_sleeve_isometric_chip_excess or 0)
+                G.GAME.cod_sleeve_isometric_chip_excess = 0
+            end
         end
     end,
 }

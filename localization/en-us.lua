@@ -187,6 +187,14 @@ return {
                     "{C:red}Discard{} when {C:attention}Boss Blind{} is defeated",
                 },
             },
+            sleeve_cod_isometric_alt={
+                name="Isometric Sleeve",
+                text={
+                    "Half of excess score carries over",
+                    "when {C:attention}Blind{} is defeated",
+                    "{C:inactive}(Currently: {C:attention}#1#{C:inactive} Score)",
+                },
+            },
             sleeve_cod_inverted={
                 name="Inverted Sleeve",
                 text={
