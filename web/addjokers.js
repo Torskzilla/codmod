@@ -1120,6 +1120,14 @@ let stickers = [
     image_url: "img/sticker/imprisoned.png",
     rarity: "Sticker"
   },
+  {
+    name: "Fragile",
+    text: [
+      "Debuffed if {C:attention}Blind{} is defeated by over {C:attention}X3{} score requirement",
+    ],
+    image_url: "img/sticker/fragile.png",
+    rarity: "Sticker"
+  },
 ]
 
 let blinds = [

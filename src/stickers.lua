@@ -30,6 +30,7 @@ end
 SMODS.Sticker:take_ownership('eternal',
     {
 	sticker_slot = 1,
+    rate = 0.25,
     should_apply = SMODS.Sticker.should_apply,
     },
     true
@@ -38,6 +39,7 @@ SMODS.Sticker:take_ownership('eternal',
 SMODS.Sticker:take_ownership('perishable',
     {
 	sticker_slot = 1,
+    rate = 0.25,
     should_apply = SMODS.Sticker.should_apply,
     },
     true
@@ -85,8 +87,6 @@ function Card:add_to_deck(from_debuff)
 end
 
 -- Dormant
-local dormant_rounds = 2
-
 SMODS.Sticker {
     key = "dormant",
     sticker_slot = 1,
@@ -94,12 +94,13 @@ SMODS.Sticker {
     atlas = 'atlas_cod_stickers',
     pos = { x = 0, y = 0 },
     default_compat = true,
-    rate = 0.3,
+    rate = 0.25,
     needs_enable_flag = true,
+    config = { dormant_rounds = 2 },
     apply = function(self, card, val)
         card.ability[self.key] = val
         if card.ability[self.key] then
-            card.ability.dormant_tally = dormant_rounds
+            card.ability.dormant_tally = self.config.dormant_rounds
             G.E_MANAGER:add_event(Event({
                 func = function()
                     if (card.area and card.area.config.jokers) then
@@ -113,7 +114,7 @@ SMODS.Sticker {
         end
     end,
     loc_vars = function(self, info_queue, card)
-        return { vars = { dormant_rounds, card.ability.dormant_tally or dormant_rounds } }
+        return { vars = { self.config.dormant_rounds, card.ability.dormant_tally or self.config.dormant_rounds } }
     end,
     calculate = function(self, card, context)
         if context.sticker_add_self and card.ability.dormant_tally > 0 then
@@ -147,7 +148,7 @@ SMODS.Sticker {
     atlas = 'atlas_cod_stickers',
     pos = { x = 1, y = 0 },
     default_compat = true,
-    rate = 0.3,
+    rate = 0.25,
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -217,7 +218,7 @@ SMODS.Sticker {
     atlas = 'atlas_cod_stickers',
     pos = { x = 2, y = 0 },
     default_compat = true,
-    rate = 0.3,
+    rate = 0.25,
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -286,7 +287,7 @@ SMODS.Sticker {
     pos = { x = 3, y = 0 },
     default_compat = true,
     compat_exceptions = {"j_madness", "j_todo_list", "j_mail", "j_idol", "j_castle", "j_ancient"},
-    rate = 0.2,
+    rate = 0.25,
     needs_enable_flag = true,
     should_apply = function(self, card, center, area, bypass_roll)
         if (not card or not card.config or not card.config.center or not card.config.center.key) then -- avoid crash from all in jest's sticker joker
@@ -335,7 +336,7 @@ SMODS.Sticker {
     atlas = 'atlas_cod_stickers',
     pos = { x = 1, y = 1 },
     default_compat = true,
-    rate = 0.3,
+    rate = 0.25,
     needs_enable_flag = true,
     apply = function(self, card, val)
         card.ability[self.key] = val
@@ -368,4 +369,36 @@ SMODS.Sticker {
             card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('imprisoned_freed'),colour = G.C.FILTER, delay = 0.45})
         end
     end
+}
+
+-- Fragile
+SMODS.Sticker {
+    key = "fragile",
+    sticker_slot = 1,
+    badge_colour = HEX '68e7e2',
+    atlas = 'atlas_cod_stickers',
+    pos = { x = 3, y = 1 },
+    default_compat = true,
+    rate = 0.25,
+    needs_enable_flag = true,
+    config = { threshold = 3 },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { self.config.threshold } }
+    end,
+    apply = function(self, card, val)
+        card.ability[self.key] = val
+        if not card.ability[self.key] then
+            SMODS.debuff_card(card, false, "cod_fragile")
+        end
+    end,
+    calculate = function(self, card, context)
+        if context.end_of_round and context.main_eval then
+            local current_score = G.GAME.chips
+            local current_requirements = G.GAME.blind.chips
+            if (current_score>(current_requirements*self.config.threshold)) then
+                SMODS.debuff_card(card, true, "cod_fragile")
+                card_eval_status_text(card, 'extra', nil, nil, nil, {message = localize('cod_fragile_shatter'),colour = G.C.FILTER, delay = 0.45})
+            end
+        end
+    end,
 }

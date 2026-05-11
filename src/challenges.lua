@@ -103,6 +103,16 @@ SMODS.Challenge {
     },
 }
 
+-- Dumpster Diving
+SMODS.Challenge {
+    key = 'dumpster_diving',
+    rules = {
+        custom = {
+            { id = 'all_perishable' },
+        }
+    },
+}
+
 -- Sleepover
 SMODS.Challenge {
     key = 'sleepover',
@@ -155,6 +165,16 @@ SMODS.Challenge {
             G.GAME.round_bonus.next_hands = (G.GAME.round_bonus.next_hands or 0) + G.GAME.current_round.hands_left
         end
     end,
+}
+
+-- Handle With Care
+SMODS.Challenge {
+    key = 'handle_with_care',
+    rules = {
+        custom = {
+            { id = 'all_fragile' },
+        }
+    },
 }
 
 -- Top Secret

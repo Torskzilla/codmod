@@ -1279,6 +1279,14 @@ return {
                     "{C:attention}Blind{} is skipped"
                 },
             },
+            cod_fragile = {
+                name = "Fragile",
+                text = {
+                    "Debuffed if {C:attention}Blind{}",
+                    "is defeated by over",
+                    "{C:attention}X#1#{} score requirement",
+                },
+            },
             cod_platinum_sticker = {
                 name = "Platinum Sticker",
                 text = {
@@ -1340,6 +1348,8 @@ return {
             c_cod_universal_paperclips = "Universal Paperclips",
             c_cod_chaos_chaos = "Chaos Chaos",
             c_cod_sleepover = "Sleepover",
+            c_cod_dumpster_diving = "Dumpster Diving",
+            c_cod_handle_with_care = "Handle With Care",
             c_cod_jailbreak = "Jailbreak",
             c_cod_top_secret = "Top Secret",
             c_cod_final_exam = "Final Exam",
@@ -1412,6 +1422,7 @@ return {
             cod_open_chest="Open",
             cod_artifact_activate="Create",
             cod_clean_tag_done="Done",
+            cod_fragile_shatter="Shatter!",
         },
         high_scores={},
         labels={
@@ -1421,6 +1432,7 @@ return {
             cod_confidential="Confidential",
             cod_expensive="Expensive",
             cod_imprisoned="Imprisoned",
+            cod_fragile="Fragile",
         },
         poker_hand_descriptions={},
         poker_hands={},
@@ -1454,6 +1466,12 @@ return {
             },
             ch_c_cod_no_hand_money={
                 "Extra {C:blue}Hands{} no longer earn money",
+            },
+            ch_c_all_fragile={
+                "All Jokers are {C:attention}Fragile{}",
+            },
+            ch_c_all_perishable={
+                "All Jokers are {C:attention}Perishable{}",
             },
         },
     },

@@ -22,5 +22,11 @@ end
 if G.GAME.modifiers.all_imprisoned then
     card:add_sticker("cod_imprisoned", true)
 end
+if G.GAME.modifiers.all_fragile then
+    card:add_sticker("cod_fragile", true)
+end
+if G.GAME.modifiers.all_perishable then
+    card:add_sticker("perishable", true)
+end
 '''
 match_indent = true
