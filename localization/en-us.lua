@@ -1302,7 +1302,40 @@ return {
             stake_cod_platinum = {
                 name = "Platinum Stake",
                 text = {
-                    "Adds several new {C:attention}Stickers{}",
+                    "Shop can have {C:attention}Fragile{}",
+                    "and {C:attention}Confidential{} Jokers",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+            },
+            stake_black_alt={
+                name="Black Stake",
+                text={
+                    "Shop can have {C:attention}Eternal{}",
+                    "and {C:attention}Envious{} Jokers",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+            },
+            stake_blue_alt={
+                name="Blue Stake",
+                text={
+                    "Shop can have {C:attention}Imprisoned{}",
+                    "and {C:attention}Claustrophobic{} Jokers",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+            },
+            stake_gold_alt={
+                name="Gold Stake",
+                text={
+                    "Shop can have {C:attention}Rental{}",
+                    "and {C:attention}Expensive{} Jokers",
+                    "{s:0.8}Applies all previous Stakes",
+                },
+            },
+            stake_orange_alt={
+                name="Orange Stake",
+                text={
+                    "Shop can have {C:attention}Perishable{}",
+                    "and {C:attention}Dormant{} Jokers",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },

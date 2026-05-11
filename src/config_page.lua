@@ -52,6 +52,17 @@ SMODS.current_mod.config_tab = function()
                                     })
                                 }
                             },
+                            {
+                                n = G.UIT.R,
+                                config = { align = "cr", padding = 0.01 },
+                                nodes = {
+                                    create_toggle({
+                                        label = "Stake Rework",
+                                        ref_table = config,
+                                        ref_value = 'cod_stakes_enabled'
+                                    })
+                                }
+                            },
                         }
                     },
                 }
