@@ -1248,6 +1248,22 @@ let shop_items = [
     image_url: "img/v/blue_blood.png",
     rarity: "Voucher"
   },
+  {
+    name: "Handy",
+    text: [
+      "Earn {C:money}$1{} more per remaining {C:blue}Hand",
+    ],
+    image_url: "img/v/handy.png",
+    rarity: "Voucher"
+  },
+  {
+    name: "Hoarder",
+    text: [
+      "Earn {C:money}$1{} more per remaining {C:red}Discard",
+    ],
+    image_url: "img/v/hoarder.png",
+    rarity: "Voucher"
+  },
 ]
 
 let cols = {

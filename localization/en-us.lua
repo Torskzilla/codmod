@@ -1384,6 +1384,20 @@ return {
                     "{C:attention}40%{} less {C:blue}Common{} Jokers",
                 },
             },
+            v_cod_handy = {
+                name = "Handy",
+                text = {
+                    "Earn {C:money}$#1#{} more per",
+                    "remaining {C:blue}Hand",
+                },
+            },
+            v_cod_hoarder = {
+                name = "Hoarder",
+                text = {
+                    "Earn {C:money}$#1#{} more per",
+                    "remaining {C:red}Discard",
+                },
+            },
         },
     },
     misc = {

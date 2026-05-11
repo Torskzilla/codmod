@@ -37,3 +37,42 @@ SMODS.Voucher {
         }))
     end,
 }
+
+-- Handy
+SMODS.Voucher {
+    key = 'handy',
+    atlas = 'atlas_cod_vouchers',
+    pos = { x = 1, y = 0 },
+    config = { extra = { hand_money = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.hand_money } }
+    end,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.modifiers.money_per_hand = (G.GAME.modifiers.money_per_hand or 1) + card.ability.extra.hand_money
+                return true
+            end
+        }))
+    end
+}
+
+-- Hoarder
+SMODS.Voucher {
+    key = 'hoarder',
+    atlas = 'atlas_cod_vouchers',
+    pos = { x = 1, y = 1 },
+    config = { extra = { discard_money = 1 } },
+    requires = { 'v_cod_handy' },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.discard_money } }
+    end,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.modifiers.money_per_discard = (G.GAME.modifiers.money_per_discard or 0) + card.ability.extra.discard_money
+                return true
+            end
+        }))
+    end,
+}
