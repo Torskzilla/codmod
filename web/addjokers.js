@@ -1280,6 +1280,22 @@ let shop_items = [
     image_url: "img/v/collectors_edition.png",
     rarity: "Voucher"
   },
+  {
+    name: "Serendipity",
+    text: [
+      "{C:attention}+1{} booster pack available in shop",
+    ],
+    image_url: "img/v/serendipity.png",
+    rarity: "Voucher"
+  },
+  {
+    name: "Recursion",
+    text: [
+      "{C:attention}+1{} voucher available in shop",
+    ],
+    image_url: "img/v/recursion.png",
+    rarity: "Voucher"
+  },
 ]
 
 let cols = {

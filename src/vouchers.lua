@@ -115,3 +115,42 @@ SMODS.Voucher {
         }))
     end,
 }
+
+-- Serendipity
+SMODS.Voucher {
+    key = 'serendipity',
+    atlas = 'atlas_cod_vouchers',
+    pos = { x = 3, y = 0 },
+    config = { extra = { boosters = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.boosters } }
+    end,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                SMODS.change_booster_limit(card.ability.extra.boosters)
+                return true
+            end
+        }))
+    end
+}
+
+-- Recursion
+SMODS.Voucher {
+    key = 'recursion',
+    atlas = 'atlas_cod_vouchers',
+    pos = { x = 3, y = 1 },
+    config = { extra = { vouchers = 1 } },
+    requires = { 'v_cod_serendipity' },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.vouchers } }
+    end,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                SMODS.change_voucher_limit(card.ability.extra.vouchers)
+                return true
+            end
+        }))
+    end,
+}

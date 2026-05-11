@@ -1410,6 +1410,20 @@ return {
                     "Take {C:attention}+#1#{} item from {C:attention}Booster Packs{}",
                 },
             },
+            v_cod_serendipity = {
+                name = "Serendipity",
+                text = {
+                    "{C:attention}+#1#{} booster pack",
+                    "available in shop",
+                },
+            },
+            v_cod_recursion = {
+                name = "Recursion",
+                text = {
+                    "{C:attention}+#1#{} voucher",
+                    "available in shop",
+                },
+            },
         },
     },
     misc = {
