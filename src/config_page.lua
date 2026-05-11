@@ -57,6 +57,17 @@ SMODS.current_mod.config_tab = function()
                                 config = { align = "cr", padding = 0.01 },
                                 nodes = {
                                     create_toggle({
+                                        label = "Enable Vouchers",
+                                        ref_table = config,
+                                        ref_value = 'cod_vouchers_enabled'
+                                    })
+                                }
+                            },
+                            {
+                                n = G.UIT.R,
+                                config = { align = "cr", padding = 0.01 },
+                                nodes = {
+                                    create_toggle({
                                         label = "Stake Rework",
                                         ref_table = config,
                                         ref_value = 'cod_stakes_enabled'

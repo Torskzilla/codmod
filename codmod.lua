@@ -21,6 +21,7 @@ end
 if config.cod_stakes_enabled then assert(SMODS.load_file("src/stakes.lua"))() end
 if config.cod_blinds_enabled then assert(SMODS.load_file("src/blinds.lua"))() end
 if config.cod_tags_enabled then assert(SMODS.load_file("src/tags.lua"))() end
+if config.cod_vouchers_enabled then assert(SMODS.load_file("src/vouchers.lua"))() end
 if config.cod_jokers_enabled then assert(SMODS.load_file("src/jokers.lua"))() end
 
-if config.cod_jokers_enabled and config.cod_blinds_enabled and config.cod_tags_enabled then assert(SMODS.load_file("src/challenges.lua"))() end
+if config.cod_jokers_enabled and config.cod_blinds_enabled and config.cod_tags_enabled and config.cod_vouchers_enabled then assert(SMODS.load_file("src/challenges.lua"))() end

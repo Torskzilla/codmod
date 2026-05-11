@@ -1371,7 +1371,20 @@ return {
             },
         },
         Tarot={},
-        Voucher={},
+        Voucher={
+            v_cod_eccentric = {
+                name = "Eccentric",
+                text = {
+                    "{C:attention}20%{} less {C:blue}Common{} Jokers",
+                },
+            },
+            v_cod_blue_blood = {
+                name = "Blue Blood",
+                text = {
+                    "{C:attention}40%{} less {C:blue}Common{} Jokers",
+                },
+            },
+        },
     },
     misc = {
         achievement_descriptions={},

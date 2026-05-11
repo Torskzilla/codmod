@@ -1230,16 +1230,24 @@ let shop_items = [
   //     "{C:mult}+4{} Mult"
   //   ],
   //   image_url: "img/j_joker.png",
-  //   rarity: "Voucher"
-  // },
-  // {
-  //   name: "Joker",
-  //   text: [
-  //     "{C:mult}+4{} Mult"
-  //   ],
-  //   image_url: "img/j_joker.png",
   //   rarity: "Pack"
   // },
+  {
+    name: "Eccentric",
+    text: [
+      "{C:attention}20%{} less {C:blue}Common{} Jokers",
+    ],
+    image_url: "img/v/eccentric.png",
+    rarity: "Voucher"
+  },
+  {
+    name: "Blue Blood",
+    text: [
+      "{C:attention}40%{} less {C:blue}Common{} Jokers",
+    ],
+    image_url: "img/v/blue_blood.png",
+    rarity: "Voucher"
+  },
 ]
 
 let cols = {
