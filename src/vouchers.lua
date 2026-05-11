@@ -76,3 +76,42 @@ SMODS.Voucher {
         }))
     end,
 }
+
+-- Packed
+SMODS.Voucher {
+    key = 'packed',
+    atlas = 'atlas_cod_vouchers',
+    pos = { x = 2, y = 0 },
+    config = { extra = { booster_options = 1 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.booster_options } }
+    end,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.modifiers.booster_size_mod = (G.GAME.modifiers.booster_size_mod or 0) + card.ability.extra.booster_options
+                return true
+            end
+        }))
+    end
+}
+
+-- Collector's Edition
+SMODS.Voucher {
+    key = 'collectors_edition',
+    atlas = 'atlas_cod_vouchers',
+    pos = { x = 2, y = 1 },
+    config = { extra = { booster_choices = 1 } },
+    requires = { 'v_cod_packed' },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.booster_choices } }
+    end,
+    redeem = function(self, card)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.modifiers.booster_choice_mod = (G.GAME.modifiers.booster_choice_mod or 0) + card.ability.extra.booster_choices
+                return true
+            end
+        }))
+    end,
+}

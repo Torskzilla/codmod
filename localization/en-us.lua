@@ -1398,6 +1398,18 @@ return {
                     "remaining {C:red}Discard",
                 },
             },
+            v_cod_packed = {
+                name = "Packed",
+                text = {
+                    "{C:attention}+#1#{} option in {C:attention}Booster Packs{}",
+                },
+            },
+            v_cod_collectors_edition = {
+                name = "Collector's Edition",
+                text = {
+                    "Take {C:attention}+#1#{} item from {C:attention}Booster Packs{}",
+                },
+            },
         },
     },
     misc = {

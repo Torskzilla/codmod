@@ -1264,6 +1264,22 @@ let shop_items = [
     image_url: "img/v/hoarder.png",
     rarity: "Voucher"
   },
+  {
+    name: "Packed",
+    text: [
+      "{C:attention}+1{} option in {C:attention}Booster Packs{}",
+    ],
+    image_url: "img/v/packed.png",
+    rarity: "Voucher"
+  },
+  {
+    name: "Collector's Edition",
+    text: [
+      "Take {C:attention}+1{} item from {C:attention}Booster Packs{}",
+    ],
+    image_url: "img/v/collectors_edition.png",
+    rarity: "Voucher"
+  },
 ]
 
 let cols = {
