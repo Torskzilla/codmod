@@ -1,12 +1,12 @@
 # Cod's Mod
 
-A content mod for Balatro which adds Jokers, Decks, Blinds and more.
+A content mod for Balatro which adds Jokers, Decks, Blinds, Vouchers and more.
 
 View added content on the [Website](https://torskzilla.github.io/codmod/web/index.html)
 
 Download the latest version from [Releases](https://github.com/Torskzilla/codmod/releases)
 
-Compatile with the Card Sleeves mod.
+Compatible with the Card Sleeves mod.
 
 ## Installation
 
