@@ -4324,7 +4324,7 @@ SMODS.Joker {
     cost = 9,
     atlas = 'atlas_cod_jokers',
     pos = { x = 0, y = 12 },
-    config = { extra = { xmult = 0.1 } },
+    config = { extra = { xmult = 0.05 } },
     loc_vars = function(self, info_queue, card)
         return { vars = { card.ability.extra.xmult } }
     end,

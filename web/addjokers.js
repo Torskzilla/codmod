@@ -906,7 +906,7 @@ let jokers = [
   {
     name: "Socialite",
     text: [
-        "Every played {C:attention}Face Card{} permanently gains {C:white,X:mult}X0.1{} Mult when scored",
+        "Every played {C:attention}Face Card{} permanently gains {C:white,X:mult}X0.05{} Mult when scored",
     ],
     image_url: "img/j/socialite.png",
     rarity: "Rare"
