@@ -2359,7 +2359,7 @@ SMODS.Joker {
 SMODS.Joker {
     key = "dyson_sphere",
     unlocked = true,
-    blueprint_compat = true,
+    blueprint_compat = false,
     rarity = 3,
     cost = 9,
     atlas = 'atlas_cod_jokers',
