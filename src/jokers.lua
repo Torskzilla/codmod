@@ -3545,20 +3545,22 @@ SMODS.Joker {
     end,
     calculate = function(self, card, context)
         if context.before and context.scoring_name == card.ability.extra.poker_hand then
-            local hand_changed = false
-            local passed = false
-            for i=1,#poker_hands_ordered do
-                local handname = poker_hands_ordered[i]
-                if handname == card.ability.extra.poker_hand then
-                    passed = true
-                elseif passed and SMODS.is_poker_hand_visible(handname) then
-                    card.ability.extra.poker_hand = handname
-                    hand_changed = true
-                    break
+            if not context.blueprint then
+                local hand_changed = false
+                local passed = false
+                for i=1,#poker_hands_ordered do
+                    local handname = poker_hands_ordered[i]
+                    if handname == card.ability.extra.poker_hand then
+                        passed = true
+                    elseif passed and SMODS.is_poker_hand_visible(handname) then
+                        card.ability.extra.poker_hand = handname
+                        hand_changed = true
+                        break
+                    end
                 end
-            end
-            if not hand_changed then
-                card.ability.extra.poker_hand = "High Card"
+                if not hand_changed then
+                    card.ability.extra.poker_hand = "High Card"
+                end
             end
             return {
                 level_up = 2,
