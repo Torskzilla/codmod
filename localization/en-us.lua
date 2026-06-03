@@ -1294,6 +1294,13 @@ return {
                     "{C:attention}X#1#{} score requirement",
                 },
             },
+            cod_urgent = {
+                name = "Urgent",
+                text = {
+                    "Non {C:attention}Urgent{} jokers",
+                    "can not be sold"
+                },
+            },
             cod_platinum_sticker = {
                 name = "Platinum Sticker",
                 text = {
@@ -1318,7 +1325,7 @@ return {
                 name="Black Stake",
                 text={
                     "Shop can have {C:attention}Eternal{}",
-                    "and {C:attention}Envious{} Jokers",
+                    "and {C:attention}Urgent{} Jokers",
                     "{s:0.8}Applies all previous Stakes",
                 },
             },
@@ -1526,6 +1533,7 @@ return {
             cod_expensive="Expensive",
             cod_imprisoned="Imprisoned",
             cod_fragile="Fragile",
+            cod_urgent="Urgent",
         },
         poker_hand_descriptions={},
         poker_hands={},

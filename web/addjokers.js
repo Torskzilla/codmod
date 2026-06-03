@@ -1128,6 +1128,14 @@ let stickers = [
     image_url: "img/sticker/fragile.png",
     rarity: "Sticker"
   },
+  {
+    name: "Urgent",
+    text: [
+      "Non {C:attention}Urgent{} jokers can not be sold"
+    ],
+    image_url: "img/sticker/urgent.png",
+    rarity: "Sticker"
+  },
 ]
 
 let blinds = [

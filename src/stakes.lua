@@ -14,7 +14,7 @@ SMODS.Stake:take_ownership('black',
     end,
     modifiers = function()
         G.GAME.modifiers.enable_eternals_in_shop = true
-        G.GAME.modifiers.enable_cod_envy = true
+        G.GAME.modifiers.enable_cod_urgent = true
     end,
     },
     true

@@ -396,3 +396,22 @@ SMODS.Sticker {
         end
     end,
 }
+
+-- Urgent
+SMODS.Sticker {
+    key = "urgent",
+    sticker_slot = 1,
+    badge_colour = HEX 'e76868',
+    atlas = 'atlas_cod_stickers',
+    pos = { x = 2, y = 1 },
+    default_compat = true,
+    rate = 0.25,
+    needs_enable_flag = true,
+    calculate = function(self, card, context)
+        if context.check_eternal and context.trigger.from_sell and context.other_card.area == G.jokers and not context.other_card.ability[self.key] then
+            return {
+                no_destroy = { override_compat = true }
+            }
+        end
+    end,
+}
