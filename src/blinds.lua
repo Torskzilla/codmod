@@ -334,6 +334,35 @@ SMODS.Blind {
     end,
 }
 
+-- The Scythe
+SMODS.Blind {
+    key = "scythe",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 12 },
+    boss = { min = 3 },
+    boss_colour = HEX("c9e768"),
+    calculate = function(self, blind, context)
+        if context.blind_disabled then
+            for _, playing_card in ipairs(G.playing_cards) do
+                SMODS.debuff_card(playing_card, false, "cod_scythe")
+            end
+        end
+
+        if not blind.disabled and context.after then
+            for _, playing_card in ipairs(context.full_hand) do
+                G.E_MANAGER:add_event(Event({
+                    func = (function()
+                        SMODS.debuff_card(playing_card, true, "cod_scythe")
+                        return true
+                    end
+                )}))
+            end
+        end
+    end,
+}
+
 
 
 -- Showdown Blinds

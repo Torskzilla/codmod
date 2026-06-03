@@ -290,6 +290,14 @@ return {
                     "-1 Discard",
                 },
             },
+            bl_cod_scythe = {
+                name = "The Scythe",
+                text = {
+                    "Played cards are",
+                    "permanently debuffed",
+                    "after scoring"
+                },
+            },
         },
         Edition={},
         Enhanced={},

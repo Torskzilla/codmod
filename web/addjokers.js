@@ -1228,6 +1228,14 @@ let blinds = [
     image_url: "img/bl/ice.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Scythe",
+    text: [
+      "Played cards are permanently debuffed after scoring"
+    ],
+    image_url: "img/bl/scythe.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [
