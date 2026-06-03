@@ -308,3 +308,31 @@ SMODS.Blind {
         end
     end,
 }
+
+-- The Ice
+SMODS.Blind {
+    key = "ice",
+    dollars = 5,
+    mult = 2,
+    atlas = 'atlas_cod_blinds',
+    pos = { x = 0, y = 11 },
+    boss = { min = 2 },
+    boss_colour = HEX("92e6f2"),
+    calculate = function(self, blind, context)
+        if context.blind_disabled then
+            ease_hands_played(1)
+            ease_discard(1)
+        end
+
+        if not blind.disabled and context.setting_blind then
+            ease_hands_played(-1)
+            ease_discard(-1)
+        end
+    end,
+}
+
+
+
+-- Showdown Blinds
+
+

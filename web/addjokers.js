@@ -1211,6 +1211,15 @@ let blinds = [
     image_url: "img/bl/collective.png",
     rarity: "Boss Blind"
   },
+  {
+    name: "The Ice",
+    text: [
+      "-1 Hand",
+      "-1 Discard"
+    ],
+    image_url: "img/bl/ice.png",
+    rarity: "Boss Blind"
+  },
   // {
   //   name: "Violet Vessel",
   //   text: [

@@ -283,6 +283,13 @@ return {
                     "cards are debuffed",
                 },
             },
+            bl_cod_ice = {
+                name = "The Ice",
+                text = {
+                    "-1 Hand",
+                    "-1 Discard",
+                },
+            },
         },
         Edition={},
         Enhanced={},
