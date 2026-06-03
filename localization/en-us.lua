@@ -1457,6 +1457,7 @@ return {
             c_cod_unaccountably_peckish = "Unaccountably Peckish",
             c_cod_fishbucket = "Fishbucket",
             c_cod_stockpile = "Stockpile",
+            c_cod_all_stickers = "Sticker Storm",
         },
         collabs={},
         dictionary={
@@ -1573,6 +1574,10 @@ return {
             },
             ch_c_all_perishable={
                 "All Jokers are {C:attention}Perishable{}",
+            },
+
+            ch_c_enable_all_stickers={
+                "All {C:attention}Stickers{} can appear",
             },
         },
     },

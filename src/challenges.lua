@@ -19,6 +19,34 @@ SMODS.Challenge {
     },
 }
 
+-- Sticker Storm
+SMODS.Challenge {
+    key = 'all_stickers',
+    rules = {
+        custom = {
+            { id = 'enable_all_stickers' },
+        }
+    },
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                G.GAME.modifiers.enable_eternals_in_shop = true
+                G.GAME.modifiers.enable_cod_urgent = true
+                G.GAME.modifiers.enable_cod_envy = true
+                G.GAME.modifiers.enable_cod_imprisoned = true
+                G.GAME.modifiers.enable_cod_claustrophobic = true
+                G.GAME.modifiers.enable_perishables_in_shop = true
+                G.GAME.modifiers.enable_cod_dormant = true
+                G.GAME.modifiers.enable_rentals_in_shop = true
+                G.GAME.modifiers.enable_cod_expensive = true
+                G.GAME.modifiers.enable_cod_confidential = true
+                G.GAME.modifiers.enable_cod_fragile = true
+                return true
+            end
+        }))
+    end,
+}
+
 -- Square Hands
 SMODS.Challenge {
     key = 'square_hands',
