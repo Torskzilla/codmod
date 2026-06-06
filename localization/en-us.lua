@@ -1244,6 +1244,13 @@ return {
                     "{C:white,X:mult}X#1#{} Mult when scored",
                 },
             },
+            j_cod_numerology = {
+                name = "Numerology",
+                text = {
+                    "{X:mult,C:white}X#1#{} Mult if poker hand",
+                    "contains a scoring {C:attention}7{}",
+                },
+            },
         },
         Other={
             cod_dormant = {

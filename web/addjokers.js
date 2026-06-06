@@ -911,6 +911,14 @@ let jokers = [
     image_url: "img/j/socialite.png",
     rarity: "Rare"
   },
+  {
+    name: "Numerology",
+    text: [
+        "{X:mult,C:white}X2{} Mult if poker hand contains a scoring {C:attention}7{}",
+    ],
+    image_url: "img/j/numerology.png",
+    rarity: "Uncommon"
+  },
 
   // {
   //   name: "",

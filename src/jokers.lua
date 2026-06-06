@@ -4341,6 +4341,34 @@ SMODS.Joker {
     end
 }
 
+-- Numerology
+SMODS.Joker {
+    key = "numerology",
+    unlocked = true,
+    blueprint_compat = true,
+    rarity = 2,
+    cost = 6,
+    atlas = 'atlas_cod_jokers',
+    pos = { x = 1, y = 12 },
+    config = { extra = { xmult = 2 } },
+    loc_vars = function(self, info_queue, card)
+        return { vars = { card.ability.extra.xmult } }
+    end,
+    calculate = function(self, card, context)
+        if context.joker_main then
+            for i = 1, #context.scoring_hand do
+                if not SMODS.has_no_rank(context.scoring_hand[i]) then
+                    if context.scoring_hand[i]:get_id() == 7 then
+                        return {
+                            xmult = card.ability.extra.xmult
+                        }
+                    end
+                end
+            end
+        end
+    end
+}
+
 --  Unused art:
 -- Fortunate Joker
 -- Black Market
