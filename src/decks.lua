@@ -185,6 +185,29 @@ SMODS.Back{
     end
 }
 
+-- Circuit
+SMODS.Back{
+    key = "circuit",
+    unlocked = true,
+    atlas = 'atlas_cod_decks',
+    pos = {x = 7, y = 1},
+    config = {xmult = 1},
+
+    loc_vars = function(self, info_queue, back)
+        return { vars = { self.config.xmult } }
+    end,
+    calculate = function(self, back, context)
+        if context.final_scoring_step then
+            return {
+                xmult = self.config.xmult * G.GAME.round_resets.hands
+            }
+        end
+        if context.after and not SMODS.last_hand_oneshot then
+            ease_hands_played(-G.GAME.current_round.hands_left, true)
+        end
+    end,
+}
+
 -- Isometric
 SMODS.Back{
     key = "isometric",

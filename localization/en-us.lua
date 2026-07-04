@@ -36,6 +36,13 @@ return {
                     "your collection",
                 }
             },
+            b_cod_circuit={
+                name="Circuit Deck",
+                text={
+                    "{X:mult,C:white}X#1#{} Mult for each {C:blue}Hand{}",
+                    "Play only {C:red}1{} hand",
+                }
+            },
             b_cod_gravity={
                 name="Gravity Deck",
                 text={
@@ -193,6 +200,20 @@ return {
                     "Half of excess score carries over",
                     "when {C:attention}Blind{} is defeated",
                     "{C:inactive}(Currently: {C:attention}#1#{C:inactive} Score)",
+                },
+            },
+            sleeve_cod_circuit={
+                name="Circuit Sleeve",
+                text={
+                    "{X:mult,C:white}X#1#{} Mult for each {C:blue}Hand{}",
+                    "Play only {C:red}1{} hand",
+                },
+            },
+            sleeve_cod_circuit_alt={
+                name="Circuit Sleeve",
+                text={
+                    "{X:mult,C:white}X#1#{} Mult for each",
+                    "remaining {C:red}discard{}",
                 },
             },
             sleeve_cod_inverted={

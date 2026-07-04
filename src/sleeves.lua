@@ -163,6 +163,41 @@ CardSleeves.Sleeve {
     end,
 }
 
+-- Circuit
+CardSleeves.Sleeve {
+    key = "circuit",
+    unlocked = true,
+    atlas = "atlas_cod_sleeves",
+    pos = { x = 2, y = 1 },
+    config = {xmult = 1, discard_xmult = 0.5},
+
+    loc_vars = function(self, info_queue, back)
+        if self.get_current_deck_key() == "b_cod_circuit" then
+            return { key = self.key .. "_alt", vars = { self.config.discard_xmult } }
+        else
+            return { vars = { self.config.xmult }}
+        end
+    end,
+
+    calculate = function(self, back, context)
+        if context.final_scoring_step then
+            if self.get_current_deck_key() ~= "b_cod_circuit" then
+                return {
+                    xmult = self.config.xmult * G.GAME.round_resets.hands
+                }
+            else
+                return {
+                    xmult = 1 + (self.config.discard_xmult * G.GAME.current_round.discards_left)
+                }
+            end
+
+        end
+        if context.after and not SMODS.last_hand_oneshot then
+            ease_hands_played(-G.GAME.current_round.hands_left, true)
+        end
+    end,
+}
+
 -- Isometric
 CardSleeves.Sleeve {
     key = "isometric",

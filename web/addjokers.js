@@ -1059,6 +1059,15 @@ let decks = [
     rarity: "Deck"
   },
   {
+    name: "Circuit Deck",
+    text: [
+      "{X:mult,C:white}X1{} Mult for each {C:blue}Hand{}",
+      "Play only {C:red}1{} hand",
+    ],
+    image_url: "img/b/circuit.png",
+    rarity: "Deck"
+  },
+  {
     name: "Isometric Deck",
     text: [
       "{C:blue}Hands{} and {C:red}Discards{} carry over when {C:attention}Small{} or {C:attention}Big Blind{} is defeated",
